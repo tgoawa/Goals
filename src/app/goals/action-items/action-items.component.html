@@ -1,3 +1,14 @@
-<p>
-  action-items works!
-</p>
+<div [formGroup]="actionItemForm">
+  <div class="form-group row">
+    <label class="custom-control custom-checkbox">
+  <input type="checkbox" class="custom-control-input" formControlName="IsCompleted">
+  <span class="custom-control-indicator"></span>
+  <span class="custom-control-description">Check when complete</span>
+</label>
+  <label class="col-md-2">Action Item:</label>
+  <div class="col-md-6">
+    <textarea formControlName="Action"></textarea>
+  </div>
+  </div>
+
+</div>
