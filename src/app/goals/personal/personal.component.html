@@ -7,4 +7,8 @@
     <label for="GoalDescription">Goal Description:</label>
     <input id="Description" type="text" class="form-control" formControlName="GoalDescription">
   </div>
+  <app-actions-list
+    [parentGoalForm]="personalGoalForm"
+    [actions]="personalGoal.Actions">
+  </app-actions-list>
 </form>

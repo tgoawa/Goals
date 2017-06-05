@@ -13,13 +13,13 @@ export class Goal {
     Weight: number;
     DisplayDateCreated: string;
     DisplayDateModified: string;
-    Actions: ActionItem[];
+    Actions: Action[];
     Supports: Support[];
     Measurements: Measurement[];
     Notes: Note[];
 };
 
-export class ActionItem {
+export class Action {
     ActionId: number;
     GoalId: number;
     Action: string;

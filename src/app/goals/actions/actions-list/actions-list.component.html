@@ -1,0 +1,10 @@
+<div [formGroup]="parentGoalForm">
+  <div formArrayName="actions">
+    <div *ngFor="let action of actions">
+      <app-action-items
+        [actionItems]="parentGoalForm.controls.actions"
+        [action]="action">
+      </app-action-items>
+    </div>
+  </div>
+</div>

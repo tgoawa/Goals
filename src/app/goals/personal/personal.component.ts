@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
-import { Goal } from '../goal';
+import { Goal, Action, Measurement, Support, Note } from '../goal';
 
 
 @Component({
@@ -13,6 +13,9 @@ export class PersonalComponent implements OnInit {
   personalGoal: Goal;
   personalGoalForm: FormGroup;
 
+  //For Testing
+  goal: Goal;
+
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
@@ -21,8 +24,28 @@ export class PersonalComponent implements OnInit {
   }
 
   private getGoal(): Goal {
+    this.goal = {
+      GoalId: 0,
+      GoalTypeId: 2,
+      GoalWIGId: 0,
+      GoalCompetencyId: 25,
+      GoalCompetencyTypeId: 22,
+      GoalCompletionPercentage: 0,
+      GoalDescription: 'Test Description',
+      IndustryTeamId: 17,
+      IsCompleted: false,
+      Name: 'Test Goal',
+      TeamMemberId: 1936,
+      Weight: 0,
+      DisplayDateCreated: 'test creatd',
+      DisplayDateModified: 'test modified',
+      Actions: [],
+      Supports: [],
+      Measurements: [],
+      Notes: [],
 
-    return;
+    }
+    return this.goal;
   }
 
   private toFormGroup(data: Goal): FormGroup {

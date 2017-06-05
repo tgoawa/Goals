@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActionItem } from './../goal';
+import { Action } from '../../goal';
 
 @Component({
   selector: 'app-action-items',
@@ -9,7 +9,7 @@ import { ActionItem } from './../goal';
 })
 export class ActionItemsComponent implements OnInit {
   @Input('actionItems') actionItems: FormArray;
-  @Input('action') action: ActionItem;
+  @Input('action') action: Action;
 
   actionItemForm: FormGroup;
 
@@ -20,7 +20,7 @@ export class ActionItemsComponent implements OnInit {
     this.actionItems.push(this.actionItemForm);
   }
 
-  private toFormGroup(data: ActionItem) {
+  private toFormGroup(data: Action) {
     const formGroup = this.fb.group({
       ActionId: data.ActionId,
       GoalId: data.GoalId,
