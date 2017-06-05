@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { GoalsRoutingModule } from './goals-routing.module';
 import { GoalsComponent } from './goals.component';
 import { ActionItemsComponent } from './action-items/action-items.component';
+import { PersonalComponent } from './personal/personal.component';
 
 @NgModule({
   imports: [
@@ -12,6 +13,6 @@ import { ActionItemsComponent } from './action-items/action-items.component';
     ReactiveFormsModule,
     GoalsRoutingModule
   ],
-  declarations: [GoalsComponent, ActionItemsComponent]
+  declarations: [GoalsComponent, ActionItemsComponent, PersonalComponent]
 })
 export class GoalsModule { }
