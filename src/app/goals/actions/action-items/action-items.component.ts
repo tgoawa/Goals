@@ -9,14 +9,14 @@ import { Action } from '../../goal';
 })
 export class ActionItemsComponent implements OnInit {
   @Input('actionItems') actionItems: FormArray;
-  @Input('action') action: Action;
+  @Input('actionItem') actionItem: Action;
 
   actionItemForm: FormGroup;
 
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
-    this.actionItemForm = this.toFormGroup(this.action);
+    this.actionItemForm = this.toFormGroup(this.actionItem);
     this.actionItems.push(this.actionItemForm);
   }
 
@@ -30,4 +30,5 @@ export class ActionItemsComponent implements OnInit {
 
     return formGroup;
   }
+
 }

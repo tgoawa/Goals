@@ -8,6 +8,7 @@
     <input id="Description" type="text" class="form-control" formControlName="GoalDescription">
   </div>
   <app-actions-list
+    [goalId]="personalGoal.GoalId"
     [parentGoalForm]="personalGoalForm"
     [actions]="personalGoal.Actions">
   </app-actions-list>
