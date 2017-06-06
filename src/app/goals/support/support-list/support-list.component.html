@@ -1,7 +1,7 @@
 <div [formGroup]="parentGoalForm">
   <h3>Support Items: </h3>
   <button (click)="addSupport()">Add Support</button>
-  <div formArrayName="actions">
+  <div formArrayName="supports">
     <div *ngFor="let support of supports; let i = index">
       <app-support-item
         [supportItems]="parentGoalForm.controls.supports"
