@@ -1,0 +1,12 @@
+<div [formGroup]="parentGoalForm">
+  <button (click)="addMeasurement()">Add Action</button>
+  <div formArrayName="actions">
+    <div *ngFor="let measurement of measurements; let i = index">
+      <app-action-items
+        [actionItems]="parentGoalForm.controls.measurements"
+        [actionItem]="measurement">
+      </app-action-items>
+      <button (click)="removeMeasurement(i)">Remove</button>
+    </div>
+  </div>
+</div>
