@@ -1,11 +1,12 @@
 <div [formGroup]="parentGoalForm">
   <button (click)="addAction()">Add Action</button>
   <div formArrayName="actions">
-    <div *ngFor="let action of actions">
+    <div *ngFor="let action of actions; let i = index">
       <app-action-items
         [actionItems]="parentGoalForm.controls.actions"
         [actionItem]="action">
       </app-action-items>
+      <button (click)="removeAction(i)">Remove</button>
     </div>
   </div>
 </div>

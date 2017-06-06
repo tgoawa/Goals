@@ -32,4 +32,10 @@ export class ActionsListComponent implements OnInit {
     this.cd.detectChanges();
   }
 
+  removeAction(index: number) {
+    if (this.actions.length > 1) {
+      this.actions.splice(index, 1);
+      (<FormArray>this.parentGoalForm.get('actions')).removeAt(index);
+    }
+  }
 }
