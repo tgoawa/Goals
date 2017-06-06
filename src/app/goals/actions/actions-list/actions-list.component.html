@@ -1,4 +1,5 @@
 <div [formGroup]="parentGoalForm">
+  <h3>Actions: </h3>
   <button (click)="addAction()">Add Action</button>
   <div formArrayName="actions">
     <div *ngFor="let action of actions; let i = index">
