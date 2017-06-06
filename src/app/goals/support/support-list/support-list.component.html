@@ -1,3 +1,13 @@
-<p>
-  support-list works!
-</p>
+<div [formGroup]="parentGoalForm">
+  <h3>Support Items: </h3>
+  <button (click)="addSupport()">Add Support</button>
+  <div formArrayName="actions">
+    <div *ngFor="let support of supports; let i = index">
+      <app-measurement-item
+        [measurementItems]="parentGoalForm.controls.supports"
+        [measurementItem]="support">
+      </app-measurement-item>
+      <button (click)="removeSupport(i)">Remove</button>
+    </div>
+  </div>
+</div>
