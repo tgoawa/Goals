@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+import { BsDropdownModule, CollapseModule } from 'ngx-bootstrap';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GoalsModule } from './goals/goals.module';
@@ -18,7 +20,9 @@ import { HeaderComponent } from './header/header.component';
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    GoalsModule
+    GoalsModule,
+    CollapseModule.forRoot(),
+    BsDropdownModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
