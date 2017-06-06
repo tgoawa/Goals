@@ -3,10 +3,10 @@
   <button (click)="addSupport()">Add Support</button>
   <div formArrayName="actions">
     <div *ngFor="let support of supports; let i = index">
-      <app-measurement-item
-        [measurementItems]="parentGoalForm.controls.supports"
-        [measurementItem]="support">
-      </app-measurement-item>
+      <app-support-item
+        [supportItems]="parentGoalForm.controls.supports"
+        [supportItem]="support">
+      </app-support-item>
       <button (click)="removeSupport(i)">Remove</button>
     </div>
   </div>
