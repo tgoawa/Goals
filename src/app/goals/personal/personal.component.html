@@ -1,4 +1,4 @@
-<form novalidate [formGroup]="personalGoalForm">
+<form novalidate [formGroup]="personalGoalForm" (ngSubmit)="onSubmit()">
   <div class="form-group">
     <label for="Name">Goal Name:</label>
     <input id="Name" type="text" class="form-control" formControlName="Name">
@@ -24,4 +24,6 @@
     [goalId]="personalGoal.GoalId"
     [parentGoalForm]="personalGoalForm"
     [notes]="personalGoal.Notes"></app-notes-list>
+
+    <button type="submit" [disabled]="!personalGoalForm.valid">Submit</button>
 </form>
