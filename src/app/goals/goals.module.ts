@@ -12,6 +12,7 @@ import { MeasurementItemComponent } from './measurements/measurement-item/measur
 import { SupportListComponent } from './support/support-list/support-list.component';
 import { SupportItemComponent } from './support/support-item/support-item.component';
 import { NotesListComponent } from './notes/notes-list/notes-list.component';
+import { NotesItemComponent } from './notes/notes-item/notes-item.component';
 
 @NgModule({
   imports: [
@@ -20,6 +21,6 @@ import { NotesListComponent } from './notes/notes-list/notes-list.component';
     FormsModule,
     GoalsRoutingModule
   ],
-  declarations: [GoalsComponent, ActionItemsComponent, PersonalComponent, ActionsListComponent, MeasurementsListComponent, MeasurementItemComponent, SupportListComponent, SupportItemComponent, NotesListComponent]
+  declarations: [GoalsComponent, ActionItemsComponent, PersonalComponent, ActionsListComponent, MeasurementsListComponent, MeasurementItemComponent, SupportListComponent, SupportItemComponent, NotesListComponent, NotesItemComponent]
 })
 export class GoalsModule { }
