@@ -57,4 +57,8 @@ export class PersonalComponent implements OnInit {
 
     return formGroup;
   }
+
+  onSubmit(formValue: Goal) {
+    console.log(formValue);
+  }
 }

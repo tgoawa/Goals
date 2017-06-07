@@ -24,7 +24,7 @@ export class NotesItemComponent implements OnInit {
     const formGroup = this.fb.group({
       NoteId: data.NoteId,
       GoalId: data.GoalId,
-      Note: [data.Note, Validators.required],
+      Note: data.Note,
     });
 
     return formGroup;
