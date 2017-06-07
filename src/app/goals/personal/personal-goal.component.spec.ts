@@ -1,25 +1,25 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { DebugElement } from '@angular/core/';
 import { By } from '@angular/platform-browser';
-import { PersonalComponent } from './personal.component';
+import { PersonalGoalComponent } from './personal-goal.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 describe('PersonalComponent', () => {
-  let component: PersonalComponent;
-  let fixture: ComponentFixture<PersonalComponent>;
+  let component: PersonalGoalComponent;
+  let fixture: ComponentFixture<PersonalGoalComponent>;
   let inputBox: DebugElement;
   let textarea: DebugElement;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [ ReactiveFormsModule ],
-      declarations: [ PersonalComponent ]
+      declarations: [ PersonalGoalComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PersonalComponent);
+    fixture = TestBed.createComponent(PersonalGoalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
 

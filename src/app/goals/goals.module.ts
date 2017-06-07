@@ -5,7 +5,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { GoalsRoutingModule } from './goals-routing.module';
 import { GoalsComponent } from './goals.component';
 import { ActionItemsComponent } from './actions/action-items/action-items.component';
-import { PersonalComponent } from './personal/personal.component';
+import { PersonalGoalComponent } from './personal/personal-goal.component';
 import { ActionsListComponent } from './actions/actions-list/actions-list.component';
 import { MeasurementsListComponent } from './measurements/measurements-list/measurements-list.component';
 import { MeasurementItemComponent } from './measurements/measurement-item/measurement-item.component';
@@ -21,6 +21,16 @@ import { NotesItemComponent } from './notes/notes-item/notes-item.component';
     FormsModule,
     GoalsRoutingModule
   ],
-  declarations: [GoalsComponent, ActionItemsComponent, PersonalComponent, ActionsListComponent, MeasurementsListComponent, MeasurementItemComponent, SupportListComponent, SupportItemComponent, NotesListComponent, NotesItemComponent]
+  declarations: [GoalsComponent,
+                  ActionItemsComponent,
+                  PersonalGoalComponent,
+                  ActionsListComponent,
+                  MeasurementsListComponent,
+                  MeasurementItemComponent,
+                  SupportListComponent,
+                  SupportItemComponent,
+                  NotesListComponent,
+                  NotesItemComponent
+                ]
 })
 export class GoalsModule { }

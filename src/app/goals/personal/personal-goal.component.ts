@@ -5,11 +5,11 @@ import { Goal, Action, Measurement, Support, Note } from '../goal';
 
 
 @Component({
-  selector: 'app-personal',
-  templateUrl: './personal.component.html',
-  styleUrls: ['./personal.component.scss']
+  selector: 'app-personal-goal',
+  templateUrl: './personal-goal.component.html',
+  styleUrls: ['./personal-goal.component.scss']
 })
-export class PersonalComponent implements OnInit {
+export class PersonalGoalComponent implements OnInit {
   personalGoal: Goal;
   personalGoalForm: FormGroup;
 
