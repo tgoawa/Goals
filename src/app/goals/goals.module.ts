@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
-import { ProgressbarModule } from 'ngx-bootstrap';
+import { ProgressbarModule, ModalModule } from 'ngx-bootstrap';
 
 import { GoalsRoutingModule } from './goals-routing.module';
 import { GoalsComponent } from './goals.component';
@@ -24,9 +24,11 @@ import { PersonalGoalService } from '../goals/personal/service/personal-goal.ser
     ReactiveFormsModule,
     FormsModule,
     GoalsRoutingModule,
-    ProgressbarModule.forRoot()
+    ProgressbarModule.forRoot(),
+    ModalModule.forRoot()
   ],
-  declarations: [GoalsComponent,
+  declarations: [
+                  GoalsComponent,
                   ActionItemsComponent,
                   EditPersonalGoalComponent,
                   ActionsListComponent,
