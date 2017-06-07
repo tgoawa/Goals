@@ -1,13 +1,26 @@
 <div [formGroup]="parentGoalForm">
-  <h3>Support Items: </h3>
-  <button (click)="addSupport()">Add Support</button>
+  <div class="row">
+    <div class="col-md-3">
+      <h3>Support Items: </h3>
+    </div>
+    <div class="col-md-2">
+      <button class="btn btn-success" (click)="addSupport()">+</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <label>Support to complete this goal.</label>
+    </div>
+  </div>
   <div formArrayName="supports">
-    <div *ngFor="let support of supports; let i = index">
-      <app-support-item
-        [supportItems]="parentGoalForm.controls.supports"
-        [supportItem]="support">
-      </app-support-item>
-      <button (click)="removeSupport(i)">Remove</button>
+    <div class="row" *ngFor="let support of supports; let i = index">
+      <div class="col-md-8">
+        <app-support-item [supportItems]="parentGoalForm.controls.supports" [supportItem]="support">
+        </app-support-item>
+      </div>
+      <div class="col-md-2">
+        <button class="btn btn-danger" (click)="removeSupport(i)">-</button>
+      </div>
     </div>
   </div>
 </div>

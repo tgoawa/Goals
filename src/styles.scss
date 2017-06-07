@@ -12,10 +12,6 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: normal;
 }
 
-btn-schenck-green {
-    background-color: $schenck-green;
-}
-
 nav {
     a {
         color: $schenck-blue;
@@ -30,4 +26,10 @@ nav {
         background-color: $schenck-cyan;
         color: white;
     }
+}
+
+.goal-subSection {
+    margin-top: 28px;
+    padding-top: 10px;
+    border-top: 1px solid $schenck-orange;
 }

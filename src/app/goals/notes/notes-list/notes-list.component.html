@@ -1,13 +1,28 @@
 <div [formGroup]="parentGoalForm">
-  <h3>Progress Notes: </h3>
-  <button (click)="addNote()">Add Note</button>
+  <div class="row">
+    <div class="col-md-3">
+      <h3>Progress Notes: </h3>
+    </div>
+    <div class="col-md-2">
+       <button class="btn btn-success" (click)="addNote()">+</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <label>Add a comment about your progress.</label>
+    </div>
+  </div>
   <div formArrayName="notes">
-    <div *ngFor="let note of notes; let i = index">
-      <app-notes-item
+    <div class="row" *ngFor="let note of notes; let i = index">
+      <div class="col-md-8">
+        <app-notes-item
         [noteItems]="parentGoalForm.controls.notes"
         [noteItem]="note">
       </app-notes-item>
-      <button (click)="removeNote(i)">Remove</button>
+      </div>
+      <div class="col-md-2">
+        <button class="btn btn-danger" (click)="removeNote(i)">-</button>
+      </div>
     </div>
   </div>
 </div>

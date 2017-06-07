@@ -7,16 +7,19 @@
       <button class="btn btn-success" (click)="addAction()">+</button>
     </div>
   </div>
+  <div class="row">
+    <div class="col-md-4">
+      <span class="custom-control-description">Check when complete.</span>
+    </div>
+  </div>
   <div formArrayName="actions">
     <div class="row" *ngFor="let action of actions; let i = index">
-      <div class="col-md-6">
-      <app-action-items
-        [actionItems]="parentGoalForm.controls.actions"
-        [actionItem]="action">
-      </app-action-items>
+      <div class="col-md-8">
+        <app-action-items [actionItems]="parentGoalForm.controls.actions" [actionItem]="action">
+        </app-action-items>
       </div>
       <div class="col-md-2">
-      <button (click)="removeAction(i)">Remove</button>
+        <button class="btn btn-danger" (click)="removeAction(i)">-</button>
       </div>
     </div>
   </div>

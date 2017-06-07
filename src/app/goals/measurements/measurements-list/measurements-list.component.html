@@ -1,13 +1,26 @@
 <div [formGroup]="parentGoalForm">
-  <h3>Measurements: </h3>
-  <button (click)="addMeasurement()">Add Measurement</button>
+  <div class="row">
+    <div class="col-md-3">
+      <h3>Measurements: </h3>
+    </div>
+    <div class="col-md-2">
+      <button class="btn btn-success" (click)="addMeasurement()">+</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <label>Describe measurement to complete action.</label>
+    </div>
+  </div>
   <div formArrayName="measurements">
-    <div *ngFor="let measurement of measurements; let i = index">
-      <app-measurement-item
-        [measurementItems]="parentGoalForm.controls.measurements"
-        [measurementItem]="measurement">
-      </app-measurement-item>
-      <button (click)="removeMeasurement(i)">Remove</button>
+    <div class="row" *ngFor="let measurement of measurements; let i = index">
+      <div class="col-md-8">
+        <app-measurement-item [measurementItems]="parentGoalForm.controls.measurements" [measurementItem]="measurement">
+        </app-measurement-item>
+      </div>
+      <div class="col-md-2">
+        <button class="btn btn-danger" (click)="removeMeasurement(i)">-</button>
+      </div>
     </div>
   </div>
 </div>
