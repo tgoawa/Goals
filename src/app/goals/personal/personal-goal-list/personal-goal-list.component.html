@@ -1,6 +1,6 @@
 <div class="row">
-  <div class="col-md-4">
-    <h2>Personal Development Goals</h2>
+  <div class="col-md-5">
+    <h1>Personal Development Goals</h1>
   </div>
 </div>
 <div class="row" *ngIf="isLoading">
@@ -19,13 +19,13 @@
   <div class="col-md-12">
     <div class="card">
       <div class="card-header card-primary">
-        <h3 style="color: white; text-transform: uppercase">{{personalGoal.Name}}</h3>
+        <h2 style="color: white;">{{personalGoal.Name}}</h2>
         <div class="progress" style="width: 100%;" *ngIf="personalGoal.GoalCompletionPercentage < 100">
           <div class="progress-bar progress-bar-striped bg-schenck progress-bar-animated" [style.width.%]="personalGoal.GoalCompletionPercentage"><span class="schenck-orange">{{personalGoal.GoalCompletionPercentage}}%</span></div>
         </div>
       </div>
       <div class="card-block">
-        <h4 class="card-title">Goal Details: </h4>
+        <h3 class="card-title">Goal Details: </h3>
         <div class="card-text" [innerHTML]="personalGoal.GoalDescription">
         </div>
       </div>
