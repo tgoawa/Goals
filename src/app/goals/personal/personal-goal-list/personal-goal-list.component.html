@@ -36,4 +36,4 @@
     </div>
   </div>
 </div>
-<app-edit-personal-goal [personalGoal]="goalToEdit" *ngIf="goalToEdit"></app-edit-personal-goal>
+<app-edit-personal-goal [personalGoal]="goalToEdit" *ngIf="goalToEdit" (modalClosed)="clearGoal()"></app-edit-personal-goal>

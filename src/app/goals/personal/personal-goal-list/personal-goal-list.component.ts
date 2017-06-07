@@ -37,4 +37,8 @@ export class PersonalGoalListComponent implements OnInit {
     this.goalToEdit = goal;
     console.log(this.goalToEdit);
   }
+
+  clearGoal() {
+    this.goalToEdit = undefined;
+  }
 }

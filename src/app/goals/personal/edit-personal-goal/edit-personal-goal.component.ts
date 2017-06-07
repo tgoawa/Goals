@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Input, ViewChild, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 
@@ -13,6 +13,7 @@ import { Goal, Action, Measurement, Support, Note } from '../../goal';
 export class EditPersonalGoalComponent implements OnInit {
   @ViewChild('editModal') editModal: ModalDirective;
   @Input('personalGoal') personalGoal: Goal;
+  @Output() modalClosed: EventEmitter<boolean> = new EventEmitter<boolean>();
   personalGoalForm: FormGroup;
 
   constructor(private fb: FormBuilder) { }
@@ -41,6 +42,11 @@ export class EditPersonalGoalComponent implements OnInit {
 
   hideModal() {
     this.editModal.hide();
+    this.modalIsClosed();
+  }
+
+  modalIsClosed() {
+    this.modalClosed.emit(true);
   }
 
   onSubmit(formValue: Goal) {
