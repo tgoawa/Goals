@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Input, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ModalDirective } from 'ngx-bootstrap/modal';
 
 import { Goal, Action, Measurement, Support, Note } from '../../goal';
 
@@ -10,6 +11,7 @@ import { Goal, Action, Measurement, Support, Note } from '../../goal';
   styleUrls: ['./edit-personal-goal.component.scss']
 })
 export class EditPersonalGoalComponent implements OnInit {
+  @ViewChild('editModal') editModal: ModalDirective;
   @Input('personalGoal') personalGoal: Goal;
   personalGoalForm: FormGroup;
 
@@ -19,14 +21,26 @@ export class EditPersonalGoalComponent implements OnInit {
     this.personalGoalForm = this.toFormGroup(this.personalGoal);
   }
 
+  ngAfterViewInit() {
+    this.showModal();
+  }
+
   private toFormGroup(data: Goal): FormGroup {
     const formGroup = this.fb.group({
       GoalId: 1,
-      Name: ['', Validators.required],
-      GoalDescription: ['', Validators.required]
+      Name: [data.Name, Validators.required],
+      GoalDescription: [data.GoalDescription, Validators.required]
     });
 
     return formGroup;
+  }
+
+  showModal() {
+    this.editModal.show();
+  }
+
+  hideModal() {
+    this.editModal.hide();
   }
 
   onSubmit(formValue: Goal) {

@@ -1,35 +1,38 @@
-<div class="row">
-  <div class="col-md-3">
-    <h2>Add Goal</h2>
+<div bsModal #editModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title pull-left">Add Goal</h2>
+        <button type="button" class="close pull-right" (click)="hideModal()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form novalidate [formGroup]="personalGoalForm" (ngSubmit)="onSubmit(personalGoalForm.value)">
+          <div class="form-group col-md-4">
+            <label for="Name">Goal Name:</label>
+            <input id="Name" type="text" class="form-control" formControlName="Name">
+          </div>
+          <div class="form-group col-md-5">
+            <label for="GoalDescription">Goal Description:</label>
+            <textarea class="form-control" formControlName="GoalDescription"></textarea>
+          </div>
+          <div class="goal-subSection">
+            <app-actions-list [goalId]="personalGoal.GoalId" [parentGoalForm]="personalGoalForm" [actions]="personalGoal.Actions">
+            </app-actions-list>
+          </div>
+          <div class="goal-subSection">
+            <app-measurements-list [goalId]="personalGoal.GoalId" [parentGoalForm]="personalGoalForm" [measurements]="personalGoal.Measurements"></app-measurements-list>
+          </div>
+          <div class="goal-subSection">
+            <app-support-list [goalId]="personalGoal.GoalId" [parentGoalForm]="personalGoalForm" [supports]="personalGoal.Supports"></app-support-list>
+          </div>
+          <div class="goal-subSection">
+            <app-notes-list [goalId]="personalGoal.GoalId" [parentGoalForm]="personalGoalForm" [notes]="personalGoal.Notes"></app-notes-list>
+          </div>
+          <button type="submit" [disabled]="!personalGoalForm.valid">Submit</button>
+        </form>
+      </div>
+    </div>
   </div>
 </div>
-<div class="row">
-  <div class="col-md-6">
-    <p>Make sure your goals are SMART goals:</p>
-    <p>Specific, Measureable, Attainable, Results-Oriented, Time-Bound.</p>
-  </div>
-</div>
-<form novalidate [formGroup]="personalGoalForm" (ngSubmit)="onSubmit(personalGoalForm.value)">
-  <div class="form-group col-md-4">
-    <label for="Name">Goal Name:</label>
-    <input id="Name" type="text" class="form-control" formControlName="Name">
-  </div>
-  <div class="form-group col-md-5">
-    <label for="GoalDescription">Goal Description:</label>
-    <textarea class="form-control" formControlName="GoalDescription"></textarea>
-  </div>
-  <div class="goal-subSection">
-    <app-actions-list [goalId]="personalGoal.GoalId" [parentGoalForm]="personalGoalForm" [actions]="personalGoal.Actions">
-    </app-actions-list>
-  </div>
-  <div class="goal-subSection">
-    <app-measurements-list [goalId]="personalGoal.GoalId" [parentGoalForm]="personalGoalForm" [measurements]="personalGoal.Measurements"></app-measurements-list>
-  </div>
-  <div class="goal-subSection">
-    <app-support-list [goalId]="personalGoal.GoalId" [parentGoalForm]="personalGoalForm" [supports]="personalGoal.Supports"></app-support-list>
-  </div>
-  <div class="goal-subSection">
-    <app-notes-list [goalId]="personalGoal.GoalId" [parentGoalForm]="personalGoalForm" [notes]="personalGoal.Notes"></app-notes-list>
-  </div>
-  <button type="submit" [disabled]="!personalGoalForm.valid">Submit</button>
-</form>
