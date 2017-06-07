@@ -26,13 +26,11 @@
       </div>
       <div class="card-block">
         <h2 class="card-title">Goal Details: </h2>
-        <div class="card-text" [innerHTML]="personalGoal.GoalDescription">
-        </div>
-      </div>
-      <div class="card-footer">
+        <p class="card-text" [innerHTML]="personalGoal.GoalDescription">
+        </p>
         <ul class="list-unstyled">
-          <li>Goal created: {{personalGoal.DisplayDateCreated}}</li>
-          <li>Goal last updated: {{personalGoal.DisplayDateModified}}</li>
+          <li><b>Goal created: {{personalGoal.DisplayDateCreated}}</b></li>
+          <li><b>Goal last updated: {{personalGoal.DisplayDateModified}}</b></li>
         </ul>
       </div>
     </div>
