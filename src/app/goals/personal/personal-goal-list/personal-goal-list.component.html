@@ -1,3 +1,41 @@
-<p>
-  personal-goal-list works!
-</p>
+<div class="row">
+  <div class="col-md-4">
+    <h2>Personal Development Goals</h2>
+  </div>
+</div>
+<div class="row" *ngIf="isLoading">
+  <div class="col-md-2 offset-md-5"><i fa class="fa fa-spinner fa-5x fa-spin" aria-hidden="true"></i>
+  </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+      <p>Goal list: (Click goal name to edit)</p>
+    </div>
+    <div class="col-md-8 text-right">
+      <a>Add Goal</a>
+    </div>
+</div>
+<div class="row" *ngFor="let personalGoal of personalGoalList">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header card-primary">
+        <h3 style="color: white; text-transform: uppercase">{{personalGoal.Name}}</h3>
+        <div class="progress" style="width: 100%;">
+    <div class="progress-bar progress-bar-striped bg-schenck progress-bar-animated" [style.width.%]="personalGoal.GoalCompletionPercentage">{{personalGoal.GoalCompletionPercentage}}%</div>
+</div>
+      </div>
+      <div class="card-block">
+        <h4 class="card-title">Goal Details: </h4>
+        <div class="card-text">
+          {{personalGoal.GoalDescription}}
+        </div>
+      </div>
+      <div class="card-footer">
+        <ul class="list-unstyled">
+          <li>Goal created: {{personalGoal.DisplayDateCreated}}</li>
+          <li>Goal last updated: {{personalGoal.DisplayDateModified}}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

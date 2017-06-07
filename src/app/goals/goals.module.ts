@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
+import { ProgressbarModule } from 'ngx-bootstrap';
+
 import { GoalsRoutingModule } from './goals-routing.module';
 import { GoalsComponent } from './goals.component';
 import { ActionItemsComponent } from './actions/action-items/action-items.component';
@@ -14,13 +16,15 @@ import { SupportItemComponent } from './support/support-item/support-item.compon
 import { NotesListComponent } from './notes/notes-list/notes-list.component';
 import { NotesItemComponent } from './notes/notes-item/notes-item.component';
 import { PersonalGoalListComponent } from './personal/personal-goal-list/personal-goal-list.component';
+import { PersonalGoalService } from '../goals/personal/service/personal-goal.service';
 
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
-    GoalsRoutingModule
+    GoalsRoutingModule,
+    ProgressbarModule.forRoot()
   ],
   declarations: [GoalsComponent,
                   ActionItemsComponent,
@@ -33,6 +37,7 @@ import { PersonalGoalListComponent } from './personal/personal-goal-list/persona
                   NotesListComponent,
                   NotesItemComponent,
                   PersonalGoalListComponent
-                ]
+                ],
+  providers: [ PersonalGoalService ]
 })
 export class GoalsModule { }
