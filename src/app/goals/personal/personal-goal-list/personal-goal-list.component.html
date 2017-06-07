@@ -8,21 +8,21 @@
   </div>
 </div>
 <div class="row">
-    <div class="col-md-4">
-      <p>Goal list: (Click goal name to edit)</p>
-    </div>
-    <div class="col-md-8 text-right">
-      <a>Add Goal</a>
-    </div>
+  <div class="col-md-4">
+    <p>Goal list: (Click goal name to edit)</p>
+  </div>
+  <div class="col-md-8 text-right">
+    <a>Add Goal</a>
+  </div>
 </div>
 <div class="row" *ngFor="let personalGoal of personalGoalList">
   <div class="col-md-12">
     <div class="card">
       <div class="card-header card-primary">
         <h3 style="color: white; text-transform: uppercase">{{personalGoal.Name}}</h3>
-        <div class="progress" style="width: 100%;">
-    <div class="progress-bar progress-bar-striped bg-schenck progress-bar-animated" [style.width.%]="personalGoal.GoalCompletionPercentage">{{personalGoal.GoalCompletionPercentage}}%</div>
-</div>
+        <div class="progress" style="width: 100%;" *ngIf="personalGoal.GoalCompletionPercentage < 100">
+          <div class="progress-bar progress-bar-striped bg-schenck progress-bar-animated" [style.width.%]="personalGoal.GoalCompletionPercentage">{{personalGoal.GoalCompletionPercentage}}%</div>
+        </div>
       </div>
       <div class="card-block">
         <h4 class="card-title">Goal Details: </h4>
