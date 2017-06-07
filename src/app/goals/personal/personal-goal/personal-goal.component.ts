@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
-import { Goal, Action, Measurement, Support, Note } from '../goal';
+import { Goal, Action, Measurement, Support, Note } from '../../goal';
 
 
 @Component({
