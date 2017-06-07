@@ -7,7 +7,7 @@ import { ProgressbarModule } from 'ngx-bootstrap';
 import { GoalsRoutingModule } from './goals-routing.module';
 import { GoalsComponent } from './goals.component';
 import { ActionItemsComponent } from './actions/action-items/action-items.component';
-import { PersonalGoalComponent } from './personal/personal-goal/personal-goal.component';
+import { EditPersonalGoalComponent } from './personal/edit-personal-goal/edit-personal-goal.component';
 import { ActionsListComponent } from './actions/actions-list/actions-list.component';
 import { MeasurementsListComponent } from './measurements/measurements-list/measurements-list.component';
 import { MeasurementItemComponent } from './measurements/measurement-item/measurement-item.component';
@@ -28,7 +28,7 @@ import { PersonalGoalService } from '../goals/personal/service/personal-goal.ser
   ],
   declarations: [GoalsComponent,
                   ActionItemsComponent,
-                  PersonalGoalComponent,
+                  EditPersonalGoalComponent,
                   ActionsListComponent,
                   MeasurementsListComponent,
                   MeasurementItemComponent,

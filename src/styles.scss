@@ -59,3 +59,7 @@ nav {
 .bg-schenck {
     background-color: $schenck-blue;
 }
+
+.card-goal-name:hover {
+    cursor: pointer !important;
+}

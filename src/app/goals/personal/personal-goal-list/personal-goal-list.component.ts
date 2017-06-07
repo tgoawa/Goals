@@ -11,6 +11,7 @@ import { Goal } from '../../goal';
 export class PersonalGoalListComponent implements OnInit {
 
   personalGoalList: Goal[];
+  goalToEdit: Goal;
   isLoading = false;
 
   constructor(private pgService: PersonalGoalService) { }
@@ -30,5 +31,10 @@ export class PersonalGoalListComponent implements OnInit {
       console.log(error);
       this.isLoading = false;
     });
+  }
+
+  onEdit(goal: Goal) {
+    this.goalToEdit = goal;
+    console.log(this.goalToEdit);
   }
 }

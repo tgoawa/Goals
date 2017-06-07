@@ -19,7 +19,7 @@
   <div class="col-md-12">
     <div class="card">
       <div class="card-header card-primary">
-        <h2 style="color: white;">{{personalGoal.Name}}</h2>
+        <h2 class="card-goal-name" style="color: white;" (click)="onEdit(personalGoal)">{{personalGoal.Name}}</h2>
         <div class="progress" style="width: 100%;" *ngIf="personalGoal.GoalCompletionPercentage < 100">
           <div class="progress-bar progress-bar-striped bg-schenck progress-bar-animated" [style.width.%]="personalGoal.GoalCompletionPercentage"><span class="schenck-orange">{{personalGoal.GoalCompletionPercentage}}%</span></div>
         </div>
@@ -36,3 +36,4 @@
     </div>
   </div>
 </div>
+<app-edit-personal-goal [personalGoal]="goalToEdit" *ngIf="goalToEdit"></app-edit-personal-goal>
