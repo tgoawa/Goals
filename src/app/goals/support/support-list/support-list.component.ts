@@ -29,6 +29,7 @@ export class SupportListComponent implements OnInit {
 
     this.supports.push(support);
     this.cd.detectChanges();
+    return false;
   }
 
   removeSupport(index: number) {
@@ -36,5 +37,6 @@ export class SupportListComponent implements OnInit {
       this.supports.splice(index, 1);
       (<FormArray>this.parentGoalForm.get('supports')).removeAt(index);
     }
+    return false;
   }
 }

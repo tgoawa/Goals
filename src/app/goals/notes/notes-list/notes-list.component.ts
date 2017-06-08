@@ -29,6 +29,7 @@ export class NotesListComponent implements OnInit {
 
     this.notes.push(note);
     this.cd.detectChanges();
+    return false;
   }
 
   removeNote(index: number) {
@@ -36,5 +37,6 @@ export class NotesListComponent implements OnInit {
       this.notes.splice(index, 1);
       (<FormArray>this.parentGoalForm.get('notes')).removeAt(index);
     }
+    return false;
   }
 }

@@ -29,6 +29,7 @@ export class MeasurementsListComponent implements OnInit {
 
     this.measurements.push(measurement);
     this.cd.detectChanges();
+    return false;
   }
 
   removeMeasurement(index: number) {
@@ -36,5 +37,6 @@ export class MeasurementsListComponent implements OnInit {
       this.measurements.splice(index, 1);
       (<FormArray>this.parentGoalForm.get('measurements')).removeAt(index);
     }
+    return false;
   }
 }

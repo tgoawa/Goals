@@ -34,6 +34,7 @@ export class PersonalGoalListComponent implements OnInit {
   }
 
   onEdit(goal: Goal) {
+    console.log(goal);
     this.goalToEdit = goal;
   }
 
@@ -47,9 +48,10 @@ export class PersonalGoalListComponent implements OnInit {
       GoalCompletionPercentage: 0,
       GoalDescription: '',
       IndustryTeamId: 0,
+      IndustryTeam: null,
       IsCompleted: false,
       Name: '',
-      TeamMemberId: 1936, //TODO: Replace with teamMemberId from TeamMember object
+      TeamMemberId: 1936, // TODO: Replace with teamMemberId from TeamMember object
       Weight: 0,
       DisplayDateCreated: '',
       DisplayDateModified: '',
@@ -78,6 +80,7 @@ export class PersonalGoalListComponent implements OnInit {
       Notes: []
     };
 
+    console.log(this.newGoal);
   }
 
   clearGoalToEdit() {

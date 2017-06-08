@@ -31,8 +31,20 @@ export class EditPersonalGoalComponent implements OnInit, AfterViewInit {
   private toFormGroup(data: Goal): FormGroup {
     const formGroup = this.fb.group({
       GoalId: data.GoalId,
+      GoalTypeId: data.GoalTypeId,
+      GoalWIGId: data.GoalWIGId,
+      GoalCompetencyId: data.GoalCompetencyId,
+      GoalCompetencyTypeId: data.GoalCompetencyTypeId,
+      GoalCompletionPercentage: data.GoalCompletionPercentage,
+      IndustryTeam: data.IndustryTeam,
+      IndustryTeamId: data.IndustryTeamId,
+      IsCompleted: data.IsCompleted,
+      TeamMemberId: data.TeamMemberId,
+      Weight: data.Weight,
+      DisplayDateCreated: data.DisplayDateCreated,
+      DisplayDateModified: data.DisplayDateModified,
       Name: [data.Name, Validators.required],
-      GoalDescription: [data.GoalDescription, Validators.required]
+      GoalDescription: [data.GoalDescription, Validators.required],
     });
 
     return formGroup;
@@ -54,14 +66,16 @@ export class EditPersonalGoalComponent implements OnInit, AfterViewInit {
   updateGoal(goal: Goal) {
     this.pgService.updatePersonalGoal(goal)
     .subscribe(data => {
+      console.log(data);
       this.pgService.getPersonalGoals(data.TeamMemberId);
       this.hideModal();
     }, error => {
       console.log(error);
-    })
+    });
   }
 
   onSubmit(formValue: Goal) {
     console.log(formValue);
+    this.updateGoal(formValue);
   }
 }

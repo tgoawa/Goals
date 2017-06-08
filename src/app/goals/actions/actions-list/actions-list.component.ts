@@ -30,6 +30,7 @@ export class ActionsListComponent implements OnInit {
 
     this.actions.push(action);
     this.cd.detectChanges();
+    return false;
   }
 
   removeAction(index: number) {
@@ -37,5 +38,6 @@ export class ActionsListComponent implements OnInit {
       this.actions.splice(index, 1);
       (<FormArray>this.parentGoalForm.get('actions')).removeAt(index);
     }
+    return false;
   }
 }
