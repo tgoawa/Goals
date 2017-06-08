@@ -7,13 +7,13 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        <form novalidate [formGroup]="personalGoalForm" (ngSubmit)="onSubmit(personalGoalForm.value)">
+      <form novalidate [formGroup]="personalGoalForm" (ngSubmit)="onSubmit(personalGoalForm.value)">
+        <div class="modal-body">
           <div class="form-group col-md-4">
             <label for="Name">Goal Name:</label>
             <input id="Name" type="text" class="form-control" formControlName="Name">
           </div>
-          <div class="form-group col-md-5">
+          <div class="form-group col-md-6">
             <label for="GoalDescription">Goal Description:</label>
             <textarea class="form-control" formControlName="GoalDescription"></textarea>
           </div>
@@ -30,9 +30,12 @@
           <div class="goal-subSection">
             <app-notes-list [goalId]="personalGoal.GoalId" [parentGoalForm]="personalGoalForm" [notes]="personalGoal.Notes"></app-notes-list>
           </div>
-          <button type="submit" [disabled]="!personalGoalForm.valid">Submit</button>
-        </form>
-      </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="hideModal()">Cancel</button>
+          <button class="btn btn-success" type="submit" [disabled]="!personalGoalForm.valid">Submit</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
