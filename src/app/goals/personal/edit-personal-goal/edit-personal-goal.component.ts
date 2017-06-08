@@ -71,6 +71,7 @@ export class EditPersonalGoalComponent implements OnInit, AfterViewInit {
       this.hideModal();
     }, error => {
       console.log(error);
+      this.hideModal();
     });
   }
 
