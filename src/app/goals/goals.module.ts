@@ -17,6 +17,7 @@ import { NotesListComponent } from './notes/notes-list/notes-list.component';
 import { NotesItemComponent } from './notes/notes-item/notes-item.component';
 import { PersonalGoalListComponent } from './personal/personal-goal-list/personal-goal-list.component';
 import { PersonalGoalService } from '../goals/personal/service/personal-goal.service';
+import { AddPersonalGoalComponent } from './personal/add-personal-goal/add-personal-goal.component';
 
 @NgModule({
   imports: [
@@ -38,7 +39,8 @@ import { PersonalGoalService } from '../goals/personal/service/personal-goal.ser
                   SupportItemComponent,
                   NotesListComponent,
                   NotesItemComponent,
-                  PersonalGoalListComponent
+                  PersonalGoalListComponent,
+                  AddPersonalGoalComponent
                 ],
   providers: [ PersonalGoalService ]
 })

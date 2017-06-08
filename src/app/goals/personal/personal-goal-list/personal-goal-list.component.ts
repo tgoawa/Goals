@@ -11,6 +11,7 @@ import { Goal } from '../../goal';
 export class PersonalGoalListComponent implements OnInit {
 
   personalGoalList: Goal[];
+  newGoal: Goal;
   goalToEdit: Goal;
   isLoading = false;
 
@@ -35,10 +36,56 @@ export class PersonalGoalListComponent implements OnInit {
 
   onEdit(goal: Goal) {
     this.goalToEdit = goal;
-    console.log(this.goalToEdit);
   }
 
-  clearGoal() {
+  onAdd() {
+    this.newGoal = {
+      GoalId: 0,
+      GoalTypeId: 1,
+      GoalWIGId: 0,
+      GoalCompetencyTypeId: 0,
+      GoalCompetencyId: 0,
+      GoalCompletionPercentage: 0,
+      GoalDescription: '',
+      IndustryTeamId: 0,
+      IsCompleted: false,
+      Name: '',
+      TeamMemberId: 1936, //TODO: Replace with teamMemberId from TeamMember object
+      Weight: 0,
+      DisplayDateCreated: '',
+      DisplayDateModified: '',
+      Actions: [{
+        ActionId: 0,
+        GoalId: 0,
+        Action: '',
+        IsCompleted: false,
+        DisplayDateCreated: '',
+        DisplayDateModified: ''
+      }],
+      Measurements: [{
+        MeasurementId: 0,
+        GoalId: 0,
+        Measurement: '',
+        DisplayDateCreated: '',
+        DisplayDateModified: ''
+      }],
+      Supports: [{
+        SupportId: 0,
+        GoalId: 0,
+        Support: '',
+        DisplayDateCreated: '',
+        DisplayDateModified: ''
+      }],
+      Notes: []
+    };
+
+  }
+
+  clearGoalToEdit() {
     this.goalToEdit = undefined;
+  }
+
+  clearNewGoal() {
+    this.newGoal = undefined;
   }
 }
