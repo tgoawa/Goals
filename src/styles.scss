@@ -63,3 +63,13 @@ nav {
 .card-goal-name:hover {
     cursor: pointer !important;
 }
+
+.faux-link {
+    color: $schenck-blue;
+    text-decoration: underline;
+}
+.faux-link:hover {
+    color: $schenck-cyan;
+    text-decoration: none;
+    cursor: pointer !important;
+}

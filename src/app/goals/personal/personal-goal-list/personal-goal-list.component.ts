@@ -26,7 +26,6 @@ export class PersonalGoalListComponent implements OnInit {
     this.pgService.getPersonalGoals(id)
     .subscribe(data => {
       this.isLoading = false;
-      console.log(data);
       this.personalGoalList = data;
     }, error => {
       console.log(error);
