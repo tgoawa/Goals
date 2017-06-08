@@ -2,6 +2,8 @@ import { Component, OnInit, AfterViewInit, Input, ViewChild, EventEmitter, Outpu
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 
+import { PersonalGoalService } from '../service/personal-goal.service';
+
 import { Goal, Action, Measurement, Support, Note } from '../../goal';
 
 @Component({
@@ -9,14 +11,14 @@ import { Goal, Action, Measurement, Support, Note } from '../../goal';
   templateUrl: './add-personal-goal.component.html',
   styleUrls: ['./add-personal-goal.component.scss']
 })
-export class AddPersonalGoalComponent implements OnInit {
+export class AddPersonalGoalComponent implements OnInit, AfterViewInit {
   @ViewChild('addModal') addModal: ModalDirective;
   @Input('personalGoal') personalGoal: Goal;
   @Output() modalClosed: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   addPersonalGoalForm: FormGroup;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private pgService: PersonalGoalService) { }
 
   ngOnInit() {
     this.addPersonalGoalForm = this.toFormGroup(this.personalGoal);
@@ -49,7 +51,17 @@ export class AddPersonalGoalComponent implements OnInit {
     this.modalClosed.emit(true);
   }
 
+  saveGoal(goal: Goal) {
+    this.pgService.savePersonalGoal(goal)
+    .subscribe(data => {
+      this.pgService.getPersonalGoals(data.TeamMemberId);
+      this.hideModal();
+    }, error => {
+      console.log(error);
+    });
+  }
+
   onSubmit(formValue: Goal) {
-    console.log(formValue);
+   this.saveGoal(formValue);
   }
 }
