@@ -25,8 +25,15 @@ export class SupportItemComponent implements OnInit {
       SupportId: data.SupportId,
       GoalId: data.GoalId,
       Support: [data.Support, Validators.required],
+      IsDirty: data.IsDirty
     });
 
     return formGroup;
+  }
+
+  onValueChange() {
+    this.supportItemForm.patchValue({
+      IsDirty: true
+    });
   }
 }

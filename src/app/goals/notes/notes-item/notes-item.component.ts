@@ -25,8 +25,15 @@ export class NotesItemComponent implements OnInit {
       NoteId: data.NoteId,
       GoalId: data.GoalId,
       Note: data.Note,
+      IsDirty: data.IsDirty
     });
 
     return formGroup;
+  }
+
+  onValueChange() {
+    this.noteItemForm.patchValue({
+      IsDirty: true
+    });
   }
 }

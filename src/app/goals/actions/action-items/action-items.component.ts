@@ -25,10 +25,17 @@ export class ActionItemsComponent implements OnInit {
       ActionId: data.ActionId,
       GoalId: data.GoalId,
       Action: [data.Action, Validators.required],
-      IsCompleted: data.IsCompleted
+      IsCompleted: data.IsCompleted,
+      IsDirty: data.IsDirty
     });
 
     return formGroup;
+  }
+
+  onValueChange() {
+    this.actionItemForm.patchValue({
+      IsDirty: true
+    });
   }
 
 }

@@ -25,8 +25,15 @@ export class MeasurementItemComponent implements OnInit {
       MeasurementId: data.MeasurementId,
       GoalId: data.GoalId,
       Measurement: [data.Measurement, Validators.required],
+      IsDirty: data.IsDirty
     });
 
     return formGroup;
+  }
+
+  onValueChange() {
+    this.measurementItemForm.patchValue({
+      IsDirty: true
+    });
   }
 }

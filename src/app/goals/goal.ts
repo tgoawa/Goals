@@ -27,6 +27,7 @@ export class Action {
     IsCompleted: boolean;
     DisplayDateCreated: string;
     DisplayDateModified: string;
+    IsDirty: boolean;
 };
 
 export class Measurement {
@@ -35,6 +36,7 @@ export class Measurement {
     Measurement: string;
     DisplayDateCreated: string;
     DisplayDateModified: string;
+    IsDirty: boolean;
 }
 
 export class Support {
@@ -43,6 +45,7 @@ export class Support {
     Support: string;
     DisplayDateCreated: string;
     DisplayDateModified: string;
+    IsDirty: boolean;
 }
 
 export class Note {
@@ -51,4 +54,5 @@ export class Note {
     Note: string;
     DisplayDateCreated: string;
     DisplayDateModified: string;
+    IsDirty: boolean;
 }
