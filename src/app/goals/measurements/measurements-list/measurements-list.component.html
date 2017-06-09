@@ -12,10 +12,10 @@
       <label>Describe measurement to complete action.</label>
     </div>
   </div>
-  <div formArrayName="measurements">
-    <div class="row" *ngFor="let measurement of measurements; let i = index">
+  <div formArrayName="Measurements">
+    <div class="row" *ngFor="let measurement of Measurements; let i = index">
       <div class="col-md-8">
-        <app-measurement-item [measurementItems]="parentGoalForm.controls.measurements" [measurementItem]="measurement">
+        <app-measurement-item [measurementItems]="parentGoalForm.controls.Measurements" [measurementItem]="measurement">
         </app-measurement-item>
       </div>
       <div class="col-md-2">

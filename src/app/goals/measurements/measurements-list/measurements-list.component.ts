@@ -9,13 +9,13 @@ import { Measurement } from '../../goal';
 })
 export class MeasurementsListComponent implements OnInit {
   @Input('parentGoalForm') parentGoalForm: FormGroup;
-  @Input('measurements') measurements: Measurement[];
+  @Input('measurements') Measurements: Measurement[];
   @Input('goalId') goalId: number;
 
   constructor(private cd: ChangeDetectorRef) { }
 
   ngOnInit() {
-    this.parentGoalForm.addControl('measurements', new FormArray([]));
+    this.parentGoalForm.addControl('Measurements', new FormArray([]));
   }
 
   addMeasurement() {
@@ -27,15 +27,15 @@ export class MeasurementsListComponent implements OnInit {
       DisplayDateModified: ''
     };
 
-    this.measurements.push(measurement);
+    this.Measurements.push(measurement);
     this.cd.detectChanges();
     return false;
   }
 
   removeMeasurement(index: number) {
-    if (this.measurements.length > 1) {
-      this.measurements.splice(index, 1);
-      (<FormArray>this.parentGoalForm.get('measurements')).removeAt(index);
+    if (this.Measurements.length > 1) {
+      this.Measurements.splice(index, 1);
+      (<FormArray>this.parentGoalForm.get('Measurements')).removeAt(index);
     }
     return false;
   }
