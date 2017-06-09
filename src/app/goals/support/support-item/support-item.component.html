@@ -1,7 +1,7 @@
 <div [formGroup]="supportItemForm">
   <div class="form-group row" style="margin-top: 0">
   <div class="col-md-10">
-    <textarea class="form-control" formControlName="Support" (change)="onValueChange()"></textarea>
+    <textarea class="form-control" formControlName="Support" (keyup)="onValueChange()"></textarea>
   </div>
   </div>
 </div>
