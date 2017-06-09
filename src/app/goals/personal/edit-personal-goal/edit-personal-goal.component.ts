@@ -15,6 +15,7 @@ export class EditPersonalGoalComponent implements OnInit, AfterViewInit {
   @ViewChild('editModal') editModal: ModalDirective;
   @Input('personalGoal') personalGoal: Goal;
   @Output() modalClosed: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() updateSuccess: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   editPersonalGoalForm: FormGroup;
 
@@ -63,11 +64,15 @@ export class EditPersonalGoalComponent implements OnInit, AfterViewInit {
     this.modalClosed.emit(true);
   }
 
+  goalUpdateSuccess() {
+    this.updateSuccess.emit(true);
+  }
+
   updateGoal(goal: Goal) {
     this.pgService.updatePersonalGoal(goal)
     .subscribe(data => {
       console.log(data);
-      this.pgService.getPersonalGoals(data.TeamMemberId);
+      this.goalUpdateSuccess();
       this.hideModal();
     }, error => {
       console.log(error);

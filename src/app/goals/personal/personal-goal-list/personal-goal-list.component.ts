@@ -61,21 +61,24 @@ export class PersonalGoalListComponent implements OnInit {
         Action: '',
         IsCompleted: false,
         DisplayDateCreated: '',
-        DisplayDateModified: ''
+        DisplayDateModified: '',
+        IsDirty: false
       }],
       Measurements: [{
         MeasurementId: 0,
         GoalId: 0,
         Measurement: '',
         DisplayDateCreated: '',
-        DisplayDateModified: ''
+        DisplayDateModified: '',
+        IsDirty: false
       }],
       Supports: [{
         SupportId: 0,
         GoalId: 0,
         Support: '',
         DisplayDateCreated: '',
-        DisplayDateModified: ''
+        DisplayDateModified: '',
+        IsDirty: false
       }],
       Notes: []
     };
@@ -89,5 +92,9 @@ export class PersonalGoalListComponent implements OnInit {
 
   clearNewGoal() {
     this.newGoal = undefined;
+  }
+
+  refreshList() {
+    this.getGoals(1936);
   }
 }
