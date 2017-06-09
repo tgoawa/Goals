@@ -15,26 +15,6 @@
   <div class="col-md-2 offset-md-5"><i fa class="fa fa-spinner fa-5x fa-spin" aria-hidden="true"></i>
   </div>
 </div>
-<div class="row" *ngFor="let personalGoal of personalGoalList">
-  <div class="col-md-12">
-    <div class="card">
-      <div class="card-header card-primary">
-        <h2 class="card-goal-name" style="color: white;" (click)="onEdit(personalGoal)">{{personalGoal.Name}}</h2>
-        <div class="progress" style="width: 100%;" *ngIf="personalGoal.GoalCompletionPercentage < 100">
-          <div class="progress-bar progress-bar-striped bg-schenck progress-bar-animated" [style.width.%]="personalGoal.GoalCompletionPercentage"><span class="schenck-orange">{{personalGoal.GoalCompletionPercentage}}%</span></div>
-        </div>
-      </div>
-      <div class="card-block">
-        <h2 class="card-title">Goal Details: </h2>
-        <p class="card-text" [innerHTML]="personalGoal.GoalDescription">
-        </p>
-        <ul class="list-unstyled">
-          <li><b>Goal created: {{personalGoal.DisplayDateCreated}}</b></li>
-          <li><b>Goal last updated: {{personalGoal.DisplayDateModified}}</b></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
+<app-goal-list [goals]="personalGoalList" (goalToEdit)="onEdit($event)"></app-goal-list>
 <app-add-personal-goal [personalGoal]="newGoal" *ngIf="newGoal" (modalClosed)="clearNewGoal()" (addSuccess)="refreshListAdd()"></app-add-personal-goal>
 <app-edit-personal-goal [personalGoal]="goalToEdit" *ngIf="goalToEdit" (modalClosed)="clearGoalToEdit()" (updateSuccess)="refreshListUpdate()"></app-edit-personal-goal>
