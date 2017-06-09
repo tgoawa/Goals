@@ -12,10 +12,10 @@
       <span class="custom-control-description">Check when complete.</span>
     </div>
   </div>
-  <div formArrayName="actions">
-    <div class="row" *ngFor="let action of actions; let i = index">
+  <div formArrayName="Actions">
+    <div class="row" *ngFor="let action of Actions; let i = index">
       <div class="col-md-8">
-        <app-action-items [actionItems]="parentGoalForm.controls.actions" [actionItem]="action">
+        <app-action-items [actionItems]="parentGoalForm.controls.Actions" [actionItem]="action">
         </app-action-items>
       </div>
       <div class="col-md-2">

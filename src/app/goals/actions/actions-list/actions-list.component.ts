@@ -9,13 +9,13 @@ import { Action } from '../../goal';
 })
 export class ActionsListComponent implements OnInit {
   @Input('parentGoalForm') parentGoalForm: FormGroup;
-  @Input('actions') actions: Action[];
+  @Input('actions') Actions: Action[];
   @Input('goalId') goalId: number;
 
   constructor(private cd: ChangeDetectorRef) { }
 
   ngOnInit() {
-    this.parentGoalForm.addControl('actions', new FormArray([]));
+    this.parentGoalForm.addControl('Actions', new FormArray([]));
   }
 
   addAction() {
@@ -28,15 +28,15 @@ export class ActionsListComponent implements OnInit {
       DisplayDateModified: ''
     };
 
-    this.actions.push(action);
+    this.Actions.push(action);
     this.cd.detectChanges();
     return false;
   }
 
   removeAction(index: number) {
-    if (this.actions.length > 1) {
-      this.actions.splice(index, 1);
-      (<FormArray>this.parentGoalForm.get('actions')).removeAt(index);
+    if (this.Actions.length > 1) {
+      this.Actions.splice(index, 1);
+      (<FormArray>this.parentGoalForm.get('Actions')).removeAt(index);
     }
     return false;
   }
