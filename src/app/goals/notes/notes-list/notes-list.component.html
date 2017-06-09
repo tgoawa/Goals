@@ -12,11 +12,11 @@
       <label>Add a comment about your progress.</label>
     </div>
   </div>
-  <div formArrayName="notes">
-    <div class="row" *ngFor="let note of notes; let i = index">
+  <div formArrayName="Notes">
+    <div class="row" *ngFor="let note of Notes; let i = index">
       <div class="col-md-8">
         <app-notes-item
-        [noteItems]="parentGoalForm.controls.notes"
+        [noteItems]="parentGoalForm.controls.Notes"
         [noteItem]="note">
       </app-notes-item>
       </div>

@@ -9,13 +9,13 @@ import { Support } from '../../goal';
 })
 export class SupportListComponent implements OnInit {
   @Input('parentGoalForm') parentGoalForm: FormGroup;
-  @Input('supports') supports: Support[];
+  @Input('supports') Supports: Support[];
   @Input('goalId') goalId: number;
 
   constructor(private cd: ChangeDetectorRef) { }
 
   ngOnInit() {
-    this.parentGoalForm.addControl('supports', new FormArray([]));
+    this.parentGoalForm.addControl('Supports', new FormArray([]));
   }
 
   addSupport() {
@@ -27,15 +27,15 @@ export class SupportListComponent implements OnInit {
       DisplayDateModified: ''
     };
 
-    this.supports.push(support);
+    this.Supports.push(support);
     this.cd.detectChanges();
     return false;
   }
 
   removeSupport(index: number) {
-    if (this.supports.length > 1) {
-      this.supports.splice(index, 1);
-      (<FormArray>this.parentGoalForm.get('supports')).removeAt(index);
+    if (this.Supports.length > 1) {
+      this.Supports.splice(index, 1);
+      (<FormArray>this.parentGoalForm.get('Supports')).removeAt(index);
     }
     return false;
   }

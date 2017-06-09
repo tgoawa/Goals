@@ -9,13 +9,13 @@ import { Note } from '../../goal';
 })
 export class NotesListComponent implements OnInit {
   @Input('parentGoalForm') parentGoalForm: FormGroup;
-  @Input('notes') notes: Note[];
+  @Input('notes') Notes: Note[];
   @Input('goalId') goalId: number;
 
   constructor(private cd: ChangeDetectorRef) { }
 
   ngOnInit() {
-    this.parentGoalForm.addControl('notes', new FormArray([]));
+    this.parentGoalForm.addControl('Notes', new FormArray([]));
   }
 
   addNote() {
@@ -27,15 +27,15 @@ export class NotesListComponent implements OnInit {
       DisplayDateModified: '',
     };
 
-    this.notes.push(note);
+    this.Notes.push(note);
     this.cd.detectChanges();
     return false;
   }
 
   removeNote(index: number) {
-    if (this.notes.length > 1) {
-      this.notes.splice(index, 1);
-      (<FormArray>this.parentGoalForm.get('notes')).removeAt(index);
+    if (this.Notes.length > 1) {
+      this.Notes.splice(index, 1);
+      (<FormArray>this.parentGoalForm.get('Notes')).removeAt(index);
     }
     return false;
   }

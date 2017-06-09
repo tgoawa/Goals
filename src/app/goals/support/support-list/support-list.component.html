@@ -12,10 +12,10 @@
       <label>Support to complete this goal.</label>
     </div>
   </div>
-  <div formArrayName="supports">
-    <div class="row" *ngFor="let support of supports; let i = index">
+  <div formArrayName="Supports">
+    <div class="row" *ngFor="let support of Supports; let i = index">
       <div class="col-md-8">
-        <app-support-item [supportItems]="parentGoalForm.controls.supports" [supportItem]="support">
+        <app-support-item [supportItems]="parentGoalForm.controls.Supports" [supportItem]="support">
         </app-support-item>
       </div>
       <div class="col-md-2">
