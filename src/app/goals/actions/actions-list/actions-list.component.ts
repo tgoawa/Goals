@@ -25,7 +25,8 @@ export class ActionsListComponent implements OnInit {
       Action: '',
       IsCompleted: false,
       DisplayDateCreated: '',
-      DisplayDateModified: ''
+      DisplayDateModified: '',
+      IsDirty: false
     };
 
     this.Actions.push(action);

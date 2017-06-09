@@ -25,6 +25,7 @@ export class NotesListComponent implements OnInit {
       Note: '',
       DisplayDateCreated: '',
       DisplayDateModified: '',
+      IsDirty: false
     };
 
     this.Notes.push(note);

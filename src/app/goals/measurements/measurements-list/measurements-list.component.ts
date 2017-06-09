@@ -24,7 +24,8 @@ export class MeasurementsListComponent implements OnInit {
       GoalId: this.goalId,
       Measurement: '',
       DisplayDateCreated: '',
-      DisplayDateModified: ''
+      DisplayDateModified: '',
+      IsDirty: false
     };
 
     this.Measurements.push(measurement);

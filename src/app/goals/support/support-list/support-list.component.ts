@@ -24,7 +24,8 @@ export class SupportListComponent implements OnInit {
       GoalId: this.goalId,
       Support: '',
       DisplayDateCreated: '',
-      DisplayDateModified: ''
+      DisplayDateModified: '',
+      IsDirty: false
     };
 
     this.Supports.push(support);
