@@ -7,8 +7,11 @@ import { Goal } from '../goal';
   styleUrls: ['./goal-list.component.scss']
 })
 export class GoalListComponent implements OnInit {
-  @Input('goals') goals: Goal[];
+  @Input('goal') goal: Goal;
   @Output() goalToEdit: EventEmitter<Goal> = new EventEmitter<Goal>();
+
+  isCollapsed = true;
+
   constructor() { }
 
   ngOnInit() {
