@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 import { PersonalGoalService } from '../service/personal-goal.service';
 import { Goal } from '../../goal';
@@ -15,7 +16,7 @@ export class PersonalGoalListComponent implements OnInit {
   goalToEdit: Goal;
   isLoading = false;
 
-  constructor(private pgService: PersonalGoalService) { }
+  constructor(private pgService: PersonalGoalService, private toastrService: ToastrService) { }
 
   ngOnInit() {
     this.getGoals(1936);
@@ -94,7 +95,21 @@ export class PersonalGoalListComponent implements OnInit {
     this.newGoal = undefined;
   }
 
-  refreshList() {
+  refreshListUpdate() {
+    this.showSuccessUpdate();
     this.getGoals(1936);
+  }
+
+  refreshListAdd() {
+    this.showSuccessAdd();
+    this.getGoals(1936);
+  }
+
+  showSuccessUpdate() {
+    this.toastrService.success('Goal Updated!', 'Goal was updated successfully!');
+  }
+
+  showSuccessAdd() {
+    this.toastrService.success('Goal Added!', 'New Goal was added!');
   }
 }
