@@ -23,7 +23,6 @@ export class PersonalGoalListComponent implements OnInit {
 
   ngOnInit() {
     this.teamMember = this.tmService.teamMember;
-    console.log(this.teamMember);
     this.getGoals(this.teamMember.TeamMemberId);
   }
 
@@ -40,7 +39,6 @@ export class PersonalGoalListComponent implements OnInit {
   }
 
   onEdit(goal: Goal) {
-    console.log(goal);
     this.goalToEdit = goal;
   }
 
@@ -89,7 +87,6 @@ export class PersonalGoalListComponent implements OnInit {
       Notes: []
     };
 
-    console.log(this.newGoal);
   }
 
   clearGoalToEdit() {

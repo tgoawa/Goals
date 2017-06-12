@@ -10,11 +10,11 @@ import { TeamMemberResolver } from '../teamMember';
 const routes: Routes = [
   {
     path: '',
-    component: AppBaseComponent,
     canActivate: [AuthGuard],
     resolve: {
       teamMemberData: TeamMemberResolver
     },
+    component: AppBaseComponent,
     children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: HomeComponent },

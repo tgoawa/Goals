@@ -14,13 +14,7 @@ export class TeamMemberService {
 
   getTeamMember(userName: string) {
     return this.http.get(api + '/EmployeeService/GetEmployee/' + userName)
-    .map(response => response.json())
-    .subscribe(data => {
-      console.log(data);
-      this.teamMember = data;
-    }, error => {
-      console.log(error);
-    });
+    .map(response => response.json(), error => console.log(error));
   }
 
 }

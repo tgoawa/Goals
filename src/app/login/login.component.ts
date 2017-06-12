@@ -71,6 +71,6 @@ export class LoginComponent implements OnInit {
   }
 
   showLoginFailed() {
-    this.toastrService.error('Login Error!', 'Verify username and password are correct');
+    this.toastrService.error('Verify username nad password are correct', 'Login Error!');
   }
 }
