@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { BsDropdownModule, CollapseModule } from 'ngx-bootstrap';
@@ -11,17 +11,24 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GoalsModule } from './goals/goals.module';
 import { HeaderComponent } from './header/header.component';
+import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
+import { AuthGuard } from './auth.guard';
+import { LoginService } from './login/service/login.service';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     AppRoutingModule,
     GoalsModule,
@@ -30,7 +37,9 @@ import { HeaderComponent } from './header/header.component';
     ToastrModule.forRoot()
   ],
   providers: [
-    { provide: LocationStrategy, useClass: HashLocationStrategy}
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+    AuthGuard,
+    LoginService
   ],
   bootstrap: [AppComponent]
 })
