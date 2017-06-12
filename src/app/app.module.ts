@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -10,7 +11,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 
-import { AuthGuard } from './auth.guard';
 import { LoginService } from './login/service/login.service';
 import { TeamMemberResolver, TeamMemberService } from './teamMember';
 import { AppBaseModule } from './app-base/app-base.module';
@@ -24,6 +24,7 @@ import { AppBaseModule } from './app-base/app-base.module';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
@@ -33,9 +34,7 @@ import { AppBaseModule } from './app-base/app-base.module';
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy },
-    AuthGuard,
     LoginService,
-    TeamMemberResolver,
     TeamMemberService
   ],
   bootstrap: [AppComponent]

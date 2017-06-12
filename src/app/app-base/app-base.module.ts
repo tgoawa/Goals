@@ -9,6 +9,9 @@ import { HeaderComponent } from '../header/header.component';
 import { HomeComponent } from '../home/home.component';
 import { GoalsModule } from '../goals/goals.module';
 
+import { AuthGuard } from '../auth.guard';
+import { TeamMemberResolver } from '../teamMember';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -19,6 +22,10 @@ import { GoalsModule } from '../goals/goals.module';
   ],
   declarations: [AppBaseComponent,
     HeaderComponent,
-    HomeComponent]
+    HomeComponent],
+  providers: [
+    AuthGuard,
+    TeamMemberResolver
+  ]
 })
 export class AppBaseModule { }

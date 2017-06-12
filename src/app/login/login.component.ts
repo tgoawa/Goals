@@ -65,7 +65,7 @@ export class LoginComponent implements OnInit {
       Cookie.set('user', this.loginForm.get('username').value, 45);
       this.router.navigate(['/home']);
     } else {
-      // TODO error notification
+      this.showLoginFailed();
       console.log('Error logging in');
     }
   }
