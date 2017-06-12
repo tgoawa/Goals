@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { Cookie } from 'ng2-cookies';
+import { ToastrService } from 'ngx-toastr';
 
 import { LoginService } from './service/login.service';
 
@@ -16,7 +17,7 @@ import * as CryptoJS from '../../../node_modules/crypto-js';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  constructor(private fb: FormBuilder, private lgService: LoginService, private router: Router) { }
+  constructor(private fb: FormBuilder, private lgService: LoginService, private router: Router, private toastrService: ToastrService) { }
 
   ngOnInit() {
     this.loginForm = this.toFormGroup();
@@ -50,11 +51,11 @@ export class LoginComponent implements OnInit {
   }
 
   checkUser(user: User) {
-    console.log(user);
     this.lgService.checkStatus(user)
     .subscribe(data => {
       this.setAuthStatus(data);
     }, error => {
+      this.showLoginFailed();
       console.log(error);
     });
   }
@@ -67,5 +68,9 @@ export class LoginComponent implements OnInit {
       // TODO error notification
       console.log('Error logging in');
     }
+  }
+
+  showLoginFailed() {
+    this.toastrService.error('Login Error!', 'Verify username and password are correct');
   }
 }

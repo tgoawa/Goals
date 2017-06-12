@@ -15,6 +15,7 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './auth.guard';
 import { LoginService } from './login/service/login.service';
+import { TeamMemberResolver, TeamMemberService } from './teamMember';
 
 
 
@@ -39,7 +40,9 @@ import { LoginService } from './login/service/login.service';
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy },
     AuthGuard,
-    LoginService
+    LoginService,
+    TeamMemberResolver,
+    TeamMemberService
   ],
   bootstrap: [AppComponent]
 })
