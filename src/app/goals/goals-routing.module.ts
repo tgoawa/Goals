@@ -5,7 +5,7 @@ import { PersonalGoalListComponent } from '../goals/personal/personal-goal-list/
 
 const routes: Routes = [
   {
-    path: 'goals',
+    path: '',
     component: GoalsComponent,
     children: [
       {path: 'personal', component: PersonalGoalListComponent}
