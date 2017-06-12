@@ -4,6 +4,7 @@ import { HomeComponent } from '../home/home.component';
 import { AuthGuard } from '../auth.guard';
 import { AppBaseComponent } from './app-base.component';
 import { GoalsComponent } from '../goals/goals.component';
+import { TeamMemberResolver } from '../teamMember';
 
 
 const routes: Routes = [
@@ -11,6 +12,9 @@ const routes: Routes = [
     path: '',
     component: AppBaseComponent,
     canActivate: [AuthGuard],
+    resolve: {
+      teamMemberData: TeamMemberResolver
+    },
     children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: HomeComponent },

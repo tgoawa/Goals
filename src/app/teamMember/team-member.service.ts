@@ -9,13 +9,14 @@ import { TeamMember } from './team-member';
 const api = environment.envApi;
 @Injectable()
 export class TeamMemberService {
-  private teamMember: TeamMember;
+  teamMember: TeamMember;
   constructor(private http: Http) { }
 
   getTeamMember(userName: string) {
     return this.http.get(api + '/EmployeeService/GetEmployee/' + userName)
     .map(response => response.json())
     .subscribe(data => {
+      console.log(data);
       this.teamMember = data;
     }, error => {
       console.log(error);

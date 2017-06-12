@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 
 import { PersonalGoalService } from '../service/personal-goal.service';
+import { TeamMemberService, TeamMember } from '../../../teamMember/';
 import { Goal } from '../../goal';
 
 @Component({
@@ -16,10 +17,14 @@ export class PersonalGoalListComponent implements OnInit {
   goalToEdit: Goal;
   isLoading = false;
 
-  constructor(private pgService: PersonalGoalService, private toastrService: ToastrService) { }
+  private teamMember: TeamMember;
+
+  constructor(private pgService: PersonalGoalService, private toastrService: ToastrService, private tmService: TeamMemberService) { }
 
   ngOnInit() {
-    this.getGoals(1936);
+    this.teamMember = this.tmService.teamMember;
+    console.log(this.teamMember);
+    this.getGoals(this.teamMember.TeamMemberId);
   }
 
   getGoals(id: number) {
@@ -52,7 +57,7 @@ export class PersonalGoalListComponent implements OnInit {
       IndustryTeam: null,
       IsCompleted: false,
       Name: '',
-      TeamMemberId: 1936, // TODO: Replace with teamMemberId from TeamMember object
+      TeamMemberId: this.teamMember.TeamMemberId, // TODO: Replace with teamMemberId from TeamMember object
       Weight: 0,
       DisplayDateCreated: '',
       DisplayDateModified: '',
@@ -97,12 +102,12 @@ export class PersonalGoalListComponent implements OnInit {
 
   refreshListUpdate() {
     this.showSuccessUpdate();
-    this.getGoals(1936);
+    this.getGoals(this.teamMember.TeamMemberId);
   }
 
   refreshListAdd() {
     this.showSuccessAdd();
-    this.getGoals(1936);
+    this.getGoals(this.teamMember.TeamMemberId);
   }
 
   showSuccessUpdate() {
