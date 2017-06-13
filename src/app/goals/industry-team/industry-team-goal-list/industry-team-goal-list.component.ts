@@ -1,25 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 
-import { PersonalGoalService } from '../service/personal-goal.service';
+import { IndustryGoalService } from '../service/industry-goal.service';
 import { TeamMemberService, TeamMember } from '../../../teamMember/';
 import { Goal } from '../../goal';
 
 @Component({
-  selector: 'app-personal-goal-list',
-  templateUrl: './personal-goal-list.component.html',
-  styleUrls: ['./personal-goal-list.component.scss']
+  selector: 'app-industry-team-goal-list',
+  templateUrl: './industry-team-goal-list.component.html',
+  styleUrls: ['./industry-team-goal-list.component.scss']
 })
-export class PersonalGoalListComponent implements OnInit {
+export class IndustryTeamGoalListComponent implements OnInit {
 
-  personalGoalList: Goal[];
+  industryGoalList: Goal[];
   newGoal: Goal;
   goalToEdit: Goal;
   isLoading = false;
 
   private teamMember: TeamMember;
 
-  constructor(private pgService: PersonalGoalService, private toastrService: ToastrService, private tmService: TeamMemberService) { }
+  constructor(private igService: IndustryGoalService, private toastrService: ToastrService, private tmService: TeamMemberService) { }
 
   ngOnInit() {
     this.teamMember = this.tmService.teamMember;
@@ -28,10 +28,10 @@ export class PersonalGoalListComponent implements OnInit {
 
   getGoals(id: number) {
     this.isLoading = true;
-    this.pgService.getPersonalGoals(id)
+    this.igService.getIndustryGoals(id)
     .subscribe(data => {
       this.isLoading = false;
-      this.personalGoalList = data;
+      this.industryGoalList = data;
     }, error => {
       console.log(error);
       this.isLoading = false;
@@ -114,4 +114,5 @@ export class PersonalGoalListComponent implements OnInit {
   showSuccessAdd() {
     this.toastrService.success('Goal Added!', 'New Goal was added!');
   }
+
 }

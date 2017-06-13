@@ -12,6 +12,9 @@
             <li>
               <a class="dropdown-item" href="#" [routerLink]="['/goals/personal']">Personal</a>
             </li>
+            <li *ngIf="teamMember.IndustryTeam1">
+              <a class="dropdown-item" href="#" [routerLink]="['/goals/industry-team']">Industry Team Goals</a>
+            </li>
           </ul>
         </li>
       </ul>

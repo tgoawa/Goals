@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TeamMember, TeamMemberService } from '../teamMember';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   isCollapsed = true;
-  constructor() { }
+  teamMember: TeamMember;
+
+  constructor(private tmService: TeamMemberService) { }
 
   ngOnInit() {
+    this.teamMember = this.tmService.teamMember;
   }
 
 }
