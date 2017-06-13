@@ -17,6 +17,7 @@ export class MeasurementItemComponent implements OnInit {
 
   ngOnInit() {
     this.measurementItemForm = this.toFormGroup(this.measurementItem);
+    this.replaceBreakTags();
     this.measurementItems.push(this.measurementItemForm);
   }
 
@@ -29,6 +30,14 @@ export class MeasurementItemComponent implements OnInit {
     });
 
     return formGroup;
+  }
+
+  replaceBreakTags() {
+    if (this.measurementItem.Measurement !== null) {
+      this.measurementItemForm.patchValue({
+        Action: this.measurementItem.Measurement.split('<br>').join('\n')
+      });
+    }
   }
 
   onValueChange() {

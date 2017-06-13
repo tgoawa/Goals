@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, Input, ViewChild, EventEmitter, Output} from '@angular/core';
+import { Component, OnInit, AfterViewInit, Input, ViewChild, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 
@@ -24,6 +24,7 @@ export class EditPersonalGoalComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.editPersonalGoalForm = this.toFormGroup(this.personalGoal);
+    this.replaceBreakTags();
   }
 
   ngAfterViewInit() {
@@ -53,11 +54,9 @@ export class EditPersonalGoalComponent implements OnInit, AfterViewInit {
   }
 
   replaceBreakTags() {
-    if (this.personalGoal.GoalDescription != null) {
-      const replace = this.personalGoal.GoalDescription.split('<br>').join('\n');
-      this.personalGoal.GoalDescription = replace;
+    if (this.personalGoal.GoalDescription !== null) {
       this.editPersonalGoalForm.patchValue({
-        GoalDescription: this.personalGoal.GoalDescription
+        GoalDescription: this.personalGoal.GoalDescription.split('<br>').join('\n')
       });
     }
     return false;
@@ -82,14 +81,14 @@ export class EditPersonalGoalComponent implements OnInit, AfterViewInit {
 
   updateGoal(goal: Goal) {
     this.pgService.updatePersonalGoal(goal)
-    .subscribe(data => {
-      console.log(data);
-      this.goalUpdateSuccess();
-      this.hideModal();
-    }, error => {
-      console.log(error);
-      this.hideModal();
-    });
+      .subscribe(data => {
+        console.log(data);
+        this.goalUpdateSuccess();
+        this.hideModal();
+      }, error => {
+        console.log(error);
+        this.hideModal();
+      });
   }
 
   onSubmit(formValue: Goal) {

@@ -17,6 +17,7 @@ export class ActionItemsComponent implements OnInit {
 
   ngOnInit() {
     this.actionItemForm = this.toFormGroup(this.actionItem);
+    this.replaceBreakTags();
     this.actionItems.push(this.actionItemForm);
   }
 
@@ -30,6 +31,14 @@ export class ActionItemsComponent implements OnInit {
     });
 
     return formGroup;
+  }
+
+  replaceBreakTags() {
+    if (this.actionItem.Action !== null) {
+      this.actionItemForm.patchValue({
+        Action: this.actionItem.Action.split('<br>').join('\n')
+      });
+    }
   }
 
   onValueChange() {

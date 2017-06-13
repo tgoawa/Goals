@@ -17,6 +17,7 @@ export class NotesItemComponent implements OnInit {
 
   ngOnInit() {
     this.noteItemForm = this.toFormGroup(this.noteItem);
+    this.replaceBreakTags();
     this.noteItems.push(this.noteItemForm);
   }
 
@@ -29,6 +30,14 @@ export class NotesItemComponent implements OnInit {
     });
 
     return formGroup;
+  }
+
+  replaceBreakTags() {
+    if (this.noteItem.Note !== null) {
+      this.noteItemForm.patchValue({
+        Action: this.noteItem.Note.split('<br>').join('\n')
+      });
+    }
   }
 
   onValueChange() {

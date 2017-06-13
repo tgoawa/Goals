@@ -17,6 +17,7 @@ export class SupportItemComponent implements OnInit {
 
   ngOnInit() {
     this.supportItemForm = this.toFormGroup(this.supportItem);
+    this.replaceBreakTags();
     this.supportItems.push(this.supportItemForm);
   }
 
@@ -29,6 +30,14 @@ export class SupportItemComponent implements OnInit {
     });
 
     return formGroup;
+  }
+
+  replaceBreakTags() {
+    if (this.supportItem.Support !== null) {
+      this.supportItemForm.patchValue({
+        Action: this.supportItem.Support.split('<br>').join('\n')
+      });
+    }
   }
 
   onValueChange() {
