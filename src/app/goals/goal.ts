@@ -6,7 +6,7 @@ export class Goal {
     GoalCompetencyTypeId: number;
     GoalCompletionPercentage: number;
     GoalDescription: string;
-    IndustryTeam: string;
+    IndustryTeams: string[];
     IndustryTeamId: number;
     IsCompleted: boolean;
     Name: string;

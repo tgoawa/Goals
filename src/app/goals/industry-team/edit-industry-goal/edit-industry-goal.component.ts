@@ -37,7 +37,6 @@ export class EditIndustryGoalComponent implements OnInit, AfterViewInit {
       GoalCompetencyId: data.GoalCompetencyId,
       GoalCompetencyTypeId: data.GoalCompetencyTypeId,
       GoalCompletionPercentage: data.GoalCompletionPercentage,
-      IndustryTeam: data.IndustryTeam,
       IndustryTeamId: data.IndustryTeamId,
       IsCompleted: data.IsCompleted,
       TeamMemberId: data.TeamMemberId,

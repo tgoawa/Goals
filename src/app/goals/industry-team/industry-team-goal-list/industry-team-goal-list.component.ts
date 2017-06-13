@@ -52,7 +52,7 @@ export class IndustryTeamGoalListComponent implements OnInit {
       GoalCompletionPercentage: 0,
       GoalDescription: '',
       IndustryTeamId: 0,
-      IndustryTeam: null,
+      IndustryTeams: this.teamMember.IndustryTeams,
       IsCompleted: false,
       Name: '',
       TeamMemberId: this.teamMember.TeamMemberId,
