@@ -32,6 +32,7 @@ export class PersonalGoalListComponent implements OnInit {
     .subscribe(data => {
       this.isLoading = false;
       this.personalGoalList = data;
+      console.log(this.personalGoalList);
     }, error => {
       console.log(error);
       this.isLoading = false;
@@ -55,7 +56,7 @@ export class PersonalGoalListComponent implements OnInit {
       IndustryTeam: null,
       IsCompleted: false,
       Name: '',
-      TeamMemberId: this.teamMember.TeamMemberId, // TODO: Replace with teamMemberId from TeamMember object
+      TeamMemberId: this.teamMember.TeamMemberId,
       Weight: 0,
       DisplayDateCreated: '',
       DisplayDateModified: '',

@@ -70,16 +70,60 @@ export class AddPersonalGoalComponent implements OnInit, AfterViewInit {
 
   saveGoal(goal: Goal) {
     this.pgService.savePersonalGoal(goal)
-    .subscribe(data => {
-      console.log(data);
-      this.goalAddSuccess();
-      this.hideModal();
-    }, error => {
-      console.log(error);
-    });
+      .subscribe(data => {
+        console.log(data);
+        this.goalAddSuccess();
+        this.hideModal();
+      }, error => {
+        console.log(error);
+      });
   }
 
   onSubmit(formValue: Goal) {
-   this.saveGoal(formValue);
+    this.replaceLineBreaks(formValue);
+    this.saveGoal(formValue);
+  }
+
+  replaceLineBreaks(formValue: Goal) {
+    formValue.GoalDescription = this.replaceDescriptionLineBreaks(formValue.GoalDescription);
+    formValue.Actions = this.replaceActionLineBreaks(formValue.Actions);
+    formValue.Measurements = this.replaceMeasurementLineBreaks(formValue.Measurements);
+    formValue.Supports = this.replaceSupportLineBreaks(formValue.Supports);
+    formValue.Notes = this.replaceNoteLineBreaks(formValue.Notes);
+  }
+
+  replaceDescriptionLineBreaks(goalDescription: string): string {
+    goalDescription = goalDescription.replace(/(\r\n|\n|\r)/gm, '<br>');
+    return goalDescription;
+  }
+
+  replaceActionLineBreaks(action: Action[]): Action[] {
+    for (let index = 0; index < action.length; index++) {
+      action[index].Action = action[index].Action.replace(/(\r\n|\n|\r)/gm, '<br>');
+    }
+    return action;
+  }
+
+  replaceMeasurementLineBreaks(measurement: Measurement[]): Measurement[] {
+    for (let index = 0; index < measurement.length; index++) {
+      measurement[index].Measurement = measurement[index].Measurement.replace(/(\r\n|\n|\r)/gm, '<br>');
+    }
+    return measurement;
+  }
+
+  replaceSupportLineBreaks(support: Support[]): Support[] {
+    for (let index = 0; index < support.length; index++) {
+      support[index].Support = support[index].Support.replace(/(\r\n|\n|\r)/gm, '<br>');
+    }
+    return support;
+  }
+
+  replaceNoteLineBreaks(note: Note[]): Note[] {
+    for (let index = 0; index < note.length; index++) {
+      if (note[index].Note !== null) {
+        note[index].Note = note[index].Note.replace(/(\r\n|\n|\r)/gm, '<br>');
+      }
+    }
+    return note;
   }
 }

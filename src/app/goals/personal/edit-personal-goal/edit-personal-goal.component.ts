@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, Input, ViewChild, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Input, ViewChild, EventEmitter, Output} from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 
@@ -18,6 +18,7 @@ export class EditPersonalGoalComponent implements OnInit, AfterViewInit {
   @Output() updateSuccess: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   editPersonalGoalForm: FormGroup;
+  private updatedFormObject: Goal;
 
   constructor(private fb: FormBuilder, private pgService: PersonalGoalService) { }
 
@@ -51,6 +52,17 @@ export class EditPersonalGoalComponent implements OnInit, AfterViewInit {
     return formGroup;
   }
 
+  replaceBreakTags() {
+    if (this.personalGoal.GoalDescription != null) {
+      const replace = this.personalGoal.GoalDescription.split('<br>').join('\n');
+      this.personalGoal.GoalDescription = replace;
+      this.editPersonalGoalForm.patchValue({
+        GoalDescription: this.personalGoal.GoalDescription
+      });
+    }
+    return false;
+  }
+
   showModal() {
     this.editModal.show();
   }
@@ -81,7 +93,50 @@ export class EditPersonalGoalComponent implements OnInit, AfterViewInit {
   }
 
   onSubmit(formValue: Goal) {
-    console.log(formValue);
+    this.replaceLineBreaks(formValue);
     this.updateGoal(formValue);
+  }
+
+  replaceLineBreaks(formValue: Goal) {
+    formValue.GoalDescription = this.replaceDescriptionLineBreaks(formValue.GoalDescription);
+    formValue.Actions = this.replaceActionLineBreaks(formValue.Actions);
+    formValue.Measurements = this.replaceMeasurementLineBreaks(formValue.Measurements);
+    formValue.Supports = this.replaceSupportLineBreaks(formValue.Supports);
+    formValue.Notes = this.replaceNoteLineBreaks(formValue.Notes);
+  }
+
+  replaceDescriptionLineBreaks(goalDescription: string): string {
+    goalDescription = goalDescription.replace(/(\r\n|\n|\r)/gm, '<br>');
+    return goalDescription;
+  }
+
+  replaceActionLineBreaks(action: Action[]): Action[] {
+    for (let index = 0; index < action.length; index++) {
+      action[index].Action = action[index].Action.replace(/(\r\n|\n|\r)/gm, '<br>');
+    }
+    return action;
+  }
+
+  replaceMeasurementLineBreaks(measurement: Measurement[]): Measurement[] {
+    for (let index = 0; index < measurement.length; index++) {
+      measurement[index].Measurement = measurement[index].Measurement.replace(/(\r\n|\n|\r)/gm, '<br>');
+    }
+    return measurement;
+  }
+
+  replaceSupportLineBreaks(support: Support[]): Support[] {
+    for (let index = 0; index < support.length; index++) {
+      support[index].Support = support[index].Support.replace(/(\r\n|\n|\r)/gm, '<br>');
+    }
+    return support;
+  }
+
+  replaceNoteLineBreaks(note: Note[]): Note[] {
+    for (let index = 0; index < note.length; index++) {
+      if (note[index].Note !== null) {
+        note[index].Note = note[index].Note.replace(/(\r\n|\n|\r)/gm, '<br>');
+      }
+    }
+    return note;
   }
 }
