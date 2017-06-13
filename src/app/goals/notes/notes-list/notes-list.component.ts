@@ -9,7 +9,7 @@ import { Note } from '../../goal';
 })
 export class NotesListComponent implements OnInit {
   @Input('parentGoalForm') parentGoalForm: FormGroup;
-  @Input('notes') Notes: Note[];
+  @Input('Notes') Notes: Note[];
   @Input('goalId') goalId: number;
 
   constructor(private cd: ChangeDetectorRef) { }

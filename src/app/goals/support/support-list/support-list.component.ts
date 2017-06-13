@@ -9,7 +9,7 @@ import { Support } from '../../goal';
 })
 export class SupportListComponent implements OnInit {
   @Input('parentGoalForm') parentGoalForm: FormGroup;
-  @Input('supports') Supports: Support[];
+  @Input('Supports') Supports: Support[];
   @Input('goalId') goalId: number;
 
   constructor(private cd: ChangeDetectorRef) { }

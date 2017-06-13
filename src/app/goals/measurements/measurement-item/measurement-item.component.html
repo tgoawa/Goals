@@ -2,6 +2,7 @@
   <div class="form-group row" style="margin-top: 0">
     <div class="col-md-10">
       <textarea class="form-control" formControlName="Measurement" (keyup)="onValueChange()"></textarea>
+      <div *ngIf="measurementItemForm.get('Measurement').hasError('required') && measurementItemForm.get('Measurement').touched" class="alert alert-danger">A measurement is required</div>
     </div>
   </div>
 </div>

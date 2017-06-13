@@ -9,7 +9,7 @@ import { Measurement } from '../../goal';
 })
 export class MeasurementsListComponent implements OnInit {
   @Input('parentGoalForm') parentGoalForm: FormGroup;
-  @Input('measurements') Measurements: Measurement[];
+  @Input('Measurements') Measurements: Measurement[];
   @Input('goalId') goalId: number;
 
   constructor(private cd: ChangeDetectorRef) { }

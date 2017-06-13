@@ -9,7 +9,7 @@ import { Action } from '../../goal';
 })
 export class ActionsListComponent implements OnInit {
   @Input('parentGoalForm') parentGoalForm: FormGroup;
-  @Input('actions') Actions: Action[];
+  @Input('Actions') Actions: Action[];
   @Input('goalId') goalId: number;
 
   constructor(private cd: ChangeDetectorRef) { }
