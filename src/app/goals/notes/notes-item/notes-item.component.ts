@@ -35,7 +35,7 @@ export class NotesItemComponent implements OnInit {
   replaceBreakTags() {
     if (this.noteItem.Note !== null) {
       this.noteItemForm.patchValue({
-        Action: this.noteItem.Note.split('<br>').join('\n')
+        Note: this.noteItem.Note.split('<br>').join('\n')
       });
     }
   }

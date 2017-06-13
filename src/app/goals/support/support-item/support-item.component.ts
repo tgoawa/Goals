@@ -35,7 +35,7 @@ export class SupportItemComponent implements OnInit {
   replaceBreakTags() {
     if (this.supportItem.Support !== null) {
       this.supportItemForm.patchValue({
-        Action: this.supportItem.Support.split('<br>').join('\n')
+        Support: this.supportItem.Support.split('<br>').join('\n')
       });
     }
   }

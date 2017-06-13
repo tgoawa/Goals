@@ -35,7 +35,7 @@ export class MeasurementItemComponent implements OnInit {
   replaceBreakTags() {
     if (this.measurementItem.Measurement !== null) {
       this.measurementItemForm.patchValue({
-        Action: this.measurementItem.Measurement.split('<br>').join('\n')
+        Measurement: this.measurementItem.Measurement.split('<br>').join('\n')
       });
     }
   }
