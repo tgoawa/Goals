@@ -2,27 +2,26 @@ import { Component, OnInit, AfterViewInit, Input, ViewChild, EventEmitter, Outpu
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 
-import { PersonalGoalService } from '../service/personal-goal.service';
+import { IndustryGoalService } from '../service/industry-goal.service';
 
 import { Goal, Action, Measurement, Support, Note } from '../../goal';
 
 @Component({
-  selector: 'app-edit-personal-goal',
-  templateUrl: './edit-personal-goal.component.html',
-  styleUrls: ['./edit-personal-goal.component.scss']
+  selector: 'app-edit-industry-goal',
+  templateUrl: './edit-industry-goal.component.html',
+  styleUrls: ['./edit-industry-goal.component.scss']
 })
-export class EditPersonalGoalComponent implements OnInit, AfterViewInit {
+export class EditIndustryGoalComponent implements OnInit, AfterViewInit {
   @ViewChild('editModal') editModal: ModalDirective;
-  @Input('personalGoal') personalGoal: Goal;
+  @Input('industryGoal') industryGoal: Goal;
   @Output() modalClosed: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() updateSuccess: EventEmitter<boolean> = new EventEmitter<boolean>();
+  editIndustryGoalForm: FormGroup;
 
-  editPersonalGoalForm: FormGroup;
-
-  constructor(private fb: FormBuilder, private pgService: PersonalGoalService) { }
+  constructor(private fb: FormBuilder, private igService: IndustryGoalService) { }
 
   ngOnInit() {
-    this.editPersonalGoalForm = this.toFormGroup(this.personalGoal);
+    this.editIndustryGoalForm = this.toFormGroup(this.industryGoal);
     this.replaceBreakTags();
   }
 
@@ -30,7 +29,7 @@ export class EditPersonalGoalComponent implements OnInit, AfterViewInit {
     this.showModal();
   }
 
-  private toFormGroup(data: Goal): FormGroup {
+   private toFormGroup(data: Goal): FormGroup {
     const formGroup = this.fb.group({
       GoalId: data.GoalId,
       GoalTypeId: data.GoalTypeId,
@@ -53,9 +52,9 @@ export class EditPersonalGoalComponent implements OnInit, AfterViewInit {
   }
 
   replaceBreakTags() {
-    if (this.personalGoal.GoalDescription !== null) {
-      this.editPersonalGoalForm.patchValue({
-        GoalDescription: this.personalGoal.GoalDescription.split('<br>').join('\n')
+    if (this.industryGoal.GoalDescription !== null) {
+      this.editIndustryGoalForm.patchValue({
+        GoalDescription: this.industryGoal.GoalDescription.split('<br>').join('\n')
       });
     }
     return false;
@@ -79,7 +78,7 @@ export class EditPersonalGoalComponent implements OnInit, AfterViewInit {
   }
 
   updateGoal(goal: Goal) {
-    this.pgService.updatePersonalGoal(goal)
+    this.igService.updateIndustryGoal(goal)
       .subscribe(data => {
         this.goalUpdateSuccess();
         this.hideModal();

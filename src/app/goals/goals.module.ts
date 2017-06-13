@@ -21,6 +21,8 @@ import { AddPersonalGoalComponent } from './personal/add-personal-goal/add-perso
 import { GoalListComponent } from './goal-list/goal-list.component';
 import { IndustryTeamGoalListComponent } from './industry-team/industry-team-goal-list/industry-team-goal-list.component';
 import { IndustryGoalService } from './industry-team/service/industry-goal.service';
+import { AddIndustryGoalComponent } from './industry-team/add-industry-goal/add-industry-goal.component';
+import { EditIndustryGoalComponent } from './industry-team/edit-industry-goal/edit-industry-goal.component';
 
 @NgModule({
   imports: [
@@ -46,7 +48,9 @@ import { IndustryGoalService } from './industry-team/service/industry-goal.servi
                   PersonalGoalListComponent,
                   AddPersonalGoalComponent,
                   GoalListComponent,
-                  IndustryTeamGoalListComponent
+                  IndustryTeamGoalListComponent,
+                  AddIndustryGoalComponent,
+                  EditIndustryGoalComponent
                 ],
   providers: [ PersonalGoalService, IndustryGoalService ]
 })

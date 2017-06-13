@@ -1,0 +1,43 @@
+<div bsModal #editModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title pull-left">Edit Goal</h2>
+        <button type="button" class="close pull-right" (click)="hideModal()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form novalidate [formGroup]="editIndustryGoalForm" (ngSubmit)="onSubmit(editIndustryGoalForm.value)">
+        <div class="modal-body">
+          <div class="form-group col-md-4">
+            <label for="Name">Goal Name:</label>
+            <input id="Name" type="text" class="form-control" formControlName="Name">
+            <div *ngIf="editIndustryGoalForm.get('Name').hasError('required') && editIndustryGoalForm.get('Name').touched" class="alert alert-danger">A name is required</div>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="GoalDescription">Goal Description:</label>
+            <textarea class="form-control" formControlName="GoalDescription"></textarea>
+            <div *ngIf="editIndustryGoalForm.get('GoalDescription').hasError('required') && editIndustryGoalForm.get('GoalDescription').touched" class="alert alert-danger">A goal is required</div>
+          </div>
+          <div class="goal-subSection">
+            <app-actions-list [goalId]="industryGoal.GoalId" [parentGoalForm]="editIndustryGoalForm" [Actions]="industryGoal.Actions">
+            </app-actions-list>
+          </div>
+          <div class="goal-subSection">
+            <app-measurements-list [goalId]="industryGoal.GoalId" [parentGoalForm]="editIndustryGoalForm" [Measurements]="industryGoal.Measurements"></app-measurements-list>
+          </div>
+          <div class="goal-subSection">
+            <app-support-list [goalId]="industryGoal.GoalId" [parentGoalForm]="editIndustryGoalForm" [Supports]="industryGoal.Supports"></app-support-list>
+          </div>
+          <div class="goal-subSection">
+            <app-notes-list [goalId]="industryGoal.GoalId" [parentGoalForm]="editIndustryGoalForm" [Notes]="industryGoal.Notes"></app-notes-list>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="hideModal()">Cancel</button>
+          <button class="btn btn-success" type="submit" [disabled]="!editIndustryGoalForm.valid">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

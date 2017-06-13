@@ -18,3 +18,5 @@
 <div *ngFor="let goal of industryGoalList">
 <app-goal-list [goal]="goal" (goalToEdit)="onEdit($event)"></app-goal-list>
 </div>
+<app-add-industry-goal [industryGoal]="newGoal" *ngIf="newGoal" (modalClosed)="clearNewGoal()" (addSuccess)="refreshListAdd()"></app-add-industry-goal>
+<app-edit-industry-goal [industryGoal]="goalToEdit" *ngIf="goalToEdit" (modalClosed)="clearGoalToEdit()" (updateSuccess)="refreshListUpdate()"></app-edit-industry-goal>

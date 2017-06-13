@@ -71,7 +71,6 @@ export class AddPersonalGoalComponent implements OnInit, AfterViewInit {
   saveGoal(goal: Goal) {
     this.pgService.savePersonalGoal(goal)
       .subscribe(data => {
-        console.log(data);
         this.goalAddSuccess();
         this.hideModal();
       }, error => {
