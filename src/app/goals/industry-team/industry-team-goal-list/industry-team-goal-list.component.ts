@@ -45,7 +45,7 @@ export class IndustryTeamGoalListComponent implements OnInit {
   onAdd() {
     this.newGoal = {
       GoalId: 0,
-      GoalTypeId: 1,
+      GoalTypeId: 2,
       GoalWIGId: 0,
       GoalCompetencyTypeId: 0,
       GoalCompetencyId: 0,
