@@ -5,18 +5,19 @@ import { ModalDirective } from 'ngx-bootstrap/modal';
 import { WigGoalServiceService } from '../service/wig-goal-service.service';
 
 import { Goal, Action, Measurement, Support, Note } from '../../goal';
+
 @Component({
-  selector: 'app-edit-wig-goal',
-  templateUrl: './edit-wig-goal.component.html',
-  styleUrls: ['./edit-wig-goal.component.scss']
+  selector: 'app-add-wig-goal',
+  templateUrl: './add-wig-goal.component.html',
+  styleUrls: ['./add-wig-goal.component.scss']
 })
-export class EditWigGoalComponent implements OnInit, AfterViewInit {
-  @ViewChild('editModal') editModal: ModalDirective;
+export class AddWigGoalComponent implements OnInit, AfterViewInit {
+  @ViewChild('addModal') addModal: ModalDirective;
   @Input('wigGoal') wigGoal: Goal;
   @Output() modalClosed: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() updateSuccess: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  editWigGoalForm: FormGroup;
+  addWigGoalForm: FormGroup;
   WIGList: string[];
   weightList: number[];
 
@@ -25,8 +26,7 @@ export class EditWigGoalComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.weightList = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100];
     this.getWIGS();
-    this.editWigGoalForm = this.toFormGroup(this.wigGoal);
-    this.replaceBreakTags();
+    this.addWigGoalForm = this.toFormGroup(this.wigGoal);
   }
 
   ngAfterViewInit() {
@@ -63,21 +63,12 @@ export class EditWigGoalComponent implements OnInit, AfterViewInit {
     return formGroup;
   }
 
-  replaceBreakTags() {
-    if (this.wigGoal.GoalDescription !== null) {
-      this.editWigGoalForm.patchValue({
-        GoalDescription: this.wigGoal.GoalDescription.split('<br>').join('\n')
-      });
-    }
-    return false;
-  }
-
   showModal() {
-    this.editModal.show();
+    this.addModal.show();
   }
 
   hideModal() {
-    this.editModal.hide();
+    this.addModal.hide();
     this.modalIsClosed();
   }
 
@@ -89,8 +80,8 @@ export class EditWigGoalComponent implements OnInit, AfterViewInit {
     this.updateSuccess.emit(true);
   }
 
-  updateGoal(goal: Goal) {
-    this.wgService.updateWigGoal(goal)
+  saveGoal(goal: Goal) {
+    this.wgService.saveWigGoal(goal)
       .subscribe(data => {
         this.goalUpdateSuccess();
         this.hideModal();
@@ -102,7 +93,7 @@ export class EditWigGoalComponent implements OnInit, AfterViewInit {
 
   onSubmit(formValue: Goal) {
     this.replaceLineBreaks(formValue);
-    this.updateGoal(formValue);
+    this.saveGoal(formValue);
   }
 
   replaceLineBreaks(formValue: Goal) {
@@ -147,4 +138,5 @@ export class EditWigGoalComponent implements OnInit, AfterViewInit {
     }
     return note;
   }
+
 }

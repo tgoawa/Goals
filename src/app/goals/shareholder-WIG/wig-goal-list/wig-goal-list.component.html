@@ -18,4 +18,5 @@
 <div *ngFor="let goal of wigGoalList">
 <app-goal-list [goal]="goal" (goalToEdit)="onEdit($event)"></app-goal-list>
 </div>
+<app-add-wig-goal [wigGoal]="newGoal" *ngIf="newGoal" (modalClosed)="clearNewGoal()" (addSuccess)="refreshListAdd()"></app-add-wig-goal>
 <app-edit-wig-goal [wigGoal]="goalToEdit" *ngIf="goalToEdit" (modalClosed)="clearGoalToEdit()" (updateSuccess)="refreshListUpdate()"></app-edit-wig-goal>

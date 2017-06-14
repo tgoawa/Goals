@@ -19,16 +19,16 @@ export class WigGoalServiceService {
   }
 
   getWigGoals(id: number) {
-    return this.http.get(api + 'ShareHolderService/GetWigGoals/', id)
+    return this.http.get(api + 'ShareHolderService/GetWigGoals/' + id)
     .map(response => response.json(), error => console.log(error));
   }
 
   saveWigGoal(goal: Goal) {
-    return this.http.post(api + 'ShareHolderService/SaveWigGoal', goal)
+    return this.http.post(api + 'ShareHolderService/SaveWigGoal/', goal)
     .map(response => response.json(), error => console.log(error));
   }
 
-  updateCompetencyGoal(goal: Goal) {
+  updateWigGoal(goal: Goal) {
     return this.http.post(api + 'ShareHolderService/UpdateWigGoal/', goal)
     .map(response => response.json(), error => console.log(error));
   }

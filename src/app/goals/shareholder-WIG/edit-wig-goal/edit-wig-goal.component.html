@@ -22,7 +22,7 @@
           <div class="form-group col-md-6">
             <label for="GoalWIGId">Select WIG for current goal:</label>
             <select class="form-control" name="GoalWIGId" formControlName="GoalWIGId">
-              <option *ngFor="let wig of WIGList;" [value]="wig.GoalWIGId" [selected]="wig.GoalWIGId === wigGoal.GoalWIGId">{{wig.WIGDescription}}</option>
+              <option *ngFor="let wig of WIGList;" [value]="wig.GoalWIGId" [selected]="wig.GoalWIGId === wigGoal.GoalWIGId">{{wig.WIGTitle}}</option>
             </select>
             <div *ngIf="editWigGoalForm.get('GoalWIGId').hasError('required') && editWigGoalForm.get('GoalWIGId').touched" class="alert alert-danger">A WIG is required</div>
           </div>
