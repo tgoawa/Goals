@@ -29,6 +29,7 @@ import { EditCompetencyGoalComponent } from './shareholder-competency/edit-compe
 import { AddCompetencyGoalComponent } from './shareholder-competency/add-competency-goal/add-competency-goal.component';
 import { WigGoalListComponent } from './shareholder-WIG/wig-goal-list/wig-goal-list.component';
 import { WigGoalServiceService } from './shareholder-WIG/service/wig-goal-service.service';
+import { EditWigGoalComponent } from './shareholder-WIG/edit-wig-goal/edit-wig-goal.component';
 
 @NgModule({
   imports: [
@@ -60,7 +61,8 @@ import { WigGoalServiceService } from './shareholder-WIG/service/wig-goal-servic
                   CompetencyGoalListComponent,
                   EditCompetencyGoalComponent,
                   AddCompetencyGoalComponent,
-                  WigGoalListComponent
+                  WigGoalListComponent,
+                  EditWigGoalComponent
                 ],
   providers: [ PersonalGoalService, IndustryGoalService, CompetencyGoalService, WigGoalServiceService ]
 })
