@@ -7,6 +7,7 @@ export class TeamMember {
     IsAccountDirector: boolean;
     IsManager: boolean;
     IndustryTeams: string[];
+    IsShareHolder: boolean;
     IsChargable: boolean;
     IsCoach: boolean;
     IsMentor: boolean;
