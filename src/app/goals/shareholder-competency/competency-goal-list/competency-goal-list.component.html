@@ -18,3 +18,4 @@
 <div *ngFor="let goal of competencyGoalList">
 <app-goal-list [goal]="goal" (goalToEdit)="onEdit($event)"></app-goal-list>
 </div>
+<app-edit-competency-goal [competencyGoal]="goalToEdit" *ngIf="goalToEdit" (modalClosed)="clearGoalToEdit()" (updateSuccess)="refreshListUpdate()"></app-edit-competency-goal>
