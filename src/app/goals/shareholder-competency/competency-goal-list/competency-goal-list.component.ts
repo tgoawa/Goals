@@ -31,7 +31,6 @@ export class CompetencyGoalListComponent implements OnInit {
     this.cgService.getCompetencyGoals(id)
     .subscribe(data => {
       this.isLoading = false;
-      console.log(data);
       this.competencyGoalList = data;
     }, error => {
       console.log(error);

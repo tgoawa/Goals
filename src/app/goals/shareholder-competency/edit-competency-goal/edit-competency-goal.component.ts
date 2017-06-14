@@ -38,7 +38,6 @@ export class EditCompetencyGoalComponent implements OnInit, AfterViewInit {
   getGoalCompetencies() {
     this.cgService.getCompetencies()
     .subscribe(data => {
-      console.log(data);
       this.goalCompetencies = data;
     }, error => {
       console.log(error);
@@ -48,7 +47,6 @@ export class EditCompetencyGoalComponent implements OnInit, AfterViewInit {
   getCompetencyTypes() {
     this.cgService.getCompetencyTypes()
     .subscribe(data => {
-      console.log(data);
       this.goalCompetencyTypes = data;
     }, error => {
       console.log(error);
