@@ -46,7 +46,7 @@ export class AddWigGoalComponent implements OnInit, AfterViewInit {
     const formGroup = this.fb.group({
       GoalId: data.GoalId,
       GoalTypeId: data.GoalTypeId,
-      GoalWIGId: data.GoalWIGId,
+      GoalWIGId: [data.GoalWIGId, Validators.required],
       GoalCompetencyId: [data.GoalCompetencyId, Validators.required],
       GoalCompetencyTypeId: [data.GoalCompetencyTypeId, Validators.required],
       GoalCompletionPercentage: data.GoalCompletionPercentage,
