@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { GoalsComponent } from './goals.component';
 import { PersonalGoalListComponent } from '../goals/personal/personal-goal-list/personal-goal-list.component';
 import { IndustryTeamGoalListComponent } from '../goals/industry-team/industry-team-goal-list/industry-team-goal-list.component';
+import { CompetencyGoalListComponent } from '../goals/shareholder-competency/competency-goal-list/competency-goal-list.component';
 
 const routes: Routes = [
   {
@@ -10,7 +11,8 @@ const routes: Routes = [
     component: GoalsComponent,
     children: [
       {path: 'personal', component: PersonalGoalListComponent},
-      {path: 'industry-team', component: IndustryTeamGoalListComponent}
+      {path: 'industry-team', component: IndustryTeamGoalListComponent},
+      {path: 'shareholder-competency', component: CompetencyGoalListComponent}
     ]
   }
 ];

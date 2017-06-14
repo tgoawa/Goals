@@ -24,6 +24,7 @@ import { IndustryGoalService } from './industry-team/service/industry-goal.servi
 import { AddIndustryGoalComponent } from './industry-team/add-industry-goal/add-industry-goal.component';
 import { EditIndustryGoalComponent } from './industry-team/edit-industry-goal/edit-industry-goal.component';
 import { CompetencyGoalListComponent } from './shareholder-competency/competency-goal-list/competency-goal-list.component';
+import { CompetencyGoalService } from './shareholder-competency/service/competency-goal.service';
 
 @NgModule({
   imports: [
@@ -54,6 +55,6 @@ import { CompetencyGoalListComponent } from './shareholder-competency/competency
                   EditIndustryGoalComponent,
                   CompetencyGoalListComponent
                 ],
-  providers: [ PersonalGoalService, IndustryGoalService ]
+  providers: [ PersonalGoalService, IndustryGoalService, CompetencyGoalService ]
 })
 export class GoalsModule { }

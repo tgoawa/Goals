@@ -10,10 +10,13 @@
           <a class="nav-link dropdown-toggle" href dropdownToggle (click)="false">Goals</a>
           <ul *dropdownMenu class="dropdown-menu">
             <li>
-              <a class="dropdown-item" href="#" [routerLink]="['/goals/personal']">Personal</a>
+              <a class="dropdown-item" href="#" [routerLink]="['/goals/personal']">Personal Development</a>
             </li>
             <li *ngIf="teamMember.IndustryTeams !== null">
               <a class="dropdown-item" href="#" [routerLink]="['/goals/industry-team']">Industry Team Goals</a>
+            </li>
+            <li *ngIf="teamMember.StaffTypeId === 13">
+              <a class="dropdown-item" href="#" [routerLink]="['/goals/shareholder-competency']">Competency Goals</a>
             </li>
           </ul>
         </li>

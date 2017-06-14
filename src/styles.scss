@@ -37,6 +37,10 @@ nav {
         color: white;
     }
 
+    .dropdown-item {
+        color: $schenck-blue;
+    }
+
     .dropdown-item:hover {
         background-color: $schenck-cyan;
         color: white;

@@ -14,4 +14,5 @@ export class TeamMember {
     IndustryTeam2: number;
     IndustryTeam3: number;
     IndustryTeam4: number;
+    StaffTypeId: number;
 }
