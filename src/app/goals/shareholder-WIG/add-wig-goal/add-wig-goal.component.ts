@@ -15,7 +15,7 @@ export class AddWigGoalComponent implements OnInit, AfterViewInit {
   @ViewChild('addModal') addModal: ModalDirective;
   @Input('wigGoal') wigGoal: Goal;
   @Output() modalClosed: EventEmitter<boolean> = new EventEmitter<boolean>();
-  @Output() updateSuccess: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() addSuccess: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   addWigGoalForm: FormGroup;
   WIGList: string[];
@@ -76,14 +76,15 @@ export class AddWigGoalComponent implements OnInit, AfterViewInit {
     this.modalClosed.emit(true);
   }
 
-  goalUpdateSuccess() {
-    this.updateSuccess.emit(true);
+  goalAddSuccess() {
+    this.addSuccess.emit(true);
   }
 
   saveGoal(goal: Goal) {
     this.wgService.saveWigGoal(goal)
       .subscribe(data => {
-        this.goalUpdateSuccess();
+        console.log(data);
+        this.goalAddSuccess();
         this.hideModal();
       }, error => {
         console.log(error);
