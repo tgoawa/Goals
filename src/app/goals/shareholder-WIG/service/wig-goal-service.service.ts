@@ -7,34 +7,29 @@ import { environment } from '../../../../environments/environment';
 import { Goal } from '../../goal';
 
 const api = environment.envApi;
+
 @Injectable()
-export class CompetencyGoalService {
+export class WigGoalServiceService {
 
   constructor(private http: Http) { }
 
-  getCompetencies() {
-    return this.http.get(api + 'GoalService/GetGoalCompetencies/')
+  getWIGs() {
+    return this.http.get(api + 'GoalService/GetGoalWIGs/')
     .map(response => response.json(), error => console.log(error));
   }
 
-  getCompetencyTypes() {
-    return this.http.get(api + 'GoalService/GetGoalCompetencyTypes/')
+  getWigGoals(id: number) {
+    return this.http.get(api + 'ShareHolderService/GetWigGoals/', id)
     .map(response => response.json(), error => console.log(error));
   }
 
-  getCompetencyGoals(id: number) {
-    return this.http.get(api + 'ShareHolderService/GetCompetencyGoals/' + id)
-    .map(response => response.json(), error => console.log(error));
-  }
-
-  saveCompetencyGoal(goal: Goal) {
-    return this.http.post(api + 'ShareHolderService/SaveCompetencyGoal/', goal)
+  saveWigGoal(goal: Goal) {
+    return this.http.post(api + 'ShareHolderService/SaveWigGoal', goal)
     .map(response => response.json(), error => console.log(error));
   }
 
   updateCompetencyGoal(goal: Goal) {
-    return this.http.post(api + 'ShareHolderService/UpdateCompetencyGoal/', goal)
+    return this.http.post(api + 'ShareHolderService/UpdateWigGoal/', goal)
     .map(response => response.json(), error => console.log(error));
   }
-
 }
