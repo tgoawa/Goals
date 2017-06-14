@@ -21,7 +21,8 @@ export class AddIndustryGoalComponent implements OnInit, AfterViewInit {
   constructor(private fb: FormBuilder, private igService: IndustryGoalService) { }
 
   ngOnInit() {
-    this.addIndustryGoalForm = this.toFormGroup(this.industryGoal)
+    this.addIndustryGoalForm = this.toFormGroup(this.industryGoal);
+    console.log(this.industryGoal.IndustryTeams);
   }
 
   ngAfterViewInit() {
@@ -36,7 +37,7 @@ export class AddIndustryGoalComponent implements OnInit, AfterViewInit {
       GoalCompetencyId: data.GoalCompetencyId,
       GoalCompetencyTypeId: data.GoalCompetencyTypeId,
       GoalCompletionPercentage: data.GoalCompletionPercentage,
-      IndustryTeamId: data.IndustryTeamId,
+      IndustryTeamId: [data.IndustryTeamId, Validators.required],
       IsCompleted: data.IsCompleted,
       TeamMemberId: data.TeamMemberId,
       Weight: data.Weight,

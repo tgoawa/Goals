@@ -18,13 +18,17 @@
           <div class="form-group col-md-4">
             <label for="IndustryTeamId">Industry Team:</label>
             <select class="form-control" name="IndustryTeamId" formControlName="IndustryTeamId">
-              <option *ngFor="let industryTeam of industryGoal.IndustryTeams" [value]="industryTeam.IndustryTeamId" [selected]="industryTeam.IndustryTeamId">{{industryTeam.TeamName}}</option>
+              <option value="0">Please select an Industry Team</option>
+              <option *ngFor="let industryTeam of industryGoal.IndustryTeams" [value]="industryTeam.IndustryTeamId">{{industryTeam.TeamName}}</option>
             </select>
+            <div *ngIf="addIndustryGoalForm.get('IndustryTeamId').hasError('required') && addIndustryGoalForm.get('IndustryTeamId').touched"
+              class="alert alert-danger">An industry team required</div>
           </div>
           <div class="form-group col-md-6">
             <label for="GoalDescription">Goal Description:</label>
             <textarea class="form-control" formControlName="GoalDescription"></textarea>
-            <div *ngIf="addIndustryGoalForm.get('GoalDescription').hasError('required') && addIndustryGoalForm.get('GoalDescription').touched" class="alert alert-danger">A goal is required</div>
+            <div *ngIf="addIndustryGoalForm.get('GoalDescription').hasError('required') && addIndustryGoalForm.get('GoalDescription').touched"
+              class="alert alert-danger">A goal is required</div>
           </div>
           <div class="goal-subSection">
             <app-actions-list [goalId]="industryGoal.GoalId" [parentGoalForm]="addIndustryGoalForm" [Actions]="industryGoal.Actions">
