@@ -40,6 +40,7 @@ export class IndustryTeamGoalListComponent implements OnInit {
 
   onEdit(goal: Goal) {
     this.goalToEdit = goal;
+    this.goalToEdit.IndustryTeams = this.teamMember.IndustryTeams;
   }
 
   onAdd() {
