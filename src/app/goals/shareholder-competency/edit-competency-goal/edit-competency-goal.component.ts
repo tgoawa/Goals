@@ -11,7 +11,7 @@ import { Goal, Action, Measurement, Support, Note } from '../../goal';
   styleUrls: ['./edit-competency-goal.component.scss']
 })
 export class EditCompetencyGoalComponent implements OnInit, AfterViewInit {
-@ViewChild('editModal') editModal: ModalDirective;
+  @ViewChild('editModal') editModal: ModalDirective;
   @Input('competencyGoal') competencyGoal: Goal;
   @Output() modalClosed: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() updateSuccess: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -37,20 +37,20 @@ export class EditCompetencyGoalComponent implements OnInit, AfterViewInit {
 
   getGoalCompetencies() {
     this.cgService.getCompetencies()
-    .subscribe(data => {
-      this.goalCompetencies = data;
-    }, error => {
-      console.log(error);
-    });
+      .subscribe(data => {
+        this.goalCompetencies = data;
+      }, error => {
+        console.log(error);
+      });
   }
 
   getCompetencyTypes() {
     this.cgService.getCompetencyTypes()
-    .subscribe(data => {
-      this.goalCompetencyTypes = data;
-    }, error => {
-      console.log(error);
-    });
+      .subscribe(data => {
+        this.goalCompetencyTypes = data;
+      }, error => {
+        console.log(error);
+      });
   }
 
   private toFormGroup(data: Goal): FormGroup {

@@ -2,30 +2,55 @@ import { Component, OnInit, AfterViewInit, Input, ViewChild, EventEmitter, Outpu
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 
-import { IndustryGoalService } from '../service/industry-goal.service';
+import { CompetencyGoalService } from '../service/competency-goal.service';
 
 import { Goal, Action, Measurement, Support, Note } from '../../goal';
+
 @Component({
-  selector: 'app-add-industry-goal',
-  templateUrl: './add-industry-goal.component.html',
-  styleUrls: ['./add-industry-goal.component.scss']
+  selector: 'app-add-competency-goal',
+  templateUrl: './add-competency-goal.component.html',
+  styleUrls: ['./add-competency-goal.component.scss']
 })
-export class AddIndustryGoalComponent implements OnInit, AfterViewInit {
+export class AddCompetencyGoalComponent implements OnInit, AfterViewInit {
   @ViewChild('addModal') addModal: ModalDirective;
-  @Input('industryGoal') industryGoal: Goal;
+  @Input('competencyGoal') competencyGoal: Goal;
   @Output() modalClosed: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() addSuccess: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  addIndustryGoalForm: FormGroup;
+  addCompetencyGoalForm: FormGroup;
+  goalCompetencies: string[];
+  goalCompetencyTypes: string[];
+  weightList: number[];
 
-  constructor(private fb: FormBuilder, private igService: IndustryGoalService) { }
+  constructor(private fb: FormBuilder, private cgService: CompetencyGoalService) { }
 
   ngOnInit() {
-    this.addIndustryGoalForm = this.toFormGroup(this.industryGoal);
+    this.weightList = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100];
+    this.getGoalCompetencies();
+    this.getCompetencyTypes();
+    this.addCompetencyGoalForm = this.toFormGroup(this.competencyGoal);
   }
 
   ngAfterViewInit() {
     this.showModal();
+  }
+
+  getGoalCompetencies() {
+    this.cgService.getCompetencies()
+      .subscribe(data => {
+        this.goalCompetencies = data;
+      }, error => {
+        console.log(error);
+      });
+  }
+
+  getCompetencyTypes() {
+    this.cgService.getCompetencyTypes()
+      .subscribe(data => {
+        this.goalCompetencyTypes = data;
+      }, error => {
+        console.log(error);
+      });
   }
 
   private toFormGroup(data: Goal): FormGroup {
@@ -33,10 +58,10 @@ export class AddIndustryGoalComponent implements OnInit, AfterViewInit {
       GoalId: data.GoalId,
       GoalTypeId: data.GoalTypeId,
       GoalWIGId: data.GoalWIGId,
-      GoalCompetencyId: data.GoalCompetencyId,
-      GoalCompetencyTypeId: data.GoalCompetencyTypeId,
+      GoalCompetencyId: [data.GoalCompetencyId, Validators.required],
+      GoalCompetencyTypeId: [data.GoalCompetencyTypeId, Validators.required],
       GoalCompletionPercentage: data.GoalCompletionPercentage,
-      IndustryTeamId: [data.IndustryTeamId, Validators.required],
+      IndustryTeamId: data.IndustryTeamId,
       IsCompleted: data.IsCompleted,
       TeamMemberId: data.TeamMemberId,
       Weight: data.Weight,
@@ -67,7 +92,7 @@ export class AddIndustryGoalComponent implements OnInit, AfterViewInit {
   }
 
   saveGoal(goal: Goal) {
-    this.igService.saveIndustryGoal(goal)
+    this.cgService.saveCompetencyGoal(goal)
       .subscribe(data => {
         this.goalAddSuccess();
         this.hideModal();
@@ -123,5 +148,4 @@ export class AddIndustryGoalComponent implements OnInit, AfterViewInit {
     }
     return note;
   }
-
 }
