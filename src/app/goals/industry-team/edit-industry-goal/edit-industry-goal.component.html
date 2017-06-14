@@ -18,7 +18,7 @@
             <label for="IndustryTeamId">Industry Team:</label>
             <select class="form-control" name="IndustryTeamId" formControlName="IndustryTeamId">
               <option value="0">Please select an Industry Team</option>
-              <option *ngFor="let industryTeam of industryGoal.IndustryTeams" [value]="industryTeam.IndustryTeamId" [selected]="industryTeam.IndustryTeamId">{{industryTeam.TeamName}}</option>
+              <option *ngFor="let industryTeam of industryGoal.IndustryTeams" [value]="industryTeam.IndustryTeamId" [selected]="industryTeam.IndustryTeamId === industryGoal.IndustryTeamId">{{industryTeam.TeamName}}</option>
             </select>
             <div *ngIf="editIndustryGoalForm.get('IndustryTeamId').hasError('required') && editIndustryGoalForm.get('IndustryTeamId').touched"
               class="alert alert-danger">An industry team required</div>
