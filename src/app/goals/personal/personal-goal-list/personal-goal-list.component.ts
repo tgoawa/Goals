@@ -52,7 +52,7 @@ export class PersonalGoalListComponent implements OnInit {
       GoalCompletionPercentage: 0,
       GoalDescription: '',
       IndustryTeamId: 0,
-      IndustryTeam: null,
+      IndustryTeams: null,
       IsCompleted: false,
       Name: '',
       TeamMemberId: this.teamMember.TeamMemberId,
