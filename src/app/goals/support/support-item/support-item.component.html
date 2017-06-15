@@ -2,7 +2,7 @@
   <div class="form-group row" style="margin-top: 0">
   <div class="col-md-10">
     <textarea class="form-control" formControlName="Support" (keyup)="onValueChange()"></textarea>
-    <div *ngIf="supportItemForm.get('Support').hasError('required') && supportItemForm.get('Support').touched" class="alert alert-danger">A support item is required</div>
+    <div *ngIf="supportItemForm.get('Support').hasError('required')" class="alert alert-danger">A support item is required</div>
   </div>
   </div>
 </div>
