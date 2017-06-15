@@ -8,7 +8,7 @@
     </div>
     <div class="col-md-10">
       <textarea class="form-control" formControlName="Action" (keyup)="onValueChange()" required></textarea>
-      <div *ngIf="actionItemForm.get('Action').hasError('required') && actionItemForm.get('Action').touched" class="alert alert-danger">An action item is required</div>
+      <div *ngIf="actionItemForm.get('Action').hasError('required')" class="alert alert-danger">An action item is required</div>
     </div>
   </div>
 </div>
