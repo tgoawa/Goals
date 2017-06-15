@@ -109,11 +109,11 @@ export class IndustryTeamGoalListComponent implements OnInit {
   }
 
   showSuccessUpdate() {
-    this.toastrService.success('Goal Updated!', 'Goal was updated successfully!');
+    this.toastrService.success('', 'Goal was updated successfully!');
   }
 
   showSuccessAdd() {
-    this.toastrService.success('Goal Added!', 'New Goal was added!');
+    this.toastrService.success('', 'New Goal was added!');
   }
 
 }
