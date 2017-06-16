@@ -13,7 +13,7 @@ export class TeamMemberService {
   constructor(private http: Http) { }
 
   getTeamMember(userName: string) {
-    return this.http.get(api + '/EmployeeService/GetEmployee/' + userName)
+    return this.http.get(api + 'EmployeeService/GetEmployee/' + userName)
     .map(response => response.json(), error => console.log(error));
   }
 
