@@ -3,17 +3,16 @@ import { Http, Response} from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/operator/map';
-import { environment } from '../../../environments/environment';
-import { Question } from '../question.model';
+import { environment } from '../../../../environments/environment';
 
 const api = environment.envApi;
 @Injectable()
-export class QuestionService {
+export class MeetingsService {
 
   constructor(private http: Http) { }
 
-  getQuestions(meetingId: number) {
-    return this.http.get(api + 'QuestionService/GetQuestions/' + meetingId)
+  getMeetings(id: number) {
+    return this.http.get(api + 'MeetingService/GetMeetings/' + id)
     .map(response => response.json(), error => console.log(error));
   }
 
