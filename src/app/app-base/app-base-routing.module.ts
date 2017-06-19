@@ -18,7 +18,8 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: HomeComponent },
-      { path: 'goals', loadChildren: '../goals/goals.module#GoalsModule' }
+      { path: 'goals', loadChildren: '../goals/goals.module#GoalsModule' },
+      { path: 'meetings', loadChildren: '../meetings/meetings.module#MeetingsModule'}
     ]
   },
 ];
