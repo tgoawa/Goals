@@ -33,7 +33,7 @@ export class EditMeetingComponent implements OnInit, AfterViewInit {
   }
 
   onSubmit(formValue) {
-
+    console.log(formValue);
   }
 
   showModal() {
