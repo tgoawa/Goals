@@ -24,21 +24,21 @@
             </div>
             <div class="form-group">
               <label for="question2">{{currentMeeting.Questions[2].QuestionText}}</label>
-              <textarea name="question2" class="form-control" [(ngModel)]="currentMeeting.Questions[2].AnswerText"></textarea>
+              <textarea rows="5" name="question2" class="form-control" [(ngModel)]="currentMeeting.Questions[2].AnswerText"></textarea>
             </div>
             <div class="form-group">
               <label for="question3">{{currentMeeting.Questions[3].QuestionText}}</label>
-              <textarea name="question3" class="form-control" [(ngModel)]="currentMeeting.Questions[3].AnswerText"></textarea>
+              <textarea rows="5" name="question3" class="form-control" [(ngModel)]="currentMeeting.Questions[3].AnswerText"></textarea>
             </div>
           </div>
           <div *ngIf="teamMember.IsGreenBay" class="goal-subSection">
             <div class="form-group">
               <label for="question4">{{currentMeeting.Questions[4].QuestionText}}</label>
-              <textarea name="question4" class="form-control" [(ngModel)]="currentMeeting.Questions[4].AnswerText"></textarea>
+              <textarea rows="5" name="question4" class="form-control" [(ngModel)]="currentMeeting.Questions[4].AnswerText"></textarea>
             </div>
             <div class="form-group">
               <label for="question5">{{currentMeeting.Questions[5].QuestionText}}</label>
-              <textarea name="question5" class="form-control" [(ngModel)]="currentMeeting.Questions[5].AnswerText"></textarea>
+              <textarea rows="5" name="question5" class="form-control" [(ngModel)]="currentMeeting.Questions[5].AnswerText"></textarea>
             </div>
           </div>
           <div class="goal-subSection">
@@ -48,19 +48,19 @@
             </div>
             <div class="form-group">
               <label for="question7">{{currentMeeting.Questions[7].QuestionText}}</label>
-              <textarea name="question7" class="form-control" [(ngModel)]="currentMeeting.Questions[7].AnswerText"></textarea>
+              <textarea rows="5" name="question7" class="form-control" [(ngModel)]="currentMeeting.Questions[7].AnswerText"></textarea>
             </div>
             <div class="form-group">
               <label for="question8">{{currentMeeting.Questions[8].QuestionText}}</label>
-              <textarea name="question8" class="form-control" [(ngModel)]="currentMeeting.Questions[8].AnswerText"></textarea>
+              <textarea rows="5" name="question8" class="form-control" [(ngModel)]="currentMeeting.Questions[8].AnswerText"></textarea>
             </div>
             <div class="form-group">
               <label for="question9">{{currentMeeting.Questions[9].QuestionText}}</label>
-              <textarea name="question9" class="form-control" [(ngModel)]="currentMeeting.Questions[9].AnswerText"></textarea>
+              <textarea rows="5" name="question9" class="form-control" [(ngModel)]="currentMeeting.Questions[9].AnswerText"></textarea>
             </div>
             <div class="form-group">
               <label for="question10">{{currentMeeting.Questions[10].QuestionText}}</label>
-              <textarea name="question10" class="form-control" [(ngModel)]="currentMeeting.Questions[10].AnswerText"></textarea>
+              <textarea rows="5" name="question10" class="form-control" [(ngModel)]="currentMeeting.Questions[10].AnswerText"></textarea>
             </div>
           </div>
           <div class="goal-subSection">
@@ -70,11 +70,11 @@
             </div>
             <div class="form-group">
               <label for="question12">{{currentMeeting.Questions[12].QuestionText}}</label>
-              <textarea name="question12" class="form-control" [(ngModel)]="currentMeeting.Questions[12].AnswerText"></textarea>
+              <textarea rows="5" name="question12" class="form-control" [(ngModel)]="currentMeeting.Questions[12].AnswerText"></textarea>
             </div>
             <div class="form-group">
               <label for="question13">{{currentMeeting.Questions[13].QuestionText}}</label>
-              <textarea name="question13" class="form-control" [(ngModel)]="currentMeeting.Questions[13].AnswerText"></textarea>
+              <textarea rows="5" name="question13" class="form-control" [(ngModel)]="currentMeeting.Questions[13].AnswerText"></textarea>
             </div>
             <div class="form-group">
               <h4>{{currentMeeting.Questions[14].QuestionText}}</h4>
@@ -182,7 +182,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" (click)="hideModal()">Cancel</button>
-          <button class="btn btn-success" type="submit" [disabled]="!editMeeting.valname">Submit</button>
+          <button class="btn btn-success" type="submit" [disabled]="!editMeeting.valid">Submit</button>
         </div>
       </form>
     </div>
