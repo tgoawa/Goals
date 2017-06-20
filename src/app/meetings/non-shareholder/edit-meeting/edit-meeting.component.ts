@@ -19,7 +19,7 @@ export class EditMeetingComponent implements OnInit, AfterViewInit {
   constructor() { }
 
   ngOnInit() {
-    
+    this.replaceLineBreaks();
   }
 
   ngAfterViewInit() {
@@ -41,6 +41,14 @@ export class EditMeetingComponent implements OnInit, AfterViewInit {
 
   modalIsClosed() {
     this.modalClosed.emit(true);
+  }
+
+  replaceLineBreaks() {
+    for (let index = 0; index < this.currentMeeting.Questions.length; index ++ ) {
+      if (this.currentMeeting.Questions[index].AnswerText !== null) {
+        this.currentMeeting.Questions[index].AnswerText = this.currentMeeting.Questions[index].AnswerText.split('<br>').join('\n');
+      }
+    }
   }
 
 }
