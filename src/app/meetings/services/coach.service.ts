@@ -4,16 +4,16 @@ import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/operator/map';
 import { environment } from '../../../environments/environment';
-import { Question } from '../question.model';
+import { TeamMember } from '../../teamMember';
 
 const api = environment.envApi;
 @Injectable()
-export class QuestionService {
+export class CoachService {
 
   constructor(private http: Http) { }
 
-  getQuestions(meetingId: number) {
-    return this.http.get(api + 'QuestionService/GetQuestions/' + meetingId)
+  getCoaches() {
+    return this.http.get(api + 'EmployeeService/GetCoaches/')
     .map(response => response.json(), error => console.log(error));
   }
 }

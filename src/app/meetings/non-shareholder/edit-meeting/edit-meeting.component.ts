@@ -3,6 +3,7 @@ import { Component, OnInit, AfterViewInit, Input, ViewChild, EventEmitter, Outpu
 import { ModalDirective } from 'ngx-bootstrap/modal';
 
 import { MeetingsService } from '../services/meetings.service';
+import { CoachService } from '../../services/coach.service';
 import { Meeting } from '../model/meeting.model';
 import { TeamMember } from '../../../teamMember';
 
@@ -16,9 +17,14 @@ export class EditMeetingComponent implements OnInit, AfterViewInit {
   @Input('currentMeeting') currentMeeting: Meeting;
   @Input('teamMember') teamMember: TeamMember;
   @Output() modalClosed: EventEmitter<boolean> = new EventEmitter<boolean>();
-  constructor() { }
+
+  coachList: TeamMember[];
+  selectedCoach: TeamMember;
+
+  constructor(private csService: CoachService) { }
 
   ngOnInit() {
+    this.getCoaches();
     this.replaceLineBreaks();
   }
 
@@ -49,6 +55,16 @@ export class EditMeetingComponent implements OnInit, AfterViewInit {
         this.currentMeeting.Questions[index].AnswerText = this.currentMeeting.Questions[index].AnswerText.split('<br>').join('\n');
       }
     }
+  }
+
+  getCoaches() {
+    this.csService.getCoaches()
+    .subscribe(data => {
+      this.coachList = data;
+    }, error => {
+      console.log(error);
+      // TODO: Add error toast
+    });
   }
 
 }

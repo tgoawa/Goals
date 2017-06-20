@@ -11,6 +11,7 @@ import { QuestionService } from '../meetings/services/question.service';
 import { MeetingsService } from '../meetings/non-shareholder/services/meetings.service';
 import { MeetingListComponent } from './meeting-list/meeting-list.component';
 import { EditMeetingComponent } from './non-shareholder/edit-meeting/edit-meeting.component';
+import { CoachService } from '../meetings/services/coach.service';
 
 @NgModule({
   imports: [
@@ -21,6 +22,6 @@ import { EditMeetingComponent } from './non-shareholder/edit-meeting/edit-meetin
     TypeaheadModule.forRoot(),
   ],
   declarations: [MeetingsComponent, MeetingsListComponent, MeetingListComponent, EditMeetingComponent],
-  providers: [QuestionService, MeetingsService]
+  providers: [QuestionService, MeetingsService, CoachService]
 })
 export class MeetingsModule { }

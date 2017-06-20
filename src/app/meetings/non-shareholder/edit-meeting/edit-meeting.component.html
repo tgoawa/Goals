@@ -9,11 +9,10 @@
       </div>
       <form novalidate #editMeeting="ngForm" (ngSubmit)="onSubmit(editMeeting)">
         <div class="modal-body">
-          <!--<div class="form-group col-md-4">
+          <div class="form-group">
             <label for="Coach">Select Coach:</label>
-            <input name="Coach" type="text" class="form-control">
-            <div class="alert alert-danger">A coach is required</div>
-          </div>-->
+            <input name="Coach" [typeahead]="coachList" [(ngModel)]="selectedCoach" typeaheadOptionsLimit="8" typeaheadOptionField="LastFirstName" class="form-control">
+          </div>
           <div class="form-group">
             <!-- Team Member please complete -->
             <h2>{{currentMeeting.Questions[0].QuestionText}}</h2>
