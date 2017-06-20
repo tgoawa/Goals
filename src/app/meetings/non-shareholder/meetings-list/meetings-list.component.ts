@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 import { MeetingsService } from '../services/meetings.service';
 import { TeamMember, TeamMemberService } from '../../../teamMember';
@@ -12,8 +13,13 @@ import { Meeting } from '../model/meeting.model';
 export class MeetingsListComponent implements OnInit {
 
   meetingList: Meeting[];
-  private teamMember: TeamMember;
-  constructor(private mService: MeetingsService, private tmService: TeamMemberService) { }
+  newMeeting: Meeting;
+  meetingToEdit: Meeting;
+  isLoading = false;
+
+  teamMember: TeamMember;
+
+  constructor(private mService: MeetingsService, private tmService: TeamMemberService, private toastrService: ToastrService) { }
 
   ngOnInit() {
     this.teamMember = this.tmService.teamMember;
@@ -28,6 +34,31 @@ export class MeetingsListComponent implements OnInit {
     }, error => {
       console.log(error);
     });
+  }
+
+  onEdit(meeting: Meeting) {
+    this.meetingToEdit = meeting;
+  }
+
+  clearMeetingToEdit() {
+    this.meetingToEdit = undefined;
+  }
+
+  refreshListOnEdit() {
+    this.showSuccessUpdate();
+    this.getMeetings();
+  }
+
+  onAdd() {
+
+  }
+
+    showSuccessUpdate() {
+    this.toastrService.success('', 'Meeting was updated successfully!');
+  }
+
+  showSuccessAdd() {
+    this.toastrService.success('', 'New Meeting was added!');
   }
 
 }

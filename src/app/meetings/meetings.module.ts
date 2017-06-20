@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
-import { ModalModule, CollapseModule } from 'ngx-bootstrap';
+import { ModalModule, TypeaheadModule } from 'ngx-bootstrap';
 
 import { MeetingsRoutingModule } from './meetings-routing.module';
 import { MeetingsComponent } from './meetings.component';
@@ -9,14 +10,17 @@ import { MeetingsListComponent } from './non-shareholder/meetings-list/meetings-
 import { QuestionService } from '../meetings/services/question.service';
 import { MeetingsService } from '../meetings/non-shareholder/services/meetings.service';
 import { MeetingListComponent } from './meeting-list/meeting-list.component';
+import { EditMeetingComponent } from './non-shareholder/edit-meeting/edit-meeting.component';
 
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     MeetingsRoutingModule,
-    CollapseModule.forRoot(),
+    ModalModule.forRoot(),
+    TypeaheadModule.forRoot(),
   ],
-  declarations: [MeetingsComponent, MeetingsListComponent, MeetingListComponent],
+  declarations: [MeetingsComponent, MeetingsListComponent, MeetingListComponent, EditMeetingComponent],
   providers: [QuestionService, MeetingsService]
 })
 export class MeetingsModule { }
