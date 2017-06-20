@@ -1,13 +1,13 @@
-<div bsModal #editModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hnameden="true">
+<div bsModal #editModal="bs-modal" [config]="{backdrop: 'static'}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <h2 class="modal-title pull-left">Edit Current Meeting</h2>
         <button type="button" class="close pull-right" (click)="hideModal()" aria-label="Close">
-          <span aria-hnameden="true">&times;</span>
+          <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form novalnameate #editMeeting="ngForm" (ngSubmit)="onSubmit(editMeeting)">
+      <form novalidate #editMeeting="ngForm" (ngSubmit)="onSubmit(editMeeting)">
         <div class="modal-body">
           <!--<div class="form-group col-md-4">
             <label for="Coach">Select Coach:</label>
