@@ -18,6 +18,7 @@ export class MeetingsListComponent implements OnInit {
   questionList: Question[];
   newMeeting: Meeting;
   meetingToEdit: Meeting;
+  readMeeting: Meeting;
   isLoading = false;
 
   teamMember: TeamMember;
@@ -59,12 +60,20 @@ export class MeetingsListComponent implements OnInit {
     this.meetingToEdit = meeting;
   }
 
+  onRead(meeting: Meeting) {
+    this.readMeeting = meeting;
+  }
+
   clearMeetingToEdit() {
     this.meetingToEdit = undefined;
   }
 
   clearNewMeeting() {
     this.newMeeting = undefined;
+  }
+
+  clearReadMeeting() {
+    this.readMeeting = undefined;
   }
 
   refreshListOnEdit() {

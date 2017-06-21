@@ -13,6 +13,7 @@ import { MeetingListComponent } from './meeting-list/meeting-list.component';
 import { EditMeetingComponent } from './non-shareholder/edit-meeting/edit-meeting.component';
 import { CoachService } from '../meetings/non-shareholder/services/coach.service';
 import { AddMeetingComponent } from './non-shareholder/add-meeting/add-meeting.component';
+import { ReadOnlyMeetingComponent } from './non-shareholder/read-only-meeting/read-only-meeting.component';
 
 @NgModule({
   imports: [
@@ -23,7 +24,7 @@ import { AddMeetingComponent } from './non-shareholder/add-meeting/add-meeting.c
     ModalModule.forRoot(),
     TypeaheadModule.forRoot(),
   ],
-  declarations: [MeetingsComponent, MeetingsListComponent, MeetingListComponent, EditMeetingComponent, AddMeetingComponent],
+  declarations: [MeetingsComponent, MeetingsListComponent, MeetingListComponent, EditMeetingComponent, AddMeetingComponent, ReadOnlyMeetingComponent],
   providers: [QuestionService, MeetingsService, CoachService]
 })
 export class MeetingsModule { }

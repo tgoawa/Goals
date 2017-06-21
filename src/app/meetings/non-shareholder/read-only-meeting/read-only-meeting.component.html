@@ -1,0 +1,254 @@
+<div bsModal #readOnlyModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title pull-left">View Meeting</h2>
+        <button type="button" class="close pull-right" (click)="hideModal()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-6">
+            <h2>One to One Meeting History</h2>
+          </div>
+        </div>
+        <div class="goal-subSection">
+          <div class="row">
+            <div class="col-md-3">
+              Coach's Name:
+            </div>
+            <div class="col-md-3">
+              {{meeting.CoachName}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3">
+              Date Entered:
+            </div>
+            <div class="col-md-3">
+              {{meeting.DisplayDateCreated}}
+            </div>
+          </div>
+        </div>
+        <div class="goal-subSection">
+          <div class="row">
+            <div class="col-md-6">
+              <h3>{{meeting.Questions[1].QuestionText}}</h3>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <h4>{{meeting.Questions[2].QuestionText}}</h4>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-10 offset-md-2" [innerHTML]="meeting.Questions[2].AnswerText"></div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <h4>{{meeting.Questions[3].QuestionText}}</h4>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-10 offset-md-2" [innerHTML]="meeting.Questions[3].AnswerText"></div>
+          </div>
+        </div>
+        <div *ngIf="teamMember.IsGreenBay" class="goal-subSection">
+          <div class="row">
+            <div class="col-md-6">
+              {{meeting.Questions[4].QuestionText}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-10 offset-md-2" [innerHTML]="meeting.Questions[4].AnswerText"></div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              {{meeting.Questions[5].QuestionText}}
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-10 offset-md-2" [innerHTML]="meeting.Questions[5].AnswerText"></div>
+        </div>
+        <div class="goal-subSection">
+          <div class="row">
+            <div class="col-md-6">
+              {{meeting.Questions[6].QuestionText}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-10 offset-md-2" [innerHTML]="meeting.Questions[6].AnswerText"></div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              {{meeting.Questions[7].QuestionText}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-10 offset-md-2" [innerHTML]="meeting.Questions[7].AnswerText"></div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              {{meeting.Questions[8].QuestionText}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-10 offset-md-2" [innerHTML]="meeting.Questions[8].AnswerText"></div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              {{meeting.Questions[9].QuestionText}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-10 offset-md-2" [innerHTML]="meeting.Questions[9].AnswerText"></div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              {{meeting.Questions[10].QuestionText}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-10 offset-md-2" [innerHTML]="meeting.Questions[10].AnswerText"></div>
+          </div>
+        </div>
+        <div class="goal-subSection">
+          <div class="row">
+            <div class="col-md-6">
+              <h3>{{meeting.Questions[11].QuestionText}}</h3>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              {{meeting.Questions[12].QuestionText}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-10 offset-md-2" [innerHTML]="meeting.Questions[12].AnswerText"></div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              {{meeting.Questions[13].QuestionText}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-10 offset-md-2" [innerHTML]="meeting.Questions[13].AnswerText"></div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <h4>{{meeting.Questions[14].QuestionText}}</h4>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="teamMember.IsGreenBay" class="goal-subSection">
+          <div class="row">
+            <div class="col-md-6">
+              <h4>{{meeting.Questions[15]}}</h4>
+              <ul>
+                <li>{{meeting.Questions[16].QuestionText}}</li>
+                <li>{{meeting.Questions[17].QuestionText}}</li>
+                <li>{{meeting.Questions[18].QuestionText}}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="teamMember.IsChargable">
+          <div class="goal-subSection">
+            <div class="row">
+              <div class="col-md-6">
+                <h3>{{meeting.Questions[19].QuestionText}}</h3>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3">
+                {{meeting.Questions[20].QuestionText}}
+              </div>
+              <div class="col-md-4">
+                {{meeting.Questions[20].AnswerText}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3">
+                {{meeting.Questions[21].QuestionText}}
+              </div>
+              <div class="col-md-4">
+                {{meeting.Questions[21].AnswerText}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3">
+                {{meeting.Questions[22].QuestionText}}
+              </div>
+              <div class="col-md-4">
+                {{meeting.Questions[22].AnswerText}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3">
+                {{meeting.Questions[23].QuestionText}}
+              </div>
+              <div class="col-md-4">
+                {{meeting.Questions[23].AnswerText}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3">
+                {{meeting.Questions[24].QuestionText}}
+              </div>
+              <div class="col-md-4">
+                {{meeting.Questions[24].AnswerText}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3">
+                {{meeting.Questions[25].QuestionText}}
+              </div>
+              <div class="col-md-4">
+                {{meeting.Questions[25].AnswerText}}
+              </div>
+            </div>
+          </div>
+          <div class="goal-subSection">
+            <div class="row">
+              <div class="col-md-12">
+                <h3>{{meeting.Questions[26].QuestionText}}</h3>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <h4>{{meeting.Questions[27].QuestionText}}</h4>
+              </div>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" name="question28" [(ngModel)]="meeting.Questions[28].AnswerText" readonly>
+                    {{meeting.Questions[28].QuestionText}}
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" name="question29" [(ngModel)]="meeting.Questions[29].AnswerText" readonly>
+                    {{meeting.Questions[29].QuestionText}}
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" name="question30" [(ngModel)]="meeting.Questions[30].AnswerText" readonly>
+                    {{meeting.Questions[30].QuestionText}}
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" name="question31" [(ngModel)]="meeting.Questions[31].AnswerText" readonly>
+                    {{meeting.Questions[31].QuestionText}}
+                </label>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
