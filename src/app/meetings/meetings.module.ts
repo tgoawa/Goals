@@ -12,6 +12,7 @@ import { MeetingsService } from '../meetings/non-shareholder/services/meetings.s
 import { MeetingListComponent } from './meeting-list/meeting-list.component';
 import { EditMeetingComponent } from './non-shareholder/edit-meeting/edit-meeting.component';
 import { CoachService } from '../meetings/non-shareholder/services/coach.service';
+import { AddMeetingComponent } from './non-shareholder/add-meeting/add-meeting.component';
 
 @NgModule({
   imports: [
@@ -22,7 +23,7 @@ import { CoachService } from '../meetings/non-shareholder/services/coach.service
     ModalModule.forRoot(),
     TypeaheadModule.forRoot(),
   ],
-  declarations: [MeetingsComponent, MeetingsListComponent, MeetingListComponent, EditMeetingComponent],
+  declarations: [MeetingsComponent, MeetingsListComponent, MeetingListComponent, EditMeetingComponent, AddMeetingComponent],
   providers: [QuestionService, MeetingsService, CoachService]
 })
 export class MeetingsModule { }

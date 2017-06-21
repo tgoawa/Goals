@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { QuestionService } from '../services/question.service';
 import { MeetingsService } from '../services/meetings.service';
 import { TeamMember, TeamMemberService } from '../../../teamMember';
+import { Question } from '../model/question.model';
 import { Meeting } from '../model/meeting.model';
 
 @Component({
@@ -14,6 +15,7 @@ import { Meeting } from '../model/meeting.model';
 export class MeetingsListComponent implements OnInit {
 
   meetingList: Meeting[];
+  questionList: Question[];
   newMeeting: Meeting;
   meetingToEdit: Meeting;
   isLoading = false;
@@ -45,9 +47,10 @@ export class MeetingsListComponent implements OnInit {
     this.qsService.getQuestions(0)
     .subscribe(data => {
       console.log(data);
+      this.questionList = data;
     }, error => {
       console.log(error);
-    })
+    });
   }
 
   onEdit(meeting: Meeting) {
@@ -64,7 +67,10 @@ export class MeetingsListComponent implements OnInit {
   }
 
   onAdd() {
-
+    this.newMeeting.CoachId = 0;
+    this.newMeeting.MeetingId = 0;
+    this.newMeeting.TeamMemberId = this.teamMember.TeamMemberId;
+    this.newMeeting.Questions = this.questionList;
   }
 
     showSuccessUpdate() {
