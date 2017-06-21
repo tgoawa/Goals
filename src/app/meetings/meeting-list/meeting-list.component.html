@@ -11,7 +11,7 @@
       <div class="card-block">
         <p class="card-text">
           <span class="faux-link" *ngIf="index === 0" (click)="onEdit(meeting)">Edit Meeting Details</span>
-          <span class="faux-link" *ngIf="index != 0">Show Meeting Details</span>
+          <span class="faux-link" *ngIf="index != 0" (click)="onViewOldMeeting(meeting)">Show Meeting Details</span>
         </p>
         </div>
       </div>

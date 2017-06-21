@@ -10,6 +10,7 @@ export class MeetingListComponent implements OnInit {
   @Input('meeting') meeting: Meeting;
   @Input('index') index: Meeting;
   @Output() meetingToEdit: EventEmitter<Meeting> = new EventEmitter<Meeting>();
+  @Output() meetingToView: EventEmitter<Meeting> = new EventEmitter<Meeting>();
   constructor() { }
 
   ngOnInit() {
@@ -17,6 +18,10 @@ export class MeetingListComponent implements OnInit {
 
   onEdit(meeting: Meeting) {
     this.meetingToEdit.emit(meeting);
+  }
+
+  onViewOldMeeting(meeting: Meeting) {
+    this.meetingToView.emit(meeting);
   }
 
 }
