@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { ModalModule, TypeaheadModule } from 'ngx-bootstrap';
+import { ModalModule, TypeaheadModule, CollapseModule } from 'ngx-bootstrap';
 
 import { MeetingsRoutingModule } from './meetings-routing.module';
 import { MeetingsComponent } from './meetings.component';
@@ -18,6 +18,7 @@ import { CoachService } from '../meetings/services/coach.service';
     CommonModule,
     FormsModule,
     MeetingsRoutingModule,
+    CollapseModule.forRoot(),
     ModalModule.forRoot(),
     TypeaheadModule.forRoot(),
   ],

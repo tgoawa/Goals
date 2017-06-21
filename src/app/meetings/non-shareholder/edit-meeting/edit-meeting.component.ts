@@ -14,12 +14,16 @@ import { TeamMember } from '../../../teamMember';
 })
 export class EditMeetingComponent implements OnInit, AfterViewInit {
   @ViewChild('editModal') editModal: ModalDirective;
+  @Input('previousMeeting') previousMeeting: Meeting;
   @Input('currentMeeting') currentMeeting: Meeting;
   @Input('teamMember') teamMember: TeamMember;
   @Output() modalClosed: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() updateSuccess: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   coachList: TeamMember[];
+  priorityOneIsCollapsed = true;
+  priorityTwoIsCollapsed = true;
+  priorityThreeIsCollapsed = true;
 
   constructor(private csService: CoachService, private msService: MeetingsService) { }
 

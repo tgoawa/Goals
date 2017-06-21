@@ -18,4 +18,4 @@
 <div *ngFor="let meeting of meetingList; let i = index">
   <app-meeting-list [meeting]="meeting" [index]="i" (meetingToEdit)="onEdit($event)"></app-meeting-list>
 </div>
-<app-edit-meeting *ngIf="meetingToEdit" [currentMeeting]="meetingToEdit" [teamMember]="teamMember" (modalClosed)="clearMeetingToEdit()" (updateSuccess)="refreshListOnEdit()"></app-edit-meeting>
+<app-edit-meeting *ngIf="meetingToEdit" [previousMeeting]="meetingList[1]" [currentMeeting]="meetingToEdit" [teamMember]="teamMember" (modalClosed)="clearMeetingToEdit()" (updateSuccess)="refreshListOnEdit()"></app-edit-meeting>

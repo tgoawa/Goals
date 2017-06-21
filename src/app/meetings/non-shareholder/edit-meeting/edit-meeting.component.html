@@ -53,13 +53,37 @@
             <div class="form-group">
               <h3>{{currentMeeting.Questions[6].QuestionText}}</h3>
             </div>
+            <div class="row">
+              <div class="col-md-4">
+              <span class="faux-link" (click)="priorityOneIsCollapsed = !priorityOneIsCollapsed">Toggle previous priority</span>
+              </div>
+            </div>
+              <div class="row">
+              <div class="col-md-12" [collapse]="priorityOneIsCollapsed" [innerHTML]="previousMeeting.Questions[7].AnswerText"></div> 
+            </div>
             <div class="form-group">
               <label for="question7">{{currentMeeting.Questions[7].QuestionText}}</label>
               <textarea rows="5" name="question7" class="form-control" [(ngModel)]="currentMeeting.Questions[7].AnswerText"></textarea>
             </div>
+            <div class="row">
+              <div class="col-md-4">
+              <span class="faux-link" (click)="priorityTwoIsCollapsed = !priorityTwoIsCollapsed">Toggle previous priority</span>
+              </div>
+            </div>
+              <div class="row">
+              <div class="col-md-12" [collapse]="priorityTwoIsCollapsed" [innerHTML]="previousMeeting.Questions[8].AnswerText"></div> 
+            </div>
             <div class="form-group">
               <label for="question8">{{currentMeeting.Questions[8].QuestionText}}</label>
               <textarea rows="5" name="question8" class="form-control" [(ngModel)]="currentMeeting.Questions[8].AnswerText"></textarea>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+              <span class="faux-link" (click)="priorityThreeIsCollapsed = !priorityThreeIsCollapsed">Toggle previous priority</span>
+              </div>
+            </div>
+              <div class="row">
+              <div class="col-md-12" [collapse]="priorityThreeIsCollapsed" [innerHTML]="previousMeeting.Questions[9].AnswerText"></div> 
             </div>
             <div class="form-group">
               <label for="question9">{{currentMeeting.Questions[9].QuestionText}}</label>
