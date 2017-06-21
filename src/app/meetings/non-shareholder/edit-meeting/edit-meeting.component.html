@@ -7,12 +7,20 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form novalidate #editMeeting="ngForm" (ngSubmit)="onSubmit(editMeeting.value)">
-        <div class="modal-body">
-          <div class="form-group">
+      <div class="modal-body">
+        <div class="row">
+        <div class="col-md-3">
             <label for="Coach">Select Coach:</label>
-            <input name="Coach" [typeahead]="coachList" [(ngModel)]="currentMeeting.CoachName" typeaheadOptionsLimit="8" typeaheadOptionField="LastFirstName" class="form-control">
+        </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <input name="Coach" [typeahead]="coachList" [(ngModel)]="currentMeeting.CoachLastFirstName" typeaheadOptionsLimit="8" typeaheadOptionField="LastFirstName" class="form-control" (change)="mapCoachIdToMeeting()">
           </div>
+        </div>
+      </div>
+      <form novalidate #editMeeting="ngForm" (ngSubmit)="onSubmit()">
+        <div class="modal-body">
           <div class="form-group">
             <!-- Team Member please complete -->
             <h2>{{currentMeeting.Questions[0].QuestionText}}</h2>

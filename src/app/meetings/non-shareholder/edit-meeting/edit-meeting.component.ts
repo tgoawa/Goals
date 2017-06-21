@@ -21,7 +21,7 @@ export class EditMeetingComponent implements OnInit, AfterViewInit {
   coachList: TeamMember[];
   selectedCoach: TeamMember;
 
-  constructor(private csService: CoachService) { }
+  constructor(private csService: CoachService, private msService: MeetingsService) { }
 
   ngOnInit() {
     this.getCoaches();
@@ -32,8 +32,8 @@ export class EditMeetingComponent implements OnInit, AfterViewInit {
     this.showModal();
   }
 
-  onSubmit(formValue) {
-    console.log(formValue);
+  onSubmit() {
+    console.log(this.currentMeeting);
   }
 
   showModal() {
@@ -64,6 +64,24 @@ export class EditMeetingComponent implements OnInit, AfterViewInit {
     }, error => {
       console.log(error);
       // TODO: Add error toast
+    });
+  }
+
+  mapCoachIdToMeeting() {
+    for (let index = 0; index < this.coachList.length; index ++) {
+      if (this.currentMeeting.CoachLastFirstName === this.coachList[index].LastFirstName) {
+        this.currentMeeting.CoachId = this.coachList[index].TeamMemberId;
+      }
+      return false;
+    }
+  }
+
+  saveMeeting() {
+    this.msService.saveMeeting(this.currentMeeting)
+    .subscribe(data => {
+
+    }, error => {
+      console.log(error);
     });
   }
 
