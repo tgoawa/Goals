@@ -5,6 +5,7 @@ import { ModalDirective } from 'ngx-bootstrap/modal';
 import { MeetingsService } from '../services/meetings.service';
 import { CoachService } from '../services/coach.service';
 import { Meeting } from '../model/meeting.model';
+import { Question } from '../model/question.model';
 import { TeamMember } from '../../../teamMember';
 
 @Component({
@@ -95,4 +96,7 @@ export class EditMeetingComponent implements OnInit, AfterViewInit {
     this.updateSuccess.emit(true);
   }
 
+  setIsDirty(question: Question) {
+    question.IsDirty = true;
+  }
 }

@@ -1,3 +1,221 @@
-<p>
-  add-meeting works!
-</p>
+<div bsModal #addModal="bs-modal" [config]="{backdrop: 'static'}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title pull-left">Add New Meeting</h2>
+        <button type="button" class="close pull-right" (click)="hideModal()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+        <div class="col-md-3">
+            <label for="Coach">Select Coach:</label>
+        </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <input name="Coach" [typeahead]="coachList" [(ngModel)]="CoachLastFirstName" typeaheadOptionsLimit="8" typeaheadOptionField="LastFirstName" class="form-control" (typeaheadOnSelect)="mapCoachIdToMeeting()">
+          </div>
+        </div>
+      </div>
+      <form novalidate #editMeeting="ngForm" (ngSubmit)="onSubmit()">
+        <div class="modal-body">
+          <div class="form-group">
+            <!-- Team Member please complete -->
+            <h2>{{currentMeeting.Questions[0].QuestionText}}</h2>
+          </div>
+          <div class="goal-subSection">
+            <div class="form-group">
+              <h3>{{currentMeeting.Questions[1].QuestionText}}</h3>
+            </div>
+            <div class="form-group">
+              <label for="question2">{{currentMeeting.Questions[2].QuestionText}}</label>
+              <textarea rows="5" name="question2" class="form-control" [(ngModel)]="currentMeeting.Questions[2].AnswerText"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="question3">{{currentMeeting.Questions[3].QuestionText}}</label>
+              <textarea rows="5" name="question3" class="form-control" [(ngModel)]="currentMeeting.Questions[3].AnswerText"></textarea>
+            </div>
+          </div>
+          <div *ngIf="teamMember.IsGreenBay" class="goal-subSection">
+            <div class="form-group">
+              <label for="question4">{{currentMeeting.Questions[4].QuestionText}}</label>
+              <textarea rows="5" name="question4" class="form-control" [(ngModel)]="currentMeeting.Questions[4].AnswerText"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="question5">{{currentMeeting.Questions[5].QuestionText}}</label>
+              <textarea rows="5" name="question5" class="form-control" [(ngModel)]="currentMeeting.Questions[5].AnswerText"></textarea>
+            </div>
+          </div>
+          <div class="goal-subSection">
+            <!-- Priorities -->
+            <div class="form-group">
+              <h3>{{currentMeeting.Questions[6].QuestionText}}</h3>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+              <span class="faux-link" (click)="priorityOneIsCollapsed = !priorityOneIsCollapsed">Toggle previous priority</span>
+              </div>
+            </div>
+              <div class="row">
+              <div class="col-md-12" [collapse]="priorityOneIsCollapsed" [innerHTML]="previousMeeting.Questions[7].AnswerText"></div> 
+            </div>
+            <div class="form-group">
+              <label for="question7">{{currentMeeting.Questions[7].QuestionText}}</label>
+              <textarea rows="5" name="question7" class="form-control" [(ngModel)]="currentMeeting.Questions[7].AnswerText"></textarea>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+              <span class="faux-link" (click)="priorityTwoIsCollapsed = !priorityTwoIsCollapsed">Toggle previous priority</span>
+              </div>
+            </div>
+              <div class="row">
+              <div class="col-md-12" [collapse]="priorityTwoIsCollapsed" [innerHTML]="previousMeeting.Questions[8].AnswerText"></div> 
+            </div>
+            <div class="form-group">
+              <label for="question8">{{currentMeeting.Questions[8].QuestionText}}</label>
+              <textarea rows="5" name="question8" class="form-control" [(ngModel)]="currentMeeting.Questions[8].AnswerText"></textarea>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+              <span class="faux-link" (click)="priorityThreeIsCollapsed = !priorityThreeIsCollapsed">Toggle previous priority</span>
+              </div>
+            </div>
+              <div class="row">
+              <div class="col-md-12" [collapse]="priorityThreeIsCollapsed" [innerHTML]="previousMeeting.Questions[9].AnswerText"></div> 
+            </div>
+            <div class="form-group">
+              <label for="question9">{{currentMeeting.Questions[9].QuestionText}}</label>
+              <textarea rows="5" name="question9" class="form-control" [(ngModel)]="currentMeeting.Questions[9].AnswerText"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="question10">{{currentMeeting.Questions[10].QuestionText}}</label>
+              <textarea rows="5" name="question10" class="form-control" [(ngModel)]="currentMeeting.Questions[10].AnswerText"></textarea>
+            </div>
+          </div>
+          <div class="goal-subSection">
+            <!-- As your coach -->
+            <div class="form-group">
+              <h3>{{currentMeeting.Questions[11].QuestionText}}</h3>
+            </div>
+            <div class="form-group">
+              <label for="question12">{{currentMeeting.Questions[12].QuestionText}}</label>
+              <textarea rows="5" name="question12" class="form-control" [(ngModel)]="currentMeeting.Questions[12].AnswerText"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="question13">{{currentMeeting.Questions[13].QuestionText}}</label>
+              <textarea rows="5" name="question13" class="form-control" [(ngModel)]="currentMeeting.Questions[13].AnswerText"></textarea>
+            </div>
+            <div class="form-group">
+              <h4>{{currentMeeting.Questions[14].QuestionText}}</h4>
+            </div>
+          </div>
+          <div *ngIf="teamMember.IsGreenBay" class="goal-subSection">
+            <!-- Reminders -->
+            <div class="form-group">
+              <h4>{{currentMeeting.Questions[15].QuestionText}}</h4>
+              <ul>
+                <li>{{currentMeeting.Questions[16].QuestionText}}</li>
+                <li>{{currentMeeting.Questions[17].QuestionText}}</li>
+                <li>{{currentMeeting.Questions[18].QuestionText}}</li>
+              </ul>
+            </div>
+          </div>
+          <div *ngIf="teamMember.IsChargable">
+            <div class="goal-subSection">
+              <div class="form-group">
+                <h3>{{currentMeeting.Questions[19].QuestionText}}</h3>
+                <span>(type whole numbers)</span>
+              </div>
+              <div class="form-group row">
+                <label for="question20" class="col-3 col-form-label">{{currentMeeting.Questions[20].QuestionText}}</label>
+                <div class="col-md-4">
+                  <input class="form-control" type="number" name="question20" [(ngModel)]="currentMeeting.Questions[20].AnswerText"
+                    required>
+                  <!--<div *ngIf="editMeeting.question20.errors?.required" class="alert alert-danger">This field is required</div>-->
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="question21" class="col-3 col-form-label">{{currentMeeting.Questions[21].QuestionText}}</label>
+                <div class="col-md-4">
+                  <input class="form-control" type="number" name="question21" [(ngModel)]="currentMeeting.Questions[21].AnswerText"
+                    required>
+                  <!--<div *ngIf="editMeeting.question21.errors?.required" class="alert alert-danger">This field is required</div>-->
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="question22" class="col-3 col-form-label">{{currentMeeting.Questions[22].QuestionText}}</label>
+                <div class="col-md-4">
+                  <input class="form-control" type="number" name="question22" [(ngModel)]="currentMeeting.Questions[22].AnswerText"
+                    required>
+                  <!--<div *ngIf="editMeeting.question22.errors?.required" class="alert alert-danger">This field is required</div>-->
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="question23" class="col-3 col-form-label">{{currentMeeting.Questions[23].QuestionText}}</label>
+                <div class="col-md-4">
+                  <input class="form-control" type="number" name="question23" [(ngModel)]="currentMeeting.Questions[23].AnswerText"
+                    required>
+                  <!--<div *ngIf="editMeeting.question23.errors?.required" class="alert alert-danger">This field is required</div>-->
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="question24" class="col-3 col-form-label">{{currentMeeting.Questions[24].QuestionText}}</label>
+                <div class="col-md-4">
+                  <input class="form-control" type="number" name="question24" [(ngModel)]="currentMeeting.Questions[24].AnswerText"
+                    required>
+                  <!--<div *ngIf="editMeeting.question24.errors?.required" class="alert alert-danger">This field is required</div>-->
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="question25" class="col-3 col-form-label">{{currentMeeting.Questions[25].QuestionText}}</label>
+                <div class="col-md-4">
+                  <input class="form-control" type="number" name="question25" [(ngModel)]="currentMeeting.Questions[25].AnswerText"
+                    required>
+                  <!--<div *ngIf="editMeeting.question25.errors?.required" class="alert alert-danger">This field is required</div>-->
+                </div>
+              </div>
+            </div>
+            <div class="goal-subSection">
+              <div class="form-group">
+                <h3>{{currentMeeting.Questions[26].QuestionText}}</h3>
+              </div>
+              <div class="form-group">
+                <h4>{{currentMeeting.Questions[27].QuestionText}}</h4>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" name="question28" [(ngModel)]="currentMeeting.Questions[28].AnswerText">
+                    {{currentMeeting.Questions[28].QuestionText}}
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" name="question29" [(ngModel)]="currentMeeting.Questions[29].AnswerText">
+                    {{currentMeeting.Questions[29].QuestionText}}
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" name="question30" [(ngModel)]="currentMeeting.Questions[30].AnswerText">
+                    {{currentMeeting.Questions[30].QuestionText}}
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" name="question31" [(ngModel)]="currentMeeting.Questions[31].AnswerText">
+                    {{currentMeeting.Questions[31].QuestionText}}
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="hideModal()">Cancel</button>
+          <button class="btn btn-success" type="submit" [disabled]="!editMeeting.valid">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

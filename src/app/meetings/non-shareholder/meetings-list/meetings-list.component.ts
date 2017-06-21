@@ -61,14 +61,23 @@ export class MeetingsListComponent implements OnInit {
     this.meetingToEdit = undefined;
   }
 
+  clearNewMeeting() {
+    this.newMeeting = undefined;
+  }
+
   refreshListOnEdit() {
     this.showSuccessUpdate();
     this.getMeetings();
   }
 
+  refreshListOnAdd() {
+    this.showSuccessAdd();
+    this.getMeetings();
+  }
+
   onAdd() {
+    this.newMeeting = new Meeting;
     this.newMeeting.CoachId = 0;
-    this.newMeeting.MeetingId = 0;
     this.newMeeting.TeamMemberId = this.teamMember.TeamMemberId;
     this.newMeeting.Questions = this.questionList;
   }
