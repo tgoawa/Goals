@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 
+import { QuestionService } from '../services/question.service';
 import { MeetingsService } from '../services/meetings.service';
 import { TeamMember, TeamMemberService } from '../../../teamMember';
 import { Meeting } from '../model/meeting.model';
@@ -19,11 +20,15 @@ export class MeetingsListComponent implements OnInit {
 
   teamMember: TeamMember;
 
-  constructor(private mService: MeetingsService, private tmService: TeamMemberService, private toastrService: ToastrService) { }
+  constructor(private mService: MeetingsService,
+  private tmService: TeamMemberService,
+  private qsService: QuestionService,
+  private toastrService: ToastrService) { }
 
   ngOnInit() {
     this.teamMember = this.tmService.teamMember;
     this.getMeetings();
+    this.getQuestions();
   }
 
   getMeetings() {
@@ -34,6 +39,15 @@ export class MeetingsListComponent implements OnInit {
     }, error => {
       console.log(error);
     });
+  }
+
+  getQuestions() {
+    this.qsService.getQuestions(0)
+    .subscribe(data => {
+      console.log(data);
+    }, error => {
+      console.log(error);
+    })
   }
 
   onEdit(meeting: Meeting) {

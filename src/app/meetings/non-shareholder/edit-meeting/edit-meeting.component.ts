@@ -3,7 +3,7 @@ import { Component, OnInit, AfterViewInit, Input, ViewChild, EventEmitter, Outpu
 import { ModalDirective } from 'ngx-bootstrap/modal';
 
 import { MeetingsService } from '../services/meetings.service';
-import { CoachService } from '../../services/coach.service';
+import { CoachService } from '../services/coach.service';
 import { Meeting } from '../model/meeting.model';
 import { TeamMember } from '../../../teamMember';
 

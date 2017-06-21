@@ -3,8 +3,8 @@ import { Http, Response} from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/operator/map';
-import { environment } from '../../../environments/environment';
-import { Question } from '../question.model';
+import { environment } from '../../../../environments/environment';
+import { Question } from '../../question.model';
 
 const api = environment.envApi;
 @Injectable()
