@@ -34,12 +34,14 @@ export class MeetingsListComponent implements OnInit {
   }
 
   getMeetings() {
+    this.isLoading = true;
     this.mService.getMeetings(this.teamMember.TeamMemberId)
     .subscribe(data => {
-      console.log(data);
+      this.isLoading = false;
       this.meetingList = data;
     }, error => {
       console.log(error);
+      this.isLoading = false;
     });
   }
 
