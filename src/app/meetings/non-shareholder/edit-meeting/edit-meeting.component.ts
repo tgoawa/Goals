@@ -17,9 +17,9 @@ export class EditMeetingComponent implements OnInit, AfterViewInit {
   @Input('currentMeeting') currentMeeting: Meeting;
   @Input('teamMember') teamMember: TeamMember;
   @Output() modalClosed: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() updateSuccess: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   coachList: TeamMember[];
-  selectedCoach: TeamMember;
 
   constructor(private csService: CoachService, private msService: MeetingsService) { }
 
@@ -33,7 +33,7 @@ export class EditMeetingComponent implements OnInit, AfterViewInit {
   }
 
   onSubmit() {
-    console.log(this.currentMeeting);
+    this.saveMeeting();
   }
 
   showModal() {
@@ -72,17 +72,23 @@ export class EditMeetingComponent implements OnInit, AfterViewInit {
       if (this.currentMeeting.CoachLastFirstName === this.coachList[index].LastFirstName) {
         this.currentMeeting.CoachId = this.coachList[index].TeamMemberId;
       }
-      return false;
     }
   }
 
   saveMeeting() {
+    console.log(this.currentMeeting);
     this.msService.saveMeeting(this.currentMeeting)
     .subscribe(data => {
-
+      this.meetingUpdateSuccess();
+      this.hideModal();
     }, error => {
       console.log(error);
+      this.hideModal();
     });
+  }
+
+  meetingUpdateSuccess() {
+    this.updateSuccess.emit(true);
   }
 
 }

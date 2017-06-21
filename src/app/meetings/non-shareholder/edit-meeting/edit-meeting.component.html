@@ -15,7 +15,7 @@
         </div>
         <div class="row">
           <div class="col-md-4">
-            <input name="Coach" [typeahead]="coachList" [(ngModel)]="currentMeeting.CoachLastFirstName" typeaheadOptionsLimit="8" typeaheadOptionField="LastFirstName" class="form-control" (change)="mapCoachIdToMeeting()">
+            <input name="Coach" [typeahead]="coachList" [(ngModel)]="currentMeeting.CoachLastFirstName" typeaheadOptionsLimit="8" typeaheadOptionField="LastFirstName" class="form-control" (typeaheadOnSelect)="mapCoachIdToMeeting()">
           </div>
         </div>
       </div>
