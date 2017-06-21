@@ -5,6 +5,7 @@ import { ModalDirective } from 'ngx-bootstrap/modal';
 import { MeetingsService } from '../services/meetings.service';
 import { CoachService } from '../services/coach.service';
 import { Meeting } from '../model/meeting.model';
+import { Question } from '../model/question.model';
 import { TeamMember } from '../../../teamMember';
 
 @Component({
@@ -21,7 +22,7 @@ export class AddMeetingComponent implements OnInit, AfterViewInit {
   @Output() addSuccess: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   coachList: TeamMember[];
-  CoachLastFirstName: string;
+  selectedCoach: string;
   priorityOneIsCollapsed = true;
   priorityTwoIsCollapsed = true;
   priorityThreeIsCollapsed = true;
@@ -38,7 +39,7 @@ export class AddMeetingComponent implements OnInit, AfterViewInit {
 
   onSubmit() {
     console.log(this.currentMeeting);
-    // this.saveMeeting();
+    this.saveMeeting();
   }
 
   showModal() {
@@ -66,7 +67,7 @@ export class AddMeetingComponent implements OnInit, AfterViewInit {
 
   mapCoachIdToMeeting() {
     for (let index = 0; index < this.coachList.length; index ++) {
-      if (this.CoachLastFirstName === this.coachList[index].LastFirstName) {
+      if (this.selectedCoach === this.coachList[index].LastFirstName) {
         this.currentMeeting.CoachId = this.coachList[index].TeamMemberId;
       }
     }
@@ -85,6 +86,10 @@ export class AddMeetingComponent implements OnInit, AfterViewInit {
 
   meetingUpdateSuccess() {
     this.addSuccess.emit(true);
+  }
+
+  setIsDirty(question: Question) {
+    question.IsDirty = true;
   }
 
 }
