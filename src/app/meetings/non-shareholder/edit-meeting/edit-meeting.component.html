@@ -3,7 +3,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h2 class="modal-title pull-left">Edit Current Meeting</h2>
-        <button type="button" class="close pull-right" (click)="hideModal()" aria-label="Close">
+        <button type="button" class="close pull-right" (click)="closeModal(editMeeting)" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -19,7 +19,7 @@
           </div>
         </div>
       </div>
-      <form novalidate #editMeeting="ngForm" (ngSubmit)="onSubmit()">
+      <form novalidate #editMeeting="ngForm" (ngSubmit)="onSubmit(editMeeting)">
         <div class="modal-body">
           <div class="form-group">
             <!-- Team Member please complete -->
@@ -212,7 +212,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" (click)="hideModal()">Cancel</button>
+          <button type="button" class="btn btn-secondary" (click)="closeModal(editMeeting)">Cancel</button>
           <button class="btn btn-success" type="submit" [disabled]="!editMeeting.valid">Submit</button>
         </div>
       </form>

@@ -1,4 +1,5 @@
 import { Component, OnInit, AfterViewInit, Input, ViewChild, EventEmitter, Output } from '@angular/core';
+import { NgForm } from '@angular/forms/';
 
 import { ModalDirective } from 'ngx-bootstrap/modal';
 
@@ -7,6 +8,7 @@ import { CoachService } from '../services/coach.service';
 import { Meeting } from '../model/meeting.model';
 import { Question } from '../model/question.model';
 import { TeamMember } from '../../../teamMember';
+
 
 @Component({
   selector: 'app-edit-meeting',
@@ -45,9 +47,21 @@ export class EditMeetingComponent implements OnInit, AfterViewInit {
     this.editModal.show();
   }
 
+  closeModal(form: NgForm) {
+    if (form.dirty) {
+      if (confirm('You are about to lose changes, are you sure?')) {
+        this.hideModal();
+      }
+      return false;
+    } else {
+      this.hideModal();
+    }
+  }
+
   hideModal() {
     this.editModal.hide();
     this.modalIsClosed();
+
   }
 
   modalIsClosed() {
