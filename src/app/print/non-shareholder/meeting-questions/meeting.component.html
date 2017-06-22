@@ -1,0 +1,216 @@
+<div class="goal-subSection">
+  <div class="row">
+    <div class="col-md-6">
+      <h3>{{questions[1].QuestionText}}</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h4>{{questions[2].QuestionText}}</h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-10 offset-md-2" [innerHTML]="questions[2].AnswerText"></div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h4>{{questions[3].QuestionText}}</h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-10 offset-md-2" [innerHTML]="questions[3].AnswerText"></div>
+  </div>
+</div>
+<div *ngIf="teamMember.IsGreenBay" class="goal-subSection">
+  <div class="row">
+    <div class="col-md-6">
+      {{questions[4].QuestionText}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-10 offset-md-2" [innerHTML]="questions[4].AnswerText"></div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      {{questions[5].QuestionText}}
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-10 offset-md-2" [innerHTML]="questions[5].AnswerText"></div>
+</div>
+<div class="goal-subSection">
+  <div class="row">
+    <div class="col-md-6">
+      {{questions[6].QuestionText}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-10 offset-md-2" [innerHTML]="questions[6].AnswerText"></div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      {{questions[7].QuestionText}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-10 offset-md-2" [innerHTML]="questions[7].AnswerText"></div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      {{questions[8].QuestionText}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-10 offset-md-2" [innerHTML]="questions[8].AnswerText"></div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      {{questions[9].QuestionText}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-10 offset-md-2" [innerHTML]="questions[9].AnswerText"></div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      {{questions[10].QuestionText}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-10 offset-md-2" [innerHTML]="questions[10].AnswerText"></div>
+  </div>
+</div>
+<div class="goal-subSection">
+  <div class="row">
+    <div class="col-md-6">
+      <h3>{{questions[11].QuestionText}}</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      {{questions[12].QuestionText}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-10 offset-md-2" [innerHTML]="questions[12].AnswerText"></div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      {{questions[13].QuestionText}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-10 offset-md-2" [innerHTML]="questions[13].AnswerText"></div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h4>{{questions[14].QuestionText}}</h4>
+    </div>
+  </div>
+</div>
+<div *ngIf="teamMember.IsGreenBay" class="goal-subSection">
+  <div class="row">
+    <div class="col-md-6">
+      <h4>{{questions[15]}}</h4>
+      <ul>
+        <li>{{questions[16].QuestionText}}</li>
+        <li>{{questions[17].QuestionText}}</li>
+        <li>{{questions[18].QuestionText}}</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div *ngIf="teamMember.IsChargable" style="border-bottom: 1px solid">
+  <div class="goal-subSection">
+    <div class="row">
+      <div class="col-md-6">
+        <h3>{{questions[19].QuestionText}}</h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        {{questions[20].QuestionText}}
+      </div>
+      <div class="col-md-4">
+        {{questions[20].AnswerText}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        {{questions[21].QuestionText}}
+      </div>
+      <div class="col-md-4">
+        {{questions[21].AnswerText}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        {{questions[22].QuestionText}}
+      </div>
+      <div class="col-md-4">
+        {{questions[22].AnswerText}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        {{questions[23].QuestionText}}
+      </div>
+      <div class="col-md-4">
+        {{questions[23].AnswerText}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        {{questions[24].QuestionText}}
+      </div>
+      <div class="col-md-4">
+        {{questions[24].AnswerText}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        {{questions[25].QuestionText}}
+      </div>
+      <div class="col-md-4">
+        {{questions[25].AnswerText}}
+      </div>
+    </div>
+  </div>
+  <div class="goal-subSection">
+    <div class="row">
+      <div class="col-md-12">
+        <h3>{{questions[26].QuestionText}}</h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <h4>{{questions[27].QuestionText}}</h4>
+      </div>
+    </div>
+    <div class="form-check">
+      <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" name="question28" [(ngModel)]="questions[28].AnswerText" [disabled]="true">
+                    {{questions[28].QuestionText}}
+                </label>
+    </div>
+    <div class="form-check">
+      <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" name="question29" [(ngModel)]="questions[29].AnswerText" [disabled]="true">
+                    {{questions[29].QuestionText}}
+                </label>
+    </div>
+    <div class="form-check">
+      <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" name="question30" [(ngModel)]="questions[30].AnswerText" [disabled]="true">
+                    {{questions[30].QuestionText}}
+                </label>
+    </div>
+    <div class="form-check">
+      <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" name="question31" [(ngModel)]="questions[31].AnswerText" [disabled]="true">
+                    {{questions[31].QuestionText}}
+                </label>
+    </div>
+  </div>
+</div>

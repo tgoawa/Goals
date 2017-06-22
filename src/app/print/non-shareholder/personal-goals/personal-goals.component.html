@@ -1,0 +1,72 @@
+<div class="row">
+  <div class="col-md-12">
+    Goal Name: <b>{{personalGoal.Name}}</b>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    Date Created: <b>{{personalGoal.DisplayDateCreated}}</b>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    Last Updated: <b>{{personalGoal.DisplayDateModified}}</b>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    Goal Description:
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-10 offset-md-2" style="font-weight:bold" [innerHTML]="personalGoal.GoalDescription"></div>
+</div>
+<div *ngIf="personalGoal.Actions">
+  <div class="row">
+    <div class="col-md-12">
+    Actions:
+    </div>
+  </div>
+  <div class="row" *ngFor="let action of personalGoal.Actions">
+    <div class="col-md-12 offset-md-2" style="font-weight:bold" [innerHTML]="action.Action">
+    </div>
+  </div>
+</div>
+<div *ngIf="personalGoal.Supports">
+  <div class="row">
+    <div class="col-md-12">
+    Supports:
+    </div>
+  </div>
+  <div class="row" *ngFor="let support of personalGoal.Supports">
+    <div class="col-md-12 offset-md-2" style="font-weight:bold" [innerHTML]="support.Support">
+    </div>
+  </div>
+</div>
+<div *ngIf="personalGoal.Measurements">
+  <div class="row">
+    <div class="col-md-12">
+    Measurements:
+    </div>
+  </div>
+  <div class="row" *ngFor="let measurement of personalGoal.Measurements">
+    <div class="col-md-12 offset-md-2" style="font-weight:bold" [innerHTML]="measurement.Measurement">
+    </div>
+  </div>
+</div>
+<div *ngIf="personalGoal.Notes">
+  <div class="row">
+    <div class="col-md-12">
+    Notes:
+    </div>
+  </div>
+  <div class="row" *ngFor="let note of personalGoal.Notes">
+    <div class="col-md-12 offset-md-2" style="font-weight:bold" [innerHTML]="note.Note">
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    Percent Complete: <b>{{personalGoal.GoalCompletionPercentage}}%</b>
+  </div>
+</div>

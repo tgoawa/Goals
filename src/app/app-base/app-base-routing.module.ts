@@ -19,7 +19,8 @@ const routes: Routes = [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: HomeComponent },
       { path: 'goals', loadChildren: '../goals/goals.module#GoalsModule' },
-      { path: 'meetings', loadChildren: '../meetings/meetings.module#MeetingsModule'}
+      { path: 'meetings', loadChildren: '../meetings/meetings.module#MeetingsModule'},
+      { path: 'print', loadChildren: '../print/print.module#PrintModule'}
     ]
   },
 ];

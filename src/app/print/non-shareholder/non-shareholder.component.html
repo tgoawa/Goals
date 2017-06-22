@@ -1,0 +1,51 @@
+<div class="row">
+  <div class="col-md-12">
+    <a (click)="printView()" href="#">Click to print this page</a>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <h2>Meeting and Goal Notes for: {{printGoal?.TeamMember.FirstName}} {{printGoal?.TeamMember.LastName}}</h2>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <h2>Current Meeting</h2>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    Date Created: {{printGoal?.CurrentMeeting.DisplayDateCreated}}
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    Date Last Modified: {{printGoal?.CurrentMeeting.DisplayDateModified}}
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    Coach's Name: {{printGoal?.CurrentMeeting.CoachName}}
+  </div>
+</div>
+<app-meeting *ngIf="printGoal?.CurrentMeeting" [questions]="printGoal.Questions" [teamMember]="printGoal.TeamMember"></app-meeting>
+<div *ngIf="printGoal?.OpenPersonalGoals">
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Personal Goals (lowest to highest % complete)</h3>
+    </div>
+  </div>
+  <div *ngFor="let personalGoal of printGoal?.OpenPersonalGoals" style="border-bottom: 1px solid">
+    <app-personal-goals [personalGoal]="personalGoal"></app-personal-goals>
+  </div>
+</div>
+<div *ngIf="printGoal?.OpenIndustryTeamGoals">
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Industry Team Goals (lowest to highest % complete)</h3>
+    </div>
+  </div>
+  <div *ngFor="let industryGoal of printGoal?.OpenIndustryTeamGoals" style="border-bottom: 1px solid">
+    <app-industry-goals [industryGoal]="industryGoal"></app-industry-goals>
+  </div>
+</div>
