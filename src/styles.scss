@@ -92,3 +92,35 @@ nav {
 .modal-dialog {
     color: $schenck-blue;
 }
+
+@media only print {
+    body {
+        font-size: 12px;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-weight: bold;
+        font-size: 13px;
+    }
+    
+    .row {
+        margin-top: 0px;
+    }
+
+    .col-md-3 {
+        width: 25%;
+    }
+
+    .col-md-4 {
+        width: 30%;
+    }
+
+    img {
+        display: none;
+    }
+    
+    .goal-subSection {
+        margin-top: 10px;
+        padding-top: 0;
+    }
+}

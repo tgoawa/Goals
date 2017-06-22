@@ -26,7 +26,6 @@ export class NonShareholderComponent implements OnInit {
     this.isLoading = true;
     this.prService.getCurrentGoals(id)
     .subscribe(data => {
-      console.log(data);
       this.isLoading = false;
       this.printGoal = data;
     }, error => {
