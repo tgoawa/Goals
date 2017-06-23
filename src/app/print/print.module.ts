@@ -18,7 +18,16 @@ import { PrintViewComponent } from './non-shareholder/print-view/print-view.comp
     PrintRoutingModule,
     FormsModule
   ],
-  declarations: [PrintComponent, NonShareholderComponent, MeetingComponent, PersonalGoalsComponent, IndustryGoalsComponent, PrintViewComponent],
+  exports: [MeetingComponent,
+    PersonalGoalsComponent,
+    IndustryGoalsComponent,
+    PrintViewComponent],
+  declarations: [PrintComponent,
+    NonShareholderComponent,
+    MeetingComponent,
+    PersonalGoalsComponent,
+    IndustryGoalsComponent,
+    PrintViewComponent],
   providers: [PrintService]
 })
 export class PrintModule { }

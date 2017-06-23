@@ -9,11 +9,11 @@ import { TeamMember, TeamMemberService } from '../../../teamMember/';
   styleUrls: ['./team-member-list.component.scss']
 })
 export class TeamMemberListComponent implements OnInit {
-  @Output() selectedTeamMember: EventEmitter<TeamMember> = new EventEmitter<TeamMember>();
+  @Output() selectedTeamMember: EventEmitter<number> = new EventEmitter<number>();
 
   teamMemberList: TeamMember[];
   coach: TeamMember;
-  teamMember: TeamMember;
+  teamMemberId: number;
   constructor(private coachService: CoachService, private tmService: TeamMemberService) { }
 
   ngOnInit() {
@@ -31,6 +31,6 @@ export class TeamMemberListComponent implements OnInit {
   }
 
   teamMemberSelected() {
-    this.selectedTeamMember.emit(this.teamMember);
+    this.selectedTeamMember.emit(this.teamMemberId);
   }
 }

@@ -20,6 +20,7 @@ const routes: Routes = [
       { path: 'home', component: HomeComponent },
       { path: 'goals', loadChildren: '../goals/goals.module#GoalsModule' },
       { path: 'meetings', loadChildren: '../meetings/meetings.module#MeetingsModule'},
+      { path: 'coach', loadChildren: '../coach/coach.module#CoachModule'},
       { path: 'print', loadChildren: '../print/print.module#PrintModule'}
     ]
   },
