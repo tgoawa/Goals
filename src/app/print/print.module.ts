@@ -10,6 +10,7 @@ import { MeetingComponent } from './non-shareholder/meeting-questions/meeting.co
 import { PrintService } from './non-shareholder/services/print.service';
 import { PersonalGoalsComponent } from './non-shareholder/personal-goals/personal-goals.component';
 import { IndustryGoalsComponent } from './non-shareholder/industry-goals/industry-goals.component';
+import { PrintViewComponent } from './non-shareholder/print-view/print-view.component';
 
 @NgModule({
   imports: [
@@ -17,7 +18,7 @@ import { IndustryGoalsComponent } from './non-shareholder/industry-goals/industr
     PrintRoutingModule,
     FormsModule
   ],
-  declarations: [PrintComponent, NonShareholderComponent, MeetingComponent, PersonalGoalsComponent, IndustryGoalsComponent],
+  declarations: [PrintComponent, NonShareholderComponent, MeetingComponent, PersonalGoalsComponent, IndustryGoalsComponent, PrintViewComponent],
   providers: [PrintService]
 })
 export class PrintModule { }
