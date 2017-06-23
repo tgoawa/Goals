@@ -88,8 +88,8 @@ export class EditPersonalGoalComponent implements OnInit, AfterViewInit {
     this.updateSuccess.emit(true);
   }
 
-  updateGoal(goal: Goal) {
-    this.pgService.updatePersonalGoal(goal)
+  updateGoal() {
+    this.pgService.updatePersonalGoal(this.editPersonalGoalForm.value)
       .subscribe(data => {
         this.goalUpdateSuccess();
         this.hideModal();
@@ -99,9 +99,26 @@ export class EditPersonalGoalComponent implements OnInit, AfterViewInit {
       });
   }
 
-  onSubmit(formValue: Goal) {
-    this.replaceLineBreaks(formValue);
-    this.updateGoal(formValue);
+  onSubmit() {
+    if (this.checkActionItems()) {
+      if (confirm('All actions are completed. Complete goal?')) {
+        this.editPersonalGoalForm.value.IsCompleted = true;
+      } else {
+        this.editPersonalGoalForm.value.IsCompleted = false;
+      }
+    }
+    this.replaceLineBreaks(this.editPersonalGoalForm.value);
+    this.updateGoal();
+
+  }
+
+  checkActionItems() {
+    for (let index = 0; index < this.editPersonalGoalForm.value.Actions.length; index++) {
+      if (!this.editPersonalGoalForm.value.Actions[index].IsCompleted) {
+        return false;
+      }
+    }
+    return true;
   }
 
   replaceLineBreaks(formValue: Goal) {

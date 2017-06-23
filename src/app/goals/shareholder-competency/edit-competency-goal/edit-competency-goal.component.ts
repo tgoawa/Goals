@@ -87,7 +87,7 @@ export class EditCompetencyGoalComponent implements OnInit, AfterViewInit {
     this.editModal.show();
   }
 
-   closeModal() {
+  closeModal() {
     if (this.editCompetencyGoalForm.dirty) {
       if (confirm('You are about to lose changes, are you sure?')) {
         this.hideModal();
@@ -111,8 +111,8 @@ export class EditCompetencyGoalComponent implements OnInit, AfterViewInit {
     this.updateSuccess.emit(true);
   }
 
-  updateGoal(goal: Goal) {
-    this.cgService.updateCompetencyGoal(goal)
+  updateGoal() {
+    this.cgService.updateCompetencyGoal(this.editCompetencyGoalForm.value)
       .subscribe(data => {
         this.goalUpdateSuccess();
         this.hideModal();
@@ -122,9 +122,25 @@ export class EditCompetencyGoalComponent implements OnInit, AfterViewInit {
       });
   }
 
-  onSubmit(formValue: Goal) {
-    this.replaceLineBreaks(formValue);
-    this.updateGoal(formValue);
+  onSubmit() {
+    if (this.checkActionItems()) {
+      if (confirm('All actions are completed. Complete goal?')) {
+        this.editCompetencyGoalForm.value.IsCompleted = true;
+      } else {
+        this.editCompetencyGoalForm.value.IsCompleted = false;
+      }
+    }
+    this.replaceLineBreaks(this.editCompetencyGoalForm.value);
+    this.updateGoal();
+  }
+
+  checkActionItems() {
+    for (let index = 0; index < this.editCompetencyGoalForm.value.Actions.length; index++) {
+      if (!this.editCompetencyGoalForm.value.Actions[index].IsCompleted) {
+        return false;
+      }
+    }
+    return true;
   }
 
   replaceLineBreaks(formValue: Goal) {
