@@ -3,8 +3,13 @@
     <div class="card">
       <div class="card-header card-primary">
         <h2 class="card-goal-name" style="color: white;" (click)="onEdit(goal)">{{goal.Name}}</h2>
-        <div class="progress" style="width: 100%;" *ngIf="goal.GoalCompletionPercentage < 100">
+        <div class="progress"  style="width: 100%;" *ngIf="!goal.IsCompleted">
           <div class="progress-bar progress-bar-striped bg-schenck progress-bar-animated" [style.width.%]="goal.GoalCompletionPercentage"><span class="schenck-orange">{{goal.GoalCompletionPercentage}}%</span></div>
+        </div>
+        <div class="row" *ngIf="goal.IsCompleted">
+          <div class="col-md-4" style="color: white;">
+            Completed!
+          </div>
         </div>
       </div>
       <div class="card-block">

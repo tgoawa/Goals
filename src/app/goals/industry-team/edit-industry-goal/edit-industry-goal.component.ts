@@ -29,7 +29,7 @@ export class EditIndustryGoalComponent implements OnInit, AfterViewInit {
     this.showModal();
   }
 
-   private toFormGroup(data: Goal): FormGroup {
+  private toFormGroup(data: Goal): FormGroup {
     const formGroup = this.fb.group({
       GoalId: data.GoalId,
       GoalTypeId: data.GoalTypeId,
@@ -87,8 +87,8 @@ export class EditIndustryGoalComponent implements OnInit, AfterViewInit {
     this.updateSuccess.emit(true);
   }
 
-  updateGoal(goal: Goal) {
-    this.igService.updateIndustryGoal(goal)
+  updateGoal() {
+    this.igService.updateIndustryGoal(this.editIndustryGoalForm.value)
       .subscribe(data => {
         this.goalUpdateSuccess();
         this.hideModal();
@@ -98,9 +98,25 @@ export class EditIndustryGoalComponent implements OnInit, AfterViewInit {
       });
   }
 
-  onSubmit(formValue: Goal) {
-    this.replaceLineBreaks(formValue);
-    this.updateGoal(formValue);
+  onSubmit() {
+    if (this.checkActionItems()) {
+      if (confirm('All actions are completed. Complete goal?')) {
+        this.editIndustryGoalForm.value.IsCompleted = true;
+      } else {
+        this.editIndustryGoalForm.value.IsCompleted = false;
+      }
+    }
+    this.replaceLineBreaks(this.editIndustryGoalForm.value);
+    this.updateGoal();
+  }
+
+  checkActionItems() {
+    for (let index = 0; index < this.editIndustryGoalForm.value.Actions.length; index++) {
+      if (!this.editIndustryGoalForm.value.Actions[index].IsCompleted) {
+        return false;
+      }
+    }
+    return true;
   }
 
   replaceLineBreaks(formValue: Goal) {

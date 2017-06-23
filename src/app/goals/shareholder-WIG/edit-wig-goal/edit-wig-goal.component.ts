@@ -100,8 +100,8 @@ export class EditWigGoalComponent implements OnInit, AfterViewInit {
     this.updateSuccess.emit(true);
   }
 
-  updateGoal(goal: Goal) {
-    this.wgService.updateWigGoal(goal)
+  updateGoal() {
+    this.wgService.updateWigGoal(this.editWigGoalForm.value)
       .subscribe(data => {
         this.goalUpdateSuccess();
         this.hideModal();
@@ -111,9 +111,25 @@ export class EditWigGoalComponent implements OnInit, AfterViewInit {
       });
   }
 
-  onSubmit(formValue: Goal) {
-    this.replaceLineBreaks(formValue);
-    this.updateGoal(formValue);
+  onSubmit() {
+    if (this.checkActionItems()) {
+      if (confirm('All actions are completed. Complete goal?')) {
+        this.editWigGoalForm.value.IsCompleted = true;
+      } else {
+        this.editWigGoalForm.value.IsCompleted = false;
+      }
+    }
+    this.replaceLineBreaks(this.editWigGoalForm.value);
+    this.updateGoal();
+  }
+
+  checkActionItems() {
+    for (let index = 0; index < this.editWigGoalForm.value.Actions.length; index++) {
+      if (!this.editWigGoalForm.value.Actions[index].IsCompleted) {
+        return false;
+      }
+    }
+    return true;
   }
 
   replaceLineBreaks(formValue: Goal) {
