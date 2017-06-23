@@ -87,6 +87,17 @@ export class EditCompetencyGoalComponent implements OnInit, AfterViewInit {
     this.editModal.show();
   }
 
+   closeModal() {
+    if (this.editCompetencyGoalForm.dirty) {
+      if (confirm('You are about to lose changes, are you sure?')) {
+        this.hideModal();
+      }
+      return false;
+    } else {
+      this.hideModal();
+    }
+  }
+
   hideModal() {
     this.editModal.hide();
     this.modalIsClosed();
