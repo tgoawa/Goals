@@ -49,7 +49,6 @@ export class MeetingsListComponent implements OnInit {
   getQuestions() {
     this.qsService.getQuestions(0)
     .subscribe(data => {
-      console.log(data);
       this.questionList = data;
     }, error => {
       console.log(error);

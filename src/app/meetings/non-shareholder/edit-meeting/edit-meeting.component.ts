@@ -95,7 +95,6 @@ export class EditMeetingComponent implements OnInit, AfterViewInit {
   }
 
   saveMeeting() {
-    console.log(this.currentMeeting);
     this.msService.saveMeeting(this.currentMeeting)
     .subscribe(data => {
       this.meetingUpdateSuccess();

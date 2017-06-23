@@ -83,7 +83,6 @@ export class AddWigGoalComponent implements OnInit, AfterViewInit {
   saveGoal(goal: Goal) {
     this.wgService.saveWigGoal(goal)
       .subscribe(data => {
-        console.log(data);
         this.goalAddSuccess();
         this.hideModal();
       }, error => {

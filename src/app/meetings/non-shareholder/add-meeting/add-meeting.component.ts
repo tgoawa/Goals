@@ -38,7 +38,6 @@ export class AddMeetingComponent implements OnInit, AfterViewInit {
   }
 
   onSubmit() {
-    console.log(this.currentMeeting);
     this.saveMeeting();
   }
 
