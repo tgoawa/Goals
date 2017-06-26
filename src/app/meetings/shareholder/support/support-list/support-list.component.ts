@@ -15,9 +15,9 @@ export class SupportListComponent implements OnInit {
   constructor(private cd: ChangeDetectorRef) { }
 
   ngOnInit() {
+    this.parentMeetingForm.addControl('Supports', new FormArray([]));
   }
 
-  
   addSupport() {
     const support: Support = {
       ShareHolderMeetingSupportId: 0,

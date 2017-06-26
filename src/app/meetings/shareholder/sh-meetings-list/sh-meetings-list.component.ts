@@ -44,6 +44,7 @@ export class ShMeetingsListComponent implements OnInit {
 
   onEdit(meeting: SHMeeting) {
     this.meetingToEdit = meeting;
+    console.log(this.meetingToEdit);
   }
 
   onRead(meeting: SHMeeting) {

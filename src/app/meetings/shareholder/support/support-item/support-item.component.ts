@@ -22,12 +22,12 @@ export class SupportItemComponent implements OnInit {
 
   private toFormGroup(data: Support) {
     const formGroup = this.fb.group({
-      ShareHolderMeetingSupportId: 0,
+      ShareHolderMeetingSupportId: data.ShareHolderMeetingSupportId,
       ShareHolderMeetingId: data.ShareHolderMeetingId,
-      Support: '',
-      DisplayDateCreated: '',
-      DisplayDateModified: '',
-      DisplayDateDue: ''
+      Support: data.Support,
+      DisplayDateCreated: data.DisplayDateCreated,
+      DisplayDateModified: data.DisplayDateModified,
+      DisplayDateDue: data.DisplayDateDue
     });
     return formGroup;
   }
