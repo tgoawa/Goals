@@ -1,0 +1,9 @@
+<div [formGroup]="parentMeetingForm">
+  <div formArrayName="Details">
+    <div class="row" *ngFor="let detail of Details; let i = index">
+      <div class="col-md-12">
+        <app-detail [details]="Details" [detail]="detail"></app-detail>
+      </div>
+    </div>
+  </div>
+</div>

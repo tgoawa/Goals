@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 import { ModalModule, TypeaheadModule, CollapseModule, DatepickerModule } from 'ngx-bootstrap';
 
 import { MeetingsRoutingModule } from './meetings-routing.module';
@@ -17,9 +19,10 @@ import { ReadOnlyMeetingComponent } from './non-shareholder/read-only-meeting/re
 import { ShMeetingsListComponent } from './shareholder/sh-meetings-list/sh-meetings-list.component';
 import { ShareholderMeetingService } from './shareholder/service/shareholder-meeting.service';
 import { EditShareholderMeetingComponent } from './shareholder/edit-shareholder-meeting/edit-shareholder-meeting.component';
-import { MeetingDetailsComponent } from './shareholder/meeting-details/meeting-details.component';
 import { SupportListComponent } from './shareholder/support/support-list/support-list.component';
 import { SupportItemComponent } from './shareholder/support/support-item/support-item.component';
+import { DetailsListComponent } from './shareholder/details/details-list/details-list.component';
+import { DetailComponent } from './shareholder/details/detail/detail.component';
 
 @NgModule({
   imports: [
@@ -30,7 +33,8 @@ import { SupportItemComponent } from './shareholder/support/support-item/support
     CollapseModule.forRoot(),
     ModalModule.forRoot(),
     TypeaheadModule.forRoot(),
-    DatepickerModule.forRoot()
+    DatepickerModule.forRoot(),
+    NgbModule.forRoot()
   ],
   declarations: [MeetingsComponent,
   MeetingsListComponent,
@@ -40,9 +44,10 @@ import { SupportItemComponent } from './shareholder/support/support-item/support
   ReadOnlyMeetingComponent,
   ShMeetingsListComponent,
   EditShareholderMeetingComponent,
-  MeetingDetailsComponent,
   SupportListComponent,
-  SupportItemComponent],
+  SupportItemComponent,
+  DetailsListComponent,
+  DetailComponent],
   providers: [QuestionService, MeetingsService, CoachService, ShareholderMeetingService]
 })
 export class MeetingsModule { }
