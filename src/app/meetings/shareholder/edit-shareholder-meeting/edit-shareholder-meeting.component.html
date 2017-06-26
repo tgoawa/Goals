@@ -43,17 +43,7 @@
               <h3>Industry Team Goals</h3>
             </div>
           </div>
-          <!--<div class="row">
-            <div class="col-md-4">
-              <app-meeting-details [parentMeetingForm]="editShareholderGoalForm" [Details]="meeting.Details[0]" [detailType]="1"></app-meeting-details>
-            </div>
-            <div class="col-md-4">
-              <app-meeting-details [parentMeetingForm]="editShareholderGoalForm" [Details]="meeting.Details[1]" [detailType]="2"></app-meeting-details>
-            </div>
-            <div class="col-md-4">
-              <app-meeting-details [parentMeetingForm]="editShareholderGoalForm" [Details]="meeting.Details[2]" [detailType]="3"></app-meeting-details>
-            </div>
-          </div>-->
+            <app-details-list [parentMeetingForm]="editShareholderGoalForm" [Details]="meeting.Details" [meetingId]="meeting.ShareHolderMeetingId"></app-details-list>
           <div class="goal-subSection">
             <app-support-list [parentMeetingForm]="editShareholderGoalForm" [Supports]="meeting.Supports" [meetingId]="meeting.ShareHolderMeetingId"></app-support-list>
           </div>
