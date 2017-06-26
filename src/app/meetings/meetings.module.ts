@@ -34,7 +34,7 @@ import { DetailComponent } from './shareholder/details/detail/detail.component';
     ModalModule.forRoot(),
     TypeaheadModule.forRoot(),
     DatepickerModule.forRoot(),
-    NgbModule.forRoot()
+    NgbModule
   ],
   declarations: [MeetingsComponent,
   MeetingsListComponent,
