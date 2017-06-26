@@ -8,19 +8,19 @@ import { Meeting } from 'app/meetings/non-shareholder/model/meeting.model';
 })
 export class MeetingListComponent implements OnInit {
   @Input('meeting') meeting: Meeting;
-  @Input('index') index: Meeting;
-  @Output() meetingToEdit: EventEmitter<Meeting> = new EventEmitter<Meeting>();
-  @Output() meetingToView: EventEmitter<Meeting> = new EventEmitter<Meeting>();
+  @Input('index') index: number;
+  @Output() meetingToEdit: EventEmitter<any> = new EventEmitter<any>();
+  @Output() meetingToView: EventEmitter<any> = new EventEmitter<any>();
   constructor() { }
 
   ngOnInit() {
   }
 
-  onEdit(meeting: Meeting) {
+  onEdit(meeting: any) {
     this.meetingToEdit.emit(meeting);
   }
 
-  onViewOldMeeting(meeting: Meeting) {
+  onViewOldMeeting(meeting: any) {
     this.meetingToView.emit(meeting);
   }
 

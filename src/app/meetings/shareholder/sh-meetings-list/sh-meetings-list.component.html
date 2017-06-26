@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-md-5">
+    <h1>Shareholder Meetings</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4">
+    <p>Meetings list:</p>
+  </div>
+  <div class="col-md-8 text-right">
+    <span class="faux-link" (click)="onAdd()">Add Meeting</span>
+  </div>
+</div>
+<div class="row" *ngIf="isLoading">
+  <div class="col-md-2 offset-md-5"><i fa class="fa fa-spinner fa-5x fa-spin" aria-hidden="true"></i>
+  </div>
+</div>
+<div *ngFor="let meeting of meetingList; let i = index">
+  <app-meeting-list [meeting]="meeting" [index]="i" (meetingToEdit)="onEdit($event)" (meetingToView)="onRead($event)"></app-meeting-list>
+</div>
+<app-edit-shareholder-meeting *ngIf="meetingToEdit" [meeting]="meetingToEdit" (modalClosed)="clearMeetingToEdit()" (updateSuccess)="refreshListOnEdit()"></app-edit-shareholder-meeting>

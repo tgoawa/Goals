@@ -1,0 +1,62 @@
+<div bsModal #editModal="bs-modal" [config]="{backdrop: 'static'}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title pull-left">Edit Goal</h2>
+        <button type="button" class="close pull-right" (click)="closeModal()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form novalidate [formGroup]="editShareholderGoalForm" (ngSubmit)="onSubmit()">
+        <div class="modal-body">
+          <div class="form-group col-md-6">
+            <h2>Economic Contribution Goals:</h2>
+          </div>
+          <div class="form-group col-md-6">
+            Please enter values in the following columns. Practice Unit Goals should be entered by the Practice Unit Leaders Industry
+            Team Goals should be entered by the Industry Team Leaders
+          </div>
+          <div class="form-group row">
+            <label>Weight%</label>
+            <select formControlName="Weight">
+              <option *ngFor="let w of weightList" [value]="w" [selected]="w === meeting.Weight">{{w}}</option>
+            </select>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <h3>Personal</h3>
+            </div>
+            <div class="col-md-4">
+              <h3>Practice Unit Goals</h3>
+            </div>
+            <div class="col-md-4">
+              <h3>Industry Team Goals</h3>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <app-meeting-details [parentMeetingForm]="editShareholderGoalForm" [Details]="meeting.Details[0]" [detailType]="1"></app-meeting-details>
+            </div>
+            <div class="col-md-4">
+              <app-meeting-details [parentMeetingForm]="editShareholderGoalForm" [Details]="meeting.Details[1]" [detailType]="2"></app-meeting-details>
+            </div>
+            <div class="col-md-4">
+              <app-meeting-details [parentMeetingForm]="editShareholderGoalForm" [Details]="meeting.Details[2]" [detailType]="3"></app-meeting-details>
+            </div>
+          </div>
+          <div class="goal-subSection">
+            <!--<app-support-list [goalId]="personalGoal.GoalId" [parentGoalForm]="editPersonalGoalForm" [Supports]="personalGoal.Supports"></app-support-list>-->
+          </div>
+          <div class="goal-subSection">
+            <!--<app-notes-list [goalId]="personalGoal.GoalId" [parentGoalForm]="editPersonalGoalForm" [Notes]="personalGoal.Notes"></app-notes-list>-->
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancel</button>
+          <button class="btn btn-success" type="submit" [disabled]="!editShareholderGoalForm.valid">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

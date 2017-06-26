@@ -26,6 +26,9 @@
         <li *ngIf="!teamMember.IsShareHolder">
           <a class="nav-link" href="#" [routerLink]="['/meetings/meeting-list']" routerLinkActive="active">Meeting List</a>
         </li>
+        <li *ngIf="teamMember.IsShareHolder">
+          <a class="nav-link" href="#" [routerLink]="['/meetings/shareholder-meeting-list']" routerLinkActive="active">Shareholder Meeting List</a>
+        </li>
         <li>
           <a class="nav-link" href="#" [routerLink]="['/coach/non-shareholder-coach']" routerLinkActive="active">Coach</a>
         </li>

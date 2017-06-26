@@ -1,43 +1,39 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 
-import { QuestionService } from '../services/question.service';
-import { MeetingsService } from '../services/meetings.service';
-import { TeamMember, TeamMemberService } from '../../../teamMember';
-import { Question } from '../model/question.model';
-import { Meeting } from '../model/meeting.model';
+import { ShareholderMeetingService } from '../service/shareholder-meeting.service';
+import { TeamMember, TeamMemberService } from '../../../teamMember/';
+import { SHMeeting } from '../models/shmeeting';
 
 @Component({
-  selector: 'app-meetings-list',
-  templateUrl: './meetings-list.component.html',
-  styleUrls: ['./meetings-list.component.scss']
+  selector: 'app-sh-meetings-list',
+  templateUrl: './sh-meetings-list.component.html',
+  styleUrls: ['./sh-meetings-list.component.scss']
 })
-export class MeetingsListComponent implements OnInit {
+export class ShMeetingsListComponent implements OnInit {
 
-  meetingList: Meeting[];
-  questionList: Question[];
-  newMeeting: Meeting;
-  meetingToEdit: Meeting;
-  readMeeting: Meeting;
+  meetingList: SHMeeting[];
+  newMeeting: SHMeeting;
+  meetingToEdit: SHMeeting;
+  readMeeting: SHMeeting;
   isLoading = false;
 
   teamMember: TeamMember;
 
-  constructor(private mService: MeetingsService,
+  constructor(private shmService: ShareholderMeetingService,
     private tmService: TeamMemberService,
-    private qsService: QuestionService,
     private toastrService: ToastrService) { }
 
   ngOnInit() {
     this.teamMember = this.tmService.teamMember;
     this.getMeetings();
-    this.getQuestions();
   }
 
   getMeetings() {
     this.isLoading = true;
-    this.mService.getMeetings(this.teamMember.TeamMemberId)
+    this.shmService.getMeetings(this.teamMember.TeamMemberId)
       .subscribe(data => {
+        console.log(data);
         this.isLoading = false;
         this.meetingList = data;
       }, error => {
@@ -46,24 +42,15 @@ export class MeetingsListComponent implements OnInit {
       });
   }
 
-  getQuestions() {
-    this.qsService.getQuestions(0)
-      .subscribe(data => {
-        this.questionList = data;
-      }, error => {
-        console.log(error);
-      });
-  }
-
-  onEdit(meeting: Meeting) {
+  onEdit(meeting: SHMeeting) {
     this.meetingToEdit = meeting;
   }
 
-  onRead(meeting: Meeting) {
+  onRead(meeting: SHMeeting) {
     this.readMeeting = meeting;
   }
 
-  clearMeetingToEdit() {
+    clearMeetingToEdit() {
     this.meetingToEdit = undefined;
   }
 
@@ -86,10 +73,9 @@ export class MeetingsListComponent implements OnInit {
   }
 
   onAdd() {
-    this.newMeeting = new Meeting;
+    this.newMeeting = new SHMeeting;
     this.newMeeting.CoachId = 0;
     this.newMeeting.TeamMemberId = this.teamMember.TeamMemberId;
-    this.newMeeting.Questions = this.questionList;
   }
 
   showSuccessUpdate() {
@@ -99,5 +85,4 @@ export class MeetingsListComponent implements OnInit {
   showSuccessAdd() {
     this.toastrService.success('', 'New Meeting was added!');
   }
-
 }
