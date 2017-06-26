@@ -8,7 +8,7 @@ import { Meeting } from 'app/meetings/non-shareholder/model/meeting.model';
 })
 export class MeetingListComponent implements OnInit {
   @Input('meeting') meeting: Meeting;
-  @Input('index') index: Meeting;
+  @Input('index') index: number;
   @Output() meetingToEdit: EventEmitter<Meeting> = new EventEmitter<Meeting>();
   @Output() meetingToView: EventEmitter<Meeting> = new EventEmitter<Meeting>();
   constructor() { }
