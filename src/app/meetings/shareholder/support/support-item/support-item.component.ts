@@ -18,6 +18,9 @@ export class SupportItemComponent implements OnInit {
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
+    this.supportItemForm = this.toFormGroup(this.supportItem);
+    this.replaceBreakTags();
+    this.supportItems.push(this.supportItemForm);
   }
 
   private toFormGroup(data: Support) {
@@ -29,7 +32,16 @@ export class SupportItemComponent implements OnInit {
       DisplayDateModified: data.DisplayDateModified,
       DisplayDateDue: data.DisplayDateDue
     });
+
     return formGroup;
+  }
+
+    replaceBreakTags() {
+    if (this.supportItem.Support !== null) {
+      this.supportItemForm.patchValue({
+        Support: this.supportItem.Support.split('<br>').join('\n')
+      });
+    }
   }
 
 }

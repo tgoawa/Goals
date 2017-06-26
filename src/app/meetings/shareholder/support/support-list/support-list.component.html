@@ -10,8 +10,8 @@
   <div formArrayName="Supports">
     <div class="row" *ngFor="let support of Supports; let i = index">
       <div class="col-md-8">
-        <!--<app-support-item [supportItems]="parentMeetingForm.controls.Supports" [supportItem]="support">
-        </app-support-item>-->
+        <app-support-item [supportItems]="parentMeetingForm.controls.Supports" [supportItem]="support">
+        </app-support-item>
       </div>
       <div class="col-md-2">
         <button class="btn btn-danger" (click)="removeSupport(i)">-</button>
