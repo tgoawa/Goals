@@ -3,7 +3,7 @@ import { ToastrService } from 'ngx-toastr';
 
 import { ShareholderMeetingService } from '../service/shareholder-meeting.service';
 import { TeamMember, TeamMemberService } from '../../../teamMember/';
-import { SHMeeting } from '../models/shmeeting';
+import { SHMeeting, Detail } from '../models/shmeeting';
 
 @Component({
   selector: 'app-sh-meetings-list',
@@ -74,9 +74,10 @@ export class ShMeetingsListComponent implements OnInit {
   }
 
   onAdd() {
-    this.newMeeting = new SHMeeting;
-    this.newMeeting.CoachId = 0;
-    this.newMeeting.TeamMemberId = this.teamMember.TeamMemberId;
+    this.newMeeting = new SHMeeting(this.teamMember.TeamMemberId);
+    this.newMeeting.Details.push(new Detail(1));
+    this.newMeeting.Details.push(new Detail(2));
+    this.newMeeting.Details.push(new Detail(3));
   }
 
   showSuccessUpdate() {

@@ -38,7 +38,9 @@ export class AddShareholderMeetingComponent implements OnInit, AfterViewInit {
   }
 
   onSubmit() {
-    // this.saveMeeting();
+    this.formatNotesDueDate();
+    this.formatSupportDueDate();
+    this.saveMeeting();
   }
 
   showModal() {
@@ -67,6 +69,24 @@ export class AddShareholderMeetingComponent implements OnInit, AfterViewInit {
 
   meetingUpdateSuccess() {
     this.addSuccess.emit(true);
+  }
+
+   formatSupportDueDate() {
+    const editedMeeting: SHMeeting = this.addShareholderMeetingForm.value;
+    for (let index = 0; index < editedMeeting.Supports.length; index ++) {
+      if (editedMeeting.Supports[index].DisplayDateDue !== null) {
+        this.meeting.Supports[index].DisplayDateDue = editedMeeting.Supports[index].DisplayDateDue.formatted;
+      }
+    }
+  }
+
+    formatNotesDueDate() {
+    const editedMeeting: SHMeeting = this.addShareholderMeetingForm.value;
+    for (let index = 0; index < editedMeeting.Notes.length; index ++) {
+      if (editedMeeting.Notes[index].DisplayDateDue !== null) {
+        this.meeting.Notes[index].DisplayDateDue = editedMeeting.Notes[index].DisplayDateDue.formatted;
+      }
+    }
   }
 
 }
