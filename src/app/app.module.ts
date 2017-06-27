@@ -5,7 +5,6 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -31,8 +30,7 @@ import { AppBaseModule } from './app-base/app-base.module';
     HttpModule,
     AppRoutingModule,
     AppBaseModule,
-    ToastrModule.forRoot(),
-    NgbModule.forRoot()
+    ToastrModule.forRoot()
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy },
