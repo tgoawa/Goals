@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import * as moment from 'moment';
+import { IMyDpOptions } from 'mydatepicker';
 
 import { Support } from '../../models/shmeeting';
 
@@ -14,6 +14,10 @@ export class SupportItemComponent implements OnInit {
   @Input('supportItem') supportItem: Support;
 
   supportItemForm: FormGroup;
+
+  myDatePickerOptions: IMyDpOptions = {
+    dateFormat: 'mm/dd/yyyy',
+  };
 
   constructor(private fb: FormBuilder) { }
 
@@ -30,7 +34,7 @@ export class SupportItemComponent implements OnInit {
       Support: data.Support,
       DisplayDateCreated: data.DisplayDateCreated,
       DisplayDateModified: data.DisplayDateModified,
-      DisplayDateDue: data.DisplayDateDue
+      DisplayDateDue: {formatted: data.DisplayDateDue}
     });
 
     return formGroup;

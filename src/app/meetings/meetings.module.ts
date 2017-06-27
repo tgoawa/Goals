@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { ModalModule, TypeaheadModule, CollapseModule, DatepickerModule } from 'ngx-bootstrap';
+import { ModalModule, TypeaheadModule, CollapseModule } from 'ngx-bootstrap';
+import { MyDatePickerModule } from 'mydatepicker';
 
 import { MeetingsRoutingModule } from './meetings-routing.module';
 import { MeetingsComponent } from './meetings.component';
@@ -21,6 +22,8 @@ import { SupportListComponent } from './shareholder/support/support-list/support
 import { SupportItemComponent } from './shareholder/support/support-item/support-item.component';
 import { DetailsListComponent } from './shareholder/details/details-list/details-list.component';
 import { DetailComponent } from './shareholder/details/detail/detail.component';
+import { NotesListComponent } from './shareholder/notes/notes-list/notes-list.component';
+import { NoteItemComponent } from './shareholder/notes/note-item/note-item.component';
 
 @NgModule({
   imports: [
@@ -31,7 +34,7 @@ import { DetailComponent } from './shareholder/details/detail/detail.component';
     CollapseModule.forRoot(),
     ModalModule.forRoot(),
     TypeaheadModule.forRoot(),
-    DatepickerModule.forRoot()
+    MyDatePickerModule
   ],
   declarations: [MeetingsComponent,
   MeetingsListComponent,
@@ -44,7 +47,9 @@ import { DetailComponent } from './shareholder/details/detail/detail.component';
   SupportListComponent,
   SupportItemComponent,
   DetailsListComponent,
-  DetailComponent],
+  DetailComponent,
+  NotesListComponent,
+  NoteItemComponent],
   providers: [QuestionService, MeetingsService, CoachService, ShareholderMeetingService]
 })
 export class MeetingsModule { }

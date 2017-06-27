@@ -48,7 +48,7 @@
             <app-support-list [parentMeetingForm]="editShareholderGoalForm" [Supports]="meeting.Supports" [meetingId]="meeting.ShareHolderMeetingId"></app-support-list>
           </div>
           <div class="goal-subSection">
-            <!--<app-notes-list [goalId]="personalGoal.GoalId" [parentGoalForm]="editPersonalGoalForm" [Notes]="personalGoal.Notes"></app-notes-list>-->
+            <app-notes-list [meetingId]="meeting.ShareHolderMeetingId" [parentMeetingForm]="editShareholderGoalForm" [Notes]="meeting.Notes"></app-notes-list>
           </div>
         </div>
         <div class="modal-footer">
