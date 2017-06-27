@@ -123,6 +123,7 @@ export class EditCompetencyGoalComponent implements OnInit, AfterViewInit {
   }
 
   onSubmit() {
+    console.log(this.editCompetencyGoalForm.value);
     if (this.checkActionItems()) {
       if (confirm('All actions are completed. Complete goal?')) {
         this.editCompetencyGoalForm.value.IsCompleted = true;

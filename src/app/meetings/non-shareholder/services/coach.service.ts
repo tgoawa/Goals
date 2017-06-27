@@ -16,4 +16,9 @@ export class CoachService {
     return this.http.get(api + 'EmployeeService/GetCoaches/')
     .map(response => response.json(), error => console.log(error));
   }
+
+  getShareholderCoaches() {
+    return this.http.get(api + 'EmployeeService/GetSHCoaches/')
+    .map(response => response.json(), error => console.log(error));
+  }
 }

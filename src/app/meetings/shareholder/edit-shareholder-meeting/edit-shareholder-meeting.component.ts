@@ -1,8 +1,12 @@
 import { Component, OnInit, AfterViewInit, Input, ViewChild, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
 import { ModalDirective } from 'ngx-bootstrap/modal';
+
 import { SHMeeting } from '../models/shmeeting';
+import { TeamMember } from '../../../teamMember/'
 import { ShareholderMeetingService } from '../service/shareholder-meeting.service';
+import { CoachService } from '../../non-shareholder/services/coach.service';
 
 
 
@@ -17,11 +21,13 @@ export class EditShareholderMeetingComponent implements OnInit, AfterViewInit {
   @Output() modalClosed: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() updateSuccess: EventEmitter<boolean> = new EventEmitter<boolean>();
 
+  coachList: TeamMember[];
   editShareholderMeetingForm: FormGroup;
   weightList = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100];
-  constructor(private fb: FormBuilder, private shmService: ShareholderMeetingService) { }
+  constructor(private fb: FormBuilder, private shmService: ShareholderMeetingService, private csService: CoachService) { }
 
   ngOnInit() {
+    this.getShareholderCoaches();
     this.editShareholderMeetingForm = this.toFormGroup(this.meeting);
   }
 
@@ -29,11 +35,21 @@ export class EditShareholderMeetingComponent implements OnInit, AfterViewInit {
     this.showModal();
   }
 
+  getShareholderCoaches() {
+    this.csService.getShareholderCoaches()
+    .subscribe(data => {
+      this.coachList = data;
+    }, error => {
+      console.log(error);
+    });
+  }
+
   private toFormGroup(data: SHMeeting): FormGroup {
     const formGroup = this.fb.group({
       CoachId: data.CoachId,
       TeamMemberId: data.TeamMemberId,
       Weight: data.Weight,
+      ShareHolderCoach: data.ShareHolderCoach.LastFirstName
     });
 
     return formGroup;
@@ -68,9 +84,21 @@ export class EditShareholderMeetingComponent implements OnInit, AfterViewInit {
   }
 
   onSubmit() {
+    this.meeting = this.editShareholderMeetingForm.value;
     this.formatSupportDueDate();
     this.formatNotesDueDate();
+    console.log(this.meeting);
     this.updateMeeting();
+  }
+
+  mapCoachIdToMeeting() {
+    const currentMeeting = this.editShareholderMeetingForm.value;
+    for (let index = 0; index < this.coachList.length; index++) {
+      if ( currentMeeting.ShareHolderCoach === this.coachList[index].LastFirstName) {
+        currentMeeting.CoachId = this.coachList[index].TeamMemberId;
+        currentMeeting.ShareHolderCoach = this.coachList[index];
+      }
+    }
   }
 
   formatSupportDueDate() {
@@ -99,7 +127,7 @@ export class EditShareholderMeetingComponent implements OnInit, AfterViewInit {
     }, error => {
       console.log(error);
       this.hideModal();
-    })
+    });
   }
 
 }

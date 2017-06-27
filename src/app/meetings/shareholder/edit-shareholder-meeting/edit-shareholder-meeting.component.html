@@ -11,6 +11,17 @@
       <form novalidate [formGroup]="editShareholderMeetingForm" (ngSubmit)="onSubmit()">
         <div class="modal-body">
           <div class="row">
+            <div class="col-md-3">
+              <label for="Coach">Select Coach:</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <input name="Coach" [typeahead]="coachList" formControlName="ShareHolderCoach" typeaheadOptionsLimit="8" typeaheadOptionField="LastFirstName"
+                class="form-control" (typeaheadOnSelect)="mapCoachIdToMeeting()">
+            </div>
+          </div>
+          <div class="row">
             <div class="col-md-6">
               <h2>Economic Contribution Goals:</h2>
             </div>
@@ -27,7 +38,7 @@
           <div class="form-group row">
             <label class="col-md-2 col-form-label">Weight%</label>
             <div class="col-md-2">
-            <select formControlName="Weight" class="form-control">
+              <select formControlName="Weight" class="form-control">
               <option *ngFor="let w of weightList" [value]="w" [selected]="w === meeting.Weight">{{w}}</option>
             </select>
             </div>
@@ -43,7 +54,7 @@
               <h3>Industry Team Goals</h3>
             </div>
           </div>
-            <app-details-list [parentMeetingForm]="editShareholderMeetingForm" [Details]="meeting.Details" [meetingId]="meeting.ShareHolderMeetingId"></app-details-list>
+          <app-details-list [parentMeetingForm]="editShareholderMeetingForm" [Details]="meeting.Details" [meetingId]="meeting.ShareHolderMeetingId"></app-details-list>
           <div class="goal-subSection">
             <app-support-list [parentMeetingForm]="editShareholderMeetingForm" [Supports]="meeting.Supports" [meetingId]="meeting.ShareHolderMeetingId"></app-support-list>
           </div>

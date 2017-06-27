@@ -2,7 +2,9 @@ import { Component, OnInit, AfterViewInit, Input, ViewChild, EventEmitter, Outpu
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { ShareholderMeetingService } from '../service/shareholder-meeting.service';
+import { CoachService } from '../../non-shareholder/services/coach.service';
 import { SHMeeting } from '../models/shmeeting';
+import { TeamMember } from '../../../teamMember';
 
 @Component({
   selector: 'app-add-shareholder-meeting',
@@ -15,31 +17,44 @@ export class AddShareholderMeetingComponent implements OnInit, AfterViewInit {
   @Output() modalClosed: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() addSuccess: EventEmitter<boolean> = new EventEmitter<boolean>();
 
+  coachList: TeamMember[];
   addShareholderMeetingForm: FormGroup;
   weightList = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100];
-  constructor(private fb: FormBuilder, private shService: ShareholderMeetingService) { }
+  constructor(private fb: FormBuilder, private shService: ShareholderMeetingService, private csService: CoachService) { }
 
   ngOnInit() {
+    this.getShareholderCoaches();
     this.addShareholderMeetingForm = this.toFormGroup(this.meeting);
   }
 
   ngAfterViewInit() {
     this.showModal();
   }
+  getShareholderCoaches() {
+    this.csService.getShareholderCoaches()
+      .subscribe(data => {
+        this.coachList = data;
+      }, error => {
+        console.log(error);
+      });
+  }
 
-    private toFormGroup(data: SHMeeting): FormGroup {
+  private toFormGroup(data: SHMeeting): FormGroup {
     const formGroup = this.fb.group({
       CoachId: data.CoachId,
       TeamMemberId: data.TeamMemberId,
       Weight: data.Weight,
+      ShareHolderCoach: null
     });
 
     return formGroup;
   }
 
   onSubmit() {
+    this.meeting = this.addShareholderMeetingForm.value;
     this.formatNotesDueDate();
     this.formatSupportDueDate();
+    console.log(this.meeting);
     this.saveMeeting();
   }
 
@@ -70,19 +85,28 @@ export class AddShareholderMeetingComponent implements OnInit, AfterViewInit {
   meetingUpdateSuccess() {
     this.addSuccess.emit(true);
   }
+    mapCoachIdToMeeting() {
+    const currentMeeting = this.addShareholderMeetingForm.value;
+    for (let index = 0; index < this.coachList.length; index++) {
+      if ( currentMeeting.ShareHolderCoach === this.coachList[index].LastFirstName) {
+        currentMeeting.CoachId = this.coachList[index].TeamMemberId;
+        currentMeeting.ShareHolderCoach = this.coachList[index];
+      }
+    }
+  }
 
-   formatSupportDueDate() {
+  formatSupportDueDate() {
     const editedMeeting: SHMeeting = this.addShareholderMeetingForm.value;
-    for (let index = 0; index < editedMeeting.Supports.length; index ++) {
+    for (let index = 0; index < editedMeeting.Supports.length; index++) {
       if (editedMeeting.Supports[index].DisplayDateDue !== null) {
         this.meeting.Supports[index].DisplayDateDue = editedMeeting.Supports[index].DisplayDateDue.formatted;
       }
     }
   }
 
-    formatNotesDueDate() {
+  formatNotesDueDate() {
     const editedMeeting: SHMeeting = this.addShareholderMeetingForm.value;
-    for (let index = 0; index < editedMeeting.Notes.length; index ++) {
+    for (let index = 0; index < editedMeeting.Notes.length; index++) {
       if (editedMeeting.Notes[index].DisplayDateDue !== null) {
         this.meeting.Notes[index].DisplayDateDue = editedMeeting.Notes[index].DisplayDateDue.formatted;
       }
