@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ModalModule, TypeaheadModule, CollapseModule } from 'ngx-bootstrap';
+import { CalendarModule } from 'primeng/primeng';
 import { MyDatePickerModule } from 'mydatepicker';
 
 import { MeetingsRoutingModule } from './meetings-routing.module';
@@ -35,7 +36,8 @@ import { AddShareholderMeetingComponent } from './shareholder/add-shareholder-me
     CollapseModule.forRoot(),
     ModalModule.forRoot(),
     TypeaheadModule.forRoot(),
-    MyDatePickerModule
+    MyDatePickerModule,
+    CalendarModule
   ],
   declarations: [MeetingsComponent,
   MeetingsListComponent,

@@ -34,7 +34,7 @@ export class NoteItemComponent implements OnInit {
       Note: data.Note,
       DisplayDateCreated: data.DisplayDateCreated,
       DisplayDateModified: data.DisplayDateModified,
-      DisplayDateDue: {formated: data.DisplayDateDue}
+      DisplayDateDue: {formatted: data.DisplayDateDue}
     });
 
     return formGroup;

@@ -39,7 +39,7 @@ export class Detail {
 
 export class Note {
     DisplayDateCreated: string;
-    DisplayDateDue: string;
+    DisplayDateDue: any;
     DisplayDateModified: string;
     Note: string;
     ShareHolderMeetingId: number;
@@ -48,7 +48,7 @@ export class Note {
 
 export class Support {
     DisplayDateCreated: string;
-    DisplayDateDue: string;
+    DisplayDateDue: any;
     DisplayDateModified: string;
     ShareHolderMeetingId: number;
     ShareHolderMeetingSupportId: number;

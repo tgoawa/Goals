@@ -68,8 +68,27 @@ export class EditShareholderMeetingComponent implements OnInit, AfterViewInit {
   }
 
   onSubmit() {
-    console.log(this.editShareholderMeetingForm.value);
+    this.formatSupportDueDate();
+    console.log(this.meeting);
     // this.updateMeeting();
+  }
+
+  formatSupportDueDate() {
+    const editedMeeting: SHMeeting = this.editShareholderMeetingForm.value;
+    for (let index = 0; index < editedMeeting.Supports.length; index ++) {
+      if (editedMeeting.Supports[index].DisplayDateDue !== null) {
+        this.meeting.Supports[index].DisplayDateDue = editedMeeting.Supports[index].DisplayDateDue.formatted;
+      }
+    }
+  }
+
+    formatNotesDueDate() {
+    const editedMeeting: SHMeeting = this.editShareholderMeetingForm.value;
+    for (let index = 0; index < editedMeeting.Notes.length; index ++) {
+      if (editedMeeting.Notes[index].DisplayDateDue !== null) {
+        this.meeting.Notes[index].DisplayDateDue = editedMeeting.Notes[index].DisplayDateDue.formatted;
+      }
+    }
   }
 
   updateMeeting() {
