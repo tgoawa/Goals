@@ -17,12 +17,12 @@ export class EditShareholderMeetingComponent implements OnInit, AfterViewInit {
   @Output() modalClosed: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() updateSuccess: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  editShareholderGoalForm: FormGroup;
+  editShareholderMeetingForm: FormGroup;
   weightList = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100];
   constructor(private fb: FormBuilder, private shmService: ShareholderMeetingService) { }
 
   ngOnInit() {
-    this.editShareholderGoalForm = this.toFormGroup(this.meeting);
+    this.editShareholderMeetingForm = this.toFormGroup(this.meeting);
   }
 
   ngAfterViewInit() {
@@ -44,7 +44,7 @@ export class EditShareholderMeetingComponent implements OnInit, AfterViewInit {
   }
 
   closeModal() {
-    if (this.editShareholderGoalForm.dirty) {
+    if (this.editShareholderMeetingForm.dirty) {
       if (confirm('You are about to lose changes, are you sure?')) {
         this.hideModal();
       }
@@ -68,7 +68,19 @@ export class EditShareholderMeetingComponent implements OnInit, AfterViewInit {
   }
 
   onSubmit() {
-    console.log(this.editShareholderGoalForm.value);
+    console.log(this.editShareholderMeetingForm.value);
+    // this.updateMeeting();
+  }
+
+  updateMeeting() {
+    this.shmService.saveMeeting(this.meeting)
+    .subscribe(data => {
+      this.meetingUpdateSuccess();
+      this.hideModal();
+    }, error => {
+      console.log(error);
+      this.hideModal();
+    })
   }
 
 }

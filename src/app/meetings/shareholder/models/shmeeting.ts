@@ -2,7 +2,7 @@ import { TeamMember } from '../../../teamMember';
 
 export class SHMeeting {
     CoachId: number;
-    Details: Detail;
+    Details: Detail[];
     DisplayDateCreated: string;
     DisplayDateModified: string;
     Notes: Note[];
@@ -35,30 +35,6 @@ export class Detail {
     ShareHolderMeetingId: number;
     sDaysinWIP_AR: string;
     sRealization: string;
-
-    constructor(detailType: number) {
-        this.BillingsTier6 = 0;
-        this.BillingsTier6GR = 0;
-        this.BillingsTier6PBR = 0;
-        this.BillingsTiers1_3 = 0;
-        this.BillingsTiers4_5 = 0;
-        this.BillingsTransferredFromOthers = 0;
-        this.BillingsTransferredToOthers = 0;
-        this.BusinessExistingClients = 0;
-        this.BusinessNewClients = 0;
-        this.ChargeHours = 0;
-        this.DaysinWIP_AR = 0;
-        this.DisplayDateCreated = '';
-        this.DisplayDateModified = '';
-        this.LostClients = 0;
-        this.Realization = 0;
-        this.ReferralsSpecialityUnits = 0;
-        this.ShareHolderDetailTypeId = detailType;
-        this.ShareHolderMeetingDetailId = 0;
-        this.ShareHolderMeetingId = 0;
-        this.sDaysinWIP_AR = '';
-        this.sRealization = '';
-    }
 }
 
 export class Note {

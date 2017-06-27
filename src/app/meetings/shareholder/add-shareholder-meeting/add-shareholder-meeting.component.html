@@ -1,14 +1,14 @@
-<div bsModal #editModal="bs-modal" [config]="{backdrop: 'static'}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+<div bsModal #addModal="bs-modal" [config]="{backdrop: 'static'}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
   aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h2 class="modal-title pull-left">Edit Meeting</h2>
-        <button type="button" class="close pull-right" (click)="closeModal()" aria-label="Close">
+        <h2 class="modal-title pull-left">Add Meeting</h2>
+        <button type="button" class="close pull-right" (click)="hideModal()" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form novalidate [formGroup]="editShareholderMeetingForm" (ngSubmit)="onSubmit()">
+      <form novalidate [formGroup]="addShareholderMeetingForm" (ngSubmit)="onSubmit()">
         <div class="modal-body">
           <div class="row">
             <div class="col-md-6">
@@ -43,17 +43,17 @@
               <h3>Industry Team Goals</h3>
             </div>
           </div>
-            <app-details-list [parentMeetingForm]="editShareholderMeetingForm" [Details]="meeting.Details" [meetingId]="meeting.ShareHolderMeetingId"></app-details-list>
+            <app-details-list [parentMeetingForm]="addShareholderMeetingForm" [Details]="meeting.Details" [meetingId]="meeting.ShareHolderMeetingId"></app-details-list>
           <div class="goal-subSection">
-            <app-support-list [parentMeetingForm]="editShareholderMeetingForm" [Supports]="meeting.Supports" [meetingId]="meeting.ShareHolderMeetingId"></app-support-list>
+            <app-support-list [parentMeetingForm]="addShareholderMeetingForm" [Supports]="meeting.Supports" [meetingId]="meeting.ShareHolderMeetingId"></app-support-list>
           </div>
           <div class="goal-subSection">
-            <app-notes-list [meetingId]="meeting.ShareHolderMeetingId" [parentMeetingForm]="editShareholderMeetingForm" [Notes]="meeting.Notes"></app-notes-list>
+            <app-notes-list [meetingId]="meeting.ShareHolderMeetingId" [parentMeetingForm]="addShareholderMeetingForm" [Notes]="meeting.Notes"></app-notes-list>
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancel</button>
-          <button class="btn btn-success" type="submit" [disabled]="!editShareholderMeetingForm.valid">Submit</button>
+          <button type="button" class="btn btn-secondary" (click)="hideModal()">Cancel</button>
+          <button class="btn btn-success" type="submit" [disabled]="!addShareholderMeetingForm.valid">Submit</button>
         </div>
       </form>
     </div>

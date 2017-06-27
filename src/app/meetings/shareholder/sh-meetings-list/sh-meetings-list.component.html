@@ -19,3 +19,4 @@
   <app-meeting-list [meeting]="meeting" [index]="i" (meetingToEdit)="onEdit($event)" (meetingToView)="onRead($event)"></app-meeting-list>
 </div>
 <app-edit-shareholder-meeting *ngIf="meetingToEdit" [meeting]="meetingToEdit" (modalClosed)="clearMeetingToEdit()" (updateSuccess)="refreshListOnEdit()"></app-edit-shareholder-meeting>
+<app-add-shareholder-meeting *ngIf="newMeeting" [meeting]="newMeeting" (modalClosed)="clearNewMeeting()" (addSuccess)="refreshListOnAdd()"></app-add-shareholder-meeting>

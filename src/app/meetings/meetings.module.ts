@@ -24,6 +24,7 @@ import { DetailsListComponent } from './shareholder/details/details-list/details
 import { DetailComponent } from './shareholder/details/detail/detail.component';
 import { NotesListComponent } from './shareholder/notes/notes-list/notes-list.component';
 import { NoteItemComponent } from './shareholder/notes/note-item/note-item.component';
+import { AddShareholderMeetingComponent } from './shareholder/add-shareholder-meeting/add-shareholder-meeting.component';
 
 @NgModule({
   imports: [
@@ -49,7 +50,8 @@ import { NoteItemComponent } from './shareholder/notes/note-item/note-item.compo
   DetailsListComponent,
   DetailComponent,
   NotesListComponent,
-  NoteItemComponent],
+  NoteItemComponent,
+  AddShareholderMeetingComponent],
   providers: [QuestionService, MeetingsService, CoachService, ShareholderMeetingService]
 })
 export class MeetingsModule { }
