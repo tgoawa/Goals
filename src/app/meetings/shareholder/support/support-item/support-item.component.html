@@ -5,12 +5,13 @@
     </div>
     <label class="col-md-1 col-form-label">By When:</label>
     <div class="col-md-3">
-      <div class="input-group">
+      <!--<div class="input-group">
       <input class="form-control" formControlName="DisplayDateDue" ngbDatepicker #d="ngbDatepicker">
       <div class="input-group-addon" (click)="d.toggle()">
         <i class="fa fa-calendar" aria-hidden="true"></i>
       </div>
-      </div>
+      </div>-->
+      <datetime [timepicker]="false" [datepicker]="{ icon: 'fa fa-calendar' }" formControlName="DisplayDateDue"></datetime>
     </div>
   </div>
 </div>

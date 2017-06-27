@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
 import { ModalModule, TypeaheadModule, CollapseModule, DatepickerModule } from 'ngx-bootstrap';
 
 import { MeetingsRoutingModule } from './meetings-routing.module';
@@ -33,8 +31,7 @@ import { DetailComponent } from './shareholder/details/detail/detail.component';
     CollapseModule.forRoot(),
     ModalModule.forRoot(),
     TypeaheadModule.forRoot(),
-    DatepickerModule.forRoot(),
-    NgbModule
+    DatepickerModule.forRoot()
   ],
   declarations: [MeetingsComponent,
   MeetingsListComponent,
