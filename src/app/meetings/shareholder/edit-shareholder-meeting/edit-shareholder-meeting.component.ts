@@ -69,8 +69,8 @@ export class EditShareholderMeetingComponent implements OnInit, AfterViewInit {
 
   onSubmit() {
     this.formatSupportDueDate();
-    console.log(this.meeting);
-    // this.updateMeeting();
+    this.formatNotesDueDate();
+    this.updateMeeting();
   }
 
   formatSupportDueDate() {
