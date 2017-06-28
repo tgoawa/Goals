@@ -16,11 +16,11 @@ export class MeetingListComponent implements OnInit {
   ngOnInit() {
   }
 
-  onEdit(meeting: Meeting) {
+  onEdit(meeting: any) {
     this.meetingToEdit.emit(meeting);
   }
 
-  onViewOldMeeting(meeting: Meeting) {
+  onViewOldMeeting(meeting: any) {
     this.meetingToView.emit(meeting);
   }
 

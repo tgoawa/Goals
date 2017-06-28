@@ -1,0 +1,72 @@
+<div bsModal #addModal="bs-modal" [config]="{backdrop: 'static'}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title pull-left">Add Meeting</h2>
+        <button type="button" class="close pull-right" (click)="hideModal()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form novalidate [formGroup]="addShareholderMeetingForm" (ngSubmit)="onSubmit()">
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-3">
+              <label for="Coach">Select Coach:</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <input name="Coach" [typeahead]="coachList" formControlName="ShareHolderCoach" typeaheadOptionsLimit="8" typeaheadOptionField="LastFirstName"
+                class="form-control">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <h2>Economic Contribution Goals:</h2>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-8">
+              <ul class="list-unstyled">
+                <li>Please enter values in the following columns.</li>
+                <li>Practice Unit Goals should be entered by the Practice Unit Leaders</li>
+                <li>Industry Team Goals should be entered by the Industry Team Leaders</li>
+              </ul>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-2 col-form-label">Weight%</label>
+            <div class="col-md-2">
+              <select formControlName="Weight" class="form-control">
+              <option *ngFor="let w of weightList" [value]="w" [selected]="w === meeting.Weight">{{w}}</option>
+            </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <h3>Personal</h3>
+            </div>
+            <div class="col-md-4">
+              <h3>Practice Unit Goals</h3>
+            </div>
+            <div class="col-md-4">
+              <h3>Industry Team Goals</h3>
+            </div>
+          </div>
+          <app-details-list [parentMeetingForm]="addShareholderMeetingForm" [Details]="meeting.Details" [meetingId]="meeting.ShareHolderMeetingId"></app-details-list>
+          <div class="goal-subSection">
+            <app-support-list [parentMeetingForm]="addShareholderMeetingForm" [Supports]="meeting.Supports" [meetingId]="meeting.ShareHolderMeetingId"></app-support-list>
+          </div>
+          <div class="goal-subSection">
+            <app-notes-list [meetingId]="meeting.ShareHolderMeetingId" [parentMeetingForm]="addShareholderMeetingForm" [Notes]="meeting.Notes"></app-notes-list>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="hideModal()">Cancel</button>
+          <button class="btn btn-success" type="submit" [disabled]="!addShareholderMeetingForm.valid">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

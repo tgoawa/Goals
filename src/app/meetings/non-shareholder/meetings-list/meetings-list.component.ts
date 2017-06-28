@@ -24,9 +24,9 @@ export class MeetingsListComponent implements OnInit {
   teamMember: TeamMember;
 
   constructor(private mService: MeetingsService,
-  private tmService: TeamMemberService,
-  private qsService: QuestionService,
-  private toastrService: ToastrService) { }
+    private tmService: TeamMemberService,
+    private qsService: QuestionService,
+    private toastrService: ToastrService) { }
 
   ngOnInit() {
     this.teamMember = this.tmService.teamMember;
@@ -37,22 +37,22 @@ export class MeetingsListComponent implements OnInit {
   getMeetings() {
     this.isLoading = true;
     this.mService.getMeetings(this.teamMember.TeamMemberId)
-    .subscribe(data => {
-      this.isLoading = false;
-      this.meetingList = data;
-    }, error => {
-      console.log(error);
-      this.isLoading = false;
-    });
+      .subscribe(data => {
+        this.isLoading = false;
+        this.meetingList = data;
+      }, error => {
+        console.log(error);
+        this.isLoading = false;
+      });
   }
 
   getQuestions() {
     this.qsService.getQuestions(0)
-    .subscribe(data => {
-      this.questionList = data;
-    }, error => {
-      console.log(error);
-    });
+      .subscribe(data => {
+        this.questionList = data;
+      }, error => {
+        console.log(error);
+      });
   }
 
   onEdit(meeting: Meeting) {
@@ -92,7 +92,7 @@ export class MeetingsListComponent implements OnInit {
     this.newMeeting.Questions = this.questionList;
   }
 
-    showSuccessUpdate() {
+  showSuccessUpdate() {
     this.toastrService.success('', 'Meeting was updated successfully!');
   }
 

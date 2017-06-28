@@ -4,21 +4,22 @@ import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/operator/map';
 import { environment } from '../../../../environments/environment';
-import { TeamMember } from '../../../teamMember';
+import { SHMeeting } from '../models/shmeeting';
+
 
 const api = environment.envApi;
 @Injectable()
-export class CoachService {
+export class ShareholderMeetingService {
 
   constructor(private http: Http) { }
 
-  getCoaches() {
-    return this.http.get(api + 'EmployeeService/GetCoaches/')
+  getMeetings(id: number) {
+    return this.http.get(api + 'ShareHolderService/getShareholderMeetings/' + id)
     .map(response => response.json(), error => console.log(error));
   }
 
-  getShareholderCoaches() {
-    return this.http.get(api + 'EmployeeService/GetSHCoaches/')
+  saveMeeting(meeting: SHMeeting) {
+    return this.http.post(api + 'ShareHolderService/CreateShareHolderMeeting/', meeting)
     .map(response => response.json(), error => console.log(error));
   }
 }
