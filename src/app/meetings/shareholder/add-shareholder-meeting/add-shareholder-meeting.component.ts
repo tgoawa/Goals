@@ -51,10 +51,9 @@ export class AddShareholderMeetingComponent implements OnInit, AfterViewInit {
   }
 
   onSubmit() {
-    this.meeting = this.addShareholderMeetingForm.value;
+    this.mapCoachIdToMeeting();
     this.formatNotesDueDate();
     this.formatSupportDueDate();
-    console.log(this.meeting);
     this.saveMeeting();
   }
 
@@ -72,7 +71,7 @@ export class AddShareholderMeetingComponent implements OnInit, AfterViewInit {
   }
 
   saveMeeting() {
-    this.shService.saveMeeting(this.meeting)
+    this.shService.saveMeeting(this.addShareholderMeetingForm.value)
       .subscribe(data => {
         this.meetingUpdateSuccess();
         this.hideModal();
@@ -85,10 +84,10 @@ export class AddShareholderMeetingComponent implements OnInit, AfterViewInit {
   meetingUpdateSuccess() {
     this.addSuccess.emit(true);
   }
-    mapCoachIdToMeeting() {
+  mapCoachIdToMeeting() {
     const currentMeeting = this.addShareholderMeetingForm.value;
     for (let index = 0; index < this.coachList.length; index++) {
-      if ( currentMeeting.ShareHolderCoach === this.coachList[index].LastFirstName) {
+      if (currentMeeting.ShareHolderCoach === this.coachList[index].LastFirstName) {
         currentMeeting.CoachId = this.coachList[index].TeamMemberId;
         currentMeeting.ShareHolderCoach = this.coachList[index];
       }
@@ -99,7 +98,7 @@ export class AddShareholderMeetingComponent implements OnInit, AfterViewInit {
     const editedMeeting: SHMeeting = this.addShareholderMeetingForm.value;
     for (let index = 0; index < editedMeeting.Supports.length; index++) {
       if (editedMeeting.Supports[index].DisplayDateDue !== null) {
-        this.meeting.Supports[index].DisplayDateDue = editedMeeting.Supports[index].DisplayDateDue.formatted;
+        editedMeeting.Supports[index].DisplayDateDue = editedMeeting.Supports[index].DisplayDateDue.formatted;
       }
     }
   }
@@ -108,7 +107,7 @@ export class AddShareholderMeetingComponent implements OnInit, AfterViewInit {
     const editedMeeting: SHMeeting = this.addShareholderMeetingForm.value;
     for (let index = 0; index < editedMeeting.Notes.length; index++) {
       if (editedMeeting.Notes[index].DisplayDateDue !== null) {
-        this.meeting.Notes[index].DisplayDateDue = editedMeeting.Notes[index].DisplayDateDue.formatted;
+        editedMeeting.Notes[index].DisplayDateDue = editedMeeting.Notes[index].DisplayDateDue.formatted;
       }
     }
   }

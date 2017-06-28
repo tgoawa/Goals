@@ -18,6 +18,7 @@ export class DetailComponent implements OnInit {
 
   ngOnInit() {
     this.detailForm = this.toFormGroup(this.detail);
+    this.details.push(this.detailForm);
   }
 
   private toFormGroup(data: Detail) {

@@ -78,6 +78,7 @@ export class ShMeetingsListComponent implements OnInit {
     this.newMeeting.Details.push(new Detail(1));
     this.newMeeting.Details.push(new Detail(2));
     this.newMeeting.Details.push(new Detail(3));
+    console.log(this.newMeeting);
   }
 
   showSuccessUpdate() {
