@@ -2,33 +2,35 @@ import { Component, OnInit, AfterViewInit, Input, ViewChild, EventEmitter, Outpu
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 
-import { CompetencyGoalService } from '../service/competency-goal.service';
+import { PersonalGoalService } from '../service/personal-goal.service';
 
 import { Goal, Action, Measurement, Support, Note } from '../../goal';
-
 @Component({
-  selector: 'app-add-competency-goal',
-  templateUrl: './add-competency-goal.component.html',
-  styleUrls: ['./add-competency-goal.component.scss']
+  selector: 'app-edit-personal-goal',
+  templateUrl: './edit-personal-goal.component.html',
+  styleUrls: ['./edit-personal-goal.component.scss']
 })
-export class AddCompetencyGoalComponent implements OnInit, AfterViewInit {
-  @ViewChild('addModal') addModal: ModalDirective;
-  @Input('competencyGoal') competencyGoal: Goal;
+export class EditPersonalGoalComponent implements OnInit, AfterViewInit {
+  @ViewChild('editModal') editModal: ModalDirective;
+  @Input('personalGoal') personalGoal: Goal;
   @Output() modalClosed: EventEmitter<boolean> = new EventEmitter<boolean>();
-  @Output() addSuccess: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() updateSuccess: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  addCompetencyGoalForm: FormGroup;
+  editPersonalGoalForm: FormGroup;
   goalCompetencies: string[];
   goalCompetencyTypes: string[];
   weightList: number[];
 
-  constructor(private fb: FormBuilder, private cgService: CompetencyGoalService) { }
+  constructor(private fb: FormBuilder, private cgService: PersonalGoalService) { }
 
   ngOnInit() {
     this.weightList = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100];
     this.getGoalCompetencies();
     this.getCompetencyTypes();
-    this.addCompetencyGoalForm = this.toFormGroup(this.competencyGoal);
+    this.clearCompetencyId();
+    this.clearCompetencyTypeId();
+    this.editPersonalGoalForm = this.toFormGroup(this.personalGoal);
+    this.replaceBreakTags();
   }
 
   ngAfterViewInit() {
@@ -39,14 +41,16 @@ export class AddCompetencyGoalComponent implements OnInit, AfterViewInit {
     this.cgService.getCompetencies()
       .subscribe(data => {
         this.goalCompetencies = data;
-        this.removePrevGoalEntry();
+        this.checkPreviousGoalCompetency();
       }, error => {
         console.log(error);
       });
   }
 
-  removePrevGoalEntry() {
-    this.goalCompetencies.pop();
+  checkPreviousGoalCompetency() {
+    if (this.personalGoal.GoalTypeId === 3) {
+      this.goalCompetencies.pop();
+    }
   }
 
   getCompetencyTypes() {
@@ -56,6 +60,18 @@ export class AddCompetencyGoalComponent implements OnInit, AfterViewInit {
       }, error => {
         console.log(error);
       });
+  }
+
+  clearCompetencyId() {
+    if (this.personalGoal.GoalCompetencyId === 0) {
+      this.personalGoal.GoalCompetencyId = null;
+    }
+  }
+
+  clearCompetencyTypeId() {
+    if (this.personalGoal.GoalCompetencyTypeId === 0) {
+      this.personalGoal.GoalCompetencyTypeId = null;
+    }
   }
 
   private toFormGroup(data: Goal): FormGroup {
@@ -78,12 +94,32 @@ export class AddCompetencyGoalComponent implements OnInit, AfterViewInit {
     return formGroup;
   }
 
+  replaceBreakTags() {
+    if (this.personalGoal.GoalDescription !== null) {
+      this.editPersonalGoalForm.patchValue({
+        GoalDescription: this.personalGoal.GoalDescription.split('<br>').join('\n')
+      });
+    }
+    return false;
+  }
+
   showModal() {
-    this.addModal.show();
+    this.editModal.show();
+  }
+
+  closeModal() {
+    if (this.editPersonalGoalForm.dirty) {
+      if (confirm('You are about to lose changes, are you sure?')) {
+        this.hideModal();
+      }
+      return false;
+    } else {
+      this.hideModal();
+    }
   }
 
   hideModal() {
-    this.addModal.hide();
+    this.editModal.hide();
     this.modalIsClosed();
   }
 
@@ -91,23 +127,40 @@ export class AddCompetencyGoalComponent implements OnInit, AfterViewInit {
     this.modalClosed.emit(true);
   }
 
-  goalAddSuccess() {
-    this.addSuccess.emit(true);
+  goalUpdateSuccess() {
+    this.updateSuccess.emit(true);
   }
 
-  saveGoal(goal: Goal) {
-    this.cgService.saveCompetencyGoal(goal)
+  updateGoal() {
+    this.cgService.updateCompetencyGoal(this.editPersonalGoalForm.value)
       .subscribe(data => {
-        this.goalAddSuccess();
+        this.goalUpdateSuccess();
         this.hideModal();
       }, error => {
         console.log(error);
+        this.hideModal();
       });
   }
 
-  onSubmit(formValue: Goal) {
-    this.replaceLineBreaks(formValue);
-    this.saveGoal(formValue);
+  onSubmit() {
+    if (this.checkActionItems()) {
+      if (confirm('All actions are completed. Complete goal?')) {
+        this.editPersonalGoalForm.value.IsCompleted = true;
+      } else {
+        this.editPersonalGoalForm.value.IsCompleted = false;
+      }
+    }
+    this.replaceLineBreaks(this.editPersonalGoalForm.value);
+    this.updateGoal();
+  }
+
+  checkActionItems() {
+    for (let index = 0; index < this.editPersonalGoalForm.value.Actions.length; index++) {
+      if (!this.editPersonalGoalForm.value.Actions[index].IsCompleted) {
+        return false;
+      }
+    }
+    return true;
   }
 
   replaceLineBreaks(formValue: Goal) {

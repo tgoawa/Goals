@@ -15,8 +15,8 @@
   <div class="col-md-2 offset-md-5"><i fa class="fa fa-spinner fa-5x fa-spin" aria-hidden="true"></i>
   </div>
 </div>
-<div *ngFor="let goal of competencyGoalList">
+<div *ngFor="let goal of personalGoalList">
 <app-goal-list [goal]="goal" (goalToEdit)="onEdit($event)"></app-goal-list>
 </div>
-<app-add-competency-goal [competencyGoal]="newGoal" *ngIf="newGoal" (modalClosed)="clearNewGoal()" (addSuccess)="refreshListAdd()"></app-add-competency-goal>
-<app-edit-competency-goal [competencyGoal]="goalToEdit" *ngIf="goalToEdit" (modalClosed)="clearGoalToEdit()" (updateSuccess)="refreshListUpdate()"></app-edit-competency-goal>
+<app-add-personal-goal [personalGoal]="newGoal" *ngIf="newGoal" (modalClosed)="clearNewGoal()" (addSuccess)="refreshListAdd()"></app-add-personal-goal>
+<app-edit-personal-goal [personalGoal]="goalToEdit" *ngIf="goalToEdit" (modalClosed)="clearGoalToEdit()" (updateSuccess)="refreshListUpdate()"></app-edit-personal-goal>

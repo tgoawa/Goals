@@ -8,7 +8,7 @@ import { Goal } from '../../goal';
 
 const api = environment.envApi;
 @Injectable()
-export class CompetencyGoalService {
+export class PersonalGoalService {
 
   constructor(private http: Http) { }
 

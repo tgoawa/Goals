@@ -1,25 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 
-import { CompetencyGoalService } from '../service/competency-goal.service';
+import { PersonalGoalService } from '../service/personal-goal.service';
 import { TeamMemberService, TeamMember } from '../../../teamMember/';
 import { Goal } from '../../goal';
 
 @Component({
-  selector: 'app-competency-goal-list',
-  templateUrl: './competency-goal-list.component.html',
-  styleUrls: ['./competency-goal-list.component.scss']
+  selector: 'app-personal-goal-list',
+  templateUrl: './personal-goal-list.component.html',
+  styleUrls: ['./personal-goal-list.component.scss']
 })
-export class CompetencyGoalListComponent implements OnInit {
+export class PersonalGoalListComponent implements OnInit {
 
-  competencyGoalList: Goal[];
+  personalGoalList: Goal[];
   newGoal: Goal;
   goalToEdit: Goal;
   isLoading = false;
 
   private teamMember: TeamMember;
 
-  constructor(private cgService: CompetencyGoalService, private toastrService: ToastrService, private tmService: TeamMemberService) { }
+  constructor(private cgService: PersonalGoalService, private toastrService: ToastrService, private tmService: TeamMemberService) { }
 
   ngOnInit() {
     this.teamMember = this.tmService.teamMember;
@@ -31,8 +31,8 @@ export class CompetencyGoalListComponent implements OnInit {
     this.cgService.getCompetencyGoals(id)
     .subscribe(data => {
       this.isLoading = false;
-      this.competencyGoalList = data;
-      console.log(this.competencyGoalList);
+      this.personalGoalList = data;
+      console.log(this.personalGoalList);
     }, error => {
       console.log(error);
       this.isLoading = false;
