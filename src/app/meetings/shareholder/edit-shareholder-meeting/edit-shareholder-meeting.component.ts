@@ -84,10 +84,9 @@ export class EditShareholderMeetingComponent implements OnInit, AfterViewInit {
   }
 
   onSubmit() {
-    this.meeting = this.editShareholderMeetingForm.value;
     this.formatSupportDueDate();
     this.formatNotesDueDate();
-    console.log(this.meeting);
+    this.mapCoachIdToMeeting();
     this.updateMeeting();
   }
 
@@ -105,7 +104,7 @@ export class EditShareholderMeetingComponent implements OnInit, AfterViewInit {
     const editedMeeting: SHMeeting = this.editShareholderMeetingForm.value;
     for (let index = 0; index < editedMeeting.Supports.length; index ++) {
       if (editedMeeting.Supports[index].DisplayDateDue !== null) {
-        this.meeting.Supports[index].DisplayDateDue = editedMeeting.Supports[index].DisplayDateDue.formatted;
+        editedMeeting.Supports[index].DisplayDateDue = editedMeeting.Supports[index].DisplayDateDue.formatted;
       }
     }
   }
@@ -114,13 +113,13 @@ export class EditShareholderMeetingComponent implements OnInit, AfterViewInit {
     const editedMeeting: SHMeeting = this.editShareholderMeetingForm.value;
     for (let index = 0; index < editedMeeting.Notes.length; index ++) {
       if (editedMeeting.Notes[index].DisplayDateDue !== null) {
-        this.meeting.Notes[index].DisplayDateDue = editedMeeting.Notes[index].DisplayDateDue.formatted;
+        editedMeeting.Notes[index].DisplayDateDue = editedMeeting.Notes[index].DisplayDateDue.formatted;
       }
     }
   }
 
   updateMeeting() {
-    this.shmService.saveMeeting(this.meeting)
+    this.shmService.saveMeeting(this.editShareholderMeetingForm.value)
     .subscribe(data => {
       this.meetingUpdateSuccess();
       this.hideModal();
