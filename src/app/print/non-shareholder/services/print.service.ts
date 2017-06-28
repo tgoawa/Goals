@@ -16,4 +16,14 @@ export class PrintService {
     .map(response => response.json(), error => console.log(error));
   }
 
+    getCompetencies() {
+    return this.http.get(api + 'GoalService/GetGoalCompetencies/')
+    .map(response => response.json(), error => console.log(error));
+  }
+
+  getCompetencyTypes() {
+    return this.http.get(api + 'GoalService/GetGoalCompetencyTypes/')
+    .map(response => response.json(), error => console.log(error));
+  }
+
 }
