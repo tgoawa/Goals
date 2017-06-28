@@ -5,7 +5,6 @@ import { ModalDirective } from 'ngx-bootstrap/modal';
 import { PersonalGoalService } from '../service/personal-goal.service';
 
 import { Goal, Action, Measurement, Support, Note } from '../../goal';
-
 @Component({
   selector: 'app-edit-personal-goal',
   templateUrl: './edit-personal-goal.component.html',
@@ -18,10 +17,18 @@ export class EditPersonalGoalComponent implements OnInit, AfterViewInit {
   @Output() updateSuccess: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   editPersonalGoalForm: FormGroup;
+  goalCompetencies: string[];
+  goalCompetencyTypes: string[];
+  weightList: number[];
 
-  constructor(private fb: FormBuilder, private pgService: PersonalGoalService) { }
+  constructor(private fb: FormBuilder, private cgService: PersonalGoalService) { }
 
   ngOnInit() {
+    this.weightList = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100];
+    this.getGoalCompetencies();
+    this.getCompetencyTypes();
+    this.clearCompetencyId();
+    this.clearCompetencyTypeId();
     this.editPersonalGoalForm = this.toFormGroup(this.personalGoal);
     this.replaceBreakTags();
   }
@@ -30,18 +37,54 @@ export class EditPersonalGoalComponent implements OnInit, AfterViewInit {
     this.showModal();
   }
 
+  getGoalCompetencies() {
+    this.cgService.getCompetencies()
+      .subscribe(data => {
+        this.goalCompetencies = data;
+        this.checkPreviousGoalCompetency();
+      }, error => {
+        console.log(error);
+      });
+  }
+
+  checkPreviousGoalCompetency() {
+    if (this.personalGoal.GoalTypeId === 3) {
+      this.goalCompetencies.pop();
+    }
+  }
+
+  getCompetencyTypes() {
+    this.cgService.getCompetencyTypes()
+      .subscribe(data => {
+        this.goalCompetencyTypes = data;
+      }, error => {
+        console.log(error);
+      });
+  }
+
+  clearCompetencyId() {
+    if (this.personalGoal.GoalCompetencyId === 0) {
+      this.personalGoal.GoalCompetencyId = null;
+    }
+  }
+
+  clearCompetencyTypeId() {
+    if (this.personalGoal.GoalCompetencyTypeId === 0) {
+      this.personalGoal.GoalCompetencyTypeId = null;
+    }
+  }
+
   private toFormGroup(data: Goal): FormGroup {
     const formGroup = this.fb.group({
       GoalId: data.GoalId,
       GoalTypeId: data.GoalTypeId,
       GoalWIGId: data.GoalWIGId,
-      GoalCompetencyId: data.GoalCompetencyId,
-      GoalCompetencyTypeId: data.GoalCompetencyTypeId,
+      GoalCompetencyId: [data.GoalCompetencyId, Validators.required],
+      GoalCompetencyTypeId: [data.GoalCompetencyTypeId, Validators.required],
       GoalCompletionPercentage: data.GoalCompletionPercentage,
       IndustryTeamId: data.IndustryTeamId,
       IsCompleted: data.IsCompleted,
       TeamMemberId: data.TeamMemberId,
-      Weight: data.Weight,
       DisplayDateCreated: data.DisplayDateCreated,
       DisplayDateModified: data.DisplayDateModified,
       Name: [data.Name, Validators.required],
@@ -89,7 +132,7 @@ export class EditPersonalGoalComponent implements OnInit, AfterViewInit {
   }
 
   updateGoal() {
-    this.pgService.updatePersonalGoal(this.editPersonalGoalForm.value)
+    this.cgService.updateCompetencyGoal(this.editPersonalGoalForm.value)
       .subscribe(data => {
         this.goalUpdateSuccess();
         this.hideModal();
@@ -100,6 +143,7 @@ export class EditPersonalGoalComponent implements OnInit, AfterViewInit {
   }
 
   onSubmit() {
+    console.log(this.editPersonalGoalForm.value);
     if (this.checkActionItems()) {
       if (confirm('All actions are completed. Complete goal?')) {
         this.editPersonalGoalForm.value.IsCompleted = true;
@@ -109,7 +153,6 @@ export class EditPersonalGoalComponent implements OnInit, AfterViewInit {
     }
     this.replaceLineBreaks(this.editPersonalGoalForm.value);
     this.updateGoal();
-
   }
 
   checkActionItems() {

@@ -17,16 +17,45 @@ export class AddPersonalGoalComponent implements OnInit, AfterViewInit {
   @Output() modalClosed: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() addSuccess: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  addPersonalGoalForm: FormGroup;
+  addpersonalGoalForm: FormGroup;
+  goalCompetencies: string[];
+  goalCompetencyTypes: string[];
+  weightList: number[];
 
-  constructor(private fb: FormBuilder, private pgService: PersonalGoalService) { }
+  constructor(private fb: FormBuilder, private cgService: PersonalGoalService) { }
 
   ngOnInit() {
-    this.addPersonalGoalForm = this.toFormGroup(this.personalGoal);
+    this.weightList = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100];
+    this.getGoalCompetencies();
+    this.getpersonalTypes();
+    this.addpersonalGoalForm = this.toFormGroup(this.personalGoal);
   }
 
   ngAfterViewInit() {
     this.showModal();
+  }
+
+  getGoalCompetencies() {
+    this.cgService.getCompetencies()
+      .subscribe(data => {
+        this.goalCompetencies = data;
+        this.removePrevGoalEntry();
+      }, error => {
+        console.log(error);
+      });
+  }
+
+  removePrevGoalEntry() {
+    this.goalCompetencies.pop();
+  }
+
+  getpersonalTypes() {
+    this.cgService.getCompetencyTypes()
+      .subscribe(data => {
+        this.goalCompetencyTypes = data;
+      }, error => {
+        console.log(error);
+      });
   }
 
   private toFormGroup(data: Goal): FormGroup {
@@ -34,13 +63,12 @@ export class AddPersonalGoalComponent implements OnInit, AfterViewInit {
       GoalId: data.GoalId,
       GoalTypeId: data.GoalTypeId,
       GoalWIGId: data.GoalWIGId,
-      GoalCompetencyId: data.GoalCompetencyId,
-      GoalCompetencyTypeId: data.GoalCompetencyTypeId,
+      GoalCompetencyId: [data.GoalCompetencyId, Validators.required],
+      GoalCompetencyTypeId: [data.GoalCompetencyTypeId, Validators.required],
       GoalCompletionPercentage: data.GoalCompletionPercentage,
       IndustryTeamId: data.IndustryTeamId,
       IsCompleted: data.IsCompleted,
       TeamMemberId: data.TeamMemberId,
-      Weight: data.Weight,
       DisplayDateCreated: data.DisplayDateCreated,
       DisplayDateModified: data.DisplayDateModified,
       Name: [data.Name, Validators.required],
@@ -68,7 +96,7 @@ export class AddPersonalGoalComponent implements OnInit, AfterViewInit {
   }
 
   saveGoal(goal: Goal) {
-    this.pgService.savePersonalGoal(goal)
+    this.cgService.saveCompetencyGoal(goal)
       .subscribe(data => {
         this.goalAddSuccess();
         this.hideModal();

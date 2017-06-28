@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AddPersonalGoalComponent } from './add-personal-goal.component';
 
-describe('AddPersonalGoalComponent', () => {
+describe('AddCompetencyGoalComponent', () => {
   let component: AddPersonalGoalComponent;
   let fixture: ComponentFixture<AddPersonalGoalComponent>;
 

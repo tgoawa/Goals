@@ -2,41 +2,56 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h2 class="modal-title">Add Goal</h2>
-        <span>Make sure your goals are SMART goals: Specific, Measurable, Attainable, Results-Oriented, Time-Bound.</span>
+        <h2 class="modal-title pull-left">Add Goal</h2>
         <button type="button" class="close pull-right" (click)="hideModal()" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form novalidate [formGroup]="addPersonalGoalForm" (ngSubmit)="onSubmit(addPersonalGoalForm.value)">
+      <form novalidate [formGroup]="addpersonalGoalForm" (ngSubmit)="onSubmit(addpersonalGoalForm.value)">
         <div class="modal-body">
           <div class="form-group col-md-4">
             <label for="Name">Goal Name:</label>
             <input id="Name" type="text" class="form-control" formControlName="Name">
-            <div *ngIf="addPersonalGoalForm.get('Name').hasError('required')" class="alert alert-danger">A name is required</div>
+            <div *ngIf="addpersonalGoalForm.get('Name').hasError('required')" class="alert alert-danger">A name is required</div>
           </div>
           <div class="form-group col-md-6">
             <label for="GoalDescription">Goal Description:</label>
             <textarea class="form-control" formControlName="GoalDescription"></textarea>
-            <div *ngIf="addPersonalGoalForm.get('GoalDescription').hasError('required')" class="alert alert-danger">A goal description is required</div>
+            <div *ngIf="addpersonalGoalForm.get('GoalDescription').hasError('required')" class="alert alert-danger">A goal description is required</div>
           </div>
           <div class="goal-subSection">
-            <app-actions-list [goalId]="personalGoal.GoalId" [parentGoalForm]="addPersonalGoalForm" [Actions]="personalGoal.Actions">
+            <div class="form-group col-md-6">
+            <label for="GoalCompetencyId">Competency for current goal:</label>
+            <select class="form-control" name="GoalCompetencyId" formControlName="GoalCompetencyId">
+              <option *ngFor="let competency of goalCompetencies;" [value]="competency.GoalCompetencyId">{{competency.Competency}}</option>
+            </select>
+            <div *ngIf="addpersonalGoalForm.get('GoalCompetencyId').hasError('required')" class="alert alert-danger">A Competency is required</div>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="GoalCompetencyTypeId">Competency tye for current goal:</label>
+            <select class="form-control" name="GoalCompetencyId" formControlName="GoalCompetencyTypeId">
+              <option *ngFor="let type of goalCompetencyTypes;" [value]="type.GoalCompetencyTypeId">{{type.CompetencyType}}</option>
+            </select>
+            <div *ngIf="addpersonalGoalForm.get('GoalCompetencyTypeId').hasError('required')" class="alert alert-danger">A competency type is required</div>
+          </div>
+          </div>
+          <div class="goal-subSection">
+            <app-actions-list [goalId]="personalGoal.GoalId" [parentGoalForm]="addpersonalGoalForm" [Actions]="personalGoal.Actions">
             </app-actions-list>
           </div>
           <div class="goal-subSection">
-            <app-measurements-list [goalId]="personalGoal.GoalId" [parentGoalForm]="addPersonalGoalForm" [Measurements]="personalGoal.Measurements"></app-measurements-list>
+            <app-measurements-list [goalId]="personalGoal.GoalId" [parentGoalForm]="addpersonalGoalForm" [Measurements]="personalGoal.Measurements"></app-measurements-list>
           </div>
           <div class="goal-subSection">
-            <app-support-list [goalId]="personalGoal.GoalId" [parentGoalForm]="addPersonalGoalForm" [Supports]="personalGoal.Supports"></app-support-list>
+            <app-support-list [goalId]="personalGoal.GoalId" [parentGoalForm]="addpersonalGoalForm" [Supports]="personalGoal.Supports"></app-support-list>
           </div>
           <div class="goal-subSection">
-            <app-notes-list [goalId]="personalGoal.GoalId" [parentGoalForm]="addPersonalGoalForm" [Notes]="personalGoal.Notes"></app-notes-list>
+            <app-notes-list [goalId]="personalGoal.GoalId" [parentGoalForm]="addpersonalGoalForm" [Notes]="personalGoal.Notes"></app-notes-list>
           </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" (click)="hideModal()">Cancel</button>
-          <button class="btn btn-success" type="submit" [disabled]="!addPersonalGoalForm.valid">Submit</button>
+          <button class="btn btn-success" type="submit" [disabled]="!addpersonalGoalForm.valid">Submit</button>
         </div>
       </form>
     </div>

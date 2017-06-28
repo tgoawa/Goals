@@ -12,18 +12,28 @@ export class PersonalGoalService {
 
   constructor(private http: Http) { }
 
-  getPersonalGoals(id: number) {
-    return this.http.get(api + 'GoalService/GetGoals/' + id)
+  getCompetencies() {
+    return this.http.get(api + 'GoalService/GetGoalCompetencies/')
     .map(response => response.json(), error => console.log(error));
   }
 
-  savePersonalGoal(goal: Goal) {
-    return this.http.post(api + 'GoalService/SaveGoal/', goal)
+  getCompetencyTypes() {
+    return this.http.get(api + 'GoalService/GetGoalCompetencyTypes/')
     .map(response => response.json(), error => console.log(error));
   }
 
-  updatePersonalGoal(goal: Goal) {
-    return this.http.post(api + 'GoalService/UpdateGoal/', goal)
+  getCompetencyGoals(id: number) {
+    return this.http.get(api + 'ShareHolderService/GetCompetencyGoals/' + id)
+    .map(response => response.json(), error => console.log(error));
+  }
+
+  saveCompetencyGoal(goal: Goal) {
+    return this.http.post(api + 'ShareHolderService/SaveCompetencyGoal/', goal)
+    .map(response => response.json(), error => console.log(error));
+  }
+
+  updateCompetencyGoal(goal: Goal) {
+    return this.http.post(api + 'ShareHolderService/UpdateCompetencyGoal/', goal)
     .map(response => response.json(), error => console.log(error));
   }
 

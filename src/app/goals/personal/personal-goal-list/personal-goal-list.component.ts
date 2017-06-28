@@ -19,7 +19,7 @@ export class PersonalGoalListComponent implements OnInit {
 
   private teamMember: TeamMember;
 
-  constructor(private pgService: PersonalGoalService, private toastrService: ToastrService, private tmService: TeamMemberService) { }
+  constructor(private cgService: PersonalGoalService, private toastrService: ToastrService, private tmService: TeamMemberService) { }
 
   ngOnInit() {
     this.teamMember = this.tmService.teamMember;
@@ -28,10 +28,11 @@ export class PersonalGoalListComponent implements OnInit {
 
   getGoals(id: number) {
     this.isLoading = true;
-    this.pgService.getPersonalGoals(id)
+    this.cgService.getCompetencyGoals(id)
     .subscribe(data => {
       this.isLoading = false;
       this.personalGoalList = data;
+      console.log(this.personalGoalList);
     }, error => {
       console.log(error);
       this.isLoading = false;
@@ -45,10 +46,10 @@ export class PersonalGoalListComponent implements OnInit {
   onAdd() {
     this.newGoal = {
       GoalId: 0,
-      GoalTypeId: 1,
+      GoalTypeId: 3,
       GoalWIGId: 0,
-      GoalCompetencyTypeId: 0,
-      GoalCompetencyId: 0,
+      GoalCompetencyTypeId: null,
+      GoalCompetencyId: null,
       GoalCompletionPercentage: 0,
       GoalDescription: '',
       IndustryTeamId: 0,
