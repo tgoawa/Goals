@@ -143,6 +143,7 @@ export class EditPersonalGoalComponent implements OnInit, AfterViewInit {
   }
 
   onSubmit() {
+    console.log(this.editPersonalGoalForm.value);
     if (this.checkActionItems()) {
       if (confirm('All actions are completed. Complete goal?')) {
         this.editPersonalGoalForm.value.IsCompleted = true;
