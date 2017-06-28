@@ -28,7 +28,7 @@
             <div *ngIf="editCompetencyGoalForm.get('GoalCompetencyId').hasError('required')" class="alert alert-danger">A Competency is required</div>
           </div>
           <div class="form-group col-md-6">
-            <label for="GoalCompetencyTypeId">Competency tye for current goal:</label>
+            <label for="GoalCompetencyTypeId">Competency type for current goal:</label>
             <select class="form-control" name="GoalCompetencyId" formControlName="GoalCompetencyTypeId">
               <option *ngFor="let type of goalCompetencyTypes;" [value]="type.GoalCompetencyTypeId" [selected]="type.GoalCompetencyTypeId === competencyGoal.GoalCompetencyTypeId">{{type.CompetencyType}}</option>
             </select>

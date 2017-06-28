@@ -32,6 +32,7 @@ export class CompetencyGoalListComponent implements OnInit {
     .subscribe(data => {
       this.isLoading = false;
       this.competencyGoalList = data;
+      console.log(this.competencyGoalList);
     }, error => {
       console.log(error);
       this.isLoading = false;

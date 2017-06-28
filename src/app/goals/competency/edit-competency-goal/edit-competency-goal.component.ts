@@ -27,6 +27,8 @@ export class EditCompetencyGoalComponent implements OnInit, AfterViewInit {
     this.weightList = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100];
     this.getGoalCompetencies();
     this.getCompetencyTypes();
+    this.clearCompetencyId();
+    this.clearCompetencyTypeId();
     this.editCompetencyGoalForm = this.toFormGroup(this.competencyGoal);
     this.replaceBreakTags();
   }
@@ -39,9 +41,16 @@ export class EditCompetencyGoalComponent implements OnInit, AfterViewInit {
     this.cgService.getCompetencies()
       .subscribe(data => {
         this.goalCompetencies = data;
+        this.checkPreviousGoalCompetency();
       }, error => {
         console.log(error);
       });
+  }
+
+  checkPreviousGoalCompetency() {
+    if (this.competencyGoal.GoalTypeId === 3) {
+      this.goalCompetencies.pop();
+    }
   }
 
   getCompetencyTypes() {
@@ -51,6 +60,18 @@ export class EditCompetencyGoalComponent implements OnInit, AfterViewInit {
       }, error => {
         console.log(error);
       });
+  }
+
+  clearCompetencyId() {
+    if (this.competencyGoal.GoalCompetencyId === 0) {
+      this.competencyGoal.GoalCompetencyId = null;
+    }
+  }
+
+  clearCompetencyTypeId() {
+    if (this.competencyGoal.GoalCompetencyTypeId === 0) {
+      this.competencyGoal.GoalCompetencyTypeId = null;
+    }
   }
 
   private toFormGroup(data: Goal): FormGroup {

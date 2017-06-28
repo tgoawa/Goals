@@ -39,9 +39,14 @@ export class AddCompetencyGoalComponent implements OnInit, AfterViewInit {
     this.cgService.getCompetencies()
       .subscribe(data => {
         this.goalCompetencies = data;
+        this.removePrevGoalEntry();
       }, error => {
         console.log(error);
       });
+  }
+
+  removePrevGoalEntry() {
+    this.goalCompetencies.pop();
   }
 
   getCompetencyTypes() {
