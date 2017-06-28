@@ -20,3 +20,4 @@
 </div>
 <app-edit-shareholder-meeting *ngIf="meetingToEdit" [meeting]="meetingToEdit" (modalClosed)="clearMeetingToEdit()" (updateSuccess)="refreshListOnEdit()"></app-edit-shareholder-meeting>
 <app-add-shareholder-meeting *ngIf="newMeeting" [meeting]="newMeeting" (modalClosed)="clearNewMeeting()" (addSuccess)="refreshListOnAdd()"></app-add-shareholder-meeting>
+<app-read-only-shareholder-meeting *ngIf="readMeeting" [meeting]="readMeeting" (modalClosed)="clearReadMeeting()"></app-read-only-shareholder-meeting>
