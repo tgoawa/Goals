@@ -19,12 +19,6 @@
             <textarea class="form-control" formControlName="GoalDescription"></textarea>
             <div *ngIf="addCompetencyGoalForm.get('GoalDescription').hasError('required')" class="alert alert-danger">A goal description is required</div>
           </div>
-          <div class="form-group col-md-2">
-            <label for="Weight">Weight %:</label>
-            <select class="form-control" name="Weight" formControlName="Weight">
-              <option *ngFor="let weight of weightList;" [value]="weight">{{weight}}</option>
-            </select>
-          </div>
           <div class="goal-subSection">
             <div class="form-group col-md-6">
             <label for="GoalCompetencyId">Competency for current goal:</label>

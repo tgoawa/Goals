@@ -64,7 +64,6 @@ export class AddCompetencyGoalComponent implements OnInit, AfterViewInit {
       IndustryTeamId: data.IndustryTeamId,
       IsCompleted: data.IsCompleted,
       TeamMemberId: data.TeamMemberId,
-      Weight: data.Weight,
       DisplayDateCreated: data.DisplayDateCreated,
       DisplayDateModified: data.DisplayDateModified,
       Name: [data.Name, Validators.required],
