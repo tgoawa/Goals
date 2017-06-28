@@ -19,7 +19,7 @@ export class AddPersonalGoalComponent implements OnInit, AfterViewInit {
 
   addpersonalGoalForm: FormGroup;
   goalCompetencies: string[];
-  goalpersonalTypes: string[];
+  goalCompetencyTypes: string[];
   weightList: number[];
 
   constructor(private fb: FormBuilder, private cgService: PersonalGoalService) { }
@@ -52,7 +52,7 @@ export class AddPersonalGoalComponent implements OnInit, AfterViewInit {
   getpersonalTypes() {
     this.cgService.getCompetencyTypes()
       .subscribe(data => {
-        this.goalpersonalTypes = data;
+        this.goalCompetencyTypes = data;
       }, error => {
         console.log(error);
       });
