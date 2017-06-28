@@ -23,10 +23,10 @@ import { IndustryTeamGoalListComponent } from './industry-team/industry-team-goa
 import { IndustryGoalService } from './industry-team/service/industry-goal.service';
 import { AddIndustryGoalComponent } from './industry-team/add-industry-goal/add-industry-goal.component';
 import { EditIndustryGoalComponent } from './industry-team/edit-industry-goal/edit-industry-goal.component';
-import { CompetencyGoalListComponent } from './shareholder-competency/competency-goal-list/competency-goal-list.component';
-import { CompetencyGoalService } from './shareholder-competency/service/competency-goal.service';
-import { EditCompetencyGoalComponent } from './shareholder-competency/edit-competency-goal/edit-competency-goal.component';
-import { AddCompetencyGoalComponent } from './shareholder-competency/add-competency-goal/add-competency-goal.component';
+import { CompetencyGoalListComponent } from './competency/competency-goal-list/competency-goal-list.component';
+import { CompetencyGoalService } from './competency/service/competency-goal.service';
+import { EditCompetencyGoalComponent } from './competency/edit-competency-goal/edit-competency-goal.component';
+import { AddCompetencyGoalComponent } from './competency/add-competency-goal/add-competency-goal.component';
 import { WigGoalListComponent } from './shareholder-WIG/wig-goal-list/wig-goal-list.component';
 import { WigGoalServiceService } from './shareholder-WIG/service/wig-goal-service.service';
 import { EditWigGoalComponent } from './shareholder-WIG/edit-wig-goal/edit-wig-goal.component';

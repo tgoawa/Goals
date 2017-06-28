@@ -25,14 +25,14 @@
             <select class="form-control" name="GoalCompetencyId" formControlName="GoalCompetencyId">
               <option *ngFor="let competency of goalCompetencies" [value]="competency.GoalCompetencyId" [selected]="competency.GoalCompetencyId === competencyGoal.GoalCompetencyId">{{competency.Competency}}</option>
             </select>
-            <div *ngIf="editCompetencyGoalForm.get('GoalCompetencyId').hasError('required') && editCompetencyGoalForm.get('GoalCompetencyId').touched" class="alert alert-danger">A Competency is required</div>
+            <div *ngIf="editCompetencyGoalForm.get('GoalCompetencyId').hasError('required')" class="alert alert-danger">A Competency is required</div>
           </div>
           <div class="form-group col-md-6">
             <label for="GoalCompetencyTypeId">Competency tye for current goal:</label>
             <select class="form-control" name="GoalCompetencyId" formControlName="GoalCompetencyTypeId">
               <option *ngFor="let type of goalCompetencyTypes;" [value]="type.GoalCompetencyTypeId" [selected]="type.GoalCompetencyTypeId === competencyGoal.GoalCompetencyTypeId">{{type.CompetencyType}}</option>
             </select>
-            <div *ngIf="editCompetencyGoalForm.get('GoalCompetencyTypeId').hasError('required') && editCompetencyGoalForm.get('GoalCompetencyTypeId').touched" class="alert alert-danger">A competency type is required</div>
+            <div *ngIf="editCompetencyGoalForm.get('GoalCompetencyTypeId').hasError('required')" class="alert alert-danger">A competency type is required</div>
           </div>
           </div>
           <div class="goal-subSection">
