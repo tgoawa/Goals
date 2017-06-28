@@ -7,7 +7,6 @@ import { ProgressbarModule, ModalModule, CollapseModule } from 'ngx-bootstrap';
 import { GoalsRoutingModule } from './goals-routing.module';
 import { GoalsComponent } from './goals.component';
 import { ActionItemsComponent } from './actions/action-items/action-items.component';
-import { EditPersonalGoalComponent } from './personal/edit-personal-goal/edit-personal-goal.component';
 import { ActionsListComponent } from './actions/actions-list/actions-list.component';
 import { MeasurementsListComponent } from './measurements/measurements-list/measurements-list.component';
 import { MeasurementItemComponent } from './measurements/measurement-item/measurement-item.component';
@@ -15,9 +14,6 @@ import { SupportListComponent } from './support/support-list/support-list.compon
 import { SupportItemComponent } from './support/support-item/support-item.component';
 import { NotesListComponent } from './notes/notes-list/notes-list.component';
 import { NotesItemComponent } from './notes/notes-item/notes-item.component';
-import { PersonalGoalListComponent } from './personal/personal-goal-list/personal-goal-list.component';
-import { PersonalGoalService } from '../goals/personal/service/personal-goal.service';
-import { AddPersonalGoalComponent } from './personal/add-personal-goal/add-personal-goal.component';
 import { GoalListComponent } from './goal-list/goal-list.component';
 import { IndustryTeamGoalListComponent } from './industry-team/industry-team-goal-list/industry-team-goal-list.component';
 import { IndustryGoalService } from './industry-team/service/industry-goal.service';
@@ -45,7 +41,6 @@ import { AddWigGoalComponent } from './shareholder-WIG/add-wig-goal/add-wig-goal
   declarations: [
                   GoalsComponent,
                   ActionItemsComponent,
-                  EditPersonalGoalComponent,
                   ActionsListComponent,
                   MeasurementsListComponent,
                   MeasurementItemComponent,
@@ -53,8 +48,6 @@ import { AddWigGoalComponent } from './shareholder-WIG/add-wig-goal/add-wig-goal
                   SupportItemComponent,
                   NotesListComponent,
                   NotesItemComponent,
-                  PersonalGoalListComponent,
-                  AddPersonalGoalComponent,
                   GoalListComponent,
                   IndustryTeamGoalListComponent,
                   AddIndustryGoalComponent,
@@ -66,6 +59,6 @@ import { AddWigGoalComponent } from './shareholder-WIG/add-wig-goal/add-wig-goal
                   EditWigGoalComponent,
                   AddWigGoalComponent
                 ],
-  providers: [ PersonalGoalService, IndustryGoalService, CompetencyGoalService, WigGoalServiceService ]
+  providers: [ IndustryGoalService, CompetencyGoalService, WigGoalServiceService ]
 })
 export class GoalsModule { }
