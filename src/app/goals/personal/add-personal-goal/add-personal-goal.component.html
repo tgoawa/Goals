@@ -11,12 +11,12 @@
         <div class="modal-body">
           <div class="form-group col-md-4">
             <label for="Name">Goal Name:</label>
-            <input id="Name" type="text" class="form-control" formControlName="Name">
+            <input id="Name" type="text" class="form-control" formControlName="Name" placeholder="Type a name for your goal here.">
             <div *ngIf="addpersonalGoalForm.get('Name').hasError('required')" class="alert alert-danger">A name is required</div>
           </div>
           <div class="form-group col-md-6">
             <label for="GoalDescription">Goal Description:</label>
-            <textarea class="form-control" formControlName="GoalDescription"></textarea>
+            <textarea class="form-control" formControlName="GoalDescription" placeholder="What skills, knowledge or behaviors do you want to improve over the enxt 6-12 months?"></textarea>
             <div *ngIf="addpersonalGoalForm.get('GoalDescription').hasError('required')" class="alert alert-danger">A goal description is required</div>
           </div>
           <div class="goal-subSection">

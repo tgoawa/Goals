@@ -7,7 +7,7 @@
     </label>
     </div>
     <div class="col-md-10">
-      <textarea class="form-control" formControlName="Action" (keyup)="onValueChange()" required></textarea>
+      <textarea class="form-control" formControlName="Action" (keyup)="onValueChange()" required placeholder="Enter a single action item."></textarea>
       <div *ngIf="actionItemForm.get('Action').hasError('required')" class="alert alert-danger">An action item is required</div>
     </div>
   </div>
