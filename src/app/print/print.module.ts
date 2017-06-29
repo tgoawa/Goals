@@ -11,6 +11,12 @@ import { PrintService } from './non-shareholder/services/print.service';
 import { PersonalGoalsComponent } from './non-shareholder/personal-goals/personal-goals.component';
 import { IndustryGoalsComponent } from './non-shareholder/industry-goals/industry-goals.component';
 import { PrintViewComponent } from './non-shareholder/print-view/print-view.component';
+import { ShareholderPrintService } from './shareholder/services/shareholder-print.service';
+import { ShareholderComponent } from './shareholder/shareholder.component';
+import { ShareholderPrintViewComponent } from './shareholder/shareholder-print-view/shareholder-print-view.component';
+import { ShareholderMeetingComponent } from './shareholder/shareholder-meeting/shareholder-meeting.component';
+import { ShareholderDetailsComponent } from './shareholder/shareholder-details/shareholder-details.component';
+import { WigGoalComponent } from './shareholder/wig-goal/wig-goal.component'; 
 
 @NgModule({
   imports: [
@@ -27,7 +33,12 @@ import { PrintViewComponent } from './non-shareholder/print-view/print-view.comp
     MeetingComponent,
     PersonalGoalsComponent,
     IndustryGoalsComponent,
-    PrintViewComponent],
-  providers: [PrintService]
+    PrintViewComponent,
+    ShareholderComponent,
+    ShareholderPrintViewComponent,
+    ShareholderMeetingComponent,
+    ShareholderDetailsComponent,
+    WigGoalComponent],
+  providers: [PrintService, ShareholderPrintService]
 })
 export class PrintModule { }

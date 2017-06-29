@@ -95,16 +95,20 @@ nav {
 
 @media only print {
     body {
-        font-size: 12px;
+        font-size: 11px;
     }
 
     h1, h2, h3, h4, h5, h6 {
         font-weight: bold;
-        font-size: 13px;
+        font-size: 11px;
     }
     
     .row {
         margin-top: 0px;
+    }
+
+    .col-md-2 {
+        width: 20%;
     }
 
     .col-md-3 {
