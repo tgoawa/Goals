@@ -12,8 +12,13 @@ export class CoachService {
 
   constructor(private http: Http) { }
 
-  getCoachEmployees(id: number) {
-    return this.http.get(api + 'EmployeeService/GetCoachEmployees/' + id)
+  getCoachEmployees(coachId: number) {
+    return this.http.get(api + 'EmployeeService/GetCoachEmployees/' + coachId)
+    .map(response => response.json(), error => console.log(error));
+  }
+
+  getShareholderCoachEmployees(coachId: number) {
+    return this.http.get(api + 'ShareHolderService/GetShareholderCoaches/' + coachId)
     .map(response => response.json(), error => console.log(error));
   }
 

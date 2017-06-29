@@ -14,6 +14,8 @@ import { PersonalGoalsComponent } from '../print/non-shareholder/personal-goals/
 import { IndustryGoalsComponent } from '../print/non-shareholder/industry-goals/industry-goals.component';
 import { PrintViewComponent } from '../print/non-shareholder/print-view/print-view.component';
 import { PrintService } from '../print/non-shareholder/services/print.service';
+import { ShareholderCoachComponent } from './shareholder-coach/shareholder-coach.component';
+import { ShteamMemberListComponent } from './shareholder-coach/shteam-member-list/shteam-member-list.component';
 
 
 @NgModule({
@@ -25,7 +27,9 @@ import { PrintService } from '../print/non-shareholder/services/print.service';
   ],
   declarations: [CoachComponent,
     NonShareholderCoachComponent,
-    TeamMemberListComponent
+    TeamMemberListComponent,
+    ShareholderCoachComponent,
+    ShteamMemberListComponent
     ],
   providers: [ CoachService ]
 })
