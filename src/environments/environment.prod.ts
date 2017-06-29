@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
   envApi: 'http://gateway.schencksolutions.com/',
+  envName: 'PROD'
 };

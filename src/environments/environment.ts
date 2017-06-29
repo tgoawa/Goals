@@ -6,4 +6,5 @@
 export const environment = {
   production: false,
   envApi: 'http://webdev.schencksolutions.com:1016/',
+  envName: 'TEST'
 };

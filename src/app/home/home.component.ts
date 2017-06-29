@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { TeamMember, TeamMemberService } from '../teamMember/'; 
 
+import { environment } from '../../environments/environment';
+
+const envName = environment.envName;
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -7,9 +11,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  appEnvironment = envName;
+  teamMember: TeamMember;
+
+  constructor(private tmService: TeamMemberService) { }
 
   ngOnInit() {
+    this.teamMember = this.tmService.teamMember;
   }
 
 }

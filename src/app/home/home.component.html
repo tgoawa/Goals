@@ -1,1 +1,42 @@
-home works!
+<div class="row">
+    <div class="col-md-6">
+        {{appEnvironment}} 1.0 
+    </div>
+</div>
+<div class="row goal-subSection">
+    <div class="col-md-4">
+        <h2>Welcome {{teamMember.FirstName}} {{teamMember.LastName}}</h2>
+    </div>
+</div>
+<div class="row" *ngIf="!teamMember.IsShareHolder">
+    <div class="col-md-11">
+        <h3><a href="#" [routerLink]="['/meetings/meeting-list']">Meeting List</a></h3>
+        <p>Here you will find a list of your scheduled meetings.  You can view, edit, and create new meetings.</p>
+    </div>
+</div>
+<div class="row" *ngIf="teamMember.IsShareHolder">
+    <div class="col-md-11">
+        <h3><a href="#" [routerLink]="['/meetings/shareholder-meeting-list']">Shareholder Meeting List</a></h3>
+        <p>Here you will enter your Economic Contribution Goals with metics, overall notes and comments and view your end of year notes.</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-11">
+        <h3><a href="#" [routerLink]="['/goals/personal']">Personal Development Goals</a></h3>
+        <p>Here you will find a list of your past and current goals.  You can view, edit, and create new goals.</p>
+    </div>
+</div>
+<div class="row" *ngIf="teamMember.IsShareHolder">
+    <div class="col-md-11">
+        <h3><a href="#" [routerLink]="['/goals/shareholder-wig']">WIG Goals</a></h3>
+        <p>Here you will find the list of your WIG based goals.  you can view, edit and create new WIG goals.</p>
+    </div>
+</div>
+<div class="row" *ngIf="teamMember.IndustryTeams !== null">
+    <div class="col-md-11">
+        <h3><a href="#" [routerLink]="['/goals/industry-team']">Industry Team Goals</a></h3>
+        <p>Here you will find a list of your past and current goals the pertain to your primary industry team.  You can view, edit, and create new goals.</p>
+    </div>
+</div>
+
+
