@@ -1,6 +1,7 @@
 <div class="form-group">
   <label for="teamMemberList">Team Member Select:</label>
   <select class="form-control" name="teamMemberList" [(ngModel)]="teamMemberId" (change)="teamMemberSelected()">
+    <option>Please select a team member...</option>
     <option *ngFor="let teamMember of teamMemberList" [value]="teamMember.TeamMemberId">{{teamMember.LastFirstName}}</option>
   </select>
 </div>
