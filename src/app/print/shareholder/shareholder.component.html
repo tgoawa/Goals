@@ -1,0 +1,7 @@
+<div class="row" *ngIf="isLoading">
+  <div class="col-md-2 offset-md-5"><i fa class="fa fa-spinner fa-5x fa-spin" aria-hidden="true"></i>
+  </div>
+</div>
+<div *ngIf="!isLoading">
+<app-shareholder-print-view [printGoal]="printGoal" [teamMember]="teamMember"></app-shareholder-print-view>
+</div>

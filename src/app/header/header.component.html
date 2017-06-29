@@ -26,11 +26,17 @@
         <li *ngIf="teamMember.IsShareHolder">
           <a class="nav-link" href="#" [routerLink]="['/meetings/shareholder-meeting-list']" routerLinkActive="active">Shareholder Meeting List</a>
         </li>
-        <li>
+        <li *ngIf="teamMember.IsCoach">
           <a class="nav-link" href="#" [routerLink]="['/coach/non-shareholder-coach']" routerLinkActive="active">Coach</a>
         </li>
-        <li>
+        <!--<li *ngIf="teamMember.IsShareHolderCoach">
+          <a class="nav-link" href="#" [routerLink]="['/coach/non-shareholder-coach']" routerLinkActive="active">Coach</a>
+        </li>-->
+        <li *ngIf="!teamMember.IsShareHolder">
           <a class="nav-link" href="#" [routerLink]="['/print/non-shareholder']" routerLinkActive="active">Print View</a>
+        </li>
+        <li *ngIf="teamMember.IsShareHolder">
+          <a class="nav-link" href="#" [routerLink]="['/print/shareholder']" routerLinkActive="active">Print View</a>
         </li>
       </ul>
     </div>
