@@ -1,10 +1,10 @@
-<div bsModal #addModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div bsModal #addModal="bs-modal" [config]="{backdrop: 'static'}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <h2 class="modal-title">Add Goal</h2>
         <span>Make sure your goals are SMART goals: Specific, Measurable, Attainable, Results-Oriented, Time-Bound.</span>
-        <button type="button" class="close pull-right" (click)="hideModal()" aria-label="Close">
+        <button type="button" class="close pull-right" (click)="closeModal()" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -45,7 +45,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" (click)="hideModal()">Cancel</button>
+          <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancel</button>
           <button class="btn btn-success" type="submit" [disabled]="!addIndustryGoalForm.valid">Submit</button>
         </div>
       </form>
