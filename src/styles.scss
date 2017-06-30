@@ -93,6 +93,12 @@ nav {
     color: $schenck-blue;
 }
 
+@media (min-width: 992px) {
+    .modal-lg {
+        max-width: 900px;
+    }
+}
+
 @media only print {
     body {
         font-size: 11px;
