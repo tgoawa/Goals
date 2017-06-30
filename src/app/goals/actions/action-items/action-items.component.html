@@ -1,13 +1,13 @@
 <div [formGroup]="actionItemForm">
   <div class="form-group row" style="margin-top: 0">
-    <div class="col-md-2">
+    <div class="col-md-1">
       <label class="custom-control custom-checkbox">
       <input type="checkbox" class="custom-control-input" formControlName="IsCompleted" (change)="onValueChange()">
       <span class="custom-control-indicator"></span>
     </label>
     </div>
     <div class="col-md-10">
-      <textarea class="form-control" formControlName="Action" (keyup)="onValueChange()" required></textarea>
+      <textarea class="form-control" formControlName="Action" (keyup)="onValueChange()" required placeholder="Enter a single action item."></textarea>
       <div *ngIf="actionItemForm.get('Action').hasError('required')" class="alert alert-danger">An action item is required</div>
     </div>
   </div>

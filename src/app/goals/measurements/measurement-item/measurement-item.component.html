@@ -1,7 +1,7 @@
 <div [formGroup]="measurementItemForm">
   <div class="form-group row" style="margin-top: 0">
     <div class="col-md-10">
-      <textarea class="form-control" formControlName="Measurement" (keyup)="onValueChange()"></textarea>
+      <textarea class="form-control" formControlName="Measurement" (keyup)="onValueChange()" placeholder="Enter a measureable task to help complete your goal."></textarea>
       <div *ngIf="measurementItemForm.get('Measurement').hasError('required')" class="alert alert-danger">A measurement is required</div>
     </div>
   </div>

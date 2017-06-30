@@ -1,7 +1,7 @@
 <div [formGroup]="supportItemForm">
   <div class="form-group row" style="margin-top: 0">
   <div class="col-md-10">
-    <textarea class="form-control" formControlName="Support" (keyup)="onValueChange()"></textarea>
+    <textarea class="form-control" formControlName="Support" (keyup)="onValueChange()" placeholder="Enter a support description for your goal."></textarea>
     <div *ngIf="supportItemForm.get('Support').hasError('required')" class="alert alert-danger">A support item is required</div>
   </div>
   </div>
