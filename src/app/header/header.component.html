@@ -26,7 +26,7 @@
         <li *ngIf="teamMember.IsShareHolder">
           <a class="nav-link" href="#" [routerLink]="['/meetings/shareholder-meeting-list']" routerLinkActive="active">Shareholder Meeting List</a>
         </li>
-        <li class="nav-item dropdown" dropdown>
+        <li class="nav-item dropdown" dropdown *ngIf="teamMember.IsCoach || teamMember.IsShareHolderCoach">
           <a class="nav-link dropdown-toggle" href dropdownToggle (click)="false">Coach</a>
           <ul *dropdownMenu class="dropdown-menu">
             <li *ngIf="teamMember.IsCoach">
