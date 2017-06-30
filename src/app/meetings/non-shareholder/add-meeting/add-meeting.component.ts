@@ -15,6 +15,7 @@ import { TeamMember } from '../../../teamMember';
 })
 export class AddMeetingComponent implements OnInit, AfterViewInit {
   @ViewChild('addModal') addModal: ModalDirective;
+  @ViewChild('addMeeting') addMeeting;
   @Input('previousMeeting') previousMeeting: Meeting;
   @Input('currentMeeting') currentMeeting: Meeting;
   @Input('teamMember') teamMember: TeamMember;
@@ -43,6 +44,17 @@ export class AddMeetingComponent implements OnInit, AfterViewInit {
 
   showModal() {
     this.addModal.show();
+  }
+
+    closeModal() {
+    if (this.addMeeting.dirty) {
+      if (confirm('You are about to lose changes, are you sure?')) {
+        this.hideModal();
+      }
+      return false;
+    } else {
+      this.hideModal();
+    }
   }
 
   hideModal() {

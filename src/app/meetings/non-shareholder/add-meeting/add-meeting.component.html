@@ -3,7 +3,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h2 class="modal-title pull-left">Add New Meeting</h2>
-        <button type="button" class="close pull-right" (click)="hideModal()" aria-label="Close">
+        <button type="button" class="close pull-right" (click)="closeModal()" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -19,7 +19,7 @@
           </div>
         </div>
       </div>
-      <form novalidate #editMeeting="ngForm" (ngSubmit)="onSubmit()">
+      <form novalidate #addMeeting="ngForm" (ngSubmit)="onSubmit()">
         <div class="modal-body">
           <div class="form-group">
             <!-- Team Member please complete -->
@@ -133,7 +133,6 @@
                 <div class="col-md-4">
                   <input class="form-control" type="number" name="question20" [(ngModel)]="currentMeeting.Questions[20].AnswerText"
                     (keyup)="setIsDirty(currentMeeting.Questions[20])" required>
-                  <!--<div *ngIf="editMeeting.question20.errors?.required" class="alert alert-danger">This field is required</div>-->
                 </div>
               </div>
               <div class="form-group row">
@@ -141,7 +140,6 @@
                 <div class="col-md-4">
                   <input class="form-control" type="number" name="question21" [(ngModel)]="currentMeeting.Questions[21].AnswerText"
                     (keyup)="setIsDirty(currentMeeting.Questions[21])" required>
-                  <!--<div *ngIf="editMeeting.question21.errors?.required" class="alert alert-danger">This field is required</div>-->
                 </div>
               </div>
               <div class="form-group row">
@@ -149,7 +147,6 @@
                 <div class="col-md-4">
                   <input class="form-control" type="number" name="question22" [(ngModel)]="currentMeeting.Questions[22].AnswerText"
                     (keyup)="setIsDirty(currentMeeting.Questions[22])" required>
-                  <!--<div *ngIf="editMeeting.question22.errors?.required" class="alert alert-danger">This field is required</div>-->
                 </div>
               </div>
               <div class="form-group row">
@@ -157,7 +154,6 @@
                 <div class="col-md-4">
                   <input class="form-control" type="number" name="question23" [(ngModel)]="currentMeeting.Questions[23].AnswerText"
                     (keyup)="setIsDirty(currentMeeting.Questions[23])" required>
-                  <!--<div *ngIf="editMeeting.question23.errors?.required" class="alert alert-danger">This field is required</div>-->
                 </div>
               </div>
               <div class="form-group row">
@@ -165,7 +161,6 @@
                 <div class="col-md-4">
                   <input class="form-control" type="number" name="question24" [(ngModel)]="currentMeeting.Questions[24].AnswerText"
                     (keyup)="setIsDirty(currentMeeting.Questions[24])" required>
-                  <!--<div *ngIf="editMeeting.question24.errors?.required" class="alert alert-danger">This field is required</div>-->
                 </div>
               </div>
               <div class="form-group row">
@@ -173,7 +168,6 @@
                 <div class="col-md-4">
                   <input class="form-control" type="number" name="question25" [(ngModel)]="currentMeeting.Questions[25].AnswerText"
                     (keyup)="setIsDirty(currentMeeting.Questions[25])" required>
-                  <!--<div *ngIf="editMeeting.question25.errors?.required" class="alert alert-danger">This field is required</div>-->
                 </div>
               </div>
             </div>
@@ -212,8 +206,8 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" (click)="hideModal()">Cancel</button>
-          <button class="btn btn-success" type="submit" [disabled]="!editMeeting.valid">Submit</button>
+          <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancel</button>
+          <button class="btn btn-success" type="submit" [disabled]="!addMeeting.valid">Submit</button>
         </div>
       </form>
     </div>

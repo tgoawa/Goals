@@ -67,6 +67,17 @@ export class AddWigGoalComponent implements OnInit, AfterViewInit {
     this.addModal.show();
   }
 
+  closeModal() {
+    if (this.addWigGoalForm.dirty) {
+      if (confirm('You are about to lose changes, are you sure?')) {
+        this.hideModal();
+      }
+      return false;
+    } else {
+      this.hideModal();
+    }
+  }
+
   hideModal() {
     this.addModal.hide();
     this.modalIsClosed();
