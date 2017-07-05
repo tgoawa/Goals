@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-md-8">
+    {{categoryName}}
+  </div>
+</div>
+<div class="row" *ngFor="let item of data">
+  <app-charge-time-item [ChargeTimeItem]="item" [PrevTotalHours]="previousTotalHours" [CurrentTotalHours]="newTotalHours"></app-charge-time-item>
+</div>
+<div class="row">
+  <div class="col-md-8">
+    Grand Total
+  </div>
+  <div class="col-md-1">
+    {{previousTotalHours}}
+  </div>
+  <div class="col-md-1">
+    
+  </div>
+  <div class="col-md-1">
+    {{newTotalHours}}
+  </div>
+</div>

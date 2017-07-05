@@ -1,17 +1,16 @@
-<div class="row">
   <div class="col-md-8">
-    {{ChargeTimeCategory.Name}}
+    {{ChargeTimeItem.Name}}
   </div>
   <div class="col-md-1">
-    {{ChargeTimeCategory.PrevHours}}
+    {{ChargeTimeItem.PrevHours}}
   </div>
   <div class="col-md-1">
     {{previousPercentage | percent: '3.1-1'}}
   </div>
   <div class="col-md-1">
-    <input type="number" [(ngModel)]="ChargeTimeCategory.NextYear" />
+    <input type="number" [(ngModel)]="ChargeTimeItem.NextYear" />
   </div>
   <div class="col-md-1">
     {{newPercentage | percent: '3.1-1'}}
   </div>
-</div>
+

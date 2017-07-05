@@ -7,7 +7,7 @@ import { ChargeTimeItem } from '../models/hours';
   styleUrls: ['./charge-time-item.component.scss']
 })
 export class ChargeTimeItemComponent implements OnInit {
-  @Input('ChargeTimeCategory') ChargeTimeCategory: ChargeTimeItem;
+  @Input('ChargeTimeItem') ChargeTimeItem: ChargeTimeItem;
   @Input('PrevTotalHours') PrevTotalHours: number;
   @Input('CurrentTotalHours') CurrentTotalHours: number;
   @Output() hours: EventEmitter<number> = new EventEmitter<number>();
@@ -21,11 +21,11 @@ export class ChargeTimeItemComponent implements OnInit {
   }
 
   calculatePreviousPercentage() {
-    return this.ChargeTimeCategory.PrevHours / this.PrevTotalHours;
+    return this.ChargeTimeItem.PrevHours / this.PrevTotalHours;
   }
 
   calculateNewPercentage() {
-    this.newPercentage = this.ChargeTimeCategory.NextYear / this.CurrentTotalHours;
+    this.newPercentage = this.ChargeTimeItem.NextYear / this.CurrentTotalHours;
   }
 
 }
