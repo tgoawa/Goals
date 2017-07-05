@@ -18,10 +18,11 @@ export class ChargeTimeItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.calculatePreviousPercentage();
   }
 
   calculatePreviousPercentage() {
-    return this.ChargeTimeItem.PrevHours / this.PrevTotalHours;
+    this.previousPercentage = this.ChargeTimeItem.PrevHours / this.PrevTotalHours;
   }
 
   calculateNewPercentage() {

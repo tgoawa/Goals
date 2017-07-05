@@ -11,12 +11,15 @@ export class ChargeTimeComponent implements OnInit {
   @Input('categoryName') categoryName: string;
 
   previousTotalHours: number;
+  previousTotalPercent: number;
   newTotalHours: number;
+  newTotalPercent: number;
 
   constructor() { }
 
   ngOnInit() {
     this.calculatePreviousTotalHours();
+    this.calculatePreviousTotalPercent();
   }
 
   calculatePreviousTotalHours() {
@@ -25,8 +28,20 @@ export class ChargeTimeComponent implements OnInit {
     }
   }
 
+  calculatePreviousTotalPercent() {
+    this.previousTotalPercent = this.previousTotalHours / this.previousTotalHours;
+  }
+
+  onUpdateHours(hours: number) {
+    this.calculateNewTotalHours(hours);
+    this.calculateNewTotalPercent();
+
+  }
   calculateNewTotalHours(hours: number) {
     this.newTotalHours = this.newTotalHours + hours;
   }
 
+  calculateNewTotalPercent() {
+    this.newTotalPercent = this.newTotalHours / this.newTotalHours;
+  }
 }
