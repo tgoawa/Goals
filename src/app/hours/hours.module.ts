@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { HoursRoutingModule } from './hours-routing.module';
 import { HoursComponent } from './hours.component';
@@ -9,7 +10,8 @@ import { ChargeTimeItemComponent } from './charge-time-item/charge-time-item.com
 @NgModule({
   imports: [
     CommonModule,
-    HoursRoutingModule
+    HoursRoutingModule,
+    FormsModule
   ],
   declarations: [HoursComponent, HoursListComponent, ChargeTimeItemComponent]
 })

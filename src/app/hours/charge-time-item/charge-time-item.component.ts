@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ChargeTimeItem } from '../models/hours';
 
 @Component({
@@ -8,10 +8,24 @@ import { ChargeTimeItem } from '../models/hours';
 })
 export class ChargeTimeItemComponent implements OnInit {
   @Input('ChargeTimeCategory') ChargeTimeCategory: ChargeTimeItem;
-  @Input('TotalHours') TotalHours: number;
+  @Input('PrevTotalHours') PrevTotalHours: number;
+  @Input('CurrentTotalHours') CurrentTotalHours: number;
+  @Output() hours: EventEmitter<number> = new EventEmitter<number>();
+
+  previousPercentage: number;
+  newPercentage: number;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  calculatePreviousPercentage() {
+    return this.ChargeTimeCategory.PrevHours / this.PrevTotalHours;
+  }
+
+  calculateNewPercentage() {
+    this.newPercentage = this.ChargeTimeCategory.NextYear / this.CurrentTotalHours;
   }
 
 }
