@@ -1,3 +1,7 @@
+<app-add-meeting *ngIf="newMeeting" [previousMeeting]="meetingList[0]" [currentMeeting]="newMeeting" [teamMember]="teamMember" (modalClosed)="clearNewMeeting
+()" (addSuccess)="refreshListOnAdd()"></app-add-meeting>
+<app-edit-meeting *ngIf="meetingToEdit" [previousMeeting]="meetingList[1]" [currentMeeting]="meetingToEdit" [teamMember]="teamMember" (modalClosed)="clearMeetingToEdit()" (updateSuccess)="refreshListOnEdit()"></app-edit-meeting>
+<app-read-only-meeting *ngIf="readMeeting" [meeting]="readMeeting" [teamMember]="teamMember" (modalClosed)="clearReadMeeting()"></app-read-only-meeting>
 <div class="row">
   <div class="col-md-5">
     <h1>One to One Meetings</h1>
@@ -18,7 +22,3 @@
 <div *ngFor="let meeting of meetingList; let i = index">
   <app-meeting-list [meeting]="meeting" [index]="i" (meetingToEdit)="onEdit($event)" (meetingToView)="onRead($event)"></app-meeting-list>
 </div>
-<app-add-meeting *ngIf="newMeeting" [previousMeeting]="meetingList[0]" [currentMeeting]="newMeeting" [teamMember]="teamMember" (modalClosed)="clearNewMeeting
-()" (addSuccess)="refreshListOnAdd()"></app-add-meeting>
-<app-edit-meeting *ngIf="meetingToEdit" [previousMeeting]="meetingList[1]" [currentMeeting]="meetingToEdit" [teamMember]="teamMember" (modalClosed)="clearMeetingToEdit()" (updateSuccess)="refreshListOnEdit()"></app-edit-meeting>
-<app-read-only-meeting *ngIf="readMeeting" [meeting]="readMeeting" [teamMember]="teamMember" (modalClosed)="clearReadMeeting()"></app-read-only-meeting>

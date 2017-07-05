@@ -86,10 +86,11 @@ export class MeetingsListComponent implements OnInit {
   }
 
   onAdd() {
-    this.newMeeting = new Meeting;
+    this.newMeeting = new Meeting();
     this.newMeeting.CoachId = 0;
     this.newMeeting.TeamMemberId = this.teamMember.TeamMemberId;
     this.newMeeting.Questions = this.questionList;
+    console.log(this.newMeeting);
   }
 
   showSuccessUpdate() {

@@ -15,21 +15,21 @@
   </div>
   <div class="row">
     <div class="col-md-12">
-      Date Created: {{printGoal?.CurrentMeeting.DisplayDateCreated}}
+      Date Created: {{printGoal?.CurrentMeeting?.DisplayDateCreated}}
     </div>
   </div>
   <div class="row">
     <div class="col-md-12">
-      Date Last Modified: {{printGoal?.CurrentMeeting.DisplayDateModified}}
+      Date Last Modified: {{printGoal?.CurrentMeeting?.DisplayDateModified}}
     </div>
   </div>
   <div class="row">
     <div class="col-md-12">
-      Coach's Name: {{printGoal?.CurrentMeeting.CoachName}}
+      Coach's Name: {{printGoal?.CurrentMeeting?.CoachName}}
     </div>
   </div>
   <app-meeting *ngIf="printGoal?.CurrentMeeting" [questions]="printGoal.Questions" [teamMember]="printGoal.TeamMember"></app-meeting>
-  <div *ngIf="printGoal?.OpenPersonalGoals">
+  <div *ngIf="printGoal?.OpenPersonalGoals.length > 0">
     <div class="row">
       <div class="col-md-12">
         <h3>Personal Goals (lowest to highest % complete)</h3>
@@ -39,7 +39,7 @@
       <app-personal-goals [personalGoal]="personalGoal"></app-personal-goals>
     </div>
   </div>
-  <div *ngIf="printGoal?.OpenIndustryTeamGoals">
+  <div *ngIf="printGoal?.OpenIndustryTeamGoals.length > 0">
     <div class="row">
       <div class="col-md-12">
         <h3>Industry Team Goals (lowest to highest % complete)</h3>

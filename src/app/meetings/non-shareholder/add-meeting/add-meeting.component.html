@@ -23,35 +23,35 @@
         <div class="modal-body">
           <div class="form-group">
             <!-- Team Member please complete -->
-            <h2>{{currentMeeting.Questions[0].QuestionText}}</h2>
+            <h2>{{currentMeeting?.Questions[0].QuestionText}}</h2>
           </div>
           <div class="goal-subSection">
             <div class="form-group">
-              <h3>{{currentMeeting.Questions[1].QuestionText}}</h3>
+              <h3>{{currentMeeting?.Questions[1].QuestionText}}</h3>
             </div>
             <div class="form-group">
-              <label for="question2">{{currentMeeting.Questions[2].QuestionText}}</label>
-              <textarea rows="5" name="question2" class="form-control" [(ngModel)]="currentMeeting.Questions[2].AnswerText" (keyup)="setIsDirty(currentMeeting.Questions[2])"></textarea>
+              <label for="question2">{{currentMeeting?.Questions[2].QuestionText}}</label>
+              <textarea rows="5" name="question2" class="form-control" [(ngModel)]="currentMeeting?.Questions[2].AnswerText" (keyup)="setIsDirty(currentMeeting?.Questions[2])"></textarea>
             </div>
             <div class="form-group">
-              <label for="question3">{{currentMeeting.Questions[3].QuestionText}}</label>
-              <textarea rows="5" name="question3" class="form-control" [(ngModel)]="currentMeeting.Questions[3].AnswerText" (keyup)="setIsDirty(currentMeeting.Questions[3])"></textarea>
+              <label for="question3">{{currentMeeting?.Questions[3].QuestionText}}</label>
+              <textarea rows="5" name="question3" class="form-control" [(ngModel)]="currentMeeting?.Questions[3].AnswerText" (keyup)="setIsDirty(currentMeeting?.Questions[3])"></textarea>
             </div>
           </div>
           <div *ngIf="teamMember.IsGreenBay" class="goal-subSection">
             <div class="form-group">
-              <label for="question4">{{currentMeeting.Questions[4].QuestionText}}</label>
-              <textarea rows="5" name="question4" class="form-control" [(ngModel)]="currentMeeting.Questions[4].AnswerText" (keyup)="setIsDirty(currentMeeting.Questions[4])"></textarea>
+              <label for="question4">{{currentMeeting?.Questions[4].QuestionText}}</label>
+              <textarea rows="5" name="question4" class="form-control" [(ngModel)]="currentMeeting?.Questions[4].AnswerText" (keyup)="setIsDirty(currentMeeting?.Questions[4])"></textarea>
             </div>
             <div class="form-group">
-              <label for="question5">{{currentMeeting.Questions[5].QuestionText}}</label>
-              <textarea rows="5" name="question5" class="form-control" [(ngModel)]="currentMeeting.Questions[5].AnswerText" (keyup)="setIsDirty(currentMeeting.Questions[5])"></textarea>
+              <label for="question5">{{currentMeeting?.Questions[5].QuestionText}}</label>
+              <textarea rows="5" name="question5" class="form-control" [(ngModel)]="currentMeeting?.Questions[5].AnswerText" (keyup)="setIsDirty(currentMeeting?.Questions[5])"></textarea>
             </div>
           </div>
           <div class="goal-subSection">
             <!-- Priorities -->
             <div class="form-group">
-              <h3>{{currentMeeting.Questions[6].QuestionText}}</h3>
+              <h3>{{currentMeeting?.Questions[6].QuestionText}}</h3>
             </div>
             <div class="row">
               <div class="col-md-4">
@@ -59,11 +59,11 @@
               </div>
             </div>
               <div class="row">
-              <div class="col-md-12" [collapse]="priorityOneIsCollapsed" [innerHTML]="previousMeeting.Questions[7].AnswerText"></div> 
+              <div class="col-md-12" [collapse]="priorityOneIsCollapsed" [innerHTML]="previousMeeting?.Questions[7].AnswerText"></div> 
             </div>
             <div class="form-group">
-              <label for="question7">{{currentMeeting.Questions[7].QuestionText}}</label>
-              <textarea rows="5" name="question7" class="form-control" [(ngModel)]="currentMeeting.Questions[7].AnswerText" (keyup)="setIsDirty(currentMeeting.Questions[7])"></textarea>
+              <label for="question7">{{currentMeeting?.Questions[7].QuestionText}}</label>
+              <textarea rows="5" name="question7" class="form-control" [(ngModel)]="currentMeeting?.Questions[7].AnswerText" (keyup)="setIsDirty(currentMeeting?.Questions[7])"></textarea>
             </div>
             <div class="row">
               <div class="col-md-4">
@@ -71,11 +71,11 @@
               </div>
             </div>
               <div class="row">
-              <div class="col-md-12" [collapse]="priorityTwoIsCollapsed" [innerHTML]="previousMeeting.Questions[8].AnswerText"></div> 
+              <div class="col-md-12" [collapse]="priorityTwoIsCollapsed" [innerHTML]="previousMeeting?.Questions[8].AnswerText"></div> 
             </div>
             <div class="form-group">
-              <label for="question8">{{currentMeeting.Questions[8].QuestionText}}</label>
-              <textarea rows="5" name="question8" class="form-control" [(ngModel)]="currentMeeting.Questions[8].AnswerText" (keyup)="setIsDirty(currentMeeting.Questions[8])"></textarea>
+              <label for="question8">{{currentMeeting?.Questions[8].QuestionText}}</label>
+              <textarea rows="5" name="question8" class="form-control" [(ngModel)]="currentMeeting?.Questions[8].AnswerText" (keyup)="setIsDirty(currentMeeting?.Questions[8])"></textarea>
             </div>
             <div class="row">
               <div class="col-md-4">
@@ -83,123 +83,123 @@
               </div>
             </div>
               <div class="row">
-              <div class="col-md-12" [collapse]="priorityThreeIsCollapsed" [innerHTML]="previousMeeting.Questions[9].AnswerText"></div> 
+              <div class="col-md-12" [collapse]="priorityThreeIsCollapsed" [innerHTML]="previousMeeting?.Questions[9].AnswerText"></div> 
             </div>
             <div class="form-group">
-              <label for="question9">{{currentMeeting.Questions[9].QuestionText}}</label>
-              <textarea rows="5" name="question9" class="form-control" [(ngModel)]="currentMeeting.Questions[9].AnswerText" (keyup)="setIsDirty(currentMeeting.Questions[9])"></textarea>
+              <label for="question9">{{currentMeeting?.Questions[9].QuestionText}}</label>
+              <textarea rows="5" name="question9" class="form-control" [(ngModel)]="currentMeeting?.Questions[9].AnswerText" (keyup)="setIsDirty(currentMeeting?.Questions[9])"></textarea>
             </div>
             <div class="form-group">
-              <label for="question10">{{currentMeeting.Questions[10].QuestionText}}</label>
-              <textarea rows="5" name="question10" class="form-control" [(ngModel)]="currentMeeting.Questions[10].AnswerText" (keyup)="setIsDirty(currentMeeting.Questions[10])"></textarea>
+              <label for="question10">{{currentMeeting?.Questions[10].QuestionText}}</label>
+              <textarea rows="5" name="question10" class="form-control" [(ngModel)]="currentMeeting?.Questions[10].AnswerText" (keyup)="setIsDirty(currentMeeting?.Questions[10])"></textarea>
             </div>
           </div>
           <div class="goal-subSection">
             <!-- As your coach -->
             <div class="form-group">
-              <h3>{{currentMeeting.Questions[11].QuestionText}}</h3>
+              <h3>{{currentMeeting?.Questions[11].QuestionText}}</h3>
             </div>
             <div class="form-group">
-              <label for="question12">{{currentMeeting.Questions[12].QuestionText}}</label>
-              <textarea rows="5" name="question12" class="form-control" [(ngModel)]="currentMeeting.Questions[12].AnswerText" (keyup)="setIsDirty(currentMeeting.Questions[12])"></textarea>
+              <label for="question12">{{currentMeeting?.Questions[12].QuestionText}}</label>
+              <textarea rows="5" name="question12" class="form-control" [(ngModel)]="currentMeeting?.Questions[12].AnswerText" (keyup)="setIsDirty(currentMeeting?.Questions[12])"></textarea>
             </div>
             <div class="form-group">
-              <label for="question13">{{currentMeeting.Questions[13].QuestionText}}</label>
-              <textarea rows="5" name="question13" class="form-control" [(ngModel)]="currentMeeting.Questions[13].AnswerText" (keyup)="setIsDirty(currentMeeting.Questions[13])"></textarea>
+              <label for="question13">{{currentMeeting?.Questions[13].QuestionText}}</label>
+              <textarea rows="5" name="question13" class="form-control" [(ngModel)]="currentMeeting?.Questions[13].AnswerText" (keyup)="setIsDirty(currentMeeting?.Questions[13])"></textarea>
             </div>
             <div class="form-group">
-              <h4>{{currentMeeting.Questions[14].QuestionText}}</h4>
+              <h4>{{currentMeeting?.Questions[14].QuestionText}}</h4>
             </div>
           </div>
           <div *ngIf="teamMember.IsGreenBay" class="goal-subSection">
             <!-- Reminders -->
             <div class="form-group">
-              <h4>{{currentMeeting.Questions[15].QuestionText}}</h4>
+              <h4>{{currentMeeting?.Questions[15].QuestionText}}</h4>
               <ul>
-                <li>{{currentMeeting.Questions[16].QuestionText}}</li>
-                <li>{{currentMeeting.Questions[17].QuestionText}}</li>
-                <li>{{currentMeeting.Questions[18].QuestionText}}</li>
+                <li>{{currentMeeting?.Questions[16].QuestionText}}</li>
+                <li>{{currentMeeting?.Questions[17].QuestionText}}</li>
+                <li>{{currentMeeting?.Questions[18].QuestionText}}</li>
               </ul>
             </div>
           </div>
           <div *ngIf="teamMember.IsChargable">
             <div class="goal-subSection">
               <div class="form-group">
-                <h3>{{currentMeeting.Questions[19].QuestionText}}</h3>
+                <h3>{{currentMeeting?.Questions[19].QuestionText}}</h3>
                 <span>(type whole numbers)</span>
               </div>
               <div class="form-group row">
-                <label for="question20" class="col-3 col-form-label">{{currentMeeting.Questions[20].QuestionText}}</label>
+                <label for="question20" class="col-3 col-form-label">{{currentMeeting?.Questions[20].QuestionText}}</label>
                 <div class="col-md-4">
-                  <input class="form-control" type="number" name="question20" [(ngModel)]="currentMeeting.Questions[20].AnswerText"
-                    (keyup)="setIsDirty(currentMeeting.Questions[20])" required>
+                  <input class="form-control" type="number" name="question20" [(ngModel)]="currentMeeting?.Questions[20].AnswerText"
+                    (keyup)="setIsDirty(currentMeeting?.Questions[20])" required>
                 </div>
               </div>
               <div class="form-group row">
-                <label for="question21" class="col-3 col-form-label">{{currentMeeting.Questions[21].QuestionText}}</label>
+                <label for="question21" class="col-3 col-form-label">{{currentMeeting?.Questions[21].QuestionText}}</label>
                 <div class="col-md-4">
-                  <input class="form-control" type="number" name="question21" [(ngModel)]="currentMeeting.Questions[21].AnswerText"
-                    (keyup)="setIsDirty(currentMeeting.Questions[21])" required>
+                  <input class="form-control" type="number" name="question21" [(ngModel)]="currentMeeting?.Questions[21].AnswerText"
+                    (keyup)="setIsDirty(currentMeeting?.Questions[21])" required>
                 </div>
               </div>
               <div class="form-group row">
-                <label for="question22" class="col-3 col-form-label">{{currentMeeting.Questions[22].QuestionText}}</label>
+                <label for="question22" class="col-3 col-form-label">{{currentMeeting?.Questions[22].QuestionText}}</label>
                 <div class="col-md-4">
-                  <input class="form-control" type="number" name="question22" [(ngModel)]="currentMeeting.Questions[22].AnswerText"
-                    (keyup)="setIsDirty(currentMeeting.Questions[22])" required>
+                  <input class="form-control" type="number" name="question22" [(ngModel)]="currentMeeting?.Questions[22].AnswerText"
+                    (keyup)="setIsDirty(currentMeeting?.Questions[22])" required>
                 </div>
               </div>
               <div class="form-group row">
-                <label for="question23" class="col-3 col-form-label">{{currentMeeting.Questions[23].QuestionText}}</label>
+                <label for="question23" class="col-3 col-form-label">{{currentMeeting?.Questions[23].QuestionText}}</label>
                 <div class="col-md-4">
-                  <input class="form-control" type="number" name="question23" [(ngModel)]="currentMeeting.Questions[23].AnswerText"
-                    (keyup)="setIsDirty(currentMeeting.Questions[23])" required>
+                  <input class="form-control" type="number" name="question23" [(ngModel)]="currentMeeting?.Questions[23].AnswerText"
+                    (keyup)="setIsDirty(currentMeeting?.Questions[23])" required>
                 </div>
               </div>
               <div class="form-group row">
-                <label for="question24" class="col-3 col-form-label">{{currentMeeting.Questions[24].QuestionText}}</label>
+                <label for="question24" class="col-3 col-form-label">{{currentMeeting?.Questions[24].QuestionText}}</label>
                 <div class="col-md-4">
-                  <input class="form-control" type="number" name="question24" [(ngModel)]="currentMeeting.Questions[24].AnswerText"
-                    (keyup)="setIsDirty(currentMeeting.Questions[24])" required>
+                  <input class="form-control" type="number" name="question24" [(ngModel)]="currentMeeting?.Questions[24].AnswerText"
+                    (keyup)="setIsDirty(currentMeeting?.Questions[24])" required>
                 </div>
               </div>
               <div class="form-group row">
-                <label for="question25" class="col-3 col-form-label">{{currentMeeting.Questions[25].QuestionText}}</label>
+                <label for="question25" class="col-3 col-form-label">{{currentMeeting?.Questions[25].QuestionText}}</label>
                 <div class="col-md-4">
-                  <input class="form-control" type="number" name="question25" [(ngModel)]="currentMeeting.Questions[25].AnswerText"
-                    (keyup)="setIsDirty(currentMeeting.Questions[25])" required>
+                  <input class="form-control" type="number" name="question25" [(ngModel)]="currentMeeting?.Questions[25].AnswerText"
+                    (keyup)="setIsDirty(currentMeeting?.Questions[25])" required>
                 </div>
               </div>
             </div>
             <div class="goal-subSection">
               <div class="form-group">
-                <h3>{{currentMeeting.Questions[26].QuestionText}}</h3>
+                <h3>{{currentMeeting?.Questions[26].QuestionText}}</h3>
               </div>
               <div class="form-group">
-                <h4>{{currentMeeting.Questions[27].QuestionText}}</h4>
+                <h4>{{currentMeeting?.Questions[27].QuestionText}}</h4>
               </div>
               <div class="form-check">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" name="question28" [(ngModel)]="currentMeeting.Questions[28].AnswerText" (keyup)="setIsDirty(currentMeeting.Questions[28])">
-                    {{currentMeeting.Questions[28].QuestionText}}
+                  <input class="form-check-input" type="checkbox" name="question28" [(ngModel)]="currentMeeting?.Questions[28].AnswerText" (keyup)="setIsDirty(currentMeeting?.Questions[28])">
+                    {{currentMeeting?.Questions[28].QuestionText}}
                 </label>
               </div>
               <div class="form-check">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" name="question29" [(ngModel)]="currentMeeting.Questions[29].AnswerText" (keyup)="setIsDirty(currentMeeting.Questions[29])">
-                    {{currentMeeting.Questions[29].QuestionText}}
+                  <input class="form-check-input" type="checkbox" name="question29" [(ngModel)]="currentMeeting?.Questions[29].AnswerText" (keyup)="setIsDirty(currentMeeting?.Questions[29])">
+                    {{currentMeeting?.Questions[29].QuestionText}}
                 </label>
               </div>
               <div class="form-check">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" name="question30" [(ngModel)]="currentMeeting.Questions[30].AnswerText" (keyup)="setIsDirty(currentMeeting.Questions[30])">
-                    {{currentMeeting.Questions[30].QuestionText}}
+                  <input class="form-check-input" type="checkbox" name="question30" [(ngModel)]="currentMeeting?.Questions[30].AnswerText" (keyup)="setIsDirty(currentMeeting?.Questions[30])">
+                    {{currentMeeting?.Questions[30].QuestionText}}
                 </label>
               </div>
               <div class="form-check">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" name="question31" [(ngModel)]="currentMeeting.Questions[31].AnswerText" (keyup)="setIsDirty(currentMeeting.Questions[31])">
-                    {{currentMeeting.Questions[31].QuestionText}}
+                  <input class="form-check-input" type="checkbox" name="question31" [(ngModel)]="currentMeeting?.Questions[31].AnswerText" (keyup)="setIsDirty(currentMeeting?.Questions[31])">
+                    {{currentMeeting?.Questions[31].QuestionText}}
                 </label>
               </div>
             </div>
