@@ -21,7 +21,8 @@ const routes: Routes = [
       { path: 'goals', loadChildren: '../goals/goals.module#GoalsModule' },
       { path: 'meetings', loadChildren: '../meetings/meetings.module#MeetingsModule'},
       { path: 'coach', loadChildren: '../coach/coach.module#CoachModule'},
-      { path: 'print', loadChildren: '../print/print.module#PrintModule'}
+      { path: 'print', loadChildren: '../print/print.module#PrintModule'},
+      { path: 'hours', loadChildren: '../hours/hours.module.ts#HoursModule'}
     ]
   },
 ];
