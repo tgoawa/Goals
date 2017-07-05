@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ChargeTimeItem } from '../models/hours';
 
 @Component({
   selector: 'app-charge-time-item',
@@ -6,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./charge-time-item.component.scss']
 })
 export class ChargeTimeItemComponent implements OnInit {
-
+  @Input('ChargeTimeCategory') ChargeTimeCategory: ChargeTimeItem;
+  @Input('TotalHours') TotalHours: number;
   constructor() { }
 
   ngOnInit() {
