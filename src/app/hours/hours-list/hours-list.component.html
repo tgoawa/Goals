@@ -1,3 +1,35 @@
-<p>
-  hours-main works!
-</p>
+<div class="row">
+  <div class="col-md-5">
+    <h1>Hours</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4">
+    <p>Hours list:</p>
+  </div>
+  <div class="col-md-8 text-right">
+    <span class="faux-link" (click)="onAdd()">Add New</span>
+  </div>
+</div>
+<div class="row" *ngIf="isLoading">
+  <div class="col-md-2 offset-md-5"><i fa class="fa fa-spinner fa-5x fa-spin" aria-hidden="true"></i>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header card-primary">
+        <ul class="list-unstyled">
+          <li style="color: white;">Created Date: </li>
+          <li style="color: white;">Modified Date: </li>
+        </ul>
+      </div>
+      <div class="card-block">
+        <p class="card-text">
+          <span class="faux-link" (click)="onEdit()">Edit Hours Details</span>
+          <span class="faux-link" (click)="onViewOldHours()">Show Hours Details</span>
+        </p>
+        </div>
+      </div>
+    </div>
+  </div>

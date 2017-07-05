@@ -7,9 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HoursListComponent implements OnInit {
 
+  isLoading = false;
   constructor() { }
 
   ngOnInit() {
   }
 
+  onAdd() {
+    
+  }
+
+  onEdit() {
+
+  }
+
+  onViewOldHours() {
+    
+  }
 }
