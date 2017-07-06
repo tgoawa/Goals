@@ -16,6 +16,11 @@ import { NonChargeTimeComponent } from './non-chargeable/non-charge-time/non-cha
     HoursRoutingModule,
     FormsModule
   ],
-  declarations: [HoursComponent, HoursListComponent, ChargeTimeItemComponent, ChargeTimeComponent, NonChargeTimeItemComponent, NonChargeTimeComponent]
+  declarations: [HoursComponent,
+    HoursListComponent,
+    ChargeTimeItemComponent,
+    ChargeTimeComponent,
+    NonChargeTimeItemComponent,
+    NonChargeTimeComponent]
 })
 export class HoursModule { }
