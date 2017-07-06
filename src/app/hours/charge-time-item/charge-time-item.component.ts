@@ -7,7 +7,7 @@ import { ChargeTimeItem } from '../models/hours';
   styleUrls: ['./charge-time-item.component.scss']
 })
 export class ChargeTimeItemComponent implements OnInit {
-  @Input('ChargeTimeItem') ChargeTimeItem: ChargeTimeItem;
+  @Input('data') data: ChargeTimeItem;
   @Input('PrevTotalHours') PrevTotalHours: number;
   @Input('CurrentTotalHours') CurrentTotalHours: number;
   @Output() hours: EventEmitter<number> = new EventEmitter<number>();
@@ -22,16 +22,16 @@ export class ChargeTimeItemComponent implements OnInit {
   }
 
   onUpdateHours() {
-    this.hours.emit(this.ChargeTimeItem.NextYear);
+    this.hours.emit(this.data.NextYear);
     this.calculateNewPercentage();
   }
 
   calculatePreviousPercentage() {
-    this.previousPercentage = this.ChargeTimeItem.PrevHours / this.PrevTotalHours;
+    this.previousPercentage = this.data.PrevHours / this.PrevTotalHours;
   }
 
   calculateNewPercentage() {
-    this.newPercentage = this.ChargeTimeItem.NextYear / this.CurrentTotalHours;
+    this.newPercentage = this.data.NextYear / this.CurrentTotalHours;
   }
 
 }

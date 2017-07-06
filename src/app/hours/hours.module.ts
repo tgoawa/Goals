@@ -7,6 +7,7 @@ import { HoursComponent } from './hours.component';
 import { HoursListComponent } from './hours-list/hours-list.component';
 import { ChargeTimeItemComponent } from './charge-time-item/charge-time-item.component';
 import { ChargeTimeComponent } from './charge-time/charge-time.component';
+import { NonChargeTimeItemComponent } from './non-charge-time-item/non-charge-time-item.component';
 
 @NgModule({
   imports: [
@@ -14,6 +15,6 @@ import { ChargeTimeComponent } from './charge-time/charge-time.component';
     HoursRoutingModule,
     FormsModule
   ],
-  declarations: [HoursComponent, HoursListComponent, ChargeTimeItemComponent, ChargeTimeComponent]
+  declarations: [HoursComponent, HoursListComponent, ChargeTimeItemComponent, ChargeTimeComponent, NonChargeTimeItemComponent]
 })
 export class HoursModule { }
