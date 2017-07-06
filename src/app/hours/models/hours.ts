@@ -9,4 +9,13 @@ export class ChargeTimeItem {
     NextYear: number;
 }
 
+export class NonChargeItem {
+    Id: number;
+    Name: string;
+    SuggestedRange: string;
+    PrevHours: number;
+    NextYear: number;
+    Notes: string;
+}
+
 
