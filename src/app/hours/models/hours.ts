@@ -1,12 +1,22 @@
 export class Hours {
+    HoursId: number;
+    TeamMemberId: number;
+    IndustryHours: ChargeTime;
+    ServiceLineHours: ChargeTime;
 }
 
-export class ChargeTimeItem {
-    Id: number;
-    Name: string;
+export class ChargeTime {
     CategoryId: number;
-    PrevHours: number;
-    NextYear: number;
+    CategoryName: string;
+    Items: Item[];
+}
+
+export class Item {
+    ItemId: number;
+    ItemName: string;
+    PreviousHours: number;
+    CurrentHours: number;
+    PreviousYear: number;
 }
 
 export class NonChargeItem {
