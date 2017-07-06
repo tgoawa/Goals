@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { ChargeTimeItem } from '../models/hours';
+import { ChargeTimeItem } from '../../models/hours';
 
 @Component({
   selector: 'app-charge-time-item',

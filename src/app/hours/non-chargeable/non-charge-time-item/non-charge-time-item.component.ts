@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { NonChargeItem } from '../models/hours';
+import { NonChargeItem } from '../../models/hours';
 
 @Component({
   selector: 'app-non-charge-time-item',
