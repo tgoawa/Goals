@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-md-8">
+    Non-Charge Time
+  </div>
+</div>
+<table class="table table-responsive">
+<thead>
+  <tr>
+    <th></th>
+    <th>Current Year Actual</th>
+    <th>Current Year %</th>
+    <th>Suggested Range</th>
+    <th>Next Year Plan</th>
+    <th>Next Year %</th>
+    <th>Notes</th>
+  </tr>
+</thead>
+<tbody>
+  <tr *ngFor="let item of data">
+    <app-non-charge-time-item [data]="item" [currentYearHours]="currentYearTotalHours" [nextYearHours]="nextYearTotalHours" (hours)="calculateNextTotalHours($event)"></app-non-charge-time-item>
+  </tr>
+</tbody>
+</table>
