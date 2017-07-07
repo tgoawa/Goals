@@ -97,6 +97,10 @@ nav {
     .modal-lg {
         max-width: 900px;
     }
+    .navbar-toggleable-md .navbar-nav .nav-link {
+        padding-right: 1rem;
+        padding-left: 1rem;
+    }
 }
 
 @media only print {
