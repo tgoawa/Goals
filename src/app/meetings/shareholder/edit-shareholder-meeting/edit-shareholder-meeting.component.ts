@@ -46,6 +46,7 @@ export class EditShareholderMeetingComponent implements OnInit, AfterViewInit {
 
   private toFormGroup(data: SHMeeting): FormGroup {
     const formGroup = this.fb.group({
+      ShareHolderMeetingId: data.ShareHolderMeetingId,
       CoachId: data.CoachId,
       TeamMemberId: data.TeamMemberId,
       Weight: data.Weight,
@@ -119,6 +120,7 @@ export class EditShareholderMeetingComponent implements OnInit, AfterViewInit {
   }
 
   updateMeeting() {
+    console.log(this.editShareholderMeetingForm.value);
     this.shmService.saveMeeting(this.editShareholderMeetingForm.value)
     .subscribe(data => {
       this.meetingUpdateSuccess();
