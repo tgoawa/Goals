@@ -20,27 +20,27 @@
             </li>
           </ul>
         </li>
-        <li *ngIf="!teamMember.IsShareHolder">
+        <li *ngIf="!teamMember.IsShareHolder" class="nav-item">
           <a class="nav-link" href="#" [routerLink]="['/meetings/meeting-list']" routerLinkActive="active">Meeting List</a>
         </li>
-        <li *ngIf="teamMember.IsShareHolder">
+        <li *ngIf="teamMember.IsShareHolder" class="nav-item">
           <a class="nav-link" href="#" [routerLink]="['/meetings/shareholder-meeting-list']" routerLinkActive="active">Shareholder Meeting List</a>
         </li>
         <li class="nav-item dropdown" dropdown *ngIf="teamMember.IsCoach || teamMember.IsShareHolderCoach">
           <a class="nav-link dropdown-toggle" href dropdownToggle (click)="false">Coach</a>
           <ul *dropdownMenu class="dropdown-menu">
             <li *ngIf="teamMember.IsCoach">
-              <a class="nav-link" href="#" [routerLink]="['/coach/non-shareholder-coach']" routerLinkActive="active">Coach</a>
+              <a class="dropdown-item" href="#" [routerLink]="['/coach/non-shareholder-coach']" routerLinkActive="active">Coach</a>
             </li>
             <li *ngIf="teamMember.IsShareHolderCoach">
-              <a class="nav-link" href="#" [routerLink]="['/coach/shareholder-coach']" routerLinkActive="active">Shareholder Coach</a>
+              <a class="dropdown-item" href="#" [routerLink]="['/coach/shareholder-coach']" routerLinkActive="active">Shareholder Coach</a>
             </li>
           </ul>
         </li>
-        <li *ngIf="!teamMember.IsShareHolder">
+        <li *ngIf="!teamMember.IsShareHolder" class="nav-item">
           <a class="nav-link" href="#" [routerLink]="['/print/non-shareholder']" routerLinkActive="active">Print View</a>
         </li>
-        <li *ngIf="teamMember.IsShareHolder">
+        <li *ngIf="teamMember.IsShareHolder" class="nav-item">
           <a class="nav-link" href="#" [routerLink]="['/print/shareholder']" routerLinkActive="active">Print View</a>
         </li>
       </ul>

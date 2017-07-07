@@ -31,6 +31,10 @@ h4 {
     font-size: 13px;
 }
 nav {
+    .nav-item {
+        margin-left: 1.3rem;
+        margin-right: 1.3rem;
+    }
     a {
         color: $schenck-blue;
         text-transform: uppercase;
@@ -96,10 +100,6 @@ nav {
 @media (min-width: 992px) {
     .modal-lg {
         max-width: 900px;
-    }
-    .navbar-toggleable-md .navbar-nav .nav-link {
-        padding-right: 1rem;
-        padding-left: 1rem;
     }
 }
 
