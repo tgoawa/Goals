@@ -5,6 +5,7 @@ import { WigGoalServiceService } from '../service/wig-goal-service.service';
 import { TeamMemberService, TeamMember } from '../../../teamMember/';
 import { Goal } from '../../goal';
 
+import * as _ from 'lodash';
 @Component({
   selector: 'app-wig-goal-list',
   templateUrl: './wig-goal-list.component.html',
@@ -39,7 +40,7 @@ export class WigGoalListComponent implements OnInit {
   }
 
   onEdit(goal: Goal) {
-    this.goalToEdit = goal;
+    this.goalToEdit = _.cloneDeep(goal);
   }
 
   onAdd() {

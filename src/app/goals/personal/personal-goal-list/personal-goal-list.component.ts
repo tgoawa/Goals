@@ -5,6 +5,7 @@ import { PersonalGoalService } from '../service/personal-goal.service';
 import { TeamMemberService, TeamMember } from '../../../teamMember/';
 import { Goal } from '../../goal';
 
+import * as _ from 'lodash';
 @Component({
   selector: 'app-personal-goal-list',
   templateUrl: './personal-goal-list.component.html',
@@ -40,7 +41,7 @@ export class PersonalGoalListComponent implements OnInit {
   }
 
   onEdit(goal: Goal) {
-    this.goalToEdit = goal;
+    this.goalToEdit = _.cloneDeep(goal);
   }
 
   onAdd() {

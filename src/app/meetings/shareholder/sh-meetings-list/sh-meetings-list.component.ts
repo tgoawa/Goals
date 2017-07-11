@@ -5,6 +5,7 @@ import { ShareholderMeetingService } from '../service/shareholder-meeting.servic
 import { TeamMember, TeamMemberService } from '../../../teamMember/';
 import { SHMeeting, Detail } from '../models/shmeeting';
 
+import * as _ from 'lodash';
 @Component({
   selector: 'app-sh-meetings-list',
   templateUrl: './sh-meetings-list.component.html',
@@ -43,15 +44,15 @@ export class ShMeetingsListComponent implements OnInit {
   }
 
   onEdit(meeting: SHMeeting) {
-    this.meetingToEdit = meeting;
-    console.log(this.meetingToEdit);
+    this.meetingToEdit = _.cloneDeep(meeting);
+
   }
 
   onRead(meeting: SHMeeting) {
     this.readMeeting = meeting;
   }
 
-    clearMeetingToEdit() {
+  clearMeetingToEdit() {
     this.meetingToEdit = undefined;
   }
 
