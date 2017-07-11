@@ -42,6 +42,9 @@
               <option *ngFor="let w of weightList" [value]="w" [selected]="w === meeting.Weight">{{w}}</option>
             </select>
             </div>
+          <div *ngIf="editShareholderMeetingForm.get('Weight').hasError('required')" class="alert alert-danger">
+            A Weight value is required
+          </div>
           </div>
           <div class="row">
             <div class="col-md-4">

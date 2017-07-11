@@ -49,7 +49,7 @@ export class EditShareholderMeetingComponent implements OnInit, AfterViewInit {
       ShareHolderMeetingId: data.ShareHolderMeetingId,
       CoachId: data.CoachId,
       TeamMemberId: data.TeamMemberId,
-      Weight: data.Weight,
+      Weight: [data.Weight, Validators.required],
       ShareHolderCoach: data.ShareHolderCoach.LastFirstName
     });
 

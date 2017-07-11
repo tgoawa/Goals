@@ -41,9 +41,10 @@ export class AddShareholderMeetingComponent implements OnInit, AfterViewInit {
 
   private toFormGroup(data: SHMeeting): FormGroup {
     const formGroup = this.fb.group({
+      ShareHolderMeetingId: 0,
       CoachId: data.CoachId,
       TeamMemberId: data.TeamMemberId,
-      Weight: data.Weight,
+      Weight: [data.Weight, Validators.required],
       ShareHolderCoach: null
     });
 
@@ -82,6 +83,7 @@ export class AddShareholderMeetingComponent implements OnInit, AfterViewInit {
   }
 
   saveMeeting() {
+    console.log(this.addShareholderMeetingForm.value)
     this.shService.saveMeeting(this.addShareholderMeetingForm.value)
       .subscribe(data => {
         this.meetingUpdateSuccess();
