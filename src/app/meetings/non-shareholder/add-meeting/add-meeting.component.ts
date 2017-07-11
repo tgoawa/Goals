@@ -32,6 +32,7 @@ export class AddMeetingComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.getCoaches();
+    this.isChargeable();
   }
 
   ngAfterViewInit() {
@@ -46,7 +47,7 @@ export class AddMeetingComponent implements OnInit, AfterViewInit {
     this.addModal.show();
   }
 
-    closeModal() {
+  closeModal() {
     if (this.addMeeting.dirty) {
       if (confirm('You are about to lose changes, are you sure?')) {
         this.hideModal();
@@ -68,16 +69,16 @@ export class AddMeetingComponent implements OnInit, AfterViewInit {
 
   getCoaches() {
     this.csService.getCoaches()
-    .subscribe(data => {
-      this.coachList = data;
-    }, error => {
-      console.log(error);
-      // TODO: Add error toast
-    });
+      .subscribe(data => {
+        this.coachList = data;
+      }, error => {
+        console.log(error);
+        // TODO: Add error toast
+      });
   }
 
   mapCoachIdToMeeting() {
-    for (let index = 0; index < this.coachList.length; index ++) {
+    for (let index = 0; index < this.coachList.length; index++) {
       if (this.selectedCoach === this.coachList[index].LastFirstName) {
         this.currentMeeting.CoachId = this.coachList[index].TeamMemberId;
       }
@@ -86,13 +87,13 @@ export class AddMeetingComponent implements OnInit, AfterViewInit {
 
   saveMeeting() {
     this.msService.saveMeeting(this.currentMeeting)
-    .subscribe(data => {
-      this.meetingUpdateSuccess();
-      this.hideModal();
-    }, error => {
-      console.log(error);
-      this.hideModal();
-    });
+      .subscribe(data => {
+        this.meetingUpdateSuccess();
+        this.hideModal();
+      }, error => {
+        console.log(error);
+        this.hideModal();
+      });
   }
 
   meetingUpdateSuccess() {
@@ -103,4 +104,17 @@ export class AddMeetingComponent implements OnInit, AfterViewInit {
     question.IsDirty = true;
   }
 
+  carryOverPreviousChargeables() {
+      if (this.previousMeeting != null) {
+        for (let index = 20; index < 26; index++) {
+          this.currentMeeting.Questions[index].AnswerText = this.previousMeeting.Questions[index].AnswerText;
+        }
+      }
+  }
+
+  isChargeable() {
+    if (this.teamMember.IsChargable) {
+      this.carryOverPreviousChargeables();
+    }
+  }
 }
