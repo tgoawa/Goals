@@ -1,6 +1,6 @@
 export class Question {
     AnswerId: number;
-    AnswerText: string;
+    AnswerText: any;
     IsChargable: boolean;
     IsDirty: boolean;
     MeetingId: number;
