@@ -105,15 +105,22 @@ export class AddMeetingComponent implements OnInit, AfterViewInit {
   }
 
   carryOverPreviousChargeables() {
-      if (this.previousMeeting != null) {
-        for (let index = 20; index < 26; index++) {
-          this.currentMeeting.Questions[index].AnswerText = this.previousMeeting.Questions[index].AnswerText;
-        }
+    if (this.previousMeeting != null) {
+      for (let index = 20; index < 26; index++) {
+        this.currentMeeting.Questions[index].AnswerText = this.previousMeeting.Questions[index].AnswerText;
+      }
+    }
+  }
+
+  setDefaultChargeableValues() {
+      for (let index = 20; index < 26; index++) {
+        this.currentMeeting.Questions[index].AnswerText = 0;
       }
   }
 
   isChargeable() {
     if (this.teamMember.IsChargable) {
+      this.setDefaultChargeableValues();
       this.carryOverPreviousChargeables();
     }
   }
