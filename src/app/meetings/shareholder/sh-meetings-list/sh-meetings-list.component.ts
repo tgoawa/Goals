@@ -76,11 +76,9 @@ export class ShMeetingsListComponent implements OnInit {
 
   onAdd() {
     this.newMeeting = new SHMeeting(this.teamMember.TeamMemberId);
-    
     this.newMeeting.Details.push(new Detail(1));
     this.newMeeting.Details.push(new Detail(2));
     this.newMeeting.Details.push(new Detail(3));
-    console.log(this.newMeeting);
   }
 
   showSuccessUpdate() {

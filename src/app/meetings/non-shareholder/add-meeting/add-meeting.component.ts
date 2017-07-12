@@ -32,6 +32,7 @@ export class AddMeetingComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.getCoaches();
+    this.carryOverPreviousCoach();
     this.isChargeable();
   }
 
@@ -110,6 +111,13 @@ export class AddMeetingComponent implements OnInit, AfterViewInit {
         this.currentMeeting.Questions[index].AnswerText = this.previousMeeting.Questions[index].AnswerText;
       }
     }
+  }
+
+  carryOverPreviousCoach() {
+    if (this.previousMeeting != null) {
+      this.selectedCoach = this.previousMeeting.CoachLastFirstName;
+    }
+    return false;
   }
 
   setDefaultChargeableValues() {

@@ -13,6 +13,7 @@ import { TeamMember } from '../../../teamMember';
 })
 export class AddShareholderMeetingComponent implements OnInit, AfterViewInit {
   @ViewChild('addModal') addModal: ModalDirective;
+  @Input('previousMeeting') previousMeeting: SHMeeting;
   @Input('meeting') meeting: SHMeeting;
   @Output() modalClosed: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() addSuccess: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -25,11 +26,13 @@ export class AddShareholderMeetingComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.getShareholderCoaches();
     this.addShareholderMeetingForm = this.toFormGroup(this.meeting);
+    this.carryOverPreviousCoach();
   }
 
   ngAfterViewInit() {
     this.showModal();
   }
+
   getShareholderCoaches() {
     this.csService.getShareholderCoaches()
       .subscribe(data => {
@@ -62,7 +65,15 @@ export class AddShareholderMeetingComponent implements OnInit, AfterViewInit {
     this.addModal.show();
   }
 
-    closeModal() {
+  carryOverPreviousCoach() {
+    if (this.previousMeeting !== undefined) {
+      this.addShareholderMeetingForm.patchValue({
+        ShareHolderCoach: this.previousMeeting.ShareHolderCoach.LastFirstName
+      });
+    }
+  }
+
+  closeModal() {
     if (this.addShareholderMeetingForm.dirty) {
       if (confirm('You are about to lose changes, are you sure?')) {
         this.hideModal();
