@@ -22,6 +22,7 @@
           <div class="form-group col-md-6">
             <label for="GoalWIGId">Select WIG for current goal:</label>
             <select class="form-control" name="GoalWIGId" formControlName="GoalWIGId">
+              <option style="display: none" hidden></option>
               <option *ngFor="let wig of WIGList;" [value]="wig.GoalWIGId">{{wig.WIGTitle}}</option>
             </select>
             <div *ngIf="addWigGoalForm.get('GoalWIGId').hasError('required')" class="alert alert-danger">A WIG is required</div>
@@ -29,6 +30,7 @@
           <div class="form-group col-md-2">
             <label for="Weight">Weight %:</label>
             <select class="form-control" name="Weight" formControlName="Weight">
+              <option style="display: none" hidden></option>
               <option *ngFor="let weight of weightList;" [value]="weight">{{weight}}</option>
             </select>
           </div>
