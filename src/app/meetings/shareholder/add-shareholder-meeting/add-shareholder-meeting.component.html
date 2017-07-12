@@ -39,12 +39,13 @@
             <label class="col-md-2 col-form-label">Weight%</label>
             <div class="col-md-2">
               <select formControlName="Weight" class="form-control">
+              <option style="display: none" hidden></option>
               <option *ngFor="let w of weightList" [value]="w" [selected]="w === meeting.Weight">{{w}}</option>
             </select>
             </div>
-          <div *ngIf="addShareholderMeetingForm.get('Weight').hasError('required')" class="alert alert-danger">
-            A Weight value is required
-          </div>
+            <div *ngIf="addShareholderMeetingForm.get('Weight').hasError('required')" class="alert alert-danger">
+              A Weight value is required
+            </div>
           </div>
           <div class="row">
             <div class="col-md-4">
