@@ -27,6 +27,10 @@ import { WigGoalListComponent } from './shareholder-WIG/wig-goal-list/wig-goal-l
 import { WigGoalServiceService } from './shareholder-WIG/service/wig-goal-service.service';
 import { EditWigGoalComponent } from './shareholder-WIG/edit-wig-goal/edit-wig-goal.component';
 import { AddWigGoalComponent } from './shareholder-WIG/add-wig-goal/add-wig-goal.component';
+import { EditEconomicGoalComponent } from './shareholder-economic/edit-economic-goal/edit-economic-goal.component';
+import { EconomicGoalComponent } from './shareholder-economic/economic-goal/economic-goal.component';
+import { ReadOnlyComponent } from './shareholder-economic/read-only/read-only.component';
+import { DetailComponent } from './shareholder-economic/detail/detail.component';
 
 @NgModule({
   imports: [
@@ -57,7 +61,11 @@ import { AddWigGoalComponent } from './shareholder-WIG/add-wig-goal/add-wig-goal
                   AddPersonalGoalComponent,
                   WigGoalListComponent,
                   EditWigGoalComponent,
-                  AddWigGoalComponent
+                  AddWigGoalComponent,
+                  EditEconomicGoalComponent,
+                  EconomicGoalComponent,
+                  ReadOnlyComponent,
+                  DetailComponent
                 ],
   providers: [ IndustryGoalService, PersonalGoalService, WigGoalServiceService ]
 })

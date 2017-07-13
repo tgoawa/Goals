@@ -18,6 +18,9 @@
             <li *ngIf="teamMember.IsShareHolder">
               <a class="dropdown-item" href="#" [routerLink]="['/goals/shareholder-wig']">WIG Based Goals</a>
             </li>
+            <li *ngIf="teamMember.IsShareHolder">
+              <a class="dropdown-item" href="#" [routerLink]="['/goals/shareholder-economic']">Economic Contribution Goal</a>
+            </li>
           </ul>
         </li>
         <li *ngIf="!teamMember.IsShareHolder" class="nav-item">

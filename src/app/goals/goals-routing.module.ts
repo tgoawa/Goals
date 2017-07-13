@@ -4,6 +4,7 @@ import { GoalsComponent } from './goals.component';
 import { IndustryTeamGoalListComponent } from '../goals/industry-team/industry-team-goal-list/industry-team-goal-list.component';
 import { PersonalGoalListComponent } from './personal/personal-goal-list/personal-goal-list.component';
 import { WigGoalListComponent } from '../goals/shareholder-WIG/wig-goal-list/wig-goal-list.component';
+import { EconomicGoalComponent } from '../goals/shareholder-economic/economic-goal/economic-goal.component';
 
 const routes: Routes = [
   {
@@ -12,7 +13,8 @@ const routes: Routes = [
     children: [
       {path: 'industry-team', component: IndustryTeamGoalListComponent},
       {path: 'personal', component: PersonalGoalListComponent},
-      {path: 'shareholder-wig', component: WigGoalListComponent}
+      {path: 'shareholder-wig', component: WigGoalListComponent},
+      {path: 'shareholder-economic', component: EconomicGoalComponent}
     ]
   }
 ];
