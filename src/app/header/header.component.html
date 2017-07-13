@@ -18,13 +18,13 @@
             <li *ngIf="teamMember.IsShareHolder">
               <a class="dropdown-item" href="#" [routerLink]="['/goals/shareholder-wig']">WIG Based Goals</a>
             </li>
+            <li *ngIf="teamMember.IsShareHolder">
+              <a class="dropdown-item" href="#" [routerLink]="['/goals/shareholder-economic']">Economic Contribution Goal</a>
+            </li>
           </ul>
         </li>
         <li *ngIf="!teamMember.IsShareHolder" class="nav-item">
           <a class="nav-link" href="#" [routerLink]="['/meetings/meeting-list']" routerLinkActive="active">Meeting List</a>
-        </li>
-        <li *ngIf="teamMember.IsShareHolder" class="nav-item">
-          <a class="nav-link" href="#" [routerLink]="['/meetings/shareholder-meeting-list']" routerLinkActive="active">Shareholder Meeting List</a>
         </li>
         <li class="nav-item dropdown" dropdown *ngIf="teamMember.IsCoach || teamMember.IsShareHolderCoach">
           <a class="nav-link dropdown-toggle" href dropdownToggle (click)="false">Coach</a>
