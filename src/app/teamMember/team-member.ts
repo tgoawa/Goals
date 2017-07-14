@@ -12,7 +12,7 @@ export class TeamMember {
     IsCoach: boolean;
     IsShareHolderCoach: boolean;
     IsGreenBay: boolean;
-    IsMentor: boolean;
+    IsShareholderGoalEdit: boolean;
     IndustryTeam1: number;
     IndustryTeam2: number;
     IndustryTeam3: number;

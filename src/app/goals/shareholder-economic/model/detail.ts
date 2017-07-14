@@ -1,3 +1,5 @@
+import { TeamMember } from '../../../teamMember';
+
 export class Detail {
     BillingsTier6: number;
     BillingsTier6GR: number;
@@ -21,4 +23,14 @@ export class Detail {
     sDaysinWIP_AR: number;
     sRealization: number;
 
+}
+
+export class EconomicGoal {
+    CoachId: number;
+    Details: Detail[];
+    DisplayDateCreated: string;
+    DisplayDateModified: string;
+    ShareHolderCoach: TeamMember;
+    ShareHolderMeetingId: number;
+    TeamMemberId: number;
 }
