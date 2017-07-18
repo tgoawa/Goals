@@ -22,7 +22,7 @@ const routes: Routes = [
       { path: 'meetings', loadChildren: '../meetings/meetings.module#MeetingsModule'},
       { path: 'coach', loadChildren: '../coach/coach.module#CoachModule'},
       { path: 'print', loadChildren: '../print/print.module#PrintModule'},
-      { path: 'hours', loadChildren: '../hours/hours.module.ts#HoursModule'}
+      { path: 'hours', loadChildren: '../hours/hours.module#HoursModule'}
     ]
   },
 ];
