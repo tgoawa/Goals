@@ -35,7 +35,3 @@ export class EconomicGoal {
     TeamMemberId: number;
 }
 
-export interface EconomicGoalUser {
-    TeamMemberId: number;
-    Years: number[];
-}
