@@ -14,7 +14,7 @@ export class EconomicGoalService {
   constructor(private http: Http) { }
 
   getEconomicGoals(id: number) {
-    return this.http.get(api + 'ShareHolderService/getShareholderMeetings/' + id)
+    return this.http.get(api + 'ShareHolderService/getEconomicGoals/' + id)
     .map(response => response.json(), error => console.log(error));
   }
 

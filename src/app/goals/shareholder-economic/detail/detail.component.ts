@@ -71,4 +71,8 @@ export class DetailComponent implements OnInit {
     return formGroup;
   }
 
+  onSubmit() {
+    
+  }
+
 }
