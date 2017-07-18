@@ -34,3 +34,8 @@ export class EconomicGoal {
     ShareHolderMeetingId: number;
     TeamMemberId: number;
 }
+
+export interface EconomicGoalUser {
+    TeamMemberId: number;
+    Years: number[];
+}
