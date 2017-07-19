@@ -19,17 +19,17 @@ export class WigGoalServiceService {
   }
 
   getWigGoals(id: number) {
-    return this.http.get(api + 'ShareHolderService/GetWigGoals/' + id)
+    return this.http.get(api + 'GoalService/GetWigGoals/' + id)
     .map(response => response.json(), error => console.log(error));
   }
 
   saveWigGoal(goal: Goal) {
-    return this.http.post(api + 'ShareHolderService/SaveWigGoal/', goal)
+    return this.http.post(api + 'GoalService/SaveWigGoal/', goal)
     .map(response => response.json(), error => console.log(error));
   }
 
   updateWigGoal(goal: Goal) {
-    return this.http.post(api + 'ShareHolderService/UpdateWigGoal/', goal)
+    return this.http.post(api + 'GoalService/UpdateWigGoal/', goal)
     .map(response => response.json(), error => console.log(error));
   }
 }

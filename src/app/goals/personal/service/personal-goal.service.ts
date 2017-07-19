@@ -23,17 +23,17 @@ export class PersonalGoalService {
   }
 
   getCompetencyGoals(id: number) {
-    return this.http.get(api + 'ShareHolderService/GetCompetencyGoals/' + id)
+    return this.http.get(api + 'GoalService/GetCompetencyGoals/' + id)
     .map(response => response.json(), error => console.log(error));
   }
 
   saveCompetencyGoal(goal: Goal) {
-    return this.http.post(api + 'ShareHolderService/SaveCompetencyGoal/', goal)
+    return this.http.post(api + 'GoalService/SaveCompetencyGoal/', goal)
     .map(response => response.json(), error => console.log(error));
   }
 
   updateCompetencyGoal(goal: Goal) {
-    return this.http.post(api + 'ShareHolderService/UpdateCompetencyGoal/', goal)
+    return this.http.post(api + 'GoalService/UpdateCompetencyGoal/', goal)
     .map(response => response.json(), error => console.log(error));
   }
 
