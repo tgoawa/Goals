@@ -31,6 +31,7 @@ import { EditEconomicGoalComponent } from './shareholder-economic/edit-economic-
 import { EconomicGoalComponent } from './shareholder-economic/economic-goal/economic-goal.component';
 import { ReadOnlyComponent } from './shareholder-economic/read-only/read-only.component';
 import { DetailComponent } from './shareholder-economic/detail/detail.component';
+import { EconomicGoalService } from './shareholder-economic/service/economic-goal.service';
 
 @NgModule({
   imports: [
@@ -67,6 +68,6 @@ import { DetailComponent } from './shareholder-economic/detail/detail.component'
                   ReadOnlyComponent,
                   DetailComponent
                 ],
-  providers: [ IndustryGoalService, PersonalGoalService, WigGoalServiceService ]
+  providers: [ IndustryGoalService, PersonalGoalService, WigGoalServiceService, EconomicGoalService ]
 })
 export class GoalsModule { }
