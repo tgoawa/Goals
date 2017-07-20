@@ -14,6 +14,7 @@ export class EditEconomicGoalComponent implements OnInit {
   displayPersonal = true;
   displayPracticeUnit = false;
   displayIndustryTeam = false;
+  detailChanged: boolean;
 
   constructor(private egService: EconomicGoalService) { }
 
@@ -40,11 +41,15 @@ export class EditEconomicGoalComponent implements OnInit {
 
   onSubmit() {
     this.egService.updateEconomicGoal(this.economicGoals)
-    .subscribe(data => {
-      console.log(data);
-    }, error => {
-      console.log(error);
-    })
+      .subscribe(data => {
+        this.economicGoals = data;
+      }, error => {
+        console.log(error);
+      });
+  }
+
+  detailDirty() {
+    this.detailChanged = true;
   }
 
 }

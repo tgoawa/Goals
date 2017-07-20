@@ -21,7 +21,7 @@ export class DetailComponent implements OnInit {
   }
 
   isDirtyDetail() {
-    if (this.currentDetail.IsDirty = false) {
+    if (this.currentDetail.IsDirty === false) {
       this.currentDetail.IsDirty = true;
       this.isDirty.emit(true);
     }
