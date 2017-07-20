@@ -28,6 +28,7 @@ export class ShareholderComponent implements OnInit {
     .subscribe(data => {
       this.isLoading = false;
       this.printGoal = data;
+      console.log(this.printGoal);
     }, error => {
       console.log(error);
       this.isLoading = false;
