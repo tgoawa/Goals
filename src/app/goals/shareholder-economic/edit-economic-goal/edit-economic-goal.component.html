@@ -1,18 +1,18 @@
 <div class="row">
   <div class="col-md-4">
-    <button type="button" class="btn btn-primary">Personal</button>
+    <button type="button" class="btn btn-primary" (click)="displayPersonalGoal()">Personal</button>
   </div>
   <div class="col-md-4">
-    <button type="button" class="btn btn-secondary">Practice Unit</button>
+    <button type="button" class="btn btn-secondary" (click)="displayPracticeUnitGoal()">Practice Unit</button>
   </div>
   <div class="col-md-4">
-    <button type="button" class="btn btn-secondary">Industry Team</button>
+    <button type="button" class="btn btn-secondary" (click)="displayIndustryTeamGoal()">Industry Team</button>
   </div>
 </div>
 <form novalidate #economicGoalsForm (ngSubmit)="onSubmit()">
-<app-detail *ngIf="" [title]="'Personal Goals'"></app-detail>
-<!-- <app-detail [title]="'Practice Unit'"></app-detail>
-<app-detail [title]="'Industry Team'"></app-detail> -->
+ <app-detail *ngIf="displayPersonal" [title]="'Personal Goals'" [currentDetail]="economicGoals?.CurrentEconomicGoal?.Details[0]" [previousDetail]="economicGoals?.PreviousEconomicGoal?.Details[0]"></app-detail> 
+ <app-detail *ngIf="displayPracticeUnit" [title]="'Practice Unit'" [currentDetail]="economicGoals?.CurrentEconomicGoal?.Details[1]" [previousDetail]="economicGoals?.PreviousEconomicGoal?.Details[1]"></app-detail>
+<app-detail *ngIf="displayIndustryTeam" [title]="'Industry Team'" [currentDetail]="economicGoals?.CurrentEconomicGoal?.Details[2]" [previousDetail]="economicGoals?.PreviousEconomicGoal?.Details[2]"></app-detail> 
 <div class="form-group row">
   <button type="button" class="btn btn-secondary">Cancel</button>
   <button type="submt" class="btn btn-success">Save</button>

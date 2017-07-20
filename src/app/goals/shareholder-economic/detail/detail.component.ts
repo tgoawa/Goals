@@ -9,7 +9,8 @@ import { Detail } from '../model/detail';
   styleUrls: ['./detail.component.scss']
 })
 export class DetailComponent implements OnInit {
-  @Input('detail') detail: Detail;
+  @Input('currentDetail') currentDetail: Detail;
+  @Input('previousDetail') previousDetail: Detail;
   @Input('title') title: string;
 
   constructor(private fb: FormBuilder) { }

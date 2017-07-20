@@ -1,6 +1,6 @@
 import { TeamMember } from '../../../teamMember';
 
-export class Detail {
+export interface Detail {
     BillingsTier6: number;
     BillingsTier6GR: number;
     BillingsTier6PBR: number;
@@ -25,13 +25,18 @@ export class Detail {
 
 }
 
-export class EconomicGoal {
+export interface EconomicGoal {
     CoachId: number;
     Details: Detail[];
     DisplayDateCreated: string;
     DisplayDateModified: string;
-    ShareHolderCoach: TeamMember;
-    ShareHolderMeetingId: number;
+    EconomicGoalId: number;
     TeamMemberId: number;
+    Year: number;
+}
+
+export interface EconomicGoals {
+    CurrentEconomicGoal: EconomicGoal;
+    PreviousEconomicGoal: EconomicGoal;
 }
 
