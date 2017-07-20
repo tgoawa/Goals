@@ -1,12 +1,12 @@
 <div class="row">
   <div class="col-md-4">
-    <button type="button" class="btn btn-primary" (click)="displayPersonalGoal()">Personal</button>
+    <button type="button" [ngClass]="personalButtonClasses" (click)="displayPersonalGoal()">Personal</button>
   </div>
   <div class="col-md-4">
-    <button type="button" class="btn btn-secondary" (click)="displayPracticeUnitGoal()">Practice Unit</button>
+    <button type="button" [ngClass]="practiceButtonClasses" (click)="displayPracticeUnitGoal()">Practice Unit</button>
   </div>
   <div class="col-md-4">
-    <button type="button" class="btn btn-secondary" (click)="displayIndustryTeamGoal()">Industry Team</button>
+    <button type="button" [ngClass]="industryButtonClasses" (click)="displayIndustryTeamGoal()">Industry Team</button>
   </div>
 </div>
 <form novalidate #economicGoalsForm (ngSubmit)="onSubmit()">

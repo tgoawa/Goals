@@ -13,6 +13,24 @@ export class EditEconomicGoalComponent implements OnInit {
   displayPracticeUnit = false;
   displayIndustryTeam = false;
 
+  personalButtonClasses = {
+    btn: true,
+    'btn-secondary': false,
+    'btn-primary': true
+  };
+
+  practiceButtonClasses = {
+    btn: true,
+    'btn-secondary': true,
+    'btn-primary': false
+  };
+
+  industryButtonClasses = {
+    btn: true,
+    'btn-secondary': true,
+    'btn-primary': false
+  };
+
   constructor() { }
 
   ngOnInit() {
