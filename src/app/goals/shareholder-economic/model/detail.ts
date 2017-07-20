@@ -20,9 +20,7 @@ export interface Detail {
     ShareHolderDetailTypeId: number;
     ShareHolderMeetingDetailId: number;
     ShareHolderMeetingId: number;
-    sDaysinWIP_AR: number;
-    sRealization: number;
-
+    IsDirty: boolean;
 }
 
 export interface EconomicGoal {

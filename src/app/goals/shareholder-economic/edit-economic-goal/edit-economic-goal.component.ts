@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { EconomicGoals } from '../model/detail';
 
+import { EconomicGoalService } from '../service/economic-goal.service';
+
 @Component({
   selector: 'app-edit-economic-goal',
   templateUrl: './edit-economic-goal.component.html',
@@ -13,25 +15,7 @@ export class EditEconomicGoalComponent implements OnInit {
   displayPracticeUnit = false;
   displayIndustryTeam = false;
 
-  personalButtonClasses = {
-    btn: true,
-    'btn-secondary': false,
-    'btn-primary': true
-  };
-
-  practiceButtonClasses = {
-    btn: true,
-    'btn-secondary': true,
-    'btn-primary': false
-  };
-
-  industryButtonClasses = {
-    btn: true,
-    'btn-secondary': true,
-    'btn-primary': false
-  };
-
-  constructor() { }
+  constructor(private egService: EconomicGoalService) { }
 
   ngOnInit() {
   }
@@ -55,7 +39,12 @@ export class EditEconomicGoalComponent implements OnInit {
   }
 
   onSubmit() {
-
+    this.egService.updateEconomicGoal(this.economicGoals)
+    .subscribe(data => {
+      console.log(data);
+    }, error => {
+      console.log(error);
+    })
   }
 
 }

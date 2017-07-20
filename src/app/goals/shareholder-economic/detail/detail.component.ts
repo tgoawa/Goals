@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Detail } from '../model/detail';
@@ -12,6 +12,7 @@ export class DetailComponent implements OnInit {
   @Input('currentDetail') currentDetail: Detail;
   @Input('previousDetail') previousDetail: Detail;
   @Input('title') title: string;
+  @Output() isDirty: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor(private fb: FormBuilder) { }
 
@@ -19,5 +20,11 @@ export class DetailComponent implements OnInit {
 
   }
 
-
+  isDirtyDetail() {
+    if (this.currentDetail.IsDirty = false) {
+      this.currentDetail.IsDirty = true;
+      this.isDirty.emit(true);
+    }
+    return;
+  }
 }
