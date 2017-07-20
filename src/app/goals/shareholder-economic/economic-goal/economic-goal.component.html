@@ -7,9 +7,12 @@
   <div class="col-md-2 offset-md-5"><i fa class="fa fa-spinner fa-5x fa-pulse" aria-hidden="true"></i>
   </div>
 </div>
+<div *ngIf="!isLoading">
 <div class="row">
   <div class="col-md-12 text-center">
     <h2>Goal Year: {{economicGoals?.CurrentEconomicGoal.Year}}</h2>
   </div>
 </div>
-<app-edit-economic-goal *ngIf="!isLoading" [economicGoals]="economicGoals"></app-edit-economic-goal>
+<app-edit-economic-goal [economicGoals]="economicGoals"></app-edit-economic-goal>
+</div>
+
