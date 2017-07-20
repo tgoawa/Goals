@@ -9,8 +9,12 @@
     <button type="button" class="btn btn-secondary">Industry Team</button>
   </div>
 </div>
-<app-detail [title]="'Personal Goals'"></app-detail>
+<form novalidate #economicGoalsForm (ngSubmit)="onSubmit()">
+<app-detail *ngIf="" [title]="'Personal Goals'"></app-detail>
+<!-- <app-detail [title]="'Practice Unit'"></app-detail>
+<app-detail [title]="'Industry Team'"></app-detail> -->
 <div class="form-group row">
   <button type="button" class="btn btn-secondary">Cancel</button>
   <button type="submt" class="btn btn-success">Save</button>
 </div>
+</form>

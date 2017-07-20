@@ -12,4 +12,8 @@ export class EditEconomicGoalComponent implements OnInit {
   ngOnInit() {
   }
 
+  onSubmit() {
+    
+  }
+
 }
