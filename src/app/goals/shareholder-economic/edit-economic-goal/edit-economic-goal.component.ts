@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal';
+import { ToastrService } from 'ngx-toastr';
 import { EconomicGoals } from '../model/detail';
 
 import { EconomicGoalService } from '../service/economic-goal.service';
@@ -18,7 +19,7 @@ export class EditEconomicGoalComponent implements OnInit {
   displayIndustryTeam = false;
   detailChanged: boolean;
 
-  constructor(private egService: EconomicGoalService) { }
+  constructor(private egService: EconomicGoalService, private toastrService: ToastrService) { }
 
   ngOnInit() {
   }
@@ -71,9 +72,10 @@ export class EditEconomicGoalComponent implements OnInit {
   onSubmit() {
     this.egService.updateEconomicGoal(this.economicGoals)
       .subscribe(data => {
-        console.log(data);
+        this.showSuccessUpdate();
         this.economicGoals = data;
       }, error => {
+        this.showFailedUpdate();
         console.log(error);
       });
   }
@@ -93,6 +95,14 @@ export class EditEconomicGoalComponent implements OnInit {
   confirmModalSave() {
     this.onSubmit();
     this.hideConfirmModal();
+  }
+
+  showSuccessUpdate() {
+    this.toastrService.success('', 'Goal was updated successfully!');
+  }
+
+  showFailedUpdate() {
+    this.toastrService.error('', 'Error updating goal, please try again or contact help desk if issue persists');
   }
 
 }
