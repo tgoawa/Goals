@@ -74,6 +74,7 @@ export class EditEconomicGoalComponent implements OnInit {
       .subscribe(data => {
         this.showSuccessUpdate();
         this.economicGoals = data;
+        this.detailChanged = false;
       }, error => {
         this.showFailedUpdate();
         console.log(error);
