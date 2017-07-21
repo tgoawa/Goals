@@ -1,9 +1,9 @@
-import { SHMeeting } from '../../../meetings/shareholder/models/shmeeting';
+import { EconomicGoals } from '../../../goals/shareholder-economic/model/detail'
 import { Goal } from '../../../goals/goal';
 
 export class PrintView {
-    CurrentMeeting: SHMeeting;
+    EconomicGoals: EconomicGoals;
     CompetencyGoals: Goal[];
-    WIGGoals: Goal[];
+    WigGoals: Goal[];
     IndustryGoals: Goal[];
 }

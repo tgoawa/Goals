@@ -5,30 +5,22 @@
 </div>
 <div class="row">
   <div class="col-md-12">
-    <h2>Meeting and Goal Notes for: {{teamMember.FirstName}} {{teamMember.LastName}}</h2>
+    <h2>Goal Notes for: {{teamMember?.FirstName}} {{teamMember?.LastName}}</h2>
   </div>
 </div>
-<div class="row">
-  <div class="col-md-6">
-    <h2>Current Meeting</h2>
+<div *ngIf="printGoal?.EconomicGoals">
+  <div class="row">
+    <div class="col-md-12">
+      <h2> Economic Contribution Goals for year: {{printGoal?.EconomicGoals?.CurrentEconomicGoal?.Year}}</h2>
+    </div>
   </div>
+  <app-shareholder-details [title]="'Personal'" [currentDetail]="printGoal?.EconomicGoals?.CurrentEconomicGoal?.Details[0]"
+    [previousDetail]="printGoal?.EconomicGoals?.PreviousEconomicGoal?.Details[0]"></app-shareholder-details>
+  <app-shareholder-details [title]="'Practice Unit'" [currentDetail]="printGoal?.EconomicGoals?.CurrentEconomicGoal?.Details[1]"
+    [previousDetail]="printGoal?.EconomicGoals?.PreviousEconomicGoal?.Details[1]"></app-shareholder-details>
+  <app-shareholder-details [title]="'Industry Team'" [currentDetail]="printGoal?.EconomicGoals?.CurrentEconomicGoal?.Details[2]"
+    [previousDetail]="printGoal?.EconomicGoals?.PreviousEconomicGoal?.Details[2]"></app-shareholder-details>
 </div>
-<div class="row">
-  <div class="col-md-12">
-    Date Created: {{printGoal?.CurrentMeeting.DisplayDateCreated}}
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-12">
-    Date Last Modified: {{printGoal?.CurrentMeeting.DisplayDateModified}}
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-12">
-    Weight: {{printGoal?.CurrentMeeting.Weight}}
-  </div>
-</div>
-<app-shareholder-meeting [meeting]="printGoal?.CurrentMeeting"></app-shareholder-meeting>
 <div *ngIf="printGoal?.CompetencyGoals">
   <div class="row" class="goal-subSection">
     <h3>Personal Goals (lowest to highest % complete)</h3>
@@ -37,17 +29,21 @@
     <app-personal-goals [personalGoal]="personalGoal"></app-personal-goals>
   </div>
 </div>
-<div *ngIf="printGoal?.WIGGoals">
+<div *ngIf="printGoal?.WigGoals.length > 0">
   <div class="row">
-    <h3>WIG Goals</h3>
+    <div class="col-md-12">
+      <h3>WIG Goals</h3>
+    </div>
   </div>
-  <div style="border-bottom: 1px solid" *ngFor="let wigGoal of printGoal?.WIGGoals">
+  <div style="border-bottom: 1px solid" *ngFor="let wigGoal of printGoal?.WigGoals">
     <app-wig-goal [wigGoal]="wigGoal"></app-wig-goal>
   </div>
 </div>
-<div *ngIf="printGoal?.IndustryGoals">
+<div *ngIf="printGoal?.IndustryGoals.length > 0">
   <div class="row">
-    <h3>Industry Team Goals</h3>
+    <div class="col-md-12">
+      <h3>Industry Team Goals</h3>
+    </div>
   </div>
   <div style="border-bottom: 1px solid" *ngFor="let industryGoal of printGoal?.IndustryGoals">
     <app-industry-goals [industryGoal]="industryGoal"></app-industry-goals>

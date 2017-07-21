@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { Detail } from '../../../meetings/shareholder/models/shmeeting';
+import { Detail } from '../../../goals/shareholder-economic/model/detail';
 
 @Component({
   selector: 'app-shareholder-details',
@@ -8,7 +8,9 @@ import { Detail } from '../../../meetings/shareholder/models/shmeeting';
   styleUrls: ['./shareholder-details.component.scss']
 })
 export class ShareholderDetailsComponent implements OnInit {
-  @Input('detail') detail: Detail;
+  @Input('title') title: string;
+  @Input('currentDetail') currentDetail: Detail;
+  @Input('previousDetail') previousDetail: Detail;
   constructor() { }
 
   ngOnInit() {

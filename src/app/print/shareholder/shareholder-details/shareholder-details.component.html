@@ -1,70 +1,140 @@
-            <div class="row">
-              <div class="col-md-12">
-                {{detail.BillingsTiers1_3}}
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                {{detail.BillingsTiers4_5}}
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                {{detail.BillingsTier6}}
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                {{detail.BillingsTier6GR}}
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                {{detail.BillingsTier6PBR}}
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                {{detail.BusinessNewClients}}
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                {{detail.BusinessExistingClients}}
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                {{detail.LostClients}}
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                {{detail.BillingsTransferredFromOthers}}
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                {{detail.BillingsTransferredToOthers}}
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                {{detail.ReferralsSpecialityUnits}}
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                {{detail.ChargeHours}}
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                {{detail.sRealization}}
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                {{detail.sDaysinWIP_AR}}
-              </div>
-            </div>
+<div class="row">
+    <div class="col-md-4">
+        <h2>{{title}}</h2>
+    </div>
+    <div class="col-md-3">
+        <b>Previous Year</b>
+    </div>
+    <div class="col-md-3">
+        <b>This Year</b>
+    </div>
+</div>
+<div class="details">
+    <div class="form-group row">
+        <label class="col-md-4 col-form-label">Tiers 1-3</label>
+        <div class="col-md-3">
+            {{previousDetail.BillingsTiers1_3}}
+        </div>
+        <div class="col-md-3">
+            {{currentDetail.BillingsTiers1_3}}
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-4 col-form-label">Tiers 4-5</label>
+        <div class="col-md-3">
+            {{previousDetail.BillingsTiers4_5}}
+        </div>
+        <div class="col-md-3">
+            {{currentDetail.BillingsTiers4_5}}
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-4 col-form-label">Tier 6</label>
+        <div class="col-md-3">
+            {{previousDetail.BillingsTier6}}
+        </div>
+        <div class="col-md-3">
+            {{currentDetail.BillingsTier6}}
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-4 col-form-label">Tier 6GR</label>
+        <div class="col-md-3">
+            {{previousDetail.BillingsTier6GR}}
+        </div>
+        <div class="col-md-3">
+            {{currentDetail.BillingsTier6GR}}
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-4 col-form-label">Tier 6PBR</label>
+        <div class="col-md-3">
+            {{previousDetail.BillingsTier6PBR}}
+        </div>
+        <div class="col-md-3">
+            {{currentDetail.BillingsTier6PBR}}
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-4 col-form-label">New Business From New Clients</label>
+        <div class="col-md-3">
+            {{previousDetail.BusinessNewClients}}
+        </div>
+        <div class="col-md-3">
+            {{currentDetail.BusinessNewClients}}
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-4 col-form-label">New Business From Existing Clients</label>
+        <div class="col-md-3">
+            {{previousDetail.BusinessExistingClients}}
+        </div>
+        <div class="col-md-3">
+            {{currentDetail.BusinessExistingClients}}
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-4 col-form-label">Lost Clients</label>
+        <div class="col-md-3">
+            {{previousDetail.LostClients}}
+        </div>
+        <div class="col-md-3">
+            {{currentDetail.LostClients}}
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-4 col-form-label">Billings Transferred From Others</label>
+        <div class="col-md-3">
+            {{previousDetail.BillingsTransferredFromOthers}}
+        </div>
+        <div class="col-md-3">
+            {{currentDetail.BillingsTransferredFromOthers}}
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-4 col-form-label">Billings Transferred To Others</label>
+        <div class="col-md-3">
+            {{previousDetail.BillingsTransferredToOthers}}
+        </div>
+        <div class="col-md-3">
+            {{currentDetail.BillingsTransferredToOthers}}
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-4 col-form-label">Referrals To Specialty Units</label>
+        <div class="col-md-3">
+            {{previousDetail.ReferralsSpecialityUnits}}
+        </div>
+        <div class="col-md-3">
+            {{currentDetail.ReferralsSpecialityUnits}}
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-4 col-form-label">Charge Hours</label>
+        <div class="col-md-3">
+            {{previousDetail.ChargeHours}}
+        </div>
+        <div class="col-md-3">
+            {{currentDetail.ChargeHours}}
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-4 col-form-label">Realization</label>
+        <div class="col-md-3">
+            {{previousDetail.Realization}}
+        </div>
+        <div class="col-md-3">
+            {{currentDetail.Realization}}
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-4 col-form-label">Days in WIP and AR</label>
+        <div class="col-md-3">
+            {{previousDetail.DaysinWIP_AR}}
+        </div>
+        <div class="col-md-3">
+            {{currentDetail.DaysinWIP_AR}}
+        </div>
+    </div>
+
+</div>

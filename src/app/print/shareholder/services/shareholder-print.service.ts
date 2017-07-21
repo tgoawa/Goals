@@ -13,7 +13,7 @@ export class ShareholderPrintService {
   constructor(private http: Http) { }
 
   getPrintView(teamMemberid: number) {
-    return this.http.get(api + 'ShareHolderService/GetShareHolderPrint/' + teamMemberid)
+    return this.http.get(api + '/OneToOneService/GetShareHolderPrint/' + teamMemberid)
       .map(response => response.json(), error => console.log(error));
   }
 
