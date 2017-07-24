@@ -3,7 +3,7 @@ import { Goal } from '../../../goals/goal';
 
 export class PrintView {
     EconomicGoals: EconomicGoals;
-    CompetencyGoals: Goal[];
+    CompentencyGoals: Goal[];
     WigGoals: Goal[];
     IndustryGoals: Goal[];
 }
