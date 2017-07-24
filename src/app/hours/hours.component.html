@@ -1,1 +1,8 @@
+<div class="row" *ngIf="isLoading">
+  <div class="col-md-2 offset-md-5"><i fa class="fa fa-spinner fa-5x fa-pulse" aria-hidden="true"></i>
+  </div>
+</div>
+<div *ngIf="!isLoading">
 <app-hours-entry [hoursEntry]=""></app-hours-entry>
+</div>
+

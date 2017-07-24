@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./hours.component.scss']
 })
 export class HoursComponent implements OnInit {
+  isLoading = false;
 
   constructor() { }
 
