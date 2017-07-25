@@ -108,7 +108,7 @@ export class EditPersonalGoalComponent implements OnInit, AfterViewInit {
   }
 
   closeModal() {
-    if (this.editPersonalGoalForm.dirty) {
+    if (this.editPersonalGoalForm.touched) {
       if (confirm('You are about to lose changes, are you sure?')) {
         this.hideModal();
       }
