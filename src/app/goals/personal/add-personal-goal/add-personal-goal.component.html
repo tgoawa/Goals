@@ -1,4 +1,5 @@
-<div bsModal #addModal="bs-modal" [config]="{backdrop: 'static'}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div bsModal #addModal="bs-modal" [config]="{backdrop: 'static'}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+  aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
@@ -21,21 +22,28 @@
           </div>
           <div class="goal-subSection">
             <div class="form-group col-md-6">
-            <label for="GoalCompetencyId">Competency for current goal:</label>
-            <select class="form-control" name="GoalCompetencyId" formControlName="GoalCompetencyId">
+              <label for="GoalCompetencyId">Competency for current goal:</label>
+              <select class="form-control" name="GoalCompetencyId" formControlName="GoalCompetencyId">
               <option style="display: none" hidden></option>
               <option *ngFor="let competency of goalCompetencies" [value]="competency.GoalCompetencyId">{{competency.Competency}}</option>
             </select>
-            <div *ngIf="addpersonalGoalForm.get('GoalCompetencyId').hasError('required')" class="alert alert-danger">A Competency is required</div>
-          </div>
-          <div class="form-group col-md-6">
-            <label for="GoalCompetencyTypeId">Competency type for current goal:</label>
-            <select class="form-control" name="GoalCompetencyId" formControlName="GoalCompetencyTypeId">
+              <div *ngIf="addpersonalGoalForm.get('GoalCompetencyId').hasError('required')" class="alert alert-danger">A Competency is required</div>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="GoalCompetencyTypeId">Competency type for current goal:</label>
+              <select class="form-control" name="GoalCompetencyId" formControlName="GoalCompetencyTypeId">
               <option style="display: none" hidden></option>
               <option *ngFor="let type of goalCompetencyTypes" [value]="type.GoalCompetencyTypeId">{{type.CompetencyType}}</option>
             </select>
-            <div *ngIf="addpersonalGoalForm.get('GoalCompetencyTypeId').hasError('required')" class="alert alert-danger">A Competency type is required</div>
-          </div>
+              <div *ngIf="addpersonalGoalForm.get('GoalCompetencyTypeId').hasError('required')" class="alert alert-danger">A Competency type is required</div>
+            </div>
+            <div *ngIf="teamMember.IsShareHolder" class="form-group col-md-2">
+              <label for="Weight">Weight %:</label>
+              <select class="form-control" name="Weight" formControlName="Weight">
+              <option style="display: none" hidden></option>
+              <option *ngFor="let weight of weightList;" [value]="weight">{{weight}}</option>
+            </select>
+            </div>
           </div>
           <div class="goal-subSection">
             <app-actions-list [goalId]="personalGoal.GoalId" [parentGoalForm]="addpersonalGoalForm" [Actions]="personalGoal.Actions">

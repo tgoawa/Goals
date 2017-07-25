@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit, Input, ViewChild, EventEmitter, Outpu
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 
+import { TeamMember, TeamMemberService } from '../../../teamMember';
 import { PersonalGoalService } from '../service/personal-goal.service';
 
 import { Goal, Action, Measurement, Support, Note } from '../../goal';
@@ -16,14 +17,16 @@ export class EditPersonalGoalComponent implements OnInit, AfterViewInit {
   @Output() modalClosed: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() updateSuccess: EventEmitter<boolean> = new EventEmitter<boolean>();
 
+  teamMember: TeamMember;
   editPersonalGoalForm: FormGroup;
   goalCompetencies: string[];
   goalCompetencyTypes: string[];
   weightList: number[];
 
-  constructor(private fb: FormBuilder, private cgService: PersonalGoalService) { }
+  constructor(private fb: FormBuilder, private cgService: PersonalGoalService, private tmService: TeamMemberService) { }
 
   ngOnInit() {
+    this.teamMember = this.tmService.teamMember;
     this.weightList = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100];
     this.getGoalCompetencies();
     this.getCompetencyTypes();
@@ -79,6 +82,7 @@ export class EditPersonalGoalComponent implements OnInit, AfterViewInit {
       GoalId: data.GoalId,
       GoalTypeId: data.GoalTypeId,
       GoalWIGId: data.GoalWIGId,
+      Weight: data.Weight,
       GoalCompetencyId: [data.GoalCompetencyId, Validators.required],
       GoalCompetencyTypeId: [data.GoalCompetencyTypeId, Validators.required],
       GoalCompletionPercentage: data.GoalCompletionPercentage,
