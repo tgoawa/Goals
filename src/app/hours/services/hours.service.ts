@@ -11,7 +11,8 @@ export class HoursService {
 
   constructor(private http: Http) { }
 
-  getHoursList() {
-
+  getHours(id: number) {
+    return this.http.get(api + 'HoursService/GetHours/' + id)
+    .map(response => response.json(), error => console.log(error));
   }
 }
