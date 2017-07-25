@@ -10,6 +10,7 @@ import { ChargeTimeComponent } from './chargeable/charge-time/charge-time.compon
 import { NonChargeTimeItemComponent } from './non-chargeable/non-charge-time-item/non-charge-time-item.component';
 import { NonChargeTimeComponent } from './non-chargeable/non-charge-time/non-charge-time.component';
 import { HoursEntryComponent } from './hours-entry/hours-entry.component';
+import { HoursService } from './services/hours.service';
 
 @NgModule({
   imports: [
@@ -23,6 +24,7 @@ import { HoursEntryComponent } from './hours-entry/hours-entry.component';
     ChargeTimeComponent,
     NonChargeTimeItemComponent,
     NonChargeTimeComponent,
-    HoursEntryComponent]
+    HoursEntryComponent],
+  providers: [HoursService]
 })
 export class HoursModule { }

@@ -21,16 +21,16 @@ export class NonChargeTimeItemComponent implements OnInit {
   }
 
   onUpdateHours() {
-    this.hours.emit(this.data.NextYear);
+    this.hours.emit(this.data.CurrentHours);
     this.calculateNextPercentage();
   }
 
   calculateCurrentPercentage() {
-    this.currentPercentage = this.data.PrevHours / this.currentYearHours;
+    this.currentPercentage = this.data.PreviousHours / this.currentYearHours;
   }
 
   calculateNextPercentage() {
-    this.nextYearPercentage = this.data.NextYear / this.nextYearHours;
+    this.nextYearPercentage = this.data.CurrentHours / this.nextYearHours;
   }
 
 }

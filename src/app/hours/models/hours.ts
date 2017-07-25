@@ -1,17 +1,20 @@
-export class Hours {
+export interface Hours {
     HoursId: number;
     TeamMemberId: number;
+    ChargeableRange: string;
+    NonChargeableRange: string;
+    FiscalYear: number;
     IndustryHours: ChargeTime;
     ServiceLineHours: ChargeTime;
 }
 
-export class ChargeTime {
+export interface ChargeTime {
     CategoryId: number;
     CategoryName: string;
     Items: Item[];
 }
 
-export class Item {
+export interface Item {
     ItemId: number;
     ItemName: string;
     PreviousHours: number;
@@ -19,13 +22,20 @@ export class Item {
     PreviousYear: number;
 }
 
-export class NonChargeItem {
-    Id: number;
-    Name: string;
-    SuggestedRange: string;
-    PrevHours: number;
-    NextYear: number;
+export interface NonChargeHours {
+    CategoryId: number;
+    CategoryName: string;
+    Items: NonChargeItem[];
+}
+
+export interface NonChargeItem {
+    ItemId: number;
+    itemName: string;
+    CurrentHours: number;
     Notes: string;
+    PreviousHours: number;
+    PreviousYear: number;
+    SuggestedRange: string;
 }
 
 
