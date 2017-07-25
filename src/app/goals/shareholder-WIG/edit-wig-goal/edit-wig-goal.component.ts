@@ -77,7 +77,7 @@ export class EditWigGoalComponent implements OnInit, AfterViewInit {
   }
 
   closeModal() {
-    if (this.editWigGoalForm.dirty) {
+    if (this.editWigGoalForm.touched) {
       if (confirm('You are about to lose changes, are you sure?')) {
         this.hideModal();
       }
@@ -88,6 +88,7 @@ export class EditWigGoalComponent implements OnInit, AfterViewInit {
   }
 
   hideModal() {
+    this.editWigGoalForm.reset();
     this.editModal.hide();
     this.modalIsClosed();
   }

@@ -119,6 +119,7 @@ export class EditPersonalGoalComponent implements OnInit, AfterViewInit {
   }
 
   hideModal() {
+    this.editPersonalGoalForm.reset();
     this.editModal.hide();
     this.modalIsClosed();
   }

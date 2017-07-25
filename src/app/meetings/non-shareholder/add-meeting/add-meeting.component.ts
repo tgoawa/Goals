@@ -50,7 +50,7 @@ export class AddMeetingComponent implements OnInit, AfterViewInit {
   }
 
   closeModal() {
-    if (this.addMeeting.dirty) {
+    if (this.addMeeting.touched) {
       if (confirm('You are about to lose changes, are you sure?')) {
         this.hideModal();
       }

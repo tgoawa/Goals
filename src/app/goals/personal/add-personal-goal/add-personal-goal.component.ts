@@ -83,7 +83,7 @@ export class AddPersonalGoalComponent implements OnInit, AfterViewInit {
   }
 
   closeModal() {
-    if (this.addpersonalGoalForm.dirty) {
+    if (this.addpersonalGoalForm.touched) {
       if (confirm('You are about to lose changes, are you sure?')) {
         this.hideModal();
       }
@@ -94,6 +94,7 @@ export class AddPersonalGoalComponent implements OnInit, AfterViewInit {
   }
 
   hideModal() {
+    this.addpersonalGoalForm.reset();
     this.addModal.hide();
     this.modalIsClosed();
   }
