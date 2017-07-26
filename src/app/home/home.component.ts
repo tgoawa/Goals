@@ -13,11 +13,21 @@ export class HomeComponent implements OnInit {
 
   appEnvironment = envName;
   teamMember: TeamMember;
+  isValidTeamMemberId: boolean;
 
   constructor(private tmService: TeamMemberService) { }
 
   ngOnInit() {
     this.teamMember = this.tmService.teamMember;
+    this.isTeamMemberValid();
+  }
+
+  isTeamMemberValid() {
+    if (this.teamMember.TeamMemberId > 0) {
+      this.isValidTeamMemberId = true;
+    } else {
+      this.isValidTeamMemberId = false;
+    }
   }
 
 }
