@@ -1,5 +1,21 @@
 <div class="row">
   <div class="col-md-12">
+  Competency for current goal:
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-10 offset-md-2" style="font-weight:bold">{{competency}}</div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+  Goal type:
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-10 offset-md-2" style="font-weight:bold">{{competencyType}}</div>
+</div>
+<div class="row">
+  <div class="col-md-12">
     Goal Name: <b>{{personalGoal.Name}}</b>
   </div>
 </div>
@@ -20,22 +36,6 @@
 </div>
 <div class="row">
   <div class="col-md-10 offset-md-2" style="font-weight:bold" [innerHTML]="personalGoal.GoalDescription"></div>
-</div>
-<div class="row">
-  <div class="col-md-12">
-  Competency for current goal:
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-10 offset-md-2" style="font-weight:bold">{{competency}}</div>
-</div>
-<div class="row">
-  <div class="col-md-12">
-  Competency type for current goal:
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-10 offset-md-2" style="font-weight:bold">{{competencyType}}</div>
 </div>
 <div *ngIf="personalGoal.Actions">
   <div class="row">
