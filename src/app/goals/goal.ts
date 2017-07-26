@@ -14,6 +14,7 @@ export class Goal {
     Weight: number;
     DisplayDateCreated: string;
     DisplayDateModified: string;
+    DisplayDateCompleted: string;
     Actions: Action[];
     Supports: Support[];
     Measurements: Measurement[];

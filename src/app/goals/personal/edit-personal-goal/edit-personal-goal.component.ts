@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewInit, Input, ViewChild, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ModalDirective } from 'ngx-bootstrap/modal';
+import { IMyDpOptions, IMyDateModel } from 'mydatepicker';
 
 import { TeamMember, TeamMemberService } from '../../../teamMember';
 import { PersonalGoalService } from '../service/personal-goal.service';
@@ -22,6 +23,10 @@ export class EditPersonalGoalComponent implements OnInit, AfterViewInit {
   goalCompetencies: string[];
   goalCompetencyTypes: string[];
   weightList: number[];
+
+  myDatePickerOptions: IMyDpOptions = {
+    dateFormat: 'mm/dd/yyyy',
+  };
 
   constructor(private fb: FormBuilder, private cgService: PersonalGoalService, private tmService: TeamMemberService) { }
 
@@ -91,6 +96,7 @@ export class EditPersonalGoalComponent implements OnInit, AfterViewInit {
       TeamMemberId: data.TeamMemberId,
       DisplayDateCreated: data.DisplayDateCreated,
       DisplayDateModified: data.DisplayDateModified,
+      DisplayDateCompleted: [{formatted: data.DisplayDateCompleted}, Validators.required],
       Name: [data.Name, Validators.required],
       GoalDescription: [data.GoalDescription, Validators.required],
     });
@@ -148,7 +154,6 @@ export class EditPersonalGoalComponent implements OnInit, AfterViewInit {
   }
 
   onSubmit() {
-    console.log(this.editPersonalGoalForm.value);
     if (this.checkActionItems()) {
       if (confirm('All actions are completed. Complete goal?')) {
         this.editPersonalGoalForm.value.IsCompleted = true;
@@ -156,6 +161,7 @@ export class EditPersonalGoalComponent implements OnInit, AfterViewInit {
         this.editPersonalGoalForm.value.IsCompleted = false;
       }
     }
+    this.formatDateCompleteBy();
     this.replaceLineBreaks(this.editPersonalGoalForm.value);
     this.updateGoal();
   }
@@ -210,5 +216,12 @@ export class EditPersonalGoalComponent implements OnInit, AfterViewInit {
       }
     }
     return note;
+  }
+
+  formatDateCompleteBy() {
+    const personalGoal = this.editPersonalGoalForm.value;
+    if (personalGoal.DisplayDateDue !== null) {
+      personalGoal.DisplayDateCompleted = personalGoal.DisplayDateCompleted.formatted;
+    }
   }
 }

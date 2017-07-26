@@ -4,6 +4,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { ProgressbarModule, ModalModule, CollapseModule } from 'ngx-bootstrap';
 
+import { MyDatePickerModule } from 'mydatepicker';
+
 import { GoalsRoutingModule } from './goals-routing.module';
 import { GoalsComponent } from './goals.component';
 import { ActionItemsComponent } from './actions/action-items/action-items.component';
@@ -41,7 +43,8 @@ import { EconomicGoalService } from './shareholder-economic/service/economic-goa
     GoalsRoutingModule,
     ProgressbarModule.forRoot(),
     ModalModule.forRoot(),
-    CollapseModule.forRoot()
+    CollapseModule.forRoot(),
+    MyDatePickerModule
   ],
   declarations: [
                   GoalsComponent,

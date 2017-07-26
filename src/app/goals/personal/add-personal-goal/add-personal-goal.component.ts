@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewInit, Input, ViewChild, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ModalDirective } from 'ngx-bootstrap/modal';
+import { IMyDpOptions, IMyDateModel } from 'mydatepicker';
 
 import { PersonalGoalService } from '../service/personal-goal.service';
 import { TeamMember, TeamMemberService } from '../../../teamMember';
@@ -23,6 +24,10 @@ export class AddPersonalGoalComponent implements OnInit, AfterViewInit {
   goalCompetencies: string[];
   goalCompetencyTypes: string[];
   weightList: number[];
+
+  myDatePickerOptions: IMyDpOptions = {
+    dateFormat: 'mm/dd/yyyy',
+  };
 
   constructor(private fb: FormBuilder, private cgService: PersonalGoalService, private tmService: TeamMemberService) { }
 
@@ -75,6 +80,7 @@ export class AddPersonalGoalComponent implements OnInit, AfterViewInit {
       TeamMemberId: data.TeamMemberId,
       DisplayDateCreated: data.DisplayDateCreated,
       DisplayDateModified: data.DisplayDateModified,
+      DisplayDateCompleted: ['', Validators.required],
       Name: [data.Name, Validators.required],
       GoalDescription: [data.GoalDescription, Validators.required],
     });
@@ -123,6 +129,7 @@ export class AddPersonalGoalComponent implements OnInit, AfterViewInit {
 
   onSubmit(formValue: Goal) {
     this.replaceLineBreaks(formValue);
+    this.formatDateCompleteBy();
     this.saveGoal(formValue);
   }
 
@@ -167,5 +174,12 @@ export class AddPersonalGoalComponent implements OnInit, AfterViewInit {
       }
     }
     return note;
+  }
+
+  formatDateCompleteBy() {
+    const personalGoal = this.addpersonalGoalForm.value;
+    if (personalGoal.DisplayDateDue !== null) {
+      personalGoal.DisplayDateCompleted = personalGoal.DisplayDateCompleted.formatted;
+    }
   }
 }
