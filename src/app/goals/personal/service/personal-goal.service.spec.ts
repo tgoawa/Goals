@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { CompetencyGoalService } from './competency-goal.service';
+import { PersonalGoalService } from './personal-goal.service';
 
 describe('CompetencyGoalService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [CompetencyGoalService]
+      providers: [PersonalGoalService]
     });
   });
 
-  it('should ...', inject([CompetencyGoalService], (service: CompetencyGoalService) => {
+  it('should ...', inject([PersonalGoalService], (service: PersonalGoalService) => {
     expect(service).toBeTruthy();
   }));
 });

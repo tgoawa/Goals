@@ -61,6 +61,7 @@ export class IndustryTeamGoalListComponent implements OnInit {
       Weight: 0,
       DisplayDateCreated: '',
       DisplayDateModified: '',
+      DisplayDateCompleted: '',
       Actions: [{
         ActionId: 0,
         GoalId: 0,
