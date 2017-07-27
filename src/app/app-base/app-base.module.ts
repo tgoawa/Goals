@@ -7,7 +7,6 @@ import { AppBaseRoutingModule } from './app-base-routing.module';
 import { AppBaseComponent } from './app-base.component';
 import { HeaderComponent } from '../header/header.component';
 import { HomeComponent } from '../home/home.component';
-import { GoalsModule } from '../goals/goals.module';
 
 import { AuthGuard } from '../auth.guard';
 import { TeamMemberResolver } from '../teamMember';
@@ -18,7 +17,6 @@ import { TeamMemberResolver } from '../teamMember';
     AppBaseRoutingModule,
     CollapseModule.forRoot(),
     BsDropdownModule.forRoot(),
-    GoalsModule,
   ],
   declarations: [AppBaseComponent,
     HeaderComponent,
