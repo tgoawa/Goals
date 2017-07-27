@@ -8,7 +8,7 @@ import { ToastrService } from 'ngx-toastr';
 import { LoginService } from './service/login.service';
 
 import { User } from './model/user';
-import * as CryptoJS from '../../../node_modules/crypto-js';
+import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-login',
