@@ -38,4 +38,14 @@ export interface NonChargeItem {
     SuggestedRange: string;
 }
 
+export interface Categories {
+    CategoryId: number;
+    CategoryName: string;
+    Items: [{
+        CategoryId: number;
+        ItemId: number;
+        ItemName: string;
+    }];
+}
+
 

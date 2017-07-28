@@ -10,7 +10,7 @@
         <li>
           <h1>Hours Worked</h1>
         </li>
-        <li>Fiscal Year: {{hours.FiscalYear}}</li>
+        <li>Fiscal Year: {{hours?.FiscalYear}}</li>
         <li>{{teamMember.FirstName}} {{teamMember.LastName}}</li>
         <li>Total Work Hours: {{totalWorkHours}}</li>
       </ul>
@@ -21,12 +21,12 @@
       <h2>Charge Time</h2>
     </div>
   </div>
-  <div class="row">
+  <div class="row" *ngIf="categories">
     <div class="col-md-6">
-      <app-charge-time [data]="hoursEntry?.ServiceLineHours"></app-charge-time>
+      <app-charge-time [categories]="categories[3]"></app-charge-time>
     </div>
     <div class="col-md-6">
-      <app-charge-time [data]="hoursEntry?.IndustryHours"></app-charge-time>
+      <app-charge-time [categories]="categories[0]"></app-charge-time>
     </div>
   </div>
   <div class="row">
@@ -34,9 +34,9 @@
       <h2>Non-Charge Time</h2>
     </div>
   </div>
-  <div class="row">
+  <div class="row" *ngIf="categories">
     <div class="col-md-12">
-      <app-non-charge-time [data]=""></app-non-charge-time>
+      <app-non-charge-time></app-non-charge-time>
     </div>
   </div>
   <div class="row">

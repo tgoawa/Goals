@@ -15,4 +15,9 @@ export class HoursService {
     return this.http.get(api + 'HoursService/GetHours/' + id)
     .map(response => response.json(), error => console.log(error));
   }
+
+  getCategories() {
+    return this.http.get(api + 'HoursService/GetCategoryItems/')
+    .map(response => response.json(), error => console.log(error));
+  }
 }

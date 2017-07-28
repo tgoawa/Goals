@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ChargeTime } from '../../models/hours';
+import { ChargeTime, Categories } from '../../models/hours';
 
 @Component({
   selector: 'app-charge-time',
@@ -8,6 +8,7 @@ import { ChargeTime } from '../../models/hours';
 })
 export class ChargeTimeComponent implements OnInit {
   @Input('data') data: ChargeTime;
+  @Input('categories') categories: Categories;
 
   categoryName: string;
   previousTotalHours: number;
@@ -18,7 +19,8 @@ export class ChargeTimeComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.categoryName = this.data.CategoryName;
+    console.log(this.categories);
+    this.categoryName = this.categories.CategoryName;
     this.calculatePreviousTotalHours();
     this.calculatePreviousTotalPercent();
   }
