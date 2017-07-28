@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
 import { HoursService } from '../services/hours.service';
 import { TeamMember, TeamMemberService } from '../../teamMember/';
-import { Hours, Categories } from '../models/hours';
+import { Hours, CategoryWrapper } from '../models/hours';
 
 @Component({
   selector: 'app-hours-entry',
@@ -12,7 +12,7 @@ import { Hours, Categories } from '../models/hours';
 export class HoursEntryComponent implements OnInit {
 
   hours: Hours;
-  categories: Categories[];
+  categories: CategoryWrapper;
   isLoading = false;
   teamMember: TeamMember;
   totalWorkHours: number;
@@ -49,7 +49,6 @@ export class HoursEntryComponent implements OnInit {
     this.isLoading = true;
     this.hoursService.getCategories()
       .subscribe(data => {
-        console.log(data);
         this.isLoading = false;
         this.categories = data;
       }, error => {

@@ -8,7 +8,7 @@ import { ChargeTime, Categories } from '../../models/hours';
 })
 export class ChargeTimeComponent implements OnInit {
   @Input('data') data: ChargeTime;
-  @Input('categories') categories: Categories;
+  @Input('category') category: Categories;
 
   categoryName: string;
   previousTotalHours: number;
@@ -19,10 +19,9 @@ export class ChargeTimeComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.categories);
-    this.categoryName = this.categories.CategoryName;
-    this.calculatePreviousTotalHours();
-    this.calculatePreviousTotalPercent();
+    this.categoryName = this.category.CategoryName;
+    // this.calculatePreviousTotalHours();
+    // this.calculatePreviousTotalPercent();
   }
 
   calculatePreviousTotalHours() {

@@ -21,12 +21,12 @@
       <h2>Charge Time</h2>
     </div>
   </div>
-  <div class="row" *ngIf="categories">
+  <div class="row">
     <div class="col-md-6">
-      <app-charge-time [categories]="categories[3]"></app-charge-time>
+      <app-charge-time *ngIf="categories" [category]="categories?.Categories[2]" [data]="hours"></app-charge-time>
     </div>
     <div class="col-md-6">
-      <app-charge-time [categories]="categories[0]"></app-charge-time>
+      <app-charge-time *ngIf="categories" [category]="categories?.Categories[0]" [data]="hours"></app-charge-time>
     </div>
   </div>
   <div class="row">
@@ -34,11 +34,11 @@
       <h2>Non-Charge Time</h2>
     </div>
   </div>
-  <div class="row" *ngIf="categories">
+   <div class="row">
     <div class="col-md-12">
-      <app-non-charge-time></app-non-charge-time>
+       <app-non-charge-time *ngIf="categories" [category]="categories?.Categories[1]"></app-non-charge-time> 
     </div>
-  </div>
+  </div> 
   <div class="row">
     <div class="col-md-12">
       Please note: Based upon your role, natural strengths and passion on your journey to become famous, the suggested guidelines

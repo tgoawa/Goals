@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { NonChargeItem } from '../../models/hours';
+import { NonChargeItem, Categories } from '../../models/hours';
 
 @Component({
   selector: 'app-non-charge-time',
@@ -8,14 +8,17 @@ import { NonChargeItem } from '../../models/hours';
 })
 export class NonChargeTimeComponent implements OnInit {
   @Input('data') data: NonChargeItem[];
+  @Input('category') category: Categories;
 
+  categoryName: string;
   currentYearTotalHours: number;
   nextYearTotalHours: number;
 
   constructor() { }
 
   ngOnInit() {
-    this.calculateCurrentTotalHours();
+    this.categoryName = this.category.CategoryName;
+    // this.calculateCurrentTotalHours();
   }
 
   calculateCurrentTotalHours() {
