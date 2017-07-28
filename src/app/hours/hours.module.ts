@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 
 import { HoursRoutingModule } from './hours-routing.module';
 import { HoursComponent } from './hours.component';
-import { HoursListComponent } from './hours-list/hours-list.component';
 import { ChargeTimeItemComponent } from './chargeable/charge-time-item/charge-time-item.component';
 import { ChargeTimeComponent } from './chargeable/charge-time/charge-time.component';
 import { NonChargeTimeItemComponent } from './non-chargeable/non-charge-time-item/non-charge-time-item.component';
@@ -19,7 +18,6 @@ import { HoursService } from './services/hours.service';
     FormsModule
   ],
   declarations: [HoursComponent,
-    HoursListComponent,
     ChargeTimeItemComponent,
     ChargeTimeComponent,
     NonChargeTimeItemComponent,

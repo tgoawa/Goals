@@ -20,7 +20,7 @@ export class NonChargeTimeComponent implements OnInit {
 
   calculateCurrentTotalHours() {
     for (let index = 0; index < this.data.length; index ++) {
-      this.currentYearTotalHours = this.currentYearTotalHours + this.data[index].PrevHours;
+      this.currentYearTotalHours = this.currentYearTotalHours + this.data[index].PreviousHours;
     }
   }
 
