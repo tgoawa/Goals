@@ -1,5 +1,4 @@
 export interface Hours {
-    HoursId: number;
     TeamMemberId: number;
     ChargeableRange: string;
     NonChargeableRange: string;
