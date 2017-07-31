@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-md-4">
+    {{itemName}}
+  </div>
+  <div class="col-md-2">
+    {{data?.ActualHours}}
+  </div>
+  <div class="col-md-2">
+    {{previousPercentage | percent: '1.1-1'}}
+  </div>
+  <div class="col-md-2">
+    <input type="number" class="form-control" [(ngModel)]="data.EstimatedHours" (change)="onUpdateHours()" />
+  </div>
+  <div class="col-md-2">
+    {{newPercentage | percent: '1.1-1'}}
+  </div>
+</div>
