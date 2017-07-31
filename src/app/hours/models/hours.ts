@@ -12,6 +12,8 @@ export interface Item {
     CategoryId: number;
     ActualHours: number;
     EstimatedHours: number;
+    SuggestedHours: string;
+    IsDirty: boolean;
 }
 
 export interface CategoryWrapper {

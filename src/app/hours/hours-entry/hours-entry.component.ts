@@ -1,8 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 import { HoursService } from '../services/hours.service';
 import { TeamMember, TeamMemberService } from '../../teamMember/';
-import { Hours, CategoryWrapper } from '../models/hours';
+import { Hours, CategoryWrapper, Item } from '../models/hours';
 
 @Component({
   selector: 'app-hours-entry',
@@ -17,7 +18,7 @@ export class HoursEntryComponent implements OnInit {
   teamMember: TeamMember;
   totalWorkHours: number;
 
-  constructor(private hoursService: HoursService, private tmService: TeamMemberService) { }
+  constructor(private hoursService: HoursService, private tmService: TeamMemberService, private toastrService: ToastrService) { }
 
   ngOnInit() {
     this.teamMember = this.tmService.teamMember;
@@ -57,4 +58,36 @@ export class HoursEntryComponent implements OnInit {
       });
   }
 
+  onSave() {
+    this.updateHours();
+  }
+
+  showSuccessUpdate() {
+    this.toastrService.success('', 'Hours were updated successfully!');
+  }
+
+  showFailedUpdate() {
+    this.toastrService.error('', 'There was a problem updating your hours data, please try again. If issue persists, please contact the Help Desk');
+  }
+
+  updateHours() {
+    this.hoursService.updateHours(this.hours)
+      .subscribe(data => {
+        this.showSuccessUpdate();
+        this.resetDirtyFlags(this.hours.ServiceLines);
+        this.resetDirtyFlags(this.hours.IndustryTeams);
+        this.resetDirtyFlags(this.hours.NonChargeList);
+      }, error => {
+        this.showFailedUpdate();
+        console.log(error);
+      });
+  }
+
+  resetDirtyFlags(items: Item[]) {
+    for (let index = 0; index < items.length; index ++) {
+      if (items[index].IsDirty === true) {
+        items[index].IsDirty = false;
+      }
+    }
+  }
 }

@@ -31,6 +31,7 @@ export class ChargeTimeItemComponent implements OnInit, OnChanges {
 
   onUpdateHours() {
     this.hours.emit(true);
+    this.data.IsDirty = true;
   }
 
   calculatePreviousPercentage() {
