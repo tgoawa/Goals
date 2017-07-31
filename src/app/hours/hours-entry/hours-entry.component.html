@@ -58,14 +58,17 @@
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title pull-left">Static modal</h4>
-        <button type="button" class="close pull-right" aria-label="Close" (click)="hideModal()">
+        <h4 class="modal-title pull-left">Values have been changed</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="hideConfirmModal()">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        This is static modal, backdrop click will not close it.
-        Click <b>&times;</b> to close modal.
+        Some values have been changed. Do you want to save them?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" (click)="confirmModalSave()">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="hideConfirmModal()">Close</button>
       </div>
     </div>
   </div>

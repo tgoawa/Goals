@@ -81,6 +81,16 @@ export class HoursEntryComponent implements OnInit {
     this.staticModal.hide();
   }
 
+  hideConfirmModal() {
+    this.isDirty = false;
+    this.hideModal();
+  }
+
+  confirmModalSave() {
+    this.onSave();
+    this.hideModal();
+  }
+
   onSave() {
     this.updateHours();
   }
