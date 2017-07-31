@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { ModalDirective } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
 
 import { HoursService } from '../services/hours.service';
@@ -11,10 +12,12 @@ import { Hours, CategoryWrapper, Item } from '../models/hours';
   styleUrls: ['./hours-entry.component.scss']
 })
 export class HoursEntryComponent implements OnInit {
+  @ViewChild('staticModal') public staticModal: ModalDirective;
 
   hours: Hours;
   categories: CategoryWrapper;
   isLoading = false;
+  isDirty = false;
   teamMember: TeamMember;
   totalWorkHours: number;
 
@@ -23,6 +26,10 @@ export class HoursEntryComponent implements OnInit {
   ngOnInit() {
     this.teamMember = this.tmService.teamMember;
     this.getData();
+  }
+
+  makeDirty() {
+    this.isDirty = true;
   }
 
   getData() {
@@ -58,6 +65,14 @@ export class HoursEntryComponent implements OnInit {
       });
   }
 
+  showModal() {
+    this.staticModal.show();
+  }
+
+  hideModal() {
+    this.staticModal.hide();
+  }
+
   onSave() {
     this.updateHours();
   }
@@ -74,6 +89,7 @@ export class HoursEntryComponent implements OnInit {
     this.hoursService.updateHours(this.hours)
       .subscribe(data => {
         this.showSuccessUpdate();
+        this.isDirty = false;
         this.resetDirtyFlags(this.hours.ServiceLines);
         this.resetDirtyFlags(this.hours.IndustryTeams);
         this.resetDirtyFlags(this.hours.NonChargeList);
@@ -84,7 +100,7 @@ export class HoursEntryComponent implements OnInit {
   }
 
   resetDirtyFlags(items: Item[]) {
-    for (let index = 0; index < items.length; index ++) {
+    for (let index = 0; index < items.length; index++) {
       if (items[index].IsDirty === true) {
         items[index].IsDirty = false;
       }

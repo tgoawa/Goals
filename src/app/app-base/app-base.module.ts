@@ -12,6 +12,7 @@ import { GoalsModule } from '../goals/goals.module';
 import { AuthGuard } from '../auth.guard';
 import { TeamMemberResolver } from '../teamMember';
 
+
 @NgModule({
   imports: [
     CommonModule,
@@ -25,7 +26,7 @@ import { TeamMemberResolver } from '../teamMember';
     HomeComponent],
   providers: [
     AuthGuard,
-    TeamMemberResolver
+    TeamMemberResolver,
   ]
 })
 export class AppBaseModule { }

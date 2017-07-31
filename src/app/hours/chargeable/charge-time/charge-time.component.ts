@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Item, Categories } from '../../models/hours';
 
 @Component({
@@ -9,6 +9,7 @@ import { Item, Categories } from '../../models/hours';
 export class ChargeTimeComponent implements OnInit {
   @Input('data') data: Item[];
   @Input('category') category: Categories;
+  @Output('isDirty') isDirty: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   categoryName: string;
   previousTotalHours = 0;
@@ -21,7 +22,7 @@ export class ChargeTimeComponent implements OnInit {
   ngOnInit() {
     this.categoryName = this.category.CategoryName;
     this.calculatePreviousTotals();
-    this.onUpdateHours();
+    this.calculateNewTotals();
   }
 
   calculatePreviousTotals() {
@@ -43,7 +44,13 @@ export class ChargeTimeComponent implements OnInit {
     }
   }
 
+  calculateNewTotals() {
+    this.calculateNewTotalHours();
+    this.calculateNewTotalPercent();
+  }
+
   onUpdateHours() {
+    this.isDirty.emit(true);
     this.calculateNewTotalHours();
     this.calculateNewTotalPercent();
 

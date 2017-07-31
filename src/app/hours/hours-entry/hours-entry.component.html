@@ -23,10 +23,10 @@
   </div>
   <div class="row">
     <div class="col-md-6">
-      <app-charge-time *ngIf="categories" [category]="categories?.Categories[2]" [data]="hours?.ServiceLines"></app-charge-time>
+      <app-charge-time *ngIf="categories" [category]="categories?.Categories[2]" [data]="hours?.ServiceLines" (isDirty)="makeDirty()"></app-charge-time>
     </div>
     <div class="col-md-6">
-      <app-charge-time *ngIf="categories" [category]="categories?.Categories[0]" [data]="hours?.IndustryTeams"></app-charge-time>
+      <app-charge-time *ngIf="categories" [category]="categories?.Categories[0]" [data]="hours?.IndustryTeams" (isDirty)="makeDirty()"></app-charge-time>
     </div>
   </div>
   <div class="row">
@@ -36,7 +36,7 @@
   </div>
    <div class="row">
     <div class="col-md-12">
-       <app-non-charge-time *ngIf="categories" [category]="categories?.Categories[1]" [data]="hours?.NonChargeList"></app-non-charge-time> 
+       <app-non-charge-time *ngIf="categories" [category]="categories?.Categories[1]" [data]="hours?.NonChargeList" (isDirty)="makeDirty()"></app-non-charge-time> 
     </div>
   </div> 
   <div class="row">
@@ -49,6 +49,24 @@
     <div class="col-md-3 offset-md-9">
       <button class="btn btn-secondary">Cancel</button>
       <button class="btn btn-success" (click)="onSave()">Save</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" bsModal #staticModal="bs-modal" [config]="{backdrop: 'static'}"
+     tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Static modal</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="hideModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        This is static modal, backdrop click will not close it.
+        Click <b>&times;</b> to close modal.
+      </div>
     </div>
   </div>
 </div>

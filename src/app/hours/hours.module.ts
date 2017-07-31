@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
+import {  ModalModule } from 'ngx-bootstrap';
+
 import { HoursRoutingModule } from './hours-routing.module';
 import { HoursComponent } from './hours.component';
 import { ChargeTimeItemComponent } from './chargeable/charge-time-item/charge-time-item.component';
@@ -15,7 +17,8 @@ import { HoursService } from './services/hours.service';
   imports: [
     CommonModule,
     HoursRoutingModule,
-    FormsModule
+    FormsModule,
+    ModalModule
   ],
   declarations: [HoursComponent,
     ChargeTimeItemComponent,
