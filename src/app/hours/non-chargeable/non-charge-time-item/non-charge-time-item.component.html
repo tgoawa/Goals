@@ -1,21 +1,24 @@
-<td>
-    {{data.itemName}}
-</td>
-<td>
-    {{data.PreviousHours}}
-</td>
-<td>
-    {{currentPercentage}}
-</td>
-<td>
-    {{data.SuggestedRange}}
-</td>
-<td>
-    {{data.CurrentHours}}
-</td>
-<td>
-    {{nextYearPercentage}}
-</td>
-<td>
-    <input type="text" [(ngModel)]="data.Notes">
-</td>
+<div class="row">
+    <div class="col-md-2">
+        {{itemName}}
+    </div>
+    <div class="col-md-2">
+        {{data.ActualHours}}
+    </div>
+     <div class="col-md-1">
+        {{currentPercentage | percent: '1.1-1'}}
+    </div>
+     <div class="col-md-2">
+        <!-- {{data.SuggestedRange}} -->
+    </div>
+     <div class="col-md-2">
+        <!-- {{data.EstimatedHours}} -->
+           <input type="number" class="form-control" [(ngModel)]="data.EstimatedHours" (change)="onUpdateHours()" />
+    </div>
+     <div class="col-md-1">
+        {{nextYearPercentage | percent: '1.1-1'}}
+    </div>
+    <div class="col-md-2">
+        <!-- <input type="text" class="form-control" [(ngModel)]="data.Notes"> -->
+    </div>
+</div>

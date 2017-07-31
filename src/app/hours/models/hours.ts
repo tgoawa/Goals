@@ -1,40 +1,17 @@
 export interface Hours {
+    ActualFiscalYear: number;
+    EstimatedFiscalYear: number;
+    IndustryTeams: Item[];
+    NonChargeList: Item[];
+    ServiceLines: Item[];
     TeamMemberId: number;
-    ChargeableRange: string;
-    NonChargeableRange: string;
-    FiscalYear: number;
-    IndustryHours: ChargeTime;
-    ServiceLineHours: ChargeTime;
-}
-
-export interface ChargeTime {
-    CategoryId: number;
-    CategoryName: string;
-    Items: Item[];
 }
 
 export interface Item {
     ItemId: number;
-    ItemName: string;
-    PreviousHours: number;
-    CurrentHours: number;
-    PreviousYear: number;
-}
-
-export interface NonChargeHours {
     CategoryId: number;
-    CategoryName: string;
-    Items: NonChargeItem[];
-}
-
-export interface NonChargeItem {
-    ItemId: number;
-    itemName: string;
-    CurrentHours: number;
-    Notes: string;
-    PreviousHours: number;
-    PreviousYear: number;
-    SuggestedRange: string;
+    ActualHours: number;
+    EstimatedHours: number;
 }
 
 export interface CategoryWrapper {
@@ -44,11 +21,12 @@ export interface CategoryWrapper {
 export interface Categories {
     CategoryId: number;
     CategoryName: string;
-    Items: [{
-        CategoryId: number;
-        ItemId: number;
-        ItemName: string;
-    }];
+    Items: CategoryItems[];
 }
 
+export interface CategoryItems {
+    CategoryId: number;
+    ItemId: number;
+    ItemName: string;
+}
 
