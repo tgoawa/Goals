@@ -28,6 +28,14 @@ export class HoursEntryComponent implements OnInit {
     this.getData();
   }
 
+  canDeactivate() {
+    if (this.isDirty) {
+     this.showModal();
+      return false;
+    }
+    return true;
+  }
+
   makeDirty() {
     this.isDirty = true;
   }

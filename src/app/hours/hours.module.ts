@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import {  ModalModule } from 'ngx-bootstrap';
+import { ModalModule } from 'ngx-bootstrap';
 
 import { HoursRoutingModule } from './hours-routing.module';
 import { HoursComponent } from './hours.component';
@@ -12,13 +12,14 @@ import { NonChargeTimeItemComponent } from './non-chargeable/non-charge-time-ite
 import { NonChargeTimeComponent } from './non-chargeable/non-charge-time/non-charge-time.component';
 import { HoursEntryComponent } from './hours-entry/hours-entry.component';
 import { HoursService } from './services/hours.service';
+import { DeactivateGuardService } from '../hours/services/deactivate-guard.service';
 
 @NgModule({
   imports: [
     CommonModule,
     HoursRoutingModule,
     FormsModule,
-    ModalModule
+    ModalModule.forRoot()
   ],
   declarations: [HoursComponent,
     ChargeTimeItemComponent,
@@ -26,6 +27,6 @@ import { HoursService } from './services/hours.service';
     NonChargeTimeItemComponent,
     NonChargeTimeComponent,
     HoursEntryComponent],
-  providers: [HoursService]
+  providers: [HoursService, DeactivateGuardService]
 })
 export class HoursModule { }
