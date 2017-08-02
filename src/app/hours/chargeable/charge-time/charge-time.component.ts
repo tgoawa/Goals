@@ -10,6 +10,7 @@ export class ChargeTimeComponent implements OnInit {
   @Input('data') data: Item[];
   @Input('category') category: Categories;
   @Output('isDirty') isDirty: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output('totalNewHours') totalNewHours: EventEmitter<number> = new EventEmitter<number>();
 
   categoryName: string;
   previousTotalHours = 0;
@@ -60,6 +61,7 @@ export class ChargeTimeComponent implements OnInit {
     for (let index = 0; index < this.data.length; index++) {
       this.newTotalHours = this.newTotalHours + this.data[index].EstimatedHours;
     }
+    this.totalNewHours.emit(this.newTotalHours);
   }
 
   calculateNewTotalPercent() {

@@ -21,6 +21,10 @@ export class HoursEntryComponent implements OnInit {
   teamMember: TeamMember;
   totalWorkHours: number;
 
+  industryTeamHours: number;
+  nonChargeTotalHours: number;
+  serviceLineTotalHours: number;
+
   constructor(private hoursService: HoursService, private tmService: TeamMemberService, private toastrService: ToastrService) { }
 
   ngOnInit() {
@@ -30,10 +34,14 @@ export class HoursEntryComponent implements OnInit {
 
   canDeactivate() {
     if (this.isDirty) {
-     this.showModal();
+      this.showModal();
       return false;
     }
     return true;
+  }
+
+  calculateTotalHours() {
+    this.totalWorkHours = this.nonChargeTotalHours + this.industryTeamHours + this.serviceLineTotalHours;
   }
 
   makeDirty() {
@@ -71,6 +79,21 @@ export class HoursEntryComponent implements OnInit {
         this.isLoading = false;
         console.log(error);
       });
+  }
+
+  setNonChargeTotal(hours: number) {
+    this.nonChargeTotalHours = hours;
+    this.calculateTotalHours();
+  }
+
+  setServiceLineTotal(hours: number) {
+    this.serviceLineTotalHours = hours;
+    this.calculateTotalHours();
+  }
+
+  setIndustryTeamTotal(hours: number) {
+    this.industryTeamHours = hours;
+    this.calculateTotalHours();
   }
 
   showModal() {

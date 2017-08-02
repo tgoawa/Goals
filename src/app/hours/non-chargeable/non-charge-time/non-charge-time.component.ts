@@ -10,6 +10,7 @@ export class NonChargeTimeComponent implements OnInit {
   @Input('data') data: Item[];
   @Input('category') category: Categories;
   @Output('isDirty') isDirty: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output('totalNewHours') totalNewHours: EventEmitter<number> = new EventEmitter<number>();
 
   categoryName: string;
   currentYearTotalHours = 0;
@@ -54,6 +55,7 @@ export class NonChargeTimeComponent implements OnInit {
     for (let index = 0; index < this.data.length; index++) {
       this.nextYearTotalHours = this.nextYearTotalHours + this.data[index].EstimatedHours;
     }
+    this.totalNewHours.emit(this.nextYearTotalHours);
   }
 
   calculateNextYearPercent() {
