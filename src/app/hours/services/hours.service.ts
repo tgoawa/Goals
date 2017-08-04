@@ -13,7 +13,7 @@ export class HoursService {
   constructor(private http: Http) { }
 
   getHours(id: number) {
-    return this.http.get(api + 'HoursService/GetHours/' + id)
+    return this.http.get(api + 'HoursService/GetHours/' + 1647)
     .map(response => response.json(), error => console.log(error));
   }
 
