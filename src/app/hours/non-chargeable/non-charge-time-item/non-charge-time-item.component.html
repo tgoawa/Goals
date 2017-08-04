@@ -9,10 +9,10 @@
         {{currentPercentage | percent: '1.1-1'}}
     </div>
      <div class="col-md-2">
-         {{data.SuggestedHours}} 
+         {{data.SuggestedHours}}
     </div>
      <div class="col-md-2">
-           <input type="number" class="form-control" [(ngModel)]="data.EstimatedHours" (change)="onUpdateHours()" />
+           <input type="number" class="form-control" [(ngModel)]="data.EstimatedHours" (keyup)="onUpdateHours()" (change)="setEmptyValueToZero()"/>
     </div>
      <div class="col-md-1">
         {{nextYearPercentage | percent: '1.1-1'}}

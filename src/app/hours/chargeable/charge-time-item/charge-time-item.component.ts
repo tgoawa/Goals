@@ -58,4 +58,10 @@ export class ChargeTimeItemComponent implements OnInit, OnChanges {
     }
   }
 
+  setEmptyValueToZero() {
+    if (this.data.EstimatedHours === null) {
+      this.data.EstimatedHours = 0;
+    }
+  }
+
 }
