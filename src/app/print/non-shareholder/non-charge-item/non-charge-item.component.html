@@ -1,3 +1,20 @@
-<p>
-  non-charge-item works!
-</p>
+<div class="row">
+  <div class="col-md-4">
+    {{itemName}}
+  </div>
+  <div class="col-md-2">
+    {{data.ActualHours}}
+  </div>
+  <div class="col-md-1">
+    {{currentPercentage | percent: '1.1-1'}}
+  </div>
+  <div class="col-md-2">
+    {{data.SuggestedHours}}
+  </div>
+  <div class="col-md-2">
+    {{data.EstimatedHours}}
+  </div>
+  <div class="col-md-1">
+    {{nextYearPercentage | percent: '1.1-1'}}
+  </div>
+</div>

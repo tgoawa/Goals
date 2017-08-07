@@ -28,7 +28,6 @@ export class HoursComponent implements OnInit {
     this.prService.getHours(id)
       .subscribe(data => {
         this.isLoading = false;
-        console.log(data);
         this.hoursData = data;
       }, error => {
         this.isLoading = false;
@@ -41,7 +40,6 @@ export class HoursComponent implements OnInit {
     this.prService.getCategories()
       .subscribe(data => {
         this.isLoading = false;
-        console.log(data);
         this.hoursCategories = data;
       }, error => {
         this.isLoading = false;

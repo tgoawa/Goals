@@ -21,6 +21,7 @@ import { ChargeTimeComponent } from './non-shareholder/charge-time/charge-time.c
 import { NonChargeItemComponent } from './non-shareholder/non-charge-item/non-charge-item.component';
 import { HoursComponent } from './non-shareholder/hours/hours.component';
 import { ChargeTimeItemComponent } from './non-shareholder/charge-time-item/charge-time-item.component';
+import { NonChargeTimeComponent } from './non-shareholder/non-charge-time/non-charge-time.component';
 
 @NgModule({
   imports: [
@@ -50,7 +51,8 @@ import { ChargeTimeItemComponent } from './non-shareholder/charge-time-item/char
     ChargeTimeComponent,
     NonChargeItemComponent,
     HoursComponent,
-    ChargeTimeItemComponent],
+    ChargeTimeItemComponent,
+    NonChargeTimeComponent],
   providers: [PrintService, ShareholderPrintService]
 })
 export class PrintModule { }
