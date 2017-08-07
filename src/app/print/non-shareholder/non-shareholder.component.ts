@@ -15,23 +15,24 @@ export class NonShareholderComponent implements OnInit {
   teamMember: TeamMember;
   isLoading = false;
 
-  constructor(private prService: PrintService, private tsService: TeamMemberService ) { }
+  constructor(private prService: PrintService, private tsService: TeamMemberService) { }
 
   ngOnInit() {
     this.teamMember = this.tsService.teamMember;
     this.getPrintViewGoals(this.teamMember.TeamMemberId);
   }
 
+
   getPrintViewGoals(id: number) {
     this.isLoading = true;
     this.prService.getCurrentGoals(id)
-    .subscribe(data => {
-      this.isLoading = false;
-      this.printGoal = data;
-    }, error => {
-      console.log(error);
-      this.isLoading = false;
-    });
+      .subscribe(data => {
+        this.isLoading = false;
+        this.printGoal = data;
+      }, error => {
+        console.log(error);
+        this.isLoading = false;
+      });
   }
 
   printView() {

@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-md-12">
+    <h2>Charge Time</h2>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+     <app-charge-time *ngIf="hoursCategories" [category]="hoursCategories?.Categories[2]" [data]="hoursData?.ServiceLines"></app-charge-time>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+     <app-charge-time *ngIf="hoursCategories" [category]="hoursCategories?.Categories[0]" [data]="hoursData?.IndustryTeams"></app-charge-time>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+     <app-non-charge-time *ngIf="hoursCategories" [category]="hoursCategories?.Categories[1]" [data]="hoursData?.NonChargeList"></app-non-charge-time>
+  </div>
+</div>
