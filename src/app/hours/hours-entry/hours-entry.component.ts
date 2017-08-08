@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
 
@@ -25,7 +27,10 @@ export class HoursEntryComponent implements OnInit {
   nonChargeTotalHours: number;
   serviceLineTotalHours: number;
 
-  constructor(private hoursService: HoursService, private tmService: TeamMemberService, private toastrService: ToastrService) { }
+  constructor(private hoursService: HoursService,
+    private tmService: TeamMemberService,
+    private toastrService: ToastrService,
+    private router: Router) { }
 
   ngOnInit() {
     this.teamMember = this.tmService.teamMember;
@@ -134,6 +139,7 @@ export class HoursEntryComponent implements OnInit {
         this.resetDirtyFlags(this.hours.ServiceLines);
         this.resetDirtyFlags(this.hours.IndustryTeams);
         this.resetDirtyFlags(this.hours.NonChargeList);
+        this.router.navigate(['/home']);
       }, error => {
         this.showFailedUpdate();
         console.log(error);
