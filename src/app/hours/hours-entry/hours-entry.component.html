@@ -17,25 +17,28 @@
   </div>
   <div class="row">
     <div class="col-md-12 text-center">
+      <h2>Non-Charge Time</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <app-non-charge-time *ngIf="categories" [category]="categories?.Categories[1]" [data]="hours?.NonChargeList" (isDirty)="makeDirty()"
+        (totalNewHours)="setNonChargeTotal($event)"></app-non-charge-time>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 text-center">
       <h2>Charge Time</h2>
     </div>
   </div>
   <div class="row">
     <div class="col-md-6">
-      <app-charge-time *ngIf="categories" [category]="categories?.Categories[2]" [data]="hours?.ServiceLines" (isDirty)="makeDirty()" (totalNewHours)="setServiceLineTotal($event)"></app-charge-time>
+      <app-charge-time *ngIf="categories" [category]="categories?.Categories[2]" [data]="hours?.ServiceLines" (isDirty)="makeDirty()"
+        (totalNewHours)="setServiceLineTotal($event)"></app-charge-time>
     </div>
     <div class="col-md-6">
-      <app-charge-time *ngIf="categories" [category]="categories?.Categories[0]" [data]="hours?.IndustryTeams" (isDirty)="makeDirty()" (totalNewHours)="setIndustryTeamTotal($event)"></app-charge-time>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12 text-center">
-      <h2>Non-Charge Time</h2>
-    </div>
-  </div>
-   <div class="row">
-    <div class="col-md-12">
-       <app-non-charge-time *ngIf="categories" [category]="categories?.Categories[1]" [data]="hours?.NonChargeList" (isDirty)="makeDirty()" (totalNewHours)="setNonChargeTotal($event)"></app-non-charge-time>
+      <app-charge-time *ngIf="categories" [category]="categories?.Categories[0]" [data]="hours?.IndustryTeams" (isDirty)="makeDirty()"
+        (totalNewHours)="setIndustryTeamTotal($event)"></app-charge-time>
     </div>
   </div>
   <div class="row">
@@ -44,44 +47,44 @@
       may need to be adjusted. Please discuss this at your next one to one meeting with your coach.
     </div>
   </div>
-      <div class="row">
-      <div class="col-md-4 offset-md-8">
-        <table class="table table-sm">
-          <tbody>
-            <tr>
-              <th scope="row">Charge Time Total Hours:</th>
-              <td>{{industryTeamHours + serviceLineTotalHours}}</td>
-            </tr>
-            <tr>
-              <th scope="row">Non Charge Time Total Hours:</th>
-              <td>{{nonChargeTotalHours}}</td>
-            </tr>
-            <tr>
-              <th scope="row">Total Work Hours:</th>
-              <td>{{totalWorkHours}}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+  <div class="row">
+    <div class="col-md-4 offset-md-8">
+      <table class="table table-sm">
+        <tbody>
+          <tr>
+            <th scope="row">Charge Time Total Hours:</th>
+            <td>{{industryTeamHours + serviceLineTotalHours}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Non Charge Time Total Hours:</th>
+            <td>{{nonChargeTotalHours}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Total Work Hours:</th>
+            <td>{{totalWorkHours}}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+  </div>
   <div class="row" style="margin-bottom: 25px">
     <div class="col-md-2 offset-md-10">
       <button class="btn btn-success btn-block" (click)="onSave()">Save</button>
-  </div>
+    </div>
   </div>
 </div>
 
 <div *ngIf="!isLoading && hours?.TeamMemberId === 0">
-    <div class="row">
-        <div class="alert alert-danger" role="alert">
-            <strong>Uh Oh!</strong> There was a problem retrieving your user data, please try again. If issue persists please
-            contact Help Desk.
-        </div>
+  <div class="row">
+    <div class="alert alert-danger" role="alert">
+      <strong>Uh Oh!</strong> There was a problem retrieving your user data, please try again. If issue persists please contact
+      Help Desk.
     </div>
+  </div>
 </div>
 
-<div class="modal fade" bsModal #staticModal="bs-modal" [config]="{backdrop: 'static'}"
-     tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+<div class="modal fade" bsModal #staticModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+  aria-hidden="true">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
       <div class="modal-header">
