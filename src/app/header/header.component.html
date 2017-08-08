@@ -37,14 +37,14 @@
             </li>
           </ul>
         </li>
+        <li>
+          <a class="nav-link" href="#" [routerLink]="['/hours']" routerLinkActive="active">Hours</a>
+        </li>
         <li *ngIf="!teamMember.IsShareHolder" class="nav-item">
           <a class="nav-link" href="#" [routerLink]="['/print/non-shareholder']" routerLinkActive="active">Print View</a>
         </li>
         <li *ngIf="teamMember.IsShareHolder" class="nav-item">
           <a class="nav-link" href="#" [routerLink]="['/print/shareholder']" routerLinkActive="active">Print View</a>
-        </li>
-        <li>
-          <a class="nav-link" href="#" [routerLink]="['/hours']" routerLinkActive="active">Hours</a>
         </li>
       </ul>
     </div>
