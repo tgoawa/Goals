@@ -16,6 +16,7 @@ import { PrintViewComponent } from '../print/non-shareholder/print-view/print-vi
 import { PrintService } from '../print/non-shareholder/services/print.service';
 import { ShareholderCoachComponent } from './shareholder-coach/shareholder-coach.component';
 import { ShteamMemberListComponent } from './shareholder-coach/shteam-member-list/shteam-member-list.component';
+import { HoursComponent } from '../print/non-shareholder/hours/hours.component';
 
 
 @NgModule({
@@ -29,7 +30,7 @@ import { ShteamMemberListComponent } from './shareholder-coach/shteam-member-lis
     NonShareholderCoachComponent,
     TeamMemberListComponent,
     ShareholderCoachComponent,
-    ShteamMemberListComponent
+    ShteamMemberListComponent,
     ],
   providers: [ CoachService ]
 })

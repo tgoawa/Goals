@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { PrintService } from './services/print.service';
 import { TeamMember, TeamMemberService } from '../../teamMember';
 import { PrintView } from './model/print-view';
+import { Hours } from '../../hours/models/hours';
 
 @Component({
   selector: 'app-non-shareholder',
@@ -13,13 +14,20 @@ export class NonShareholderComponent implements OnInit {
 
   printGoal: PrintView;
   teamMember: TeamMember;
+  hoursData: Hours;
   isLoading = false;
 
   constructor(private prService: PrintService, private tsService: TeamMemberService) { }
 
   ngOnInit() {
     this.teamMember = this.tsService.teamMember;
-    this.getPrintViewGoals(this.teamMember.TeamMemberId);
+    this.getData(this.teamMember.TeamMemberId);
+
+  }
+
+  getData(id: number) {
+    this.getPrintViewGoals(id);
+    this.getHours(id);
   }
 
 
@@ -32,6 +40,18 @@ export class NonShareholderComponent implements OnInit {
       }, error => {
         console.log(error);
         this.isLoading = false;
+      });
+  }
+
+  getHours(id: number) {
+    this.isLoading = true;
+    this.prService.getHours(id)
+      .subscribe(data => {
+        this.isLoading = false;
+        this.hoursData = data;
+      }, error => {
+        this.isLoading = false;
+        console.log(error);
       });
   }
 

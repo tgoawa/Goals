@@ -9,8 +9,7 @@ import { PrintService } from '../../non-shareholder/services/print.service';
   styleUrls: ['./hours.component.scss']
 })
 export class HoursComponent implements OnInit {
-
-  hoursData: Hours;
+  @Input('hoursData') hoursData: Hours;
   hoursCategories: CategoryWrapper;
   teamMember: TeamMember;
   isLoading = false;
@@ -19,21 +18,9 @@ export class HoursComponent implements OnInit {
 
   ngOnInit() {
     this.teamMember = this.tsService.teamMember;
-    this.getHours(this.teamMember.TeamMemberId);
     this.getHoursCategories();
   }
 
-  getHours(id: number) {
-    this.isLoading = true;
-    this.prService.getHours(id)
-      .subscribe(data => {
-        this.isLoading = false;
-        this.hoursData = data;
-      }, error => {
-        this.isLoading = false;
-        console.log(error);
-      });
-  }
 
   getHoursCategories() {
     this.isLoading = true;

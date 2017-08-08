@@ -1,9 +1,9 @@
-<app-team-member-list (selectedTeamMember)="getTeamMemberPrintView($event)"></app-team-member-list>
+<app-team-member-list (selectedTeamMember)="getData($event)"></app-team-member-list>
 <div class="row" *ngIf="isLoading">
   <div class="col-md-2 offset-md-5"><i fa class="fa fa-spinner fa-5x fa-spin" aria-hidden="true"></i>
   </div>
 </div>
 <div *ngIf="!isLoading">
-<app-print-view *ngIf="printGoal" [printGoal]="printGoal"></app-print-view>
-<app-hours></app-hours>
+  <app-print-view *ngIf="printGoal" [printGoal]="printGoal"></app-print-view>
+  <app-hours *ngIf="hoursData" [hoursData]="hoursData"></app-hours>
 </div>
