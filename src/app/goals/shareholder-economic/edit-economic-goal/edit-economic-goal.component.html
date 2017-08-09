@@ -1,12 +1,12 @@
 <div class="row">
   <div class="col-md-4">
-    <button type="button" class="btn" [ngClass]="{'btn-primary': displayPersonal}" (click)="personalGoalClicked()">Personal</button>
+    <button type="button" class="btn" [ngClass]="{'btn-primary': displayPersonal}" (click)="personalGoalClicked(1)">Personal</button>
   </div>
   <div class="col-md-4">
-    <button type="button" class="btn" [ngClass]="{'btn-primary': displayPracticeUnit}" (click)="practiceUnitClicked()">Practice Unit</button>
+    <button type="button" class="btn" [ngClass]="{'btn-primary': displayPracticeUnit}" (click)="practiceUnitClicked(2)">Practice Unit</button>
   </div>
   <div class="col-md-4">
-    <button type="button" class="btn" [ngClass]="{'btn-primary': displayIndustryTeam}" (click)="industryGoalClicked()">Industry Team</button>
+    <button type="button" class="btn" [ngClass]="{'btn-primary': displayIndustryTeam}" (click)="industryGoalClicked(3)">Industry Team</button>
   </div>
 </div>
 
@@ -39,7 +39,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-success" (click)="confirmModalSave()">Save changes</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="hideConfirmModal()">Ignore Changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="ignoreChanges()">Ignore Changes</button>
       </div>
     </div>
   </div>

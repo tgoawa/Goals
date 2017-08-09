@@ -20,6 +20,7 @@ export class EditEconomicGoalComponent implements OnInit {
   displayPersonal = true;
   displayPracticeUnit = false;
   displayIndustryTeam = false;
+  destinationValue: number;
   detailChanged: boolean;
 
   constructor(private egService: EconomicGoalService, private toastrService: ToastrService) { }
@@ -32,30 +33,47 @@ export class EditEconomicGoalComponent implements OnInit {
     this.goalToEdit = _.cloneDeep(goal);
   }
 
-  personalGoalClicked() {
+  personalGoalClicked(dest: number) {
     if (this.detailChanged === true) {
       this.showConfirmModal();
-      // this.displayPersonalGoal();
+      this.destinationValue = dest;
     } else {
       this.displayPersonalGoal();
     }
   }
 
-  practiceUnitClicked() {
+  practiceUnitClicked(dest: number) {
     if (this.detailChanged === true) {
       this.showConfirmModal();
-      // this.displayPracticeUnitGoal();
+      this.destinationValue = dest;
     } else {
       this.displayPracticeUnitGoal();
     }
   }
 
-  industryGoalClicked() {
+  industryGoalClicked(dest: number) {
     if (this.detailChanged === true) {
       this.showConfirmModal();
-      // this.displayIndustryTeamGoal();
+      this.destinationValue = dest;
     } else {
       this.displayIndustryTeamGoal();
+    }
+  }
+
+  toggleDestination(des: number) {
+    switch (des) {
+      case (1):
+      this.displayPersonalGoal();
+      break;
+      case (2):
+      this.displayPracticeUnitGoal();
+      break;
+      case (3):
+      this.displayIndustryTeamGoal();
+      break;
+      default:
+      this.displayPersonalGoal();
+      break;
     }
   }
 
@@ -99,13 +117,20 @@ export class EditEconomicGoalComponent implements OnInit {
 
   hideConfirmModal() {
     this.confirmModal.hide();
+  }
+
+  ignoreChanges() {
+    this.confirmModal.hide();
     this.detailChanged = false;
+    this.toggleDestination(this.destinationValue);
     this.goalToEdit = this.economicGoals;
   }
 
   confirmModalSave() {
     this.onSubmit();
     this.hideConfirmModal();
+    this.detailChanged = false;
+    this.toggleDestination(this.destinationValue);
   }
 
   showSuccessUpdate() {
