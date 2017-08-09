@@ -97,6 +97,18 @@ nav {
     color: $schenck-blue;
 }
 
+.striped-row:nth-child(even) .row-striped{
+  background-color: #eee;
+}
+
+.row-striped {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+
+
 @media (min-width: 992px) {
     .modal-lg {
         max-width: 900px;
@@ -112,7 +124,7 @@ nav {
         font-weight: bold;
         font-size: 11px;
     }
-    
+
     .row {
         margin-top: 0px;
     }
@@ -132,7 +144,7 @@ nav {
     img {
         display: none;
     }
-    
+
     .goal-subSection {
         margin-top: 10px;
         padding-top: 0;
