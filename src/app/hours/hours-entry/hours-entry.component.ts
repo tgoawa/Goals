@@ -74,29 +74,35 @@ export class HoursEntryComponent implements OnInit {
   }
 
   nonChargeClicked(dest: number) {
-    if (this.isDirty === true) {
-      this.showModal();
-      this.destinationValue = dest;
+    if (this.displayNonCharge === true) {
+      return;
     } else {
-      this.displayNonChargeHours();
+      this.verifyBeforeDestinationChange(dest);
     }
   }
 
   industryTeamClicked(dest: number) {
-    if (this.isDirty === true) {
-      this.showModal();
-      this.destinationValue = dest;
+    if (this.displayIndustryTeam === true) {
+      return;
     } else {
-      this.displayIndustryTeamHours();
+      this.verifyBeforeDestinationChange(dest);
     }
   }
 
   serviceLineClick(dest: number) {
+    if (this.displayServiceLine === true) {
+      return;
+    } else {
+      this.verifyBeforeDestinationChange(dest);
+    }
+  }
+
+  verifyBeforeDestinationChange(dest: number) {
     if (this.isDirty === true) {
       this.showModal();
       this.destinationValue = dest;
     } else {
-      this.displayServiceLineHours();
+      this.toggleDestination(dest);
     }
   }
 

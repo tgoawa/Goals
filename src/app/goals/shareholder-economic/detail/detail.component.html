@@ -12,16 +12,16 @@
     </div>
 </div>
 <div class="details">
-    <div class="form-group row">
+    <div class="form-group row row-striped">
         <label class="col-md-4 col-form-label">Tiers 1-3</label>
         <div class="col-md-3">
             {{previousDetail.BillingsTiers1_3}}
-        </div>  
+        </div>
         <div class="col-md-3">
             <input class="form-control" type="number" [(ngModel)]="currentDetail.BillingsTiers1_3" (keyup)="isDirtyDetail()">
         </div>
     </div>
-    <div class="form-group row">
+    <div class="form-group row row-striped">
         <label class="col-md-4 col-form-label">Tiers 4-5</label>
         <div class="col-md-3">
             {{previousDetail.BillingsTiers4_5}}
@@ -30,7 +30,7 @@
             <input class="form-control" type="number" [(ngModel)]="currentDetail.BillingsTiers4_5" (keyup)="isDirtyDetail()">
         </div>
     </div>
-    <div class="form-group row">
+    <div class="form-group row row-striped">
         <label class="col-md-4 col-form-label">Tier 6</label>
         <div class="col-md-3">
             {{previousDetail.BillingsTier6}}
@@ -39,7 +39,7 @@
             <input class="form-control" type="number" [(ngModel)]="currentDetail.BillingsTier6" (keyup)="isDirtyDetail()">
         </div>
     </div>
-    <div class="form-group row">
+    <div class="form-group row row-striped">
         <label class="col-md-4 col-form-label">Tier 6GR</label>
         <div class="col-md-3">
             {{previousDetail.BillingsTier6GR}}
@@ -48,7 +48,7 @@
             <input class="form-control" type="number" [(ngModel)]="currentDetail.BillingsTier6GR" (keyup)="isDirtyDetail()">
         </div>
     </div>
-    <div class="form-group row">
+    <div class="form-group row row-striped">
         <label class="col-md-4 col-form-label">Tier 6PBR</label>
         <div class="col-md-3">
             {{previousDetail.BillingsTier6PBR}}
@@ -57,7 +57,7 @@
             <input class="form-control" type="number" [(ngModel)]="currentDetail.BillingsTier6PBR" (keyup)="isDirtyDetail()">
         </div>
     </div>
-    <div class="form-group row">
+    <div class="form-group row row-striped">
         <label class="col-md-4 col-form-label">New Business From New Clients</label>
         <div class="col-md-3">
             {{previousDetail.BusinessNewClients}}
@@ -66,7 +66,7 @@
             <input class="form-control" type="number" [(ngModel)]="currentDetail.BusinessNewClients" (keyup)="isDirtyDetail()">
         </div>
     </div>
-    <div class="form-group row">
+    <div class="form-group row row-striped">
         <label class="col-md-4 col-form-label">New Business From Existing Clients</label>
         <div class="col-md-3">
             {{previousDetail.BusinessExistingClients}}
@@ -75,7 +75,7 @@
             <input class="form-control" type="number" [(ngModel)]="currentDetail.BusinessExistingClients" (keyup)="isDirtyDetail()">
         </div>
     </div>
-    <div class="form-group row">
+    <div class="form-group row row-striped">
         <label class="col-md-4 col-form-label">Lost Clients</label>
         <div class="col-md-3">
             {{previousDetail.LostClients}}
@@ -84,7 +84,7 @@
             <input class="form-control" type="number" [(ngModel)]="currentDetail.LostClients" (keyup)="isDirtyDetail()">
         </div>
     </div>
-    <div class="form-group row">
+    <div class="form-group row row-striped">
         <label class="col-md-4 col-form-label">Billings Transferred From Others</label>
         <div class="col-md-3">
             {{previousDetail.BillingsTransferredFromOthers}}
@@ -93,7 +93,7 @@
             <input class="form-control" type="number" [(ngModel)]="currentDetail.BillingsTransferredFromOthers" (keyup)="isDirtyDetail()">
         </div>
     </div>
-    <div class="form-group row">
+    <div class="form-group row row-striped">
         <label class="col-md-4 col-form-label">Billings Transferred To Others</label>
         <div class="col-md-3">
             {{previousDetail.BillingsTransferredToOthers}}
@@ -102,7 +102,7 @@
             <input class="form-control" type="number" [(ngModel)]="currentDetail.BillingsTransferredToOthers" (keyup)="isDirtyDetail()">
         </div>
     </div>
-    <div class="form-group row">
+    <div class="form-group row row-striped">
         <label class="col-md-4 col-form-label">Referrals To Specialty Units</label>
         <div class="col-md-3">
             {{previousDetail.ReferralsSpecialityUnits}}
@@ -111,7 +111,7 @@
             <input class="form-control" type="number" [(ngModel)]="currentDetail.ReferralsSpecialityUnits" (keyup)="isDirtyDetail()">
         </div>
     </div>
-    <div class="form-group row">
+    <div class="form-group row row-striped">
         <label class="col-md-4 col-form-label">Charge Hours</label>
         <div class="col-md-3">
             {{previousDetail.ChargeHours}}
@@ -120,7 +120,7 @@
             <input class="form-control" type="number" [(ngModel)]="currentDetail.ChargeHours" (keyup)="isDirtyDetail()">
         </div>
     </div>
-    <div class="form-group row">
+    <div class="form-group row row-striped">
         <label class="col-md-4 col-form-label">Realization</label>
         <div class="col-md-3">
             {{previousDetail.Realization}}
@@ -129,7 +129,7 @@
             <input class="form-control" type="number" [(ngModel)]="currentDetail.Realization" (keyup)="isDirtyDetail()">
         </div>
     </div>
-    <div class="form-group row">
+    <div class="form-group row row-striped">
         <label class="col-md-4 col-form-label">Days in WIP and AR</label>
         <div class="col-md-3">
             {{previousDetail.DaysinWIP_AR}}
@@ -138,5 +138,5 @@
             <input class="form-control" type="number" [(ngModel)]="currentDetail.DaysinWIP_AR" (keyup)="isDirtyDetail()">
         </div>
     </div>
-    
+
 </div>

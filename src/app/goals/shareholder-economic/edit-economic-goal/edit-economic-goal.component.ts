@@ -34,46 +34,52 @@ export class EditEconomicGoalComponent implements OnInit {
   }
 
   personalGoalClicked(dest: number) {
-    if (this.detailChanged === true) {
-      this.showConfirmModal();
-      this.destinationValue = dest;
+    if (this.displayPersonal === true) {
+      return;
     } else {
-      this.displayPersonalGoal();
+      this.verifyBeforeDestinationChange(dest);
     }
   }
 
   practiceUnitClicked(dest: number) {
-    if (this.detailChanged === true) {
-      this.showConfirmModal();
-      this.destinationValue = dest;
+    if (this.displayPracticeUnit == true) {
+      return;
     } else {
-      this.displayPracticeUnitGoal();
+      this.verifyBeforeDestinationChange(dest);
     }
   }
 
   industryGoalClicked(dest: number) {
+    if (this.displayIndustryTeam === true) {
+      return;
+    } else {
+      this.verifyBeforeDestinationChange(dest);
+    }
+  }
+
+  verifyBeforeDestinationChange(dest: number) {
     if (this.detailChanged === true) {
       this.showConfirmModal();
       this.destinationValue = dest;
     } else {
-      this.displayIndustryTeamGoal();
+      this.toggleDestination(dest);
     }
   }
 
   toggleDestination(des: number) {
     switch (des) {
       case (1):
-      this.displayPersonalGoal();
-      break;
+        this.displayPersonalGoal();
+        break;
       case (2):
-      this.displayPracticeUnitGoal();
-      break;
+        this.displayPracticeUnitGoal();
+        break;
       case (3):
-      this.displayIndustryTeamGoal();
-      break;
+        this.displayIndustryTeamGoal();
+        break;
       default:
-      this.displayPersonalGoal();
-      break;
+        this.displayPersonalGoal();
+        break;
     }
   }
 
