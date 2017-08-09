@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
 
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
@@ -18,23 +17,26 @@ export class HoursEntryComponent implements OnInit {
 
   hours: Hours;
   categories: CategoryWrapper;
+  displayNonCharge = true;
+  displayIndustryTeam = false;
+  displayServiceLine = false;
   isLoading = false;
   isDirty = false;
   teamMember: TeamMember;
   totalWorkHours: number;
 
-  industryTeamHours: number;
-  nonChargeTotalHours: number;
-  serviceLineTotalHours: number;
+  industryTeamHours = 0;
+  nonChargeTotalHours = 0;
+  serviceLineTotalHours = 0;
 
   constructor(private hoursService: HoursService,
     private tmService: TeamMemberService,
-    private toastrService: ToastrService,
-    private router: Router) { }
+    private toastrService: ToastrService) { }
 
   ngOnInit() {
     this.teamMember = this.tmService.teamMember;
     this.getData();
+    this.calculateTotalHours();
   }
 
   canDeactivate() {
@@ -47,6 +49,51 @@ export class HoursEntryComponent implements OnInit {
 
   calculateTotalHours() {
     this.totalWorkHours = this.nonChargeTotalHours + this.industryTeamHours + this.serviceLineTotalHours;
+  }
+
+  displayNonChargeHours() {
+    this.displayNonCharge = true;
+    this.displayIndustryTeam = false;
+    this.displayServiceLine = false;
+  }
+
+  displayIndustryTeamHours() {
+    this.displayNonCharge = false;
+    this.displayIndustryTeam = true;
+    this.displayServiceLine = false;
+  }
+
+  displayServiceLineHours() {
+    this.displayNonCharge = false;
+    this.displayIndustryTeam = false;
+    this.displayServiceLine = true;
+  }
+
+  nonChargeClicked() {
+    if (this.isDirty === true) {
+      this.showModal();
+      this.displayNonChargeHours();
+    } else {
+      this.displayNonChargeHours();
+    }
+  }
+
+  industryTeamClicked() {
+    if (this.isDirty === true) {
+      this.showModal();
+      this.displayIndustryTeamHours();
+    } else {
+      this.displayIndustryTeamHours();
+    }
+  }
+
+  serviceLineClick() {
+    if (this.isDirty === true) {
+      this.showModal();
+      this.displayServiceLineHours();
+    } else {
+      this.displayServiceLineHours();
+    }
   }
 
   makeDirty() {
@@ -66,7 +113,6 @@ export class HoursEntryComponent implements OnInit {
     this.hoursService.getHours(this.teamMember.TeamMemberId)
       .subscribe(data => {
         this.isLoading = false;
-        console.log(data);
         this.hours = data;
       }, error => {
         this.isLoading = false;
@@ -80,6 +126,7 @@ export class HoursEntryComponent implements OnInit {
       .subscribe(data => {
         this.isLoading = false;
         this.categories = data;
+        console.log(this.categories);
       }, error => {
         this.isLoading = false;
         console.log(error);
@@ -139,7 +186,6 @@ export class HoursEntryComponent implements OnInit {
         this.resetDirtyFlags(this.hours.ServiceLines);
         this.resetDirtyFlags(this.hours.IndustryTeams);
         this.resetDirtyFlags(this.hours.NonChargeList);
-        this.router.navigate(['/home']);
       }, error => {
         this.showFailedUpdate();
         console.log(error);

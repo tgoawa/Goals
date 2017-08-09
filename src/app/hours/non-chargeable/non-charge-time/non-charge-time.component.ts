@@ -67,6 +67,7 @@ export class NonChargeTimeComponent implements OnInit {
   }
 
   onUpdateHours() {
+    this.isDirty.emit(true);
     this.calculateNextTotalHours();
     this.calculateNextYearPercent();
   }
