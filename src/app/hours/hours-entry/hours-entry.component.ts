@@ -7,6 +7,8 @@ import { HoursService } from '../services/hours.service';
 import { TeamMember, TeamMemberService } from '../../teamMember/';
 import { Hours, CategoryWrapper, Item } from '../models/hours';
 
+import * as _ from 'lodash';
+
 @Component({
   selector: 'app-hours-entry',
   templateUrl: './hours-entry.component.html',
@@ -16,7 +18,9 @@ export class HoursEntryComponent implements OnInit {
   @ViewChild('staticModal') public staticModal: ModalDirective;
 
   hours: Hours;
+  hoursToEdit: Hours;
   categories: CategoryWrapper;
+  destinationValue: number;
   displayNonCharge = true;
   displayIndustryTeam = false;
   displayServiceLine = false;
@@ -69,30 +73,47 @@ export class HoursEntryComponent implements OnInit {
     this.displayServiceLine = true;
   }
 
-  nonChargeClicked() {
+  nonChargeClicked(dest: number) {
     if (this.isDirty === true) {
       this.showModal();
-      this.displayNonChargeHours();
+      this.destinationValue = dest;
     } else {
       this.displayNonChargeHours();
     }
   }
 
-  industryTeamClicked() {
+  industryTeamClicked(dest: number) {
     if (this.isDirty === true) {
       this.showModal();
-      this.displayIndustryTeamHours();
+      this.destinationValue = dest;
     } else {
       this.displayIndustryTeamHours();
     }
   }
 
-  serviceLineClick() {
+  serviceLineClick(dest: number) {
     if (this.isDirty === true) {
       this.showModal();
-      this.displayServiceLineHours();
+      this.destinationValue = dest;
     } else {
       this.displayServiceLineHours();
+    }
+  }
+
+  toggleDestination(des: number) {
+    switch (des) {
+      case (1):
+        this.displayNonChargeHours();
+        break;
+      case (2):
+        this.displayIndustryTeamHours();
+        break;
+      case (3):
+        this.displayServiceLineHours();
+        break;
+      default:
+        this.displayNonChargeHours();
+        break;
     }
   }
 
@@ -114,6 +135,7 @@ export class HoursEntryComponent implements OnInit {
       .subscribe(data => {
         this.isLoading = false;
         this.hours = data;
+        this.hoursToEdit = _.cloneDeep(this.hours);
       }, error => {
         this.isLoading = false;
         console.log(error);
@@ -156,14 +178,17 @@ export class HoursEntryComponent implements OnInit {
     this.staticModal.hide();
   }
 
-  hideConfirmModal() {
+  ignoreChanges() {
     this.isDirty = false;
     this.hideModal();
+    this.hoursToEdit = this.hours;
+    this.toggleDestination(this.destinationValue);
   }
 
   confirmModalSave() {
     this.onSave();
     this.hideModal();
+    this.toggleDestination(this.destinationValue);
   }
 
   onSave() {

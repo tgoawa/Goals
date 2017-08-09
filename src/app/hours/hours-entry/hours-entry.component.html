@@ -17,20 +17,20 @@
   </div>
   <div class="row">
     <div class="col-md-4">
-      <button type="button" class="btn" [ngClass]="{'btn-primary': displayNonCharge}" (click)="nonChargeClicked()">Charge Acc Group</button>
+      <button type="button" class="btn" [ngClass]="{'btn-primary': displayNonCharge}" (click)="nonChargeClicked(1)">Charge Acc Group</button>
     </div>
     <div class="col-md-4">
-      <button type="button" class="btn" [ngClass]="{'btn-primary': displayIndustryTeam}" (click)="industryTeamClicked()">Industry Team</button>
+      <button type="button" class="btn" [ngClass]="{'btn-primary': displayIndustryTeam}" (click)="industryTeamClicked(2)">Industry Team</button>
     </div>
     <div class="col-md-4">
-      <button type="button" class="btn" [ngClass]="{'btn-primary': displayServiceLine}" (click)="serviceLineClick()">Service Line</button>
+      <button type="button" class="btn" [ngClass]="{'btn-primary': displayServiceLine}" (click)="serviceLineClick(3)">Service Line</button>
     </div>
   </div>
-  <app-non-charge-time [hidden]="!displayNonCharge" *ngIf="categories" [category]="categories?.Categories[1]" [data]="hours?.NonChargeList"
+  <app-non-charge-time [hidden]="!displayNonCharge" *ngIf="categories" [category]="categories?.Categories[1]" [data]="hoursToEdit?.NonChargeList"
     (isDirty)="makeDirty()" (totalNewHours)="setNonChargeTotal($event)"></app-non-charge-time>
-  <app-charge-time [hidden]="!displayIndustryTeam" *ngIf="categories" [category]="categories?.Categories[0]" [data]="hours?.IndustryTeams"
+  <app-charge-time [hidden]="!displayIndustryTeam" *ngIf="categories" [category]="categories?.Categories[0]" [data]="hoursToEdit?.IndustryTeams"
     (isDirty)="makeDirty()" (totalNewHours)="setIndustryTeamTotal($event)"></app-charge-time>
-  <app-charge-time [hidden]="!displayServiceLine" *ngIf="categories" [category]="categories?.Categories[2]" [data]="hours?.ServiceLines"
+  <app-charge-time [hidden]="!displayServiceLine" *ngIf="categories" [category]="categories?.Categories[2]" [data]="hoursToEdit?.ServiceLines"
     (isDirty)="makeDirty()" (totalNewHours)="setServiceLineTotal($event)"></app-charge-time>
   <div class="row">
     <div class="col-md-12">
@@ -84,7 +84,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title pull-left">Values have been changed</h4>
-        <button type="button" class="close pull-right" aria-label="Close" (click)="hideConfirmModal()">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="hideModal()">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -93,7 +93,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-success" (click)="confirmModalSave()">Save changes</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="hideConfirmModal()">Ignore changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="ignoreChanges()">Ignore changes</button>
       </div>
     </div>
   </div>
