@@ -5,6 +5,8 @@ import { EconomicGoals } from '../model/detail';
 
 import { EconomicGoalService } from '../service/economic-goal.service';
 
+import * as _ from 'lodash';
+
 @Component({
   selector: 'app-edit-economic-goal',
   templateUrl: './edit-economic-goal.component.html',
@@ -14,40 +16,64 @@ export class EditEconomicGoalComponent implements OnInit {
   @Input('economicGoals') economicGoals: EconomicGoals;
   @ViewChild('confirmModal') confirmModal: ModalDirective;
 
+  goalToEdit: EconomicGoals;
   displayPersonal = true;
   displayPracticeUnit = false;
   displayIndustryTeam = false;
+  destinationValue: number;
   detailChanged: boolean;
 
   constructor(private egService: EconomicGoalService, private toastrService: ToastrService) { }
 
   ngOnInit() {
+    this.cloneGoal(this.economicGoals);
   }
 
-  personalGoalClicked() {
+  cloneGoal(goal: EconomicGoals) {
+    this.goalToEdit = _.cloneDeep(goal);
+  }
+
+  personalGoalClicked(dest: number) {
     if (this.detailChanged === true) {
       this.showConfirmModal();
-      this.displayPersonalGoal();
+      this.destinationValue = dest;
     } else {
       this.displayPersonalGoal();
     }
   }
 
-  practiceUnitClicked() {
+  practiceUnitClicked(dest: number) {
     if (this.detailChanged === true) {
       this.showConfirmModal();
-      this.displayPracticeUnitGoal();
+      this.destinationValue = dest;
     } else {
       this.displayPracticeUnitGoal();
     }
   }
 
-  industryGoalClicked() {
+  industryGoalClicked(dest: number) {
     if (this.detailChanged === true) {
       this.showConfirmModal();
-      this.displayIndustryTeamGoal();
+      this.destinationValue = dest;
     } else {
       this.displayIndustryTeamGoal();
+    }
+  }
+
+  toggleDestination(des: number) {
+    switch (des) {
+      case (1):
+      this.displayPersonalGoal();
+      break;
+      case (2):
+      this.displayPracticeUnitGoal();
+      break;
+      case (3):
+      this.displayIndustryTeamGoal();
+      break;
+      default:
+      this.displayPersonalGoal();
+      break;
     }
   }
 
@@ -70,7 +96,7 @@ export class EditEconomicGoalComponent implements OnInit {
   }
 
   onSubmit() {
-    this.egService.updateEconomicGoal(this.economicGoals)
+    this.egService.updateEconomicGoal(this.goalToEdit)
       .subscribe(data => {
         this.showSuccessUpdate();
         this.economicGoals = data;
@@ -93,9 +119,18 @@ export class EditEconomicGoalComponent implements OnInit {
     this.confirmModal.hide();
   }
 
+  ignoreChanges() {
+    this.confirmModal.hide();
+    this.detailChanged = false;
+    this.toggleDestination(this.destinationValue);
+    this.goalToEdit = this.economicGoals;
+  }
+
   confirmModalSave() {
     this.onSubmit();
     this.hideConfirmModal();
+    this.detailChanged = false;
+    this.toggleDestination(this.destinationValue);
   }
 
   showSuccessUpdate() {
