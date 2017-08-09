@@ -35,7 +35,7 @@ export class EditEconomicGoalComponent implements OnInit {
   personalGoalClicked() {
     if (this.detailChanged === true) {
       this.showConfirmModal();
-      this.displayPersonalGoal();
+      // this.displayPersonalGoal();
     } else {
       this.displayPersonalGoal();
     }
@@ -44,7 +44,7 @@ export class EditEconomicGoalComponent implements OnInit {
   practiceUnitClicked() {
     if (this.detailChanged === true) {
       this.showConfirmModal();
-      this.displayPracticeUnitGoal();
+      // this.displayPracticeUnitGoal();
     } else {
       this.displayPracticeUnitGoal();
     }
@@ -53,7 +53,7 @@ export class EditEconomicGoalComponent implements OnInit {
   industryGoalClicked() {
     if (this.detailChanged === true) {
       this.showConfirmModal();
-      this.displayIndustryTeamGoal();
+      // this.displayIndustryTeamGoal();
     } else {
       this.displayIndustryTeamGoal();
     }
