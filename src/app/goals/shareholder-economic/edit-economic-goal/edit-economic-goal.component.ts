@@ -5,6 +5,8 @@ import { EconomicGoals } from '../model/detail';
 
 import { EconomicGoalService } from '../service/economic-goal.service';
 
+import * as _ from 'lodash';
+
 @Component({
   selector: 'app-edit-economic-goal',
   templateUrl: './edit-economic-goal.component.html',
@@ -14,6 +16,7 @@ export class EditEconomicGoalComponent implements OnInit {
   @Input('economicGoals') economicGoals: EconomicGoals;
   @ViewChild('confirmModal') confirmModal: ModalDirective;
 
+  goalToEdit: EconomicGoals;
   displayPersonal = true;
   displayPracticeUnit = false;
   displayIndustryTeam = false;
@@ -22,6 +25,11 @@ export class EditEconomicGoalComponent implements OnInit {
   constructor(private egService: EconomicGoalService, private toastrService: ToastrService) { }
 
   ngOnInit() {
+    this.cloneGoal(this.economicGoals);
+  }
+
+  cloneGoal(goal: EconomicGoals) {
+    this.goalToEdit = _.cloneDeep(goal);
   }
 
   personalGoalClicked() {
@@ -70,7 +78,7 @@ export class EditEconomicGoalComponent implements OnInit {
   }
 
   onSubmit() {
-    this.egService.updateEconomicGoal(this.economicGoals)
+    this.egService.updateEconomicGoal(this.goalToEdit)
       .subscribe(data => {
         this.showSuccessUpdate();
         this.economicGoals = data;
@@ -91,6 +99,8 @@ export class EditEconomicGoalComponent implements OnInit {
 
   hideConfirmModal() {
     this.confirmModal.hide();
+    this.detailChanged = false;
+    this.goalToEdit = this.economicGoals;
   }
 
   confirmModalSave() {
