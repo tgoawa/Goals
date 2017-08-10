@@ -5,7 +5,10 @@
 </div>
 
 <div class="row cyan-background">
-  <div class="col-md-2 offset-md-4 text-right">
+  <div class="col-md-4">
+    Category Code
+  </div>
+  <div class="col-md-2 text-right">
     Current Year Actual
   </div>
   <div class="col-md-1 text-right">
@@ -22,8 +25,7 @@
   </div>
 </div>
 <div *ngFor="let item of data">
-  <app-non-charge-item [data]="item" [currentYearHours]="currentYearTotalHours" [nextYearHours]="nextYearTotalHours" [categoryNames]="category?.Items"
-></app-non-charge-item>
+  <app-non-charge-item [data]="item" [currentYearHours]="currentYearTotalHours" [nextYearHours]="nextYearTotalHours" [categoryNames]="category?.Items"></app-non-charge-item>
 </div>
 <div class="row" style="border-top: 1px solid">
   <div class="col-md-4 font-weight-bold">
