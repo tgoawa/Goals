@@ -108,6 +108,12 @@ nav {
   padding-bottom: 5px;
 }
 
+.cyan-background {
+  background-color: $schenck-cyan;
+  color: white;
+  padding: 5px;
+}
+
 
 @media (min-width: 992px) {
     .modal-lg {
@@ -117,28 +123,61 @@ nav {
 
 @media only print {
     body {
-        font-size: 11px;
+        font-size: 1rem;
     }
 
     h1, h2, h3, h4, h5, h6 {
-        font-weight: bold;
-        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    .font-weight-bold {
+      font-weight: bold;
+    }
+
+    .text-center {
+      text-align: center !important;
+    }
+
+    .text-right {
+      text-align: right !important;
     }
 
     .row {
-        margin-top: 0px;
+        margin-top: 10px;
+    }
+
+    .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+
+    .col-md-1 {
+      max-width: 8.33%;
     }
 
     .col-md-2 {
-        width: 20%;
+      max-width: 16.66%;
     }
 
     .col-md-3 {
-        width: 25%;
+        max-width: 24.99%;
     }
 
     .col-md-4 {
-        width: 30%;
+        max-width: 33.33%;
+    }
+
+    .col-md-6 {
+      max-width: 50%;
+    }
+
+    .offset-md-2 {
+      margin-left: 16.66%;
+    }
+
+    .offset-md-4 {
+      margin-left: 33.33%
     }
 
     img {
@@ -148,5 +187,16 @@ nav {
     .goal-subSection {
         margin-top: 10px;
         padding-top: 0;
+    }
+
+    .cyan-background {
+      background-color: black;
+      color: white;
+      padding: 5px;
+      -webkit-print-color-adjust: exact;
+    }
+
+    .page-break-after {
+      page-break-after: always;
     }
 }
