@@ -154,7 +154,6 @@ export class HoursEntryComponent implements OnInit {
       .subscribe(data => {
         this.isLoading = false;
         this.categories = data;
-        console.log(this.categories);
       }, error => {
         this.isLoading = false;
         console.log(error);

@@ -5,7 +5,7 @@
   </div>
   <div class="row">
     <div class="col-md-12">
-      <h2>Meeting and Goal Notes for: {{printGoal?.TeamMember.FirstName}} {{printGoal?.TeamMember.LastName}}</h2>
+      <h2>Meeting and Goal Notes for: {{printGoal?.TeamMember?.FirstName}} {{printGoal?.TeamMember?.LastName}}</h2>
     </div>
   </div>
   <div class="row">
@@ -31,7 +31,7 @@
   <div *ngIf="printGoal?.CurrentMeeting" class="page-break-after">
     <app-meeting [questions]="printGoal?.Questions" [teamMember]="printGoal?.TeamMember" ></app-meeting>
   </div>
-  <div *ngIf="printGoal?.OpenPersonalGoals.length > 0" class="page-break-after">
+  <div *ngIf="printGoal?.OpenPersonalGoals?.length > 0" class="page-break-after">
     <div class="row">
       <div class="col-md-12">
         <h3>Personal Goals (lowest to highest % complete)</h3>
@@ -41,7 +41,7 @@
       <app-personal-goals [personalGoal]="personalGoal"></app-personal-goals>
     </div>
   </div>
-  <div *ngIf="printGoal?.OpenIndustryTeamGoals.length > 0" class="page-break-after">
+  <div *ngIf="printGoal?.OpenIndustryTeamGoals?.length > 0" class="page-break-after">
     <div class="row">
       <div class="col-md-12">
         <h3>Industry Team Goals (lowest to highest % complete)</h3>
