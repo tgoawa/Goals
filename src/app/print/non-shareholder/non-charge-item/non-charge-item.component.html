@@ -3,16 +3,16 @@
     {{itemName}}
   </div>
   <div class="col-md-2 text-right">
-    {{data.ActualHours}}
+    {{data?.ActualHours}}
   </div>
   <div class="col-md-1 text-right">
     {{currentPercentage | percent: '1.1-1'}}
   </div>
   <div class="col-md-2 text-right">
-    {{data.SuggestedHours}}
+    {{data?.SuggestedHours}}
   </div>
   <div class="col-md-2 text-right">
-    {{data.EstimatedHours}}
+    {{data?.EstimatedHours}}
   </div>
   <div class="col-md-1 text-right">
     {{nextYearPercentage | percent: '1.1-1'}}
