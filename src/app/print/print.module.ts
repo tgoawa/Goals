@@ -14,7 +14,6 @@ import { PrintViewComponent } from './non-shareholder/print-view/print-view.comp
 import { ShareholderPrintService } from './shareholder/services/shareholder-print.service';
 import { ShareholderComponent } from './shareholder/shareholder.component';
 import { ShareholderPrintViewComponent } from './shareholder/shareholder-print-view/shareholder-print-view.component';
-import { ShareholderMeetingComponent } from './shareholder/shareholder-meeting/shareholder-meeting.component';
 import { ShareholderDetailsComponent } from './shareholder/shareholder-details/shareholder-details.component';
 import { WigGoalComponent } from './shareholder/wig-goal/wig-goal.component';
 import { ChargeTimeComponent } from './non-shareholder/charge-time/charge-time.component';
@@ -34,7 +33,6 @@ import { NonChargeTimeComponent } from './non-shareholder/non-charge-time/non-ch
     IndustryGoalsComponent,
     PrintViewComponent,
     ShareholderPrintViewComponent,
-    ShareholderMeetingComponent,
     ShareholderDetailsComponent,
     WigGoalComponent,
     HoursComponent],
@@ -46,7 +44,6 @@ import { NonChargeTimeComponent } from './non-shareholder/non-charge-time/non-ch
     PrintViewComponent,
     ShareholderComponent,
     ShareholderPrintViewComponent,
-    ShareholderMeetingComponent,
     ShareholderDetailsComponent,
     WigGoalComponent,
     ChargeTimeComponent,
