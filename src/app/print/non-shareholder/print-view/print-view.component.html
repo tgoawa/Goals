@@ -28,10 +28,10 @@
       Coach's Name: {{printGoal?.CurrentMeeting?.CoachName}}
     </div>
   </div>
-  <div *ngIf="printGoal?.CurrentMeeting" class="page-break-after">
+  <div *ngIf="printGoal?.CurrentMeeting">
     <app-meeting [questions]="printGoal?.Questions" [teamMember]="printGoal?.TeamMember" ></app-meeting>
   </div>
-  <div *ngIf="printGoal?.OpenPersonalGoals?.length > 0" class="page-break-after">
+  <div *ngIf="printGoal?.OpenPersonalGoals?.length > 0" class="page-break-before">
     <div class="row">
       <div class="col-md-12">
         <h3>Personal Goals (lowest to highest % complete)</h3>
@@ -41,7 +41,7 @@
       <app-personal-goals [personalGoal]="personalGoal"></app-personal-goals>
     </div>
   </div>
-  <div *ngIf="printGoal?.OpenIndustryTeamGoals?.length > 0" class="page-break-after">
+  <div *ngIf="printGoal?.OpenIndustryTeamGoals?.length > 0" class="page-break-before">
     <div class="row">
       <div class="col-md-12">
         <h3>Industry Team Goals (lowest to highest % complete)</h3>

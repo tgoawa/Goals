@@ -121,14 +121,19 @@ nav {
     }
 }
 
+@page {
+  size: 8.5in 11in portrait;
+  margin: 0.5in;
+}
+
 @media only print {
+
     body {
-        font-size: 1rem;
+        font-size: 12px;
     }
 
     h1, h2, h3, h4, h5, h6 {
         font-weight: 700;
-        text-transform: uppercase;
     }
 
     .font-weight-bold {
@@ -196,7 +201,8 @@ nav {
       -webkit-print-color-adjust: exact;
     }
 
-    .page-break-after {
-      page-break-after: always;
+    .page-break-before {
+      page-break-before: always;
     }
+
 }
