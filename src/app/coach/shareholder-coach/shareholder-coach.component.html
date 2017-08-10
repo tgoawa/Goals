@@ -5,5 +5,7 @@
 </div>
 <div *ngIf="!isLoading">
 <app-shareholder-print-view *ngIf="printGoal" [printGoal]="printGoal" [teamMember]="teamMember"></app-shareholder-print-view>
-<app-hours *ngIf="hoursData" [hoursData]="hoursData"></app-hours>
+  <div *ngIf="hoursData" class="page-break-before">
+    <app-hours  [hoursData]="hoursData"></app-hours>
+  </div>
 </div>
