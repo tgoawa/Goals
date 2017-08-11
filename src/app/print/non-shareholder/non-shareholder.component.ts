@@ -26,13 +26,12 @@ export class NonShareholderComponent implements OnInit {
   }
 
   getData(id: number) {
+    this.isLoading = true;
     this.getPrintViewGoals(id);
     this.getHours(id);
   }
 
-
   getPrintViewGoals(id: number) {
-    this.isLoading = true;
     this.prService.getCurrentGoals(id)
       .subscribe(data => {
         this.isLoading = false;
@@ -44,7 +43,6 @@ export class NonShareholderComponent implements OnInit {
   }
 
   getHours(id: number) {
-    this.isLoading = true;
     this.prService.getHours(id)
       .subscribe(data => {
         this.isLoading = false;
