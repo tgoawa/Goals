@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewInit, Input, ViewChild, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ModalDirective } from 'ngx-bootstrap/modal';
+import { IMyDpOptions, IMyDateModel } from 'mydatepicker';
 
 import { WigGoalServiceService } from '../service/wig-goal-service.service';
 
@@ -20,6 +21,10 @@ export class AddWigGoalComponent implements OnInit, AfterViewInit {
   addWigGoalForm: FormGroup;
   WIGList: string[];
   weightList: number[];
+
+  myDatePickerOptions: IMyDpOptions = {
+    dateFormat: 'mm/dd/yyyy',
+  };
 
   constructor(private fb: FormBuilder, private wgService: WigGoalServiceService) { }
 
@@ -56,6 +61,7 @@ export class AddWigGoalComponent implements OnInit, AfterViewInit {
       Weight: data.Weight,
       DisplayDateCreated: data.DisplayDateCreated,
       DisplayDateModified: data.DisplayDateModified,
+      DisplayDateCompleted: ['', Validators.required],
       Name: [data.Name, Validators.required],
       GoalDescription: [data.GoalDescription, Validators.required],
     });
@@ -105,6 +111,7 @@ export class AddWigGoalComponent implements OnInit, AfterViewInit {
 
   onSubmit(formValue: Goal) {
     this.replaceLineBreaks(formValue);
+    this.formatDateCompleteBy();
     this.saveGoal(formValue);
   }
 
@@ -149,6 +156,13 @@ export class AddWigGoalComponent implements OnInit, AfterViewInit {
       }
     }
     return note;
+  }
+
+  formatDateCompleteBy() {
+    const personalGoal = this.addWigGoalForm.value;
+    if (personalGoal.DisplayDateDue !== null) {
+      personalGoal.DisplayDateCompleted = personalGoal.DisplayDateCompleted.formatted;
+    }
   }
 
 }
