@@ -48,6 +48,7 @@ export class EditIndustryGoalComponent implements OnInit, AfterViewInit {
       Weight: data.Weight,
       DisplayDateCreated: data.DisplayDateCreated,
       DisplayDateModified: data.DisplayDateModified,
+      DisplayDateCompleted: [{formatted: data.DisplayDateCompleted}, Validators.required],
       Name: [data.Name, Validators.required],
       GoalDescription: [data.GoalDescription, Validators.required],
     });
