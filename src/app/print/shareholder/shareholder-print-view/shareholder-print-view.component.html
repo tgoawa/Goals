@@ -21,8 +21,7 @@
   <app-shareholder-details [title]="'Industry Team'" [currentDetail]="printGoal?.EconomicGoals?.CurrentEconomicGoal?.Details[2]"
     [previousDetail]="printGoal?.EconomicGoals?.PreviousEconomicGoal?.Details[2]"></app-shareholder-details>
 </div>
-  <p class="page-break-after"></p>
-<div *ngIf="printGoal?.CompentencyGoals?.length > 0" class="page-break-after">
+<div *ngIf="printGoal?.CompentencyGoals?.length > 0" class="page-break-before">
   <div class="row" class="goal-subSection">
     <h3>Personal Goals (lowest to highest % complete)</h3>
   </div>
@@ -30,7 +29,7 @@
     <app-personal-goals [personalGoal]="personalGoal"></app-personal-goals>
   </div>
 </div>
-<div *ngIf="printGoal?.WigGoals?.length > 0" class="page-break-after">
+<div *ngIf="printGoal?.WigGoals?.length > 0" class="page-break-before">
   <div class="row">
     <div class="col-md-12">
       <h3>WIG Goals</h3>
@@ -40,7 +39,7 @@
     <app-wig-goal [wigGoal]="wigGoal"></app-wig-goal>
   </div>
 </div>
-<div *ngIf="printGoal?.IndustryGoals?.length > 0" class="page-break-after">
+<div *ngIf="printGoal?.IndustryGoals?.length > 0" class="page-break-before">
   <div class="row">
     <div class="col-md-12">
       <h3>Industry Team Goals</h3>
