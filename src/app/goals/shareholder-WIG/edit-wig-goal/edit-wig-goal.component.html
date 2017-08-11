@@ -19,6 +19,11 @@
             <textarea class="form-control" formControlName="GoalDescription"></textarea>
             <div *ngIf="editWigGoalForm.get('GoalDescription').hasError('required') && editWigGoalForm.get('GoalDescription').touched" class="alert alert-danger">A goal description is required</div>
           </div>
+          <div class="form-group col-md-4">
+            <label for="DateCompletedBy">Date Completed By:</label>
+            <my-date-picker name="DisplayDateCompleted" [options]="myDatePickerOptions" formControlName="DisplayDateCompleted"></my-date-picker>
+            <div *ngIf="editWigGoalForm.get('DisplayDateCompleted').hasError('required')" class="alert alert-danger">A Completion By date is required</div>
+          </div>
           <div class="form-group col-md-6">
             <label for="GoalWIGId">Select WIG for current goal:</label>
             <select class="form-control" name="GoalWIGId" formControlName="GoalWIGId">
