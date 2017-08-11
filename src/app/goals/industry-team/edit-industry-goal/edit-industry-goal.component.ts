@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewInit, Input, ViewChild, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ModalDirective } from 'ngx-bootstrap/modal';
+import { IMyDpOptions, IMyDateModel } from 'mydatepicker';
 
 import { IndustryGoalService } from '../service/industry-goal.service';
 
@@ -17,6 +18,10 @@ export class EditIndustryGoalComponent implements OnInit, AfterViewInit {
   @Output() modalClosed: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() updateSuccess: EventEmitter<boolean> = new EventEmitter<boolean>();
   editIndustryGoalForm: FormGroup;
+
+  myDatePickerOptions: IMyDpOptions = {
+    dateFormat: 'mm/dd/yyyy',
+  };
 
   constructor(private fb: FormBuilder, private igService: IndustryGoalService) { }
 
@@ -106,6 +111,7 @@ export class EditIndustryGoalComponent implements OnInit, AfterViewInit {
         this.editIndustryGoalForm.value.IsCompleted = false;
       }
     }
+    this.formatDateCompleteBy();
     this.replaceLineBreaks(this.editIndustryGoalForm.value);
     this.updateGoal();
   }
@@ -160,5 +166,12 @@ export class EditIndustryGoalComponent implements OnInit, AfterViewInit {
       }
     }
     return note;
+  }
+
+  formatDateCompleteBy() {
+    const personalGoal = this.editIndustryGoalForm.value;
+    if (personalGoal.DisplayDateDue !== null) {
+      personalGoal.DisplayDateCompleted = personalGoal.DisplayDateCompleted.formatted;
+    }
   }
 }

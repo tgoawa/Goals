@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewInit, Input, ViewChild, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ModalDirective } from 'ngx-bootstrap/modal';
+import { IMyDpOptions, IMyDateModel } from 'mydatepicker';
 
 import { IndustryGoalService } from '../service/industry-goal.service';
 
@@ -17,6 +18,10 @@ export class AddIndustryGoalComponent implements OnInit, AfterViewInit {
   @Output() addSuccess: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   addIndustryGoalForm: FormGroup;
+
+  myDatePickerOptions: IMyDpOptions = {
+    dateFormat: 'mm/dd/yyyy',
+  };
 
   constructor(private fb: FormBuilder, private igService: IndustryGoalService) { }
 
@@ -42,6 +47,7 @@ export class AddIndustryGoalComponent implements OnInit, AfterViewInit {
       Weight: data.Weight,
       DisplayDateCreated: data.DisplayDateCreated,
       DisplayDateModified: data.DisplayDateModified,
+      DisplayDateCompleted: ['', Validators.required],
       Name: [data.Name, Validators.required],
       GoalDescription: [data.GoalDescription, Validators.required],
     });
@@ -89,6 +95,8 @@ export class AddIndustryGoalComponent implements OnInit, AfterViewInit {
 
   onSubmit(formValue: Goal) {
     this.replaceLineBreaks(formValue);
+    this.formatIndustryTeamId(formValue);
+    this.formatDateCompleteBy();
     this.saveGoal(formValue);
   }
 
@@ -133,6 +141,17 @@ export class AddIndustryGoalComponent implements OnInit, AfterViewInit {
       }
     }
     return note;
+  }
+
+  formatDateCompleteBy() {
+    const personalGoal = this.addIndustryGoalForm.value;
+    if (personalGoal.DisplayDateDue !== null) {
+      personalGoal.DisplayDateCompleted = personalGoal.DisplayDateCompleted.formatted;
+    }
+  }
+
+  formatIndustryTeamId(formValue: Goal) {
+    formValue.IndustryTeamId = +formValue.IndustryTeamId;
   }
 
 }
