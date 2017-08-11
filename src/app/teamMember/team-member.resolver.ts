@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Resolve } from '@angular/router';
-import { TeamMember, TeamMemberService } from './';
+import { TeamMember } from './team-member';
+import { TeamMemberService } from './team-member.service';
 
 import { Cookie } from 'ng2-cookies';
 
