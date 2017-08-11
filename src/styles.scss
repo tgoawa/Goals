@@ -136,6 +136,15 @@ nav {
         font-weight: 700;
     }
 
+    h1::first-letter, h2::first-letter, h3::first-letter, h4::first-letter, h5::first-letter {
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      width: 100%;
+    }
+
     .font-weight-bold {
       font-weight: bold;
     }
