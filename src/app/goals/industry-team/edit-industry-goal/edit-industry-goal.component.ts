@@ -113,6 +113,7 @@ export class EditIndustryGoalComponent implements OnInit, AfterViewInit {
       }
     }
     this.formatDateCompleteBy();
+    this.formatIndustryTeamId(this.editIndustryGoalForm.value);
     this.replaceLineBreaks(this.editIndustryGoalForm.value);
     this.updateGoal();
   }
@@ -174,5 +175,9 @@ export class EditIndustryGoalComponent implements OnInit, AfterViewInit {
     if (personalGoal.DisplayDateDue !== null) {
       personalGoal.DisplayDateCompleted = personalGoal.DisplayDateCompleted.formatted;
     }
+  }
+
+  formatIndustryTeamId(formValue: Goal) {
+    formValue.IndustryTeamId = +formValue.IndustryTeamId;
   }
 }

@@ -23,16 +23,16 @@
             <div *ngIf="editIndustryGoalForm.get('IndustryTeamId').hasError('required') && editIndustryGoalForm.get('IndustryTeamId').touched"
               class="alert alert-danger">An industry team required</div>
           </div>
-          <div class="form-group col-md-4">
-            <label for="DateCompletedBy">Date Completed By:</label>
-            <my-date-picker name="DisplayDateCompleted" [options]="myDatePickerOptions" formControlName="DisplayDateCompleted"></my-date-picker>
-            <div *ngIf="editIndustryGoalForm.get('DisplayDateCompleted').hasError('required')" class="alert alert-danger">A Completion By date is required</div>
-          </div>
           <div class="form-group col-md-6">
             <label for="GoalDescription">Goal Description:</label>
             <textarea class="form-control" formControlName="GoalDescription"></textarea>
             <div *ngIf="editIndustryGoalForm.get('GoalDescription').hasError('required') && editIndustryGoalForm.get('GoalDescription').touched"
               class="alert alert-danger">A goal is required</div>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="DateCompletedBy">Date Completed By:</label>
+            <my-date-picker name="DisplayDateCompleted" [options]="myDatePickerOptions" formControlName="DisplayDateCompleted"></my-date-picker>
+            <div *ngIf="editIndustryGoalForm.get('DisplayDateCompleted').hasError('required')" class="alert alert-danger">A Completion By date is required</div>
           </div>
           <div class="goal-subSection">
             <app-actions-list [goalId]="industryGoal.GoalId" [parentGoalForm]="editIndustryGoalForm" [Actions]="industryGoal.Actions">
