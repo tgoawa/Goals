@@ -47,7 +47,6 @@ export class ShareholderComponent implements OnInit {
     this.isLoading = true;
     this.prService.getHours(id)
       .subscribe(data => {
-        this.isLoading = false;
         this.hoursData = data;
       }, error => {
         this.isLoading = false;

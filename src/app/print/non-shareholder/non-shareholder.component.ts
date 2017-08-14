@@ -45,7 +45,7 @@ export class NonShareholderComponent implements OnInit {
   getHours(id: number) {
     this.prService.getHours(id)
       .subscribe(data => {
-        this.isLoading = false;
+        // this.isLoading = false;
         this.hoursData = data;
       }, error => {
         this.isLoading = false;
