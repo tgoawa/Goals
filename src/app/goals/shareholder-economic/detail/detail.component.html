@@ -4,138 +4,138 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-3 offset-md-4">
+    <div class="col-md-3 offset-md-4 text-right">
         <b>Previous Year</b>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-3 text-right">
         <b>This Year</b>
     </div>
 </div>
 <div class="details">
     <div class="form-group row row-striped">
         <label class="col-md-4 col-form-label">Tiers 1-3</label>
-        <div class="col-md-3">
+        <div class="col-md-3 text-right">
             {{previousDetail.BillingsTiers1_3}}
         </div>
         <div class="col-md-3">
-            <input class="form-control" type="number" [(ngModel)]="currentDetail.BillingsTiers1_3" (keyup)="isDirtyDetail()">
+            <input class="form-control" style="text-align:right" type="number" [(ngModel)]="currentDetail.BillingsTiers1_3" (keyup)="isDirtyDetail()">
         </div>
     </div>
     <div class="form-group row row-striped">
         <label class="col-md-4 col-form-label">Tiers 4-5</label>
-        <div class="col-md-3">
+        <div class="col-md-3 text-right">
             {{previousDetail.BillingsTiers4_5}}
         </div>
         <div class="col-md-3">
-            <input class="form-control" type="number" [(ngModel)]="currentDetail.BillingsTiers4_5" (keyup)="isDirtyDetail()">
+            <input class="form-control" style="text-align:right" type="number" [(ngModel)]="currentDetail.BillingsTiers4_5" (keyup)="isDirtyDetail()">
         </div>
     </div>
     <div class="form-group row row-striped">
         <label class="col-md-4 col-form-label">Tier 6</label>
-        <div class="col-md-3">
+        <div class="col-md-3 text-right">
             {{previousDetail.BillingsTier6}}
         </div>
         <div class="col-md-3">
-            <input class="form-control" type="number" [(ngModel)]="currentDetail.BillingsTier6" (keyup)="isDirtyDetail()">
+            <input class="form-control" style="text-align:right" type="number" [(ngModel)]="currentDetail.BillingsTier6" (keyup)="isDirtyDetail()">
         </div>
     </div>
     <div class="form-group row row-striped">
         <label class="col-md-4 col-form-label">Tier 6GR</label>
-        <div class="col-md-3">
+        <div class="col-md-3 text-right">
             {{previousDetail.BillingsTier6GR}}
         </div>
         <div class="col-md-3">
-            <input class="form-control" type="number" [(ngModel)]="currentDetail.BillingsTier6GR" (keyup)="isDirtyDetail()">
+            <input class="form-control" style="text-align:right" type="number" [(ngModel)]="currentDetail.BillingsTier6GR" (keyup)="isDirtyDetail()">
         </div>
     </div>
     <div class="form-group row row-striped">
         <label class="col-md-4 col-form-label">Tier 6PBR</label>
-        <div class="col-md-3">
+        <div class="col-md-3 text-right">
             {{previousDetail.BillingsTier6PBR}}
         </div>
-        <div class="col-md-3">
-            <input class="form-control" type="number" [(ngModel)]="currentDetail.BillingsTier6PBR" (keyup)="isDirtyDetail()">
+        <div class="col-md-3 text-right">
+            <input class="form-control" style="text-align:right" type="number" [(ngModel)]="currentDetail.BillingsTier6PBR" (keyup)="isDirtyDetail()">
         </div>
     </div>
     <div class="form-group row row-striped">
         <label class="col-md-4 col-form-label">New Business From New Clients</label>
-        <div class="col-md-3">
+        <div class="col-md-3 text-right">
             {{previousDetail.BusinessNewClients}}
         </div>
         <div class="col-md-3">
-            <input class="form-control" type="number" [(ngModel)]="currentDetail.BusinessNewClients" (keyup)="isDirtyDetail()">
+            <input class="form-control" style="text-align:right" type="number" [(ngModel)]="currentDetail.BusinessNewClients" (keyup)="isDirtyDetail()">
         </div>
     </div>
     <div class="form-group row row-striped">
         <label class="col-md-4 col-form-label">New Business From Existing Clients</label>
-        <div class="col-md-3">
+        <div class="col-md-3 text-right">
             {{previousDetail.BusinessExistingClients}}
         </div>
         <div class="col-md-3">
-            <input class="form-control" type="number" [(ngModel)]="currentDetail.BusinessExistingClients" (keyup)="isDirtyDetail()">
+            <input class="form-control" style="text-align:right" type="number" [(ngModel)]="currentDetail.BusinessExistingClients" (keyup)="isDirtyDetail()">
         </div>
     </div>
     <div class="form-group row row-striped">
         <label class="col-md-4 col-form-label">Lost Clients</label>
-        <div class="col-md-3">
+        <div class="col-md-3 text-right">
             {{previousDetail.LostClients}}
         </div>
         <div class="col-md-3">
-            <input class="form-control" type="number" [(ngModel)]="currentDetail.LostClients" (keyup)="isDirtyDetail()">
+            <input class="form-control" style="text-align:right" type="number" [(ngModel)]="currentDetail.LostClients" (keyup)="isDirtyDetail()">
         </div>
     </div>
     <div class="form-group row row-striped">
         <label class="col-md-4 col-form-label">Billings Transferred From Others</label>
-        <div class="col-md-3">
+        <div class="col-md-3 text-right">
             {{previousDetail.BillingsTransferredFromOthers}}
         </div>
         <div class="col-md-3">
-            <input class="form-control" type="number" [(ngModel)]="currentDetail.BillingsTransferredFromOthers" (keyup)="isDirtyDetail()">
+            <input class="form-control" style="text-align:right" type="number" [(ngModel)]="currentDetail.BillingsTransferredFromOthers" (keyup)="isDirtyDetail()">
         </div>
     </div>
     <div class="form-group row row-striped">
         <label class="col-md-4 col-form-label">Billings Transferred To Others</label>
-        <div class="col-md-3">
+        <div class="col-md-3 text-right">
             {{previousDetail.BillingsTransferredToOthers}}
         </div>
         <div class="col-md-3">
-            <input class="form-control" type="number" [(ngModel)]="currentDetail.BillingsTransferredToOthers" (keyup)="isDirtyDetail()">
+            <input class="form-control" style="text-align:right" type="number" [(ngModel)]="currentDetail.BillingsTransferredToOthers" (keyup)="isDirtyDetail()">
         </div>
     </div>
     <div class="form-group row row-striped">
         <label class="col-md-4 col-form-label">Referrals To Specialty Units</label>
-        <div class="col-md-3">
+        <div class="col-md-3 text-right">
             {{previousDetail.ReferralsSpecialityUnits}}
         </div>
         <div class="col-md-3">
-            <input class="form-control" type="number" [(ngModel)]="currentDetail.ReferralsSpecialityUnits" (keyup)="isDirtyDetail()">
+            <input class="form-control" style="text-align:right" type="number" [(ngModel)]="currentDetail.ReferralsSpecialityUnits" (keyup)="isDirtyDetail()">
         </div>
     </div>
     <div class="form-group row row-striped">
         <label class="col-md-4 col-form-label">Charge Hours</label>
-        <div class="col-md-3">
+        <div class="col-md-3 text-right">
             {{previousDetail.ChargeHours}}
         </div>
         <div class="col-md-3">
-            <input class="form-control" type="number" [(ngModel)]="currentDetail.ChargeHours" (keyup)="isDirtyDetail()">
+            <input class="form-control" style="text-align:right" type="number" [(ngModel)]="currentDetail.ChargeHours" (keyup)="isDirtyDetail()">
         </div>
     </div>
     <div class="form-group row row-striped">
         <label class="col-md-4 col-form-label">Realization</label>
-        <div class="col-md-3">
+        <div class="col-md-3 text-right">
             {{previousDetail.Realization}}
         </div>
         <div class="col-md-3">
-            <input class="form-control" type="number" [(ngModel)]="currentDetail.Realization" (keyup)="isDirtyDetail()">
+            <input class="form-control" style="text-align:right" type="number" [(ngModel)]="currentDetail.Realization" (keyup)="isDirtyDetail()">
         </div>
     </div>
     <div class="form-group row row-striped">
         <label class="col-md-4 col-form-label">Days in WIP and AR</label>
-        <div class="col-md-3">
+        <div class="col-md-3 text-right">
             {{previousDetail.DaysinWIP_AR}}
         </div>
         <div class="col-md-3">
-            <input class="form-control" type="number" [(ngModel)]="currentDetail.DaysinWIP_AR" (keyup)="isDirtyDetail()">
+            <input class="form-control" style="text-align:right" type="number" [(ngModel)]="currentDetail.DaysinWIP_AR" (keyup)="isDirtyDetail()">
         </div>
     </div>
 

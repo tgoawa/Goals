@@ -129,7 +129,7 @@ export class EditEconomicGoalComponent implements OnInit {
     this.confirmModal.hide();
     this.detailChanged = false;
     this.toggleDestination(this.destinationValue);
-    this.goalToEdit = this.economicGoals;
+    this.cloneGoal(this.economicGoals);
   }
 
   confirmModalSave() {

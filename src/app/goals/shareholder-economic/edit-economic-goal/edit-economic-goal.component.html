@@ -18,8 +18,8 @@
   <app-detail *ngIf="displayIndustryTeam" [title]="'Industry Team'" [currentDetail]="goalToEdit?.CurrentEconomicGoal?.Details[2]"
     [previousDetail]="goalToEdit?.PreviousEconomicGoal?.Details[2]" (isDirty)="detailDirty()"></app-detail>
   <div class="form-group row">
-    <div class="col-md-2 offset-md-9">
-    <button type="submit" class="btn btn-success">Save</button>
+    <div class="col-md-2 offset-md-8">
+    <button type="submit" class="btn btn-success btn-block">Save</button>
     </div>
   </div>
 </form>
