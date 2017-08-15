@@ -34,7 +34,6 @@ export class ShMeetingsListComponent implements OnInit {
     this.isLoading = true;
     this.shmService.getMeetings(this.teamMember.TeamMemberId)
       .subscribe(data => {
-        console.log(data);
         this.isLoading = false;
         this.meetingList = data;
       }, error => {

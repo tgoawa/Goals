@@ -94,7 +94,6 @@ export class AddShareholderMeetingComponent implements OnInit, AfterViewInit {
   }
 
   saveMeeting() {
-    console.log(this.addShareholderMeetingForm.value)
     this.shService.saveMeeting(this.addShareholderMeetingForm.value)
       .subscribe(data => {
         this.meetingUpdateSuccess();

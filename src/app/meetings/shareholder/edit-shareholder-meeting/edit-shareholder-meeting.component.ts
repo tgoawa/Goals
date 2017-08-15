@@ -120,7 +120,6 @@ export class EditShareholderMeetingComponent implements OnInit, AfterViewInit {
   }
 
   updateMeeting() {
-    console.log(this.editShareholderMeetingForm.value);
     this.shmService.saveMeeting(this.editShareholderMeetingForm.value)
     .subscribe(data => {
       this.meetingUpdateSuccess();

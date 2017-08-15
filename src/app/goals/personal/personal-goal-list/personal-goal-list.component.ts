@@ -33,7 +33,6 @@ export class PersonalGoalListComponent implements OnInit {
     .subscribe(data => {
       this.isLoading = false;
       this.personalGoalList = data;
-      console.log(this.personalGoalList);
     }, error => {
       console.log(error);
       this.isLoading = false;
