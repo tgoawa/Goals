@@ -209,7 +209,7 @@ export class HoursEntryComponent implements OnInit {
   }
 
   updateHours() {
-    this.hoursService.updateHours(this.hours)
+    this.hoursService.updateHours(this.hoursToEdit)
       .subscribe(data => {
         this.showSuccessUpdate();
         this.isDirty = false;
