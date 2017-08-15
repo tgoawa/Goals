@@ -235,7 +235,7 @@ export class HoursEntryComponent implements OnInit, OnChanges {
   }
 
   resetData() {
-    this.hoursToEdit = this.hours;
+    this.hoursToEdit = _.cloneDeep(this.hours);
     this.calculateTotalHours();
   }
 }
