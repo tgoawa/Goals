@@ -5,7 +5,8 @@
 </div>
 <div class="row">
   <div class="col-md-12">
-    <app-non-charge-time *ngIf="hoursCategories" [category]="hoursCategories?.Categories[1]" [data]="hoursData?.NonChargeList"></app-non-charge-time>
+    <app-non-charge-time *ngIf="hoursCategories" [category]="hoursCategories?.Categories[1]" [data]="hoursData?.NonChargeList"
+      (totalNewHours)="setNonChargeTotal($event)"></app-non-charge-time>
   </div>
 </div>
 <div class="row page-break-before">
@@ -15,11 +16,35 @@
 </div>
 <div class="row">
   <div class="col-md-12">
-    <app-charge-time *ngIf="hoursCategories" [category]="hoursCategories?.Categories[2]" [data]="hoursData?.ServiceLines"></app-charge-time>
+    <app-charge-time *ngIf="hoursCategories" [category]="hoursCategories?.Categories[0]" [data]="hoursData?.IndustryTeams" (totalNewHours)="setIndustryTeamTotal($event)"></app-charge-time>
   </div>
 </div>
 <div class="row">
   <div class="col-md-12">
-    <app-charge-time *ngIf="hoursCategories" [category]="hoursCategories?.Categories[0]" [data]="hoursData?.IndustryTeams"></app-charge-time>
+    <app-charge-time *ngIf="hoursCategories" [category]="hoursCategories?.Categories[2]" [data]="hoursData?.ServiceLines" (totalNewHours)="setServiceLineTotal($event)"></app-charge-time>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4 offset-md-8">
+    <table class="table table-sm">
+      <tbody>
+        <tr>
+          <th scope="row">Non Charge Total Hours:</th>
+          <td class="text-right">{{nonChargeTotalHours}}</td>
+        </tr>
+        <tr>
+          <th scope="row">Industry Team Total Hours:</th>
+          <td class="text-right">{{industryTeamHours}}</td>
+        </tr>
+        <tr>
+          <th scope="row">Service Line Total Hours:</th>
+          <td class="text-right">{{serviceLineTotalHours}}</td>
+        </tr>
+        <tr>
+          <th scope="row">Total Work Hours:</th>
+          <td class="text-right">{{totalWorkHours}}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>

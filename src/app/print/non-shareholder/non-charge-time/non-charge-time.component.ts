@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { Item, Categories } from '../../../hours/models/hours';
 @Component({
@@ -7,8 +7,9 @@ import { Item, Categories } from '../../../hours/models/hours';
   styleUrls: ['./non-charge-time.component.scss']
 })
 export class NonChargeTimeComponent implements OnInit {
-@Input('data') data: Item[];
+  @Input('data') data: Item[];
   @Input('category') category: Categories;
+  @Output('totalNewHours') totalNewHours: EventEmitter<number> = new EventEmitter<number>();
 
   categoryName: string;
   currentYearTotalHours = 0;
@@ -53,6 +54,7 @@ export class NonChargeTimeComponent implements OnInit {
     for (let index = 0; index < this.data.length; index++) {
       this.nextYearTotalHours = this.nextYearTotalHours + this.data[index].EstimatedHours;
     }
+    this.totalNewHours.emit(this.nextYearTotalHours);
   }
 
   calculateNewTotalPercent() {

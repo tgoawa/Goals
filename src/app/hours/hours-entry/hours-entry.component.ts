@@ -40,7 +40,6 @@ export class HoursEntryComponent implements OnInit, OnChanges {
   ngOnInit() {
     this.teamMember = this.tmService.teamMember;
     this.getData();
-    this.calculateTotalHours();
   }
 
   ngOnChanges() {

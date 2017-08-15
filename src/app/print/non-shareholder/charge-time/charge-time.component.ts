@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { Item, Categories } from '../../../hours/models/hours';
 @Component({
@@ -9,6 +9,7 @@ import { Item, Categories } from '../../../hours/models/hours';
 export class ChargeTimeComponent implements OnInit {
   @Input('data') data: Item[];
   @Input('category') category: Categories;
+  @Output('totalNewHours') totalNewHours: EventEmitter<number> = new EventEmitter<number>();
 
   categoryName: string;
   previousTotalHours = 0;
@@ -53,6 +54,7 @@ export class ChargeTimeComponent implements OnInit {
     for (let index = 0; index < this.data.length; index++) {
       this.newTotalHours = this.newTotalHours + this.data[index].EstimatedHours;
     }
+    this.totalNewHours.emit(this.newTotalHours);
   }
 
   calculateNewTotalPercent() {
