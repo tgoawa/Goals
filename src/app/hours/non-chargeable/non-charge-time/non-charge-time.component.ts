@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnChanges, Input, Output, EventEmitter } from '@angular/core';
 import { Item, Categories } from '../../models/hours';
 
 @Component({
@@ -6,7 +6,7 @@ import { Item, Categories } from '../../models/hours';
   templateUrl: './non-charge-time.component.html',
   styleUrls: ['./non-charge-time.component.scss']
 })
-export class NonChargeTimeComponent implements OnInit {
+export class NonChargeTimeComponent implements OnInit, OnChanges {
   @Input('data') data: Item[];
   @Input('category') category: Categories;
   @Output('isDirty') isDirty: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -23,6 +23,10 @@ export class NonChargeTimeComponent implements OnInit {
   ngOnInit() {
     this.categoryName = this.category.CategoryName;
     this.calculatePreviousTotals();
+    this.calculateNextTotals();
+  }
+
+  ngOnChanges() {
     this.calculateNextTotals();
   }
 

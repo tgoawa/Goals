@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, OnChanges, Input, ViewChild } from '@angular/core';
 
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
@@ -14,7 +14,7 @@ import * as _ from 'lodash';
   templateUrl: './hours-entry.component.html',
   styleUrls: ['./hours-entry.component.scss']
 })
-export class HoursEntryComponent implements OnInit {
+export class HoursEntryComponent implements OnInit, OnChanges {
   @ViewChild('staticModal') public staticModal: ModalDirective;
 
   hours: Hours;
@@ -40,6 +40,10 @@ export class HoursEntryComponent implements OnInit {
   ngOnInit() {
     this.teamMember = this.tmService.teamMember;
     this.getData();
+    this.calculateTotalHours();
+  }
+
+  ngOnChanges() {
     this.calculateTotalHours();
   }
 
@@ -186,7 +190,7 @@ export class HoursEntryComponent implements OnInit {
   ignoreChanges() {
     this.isDirty = false;
     this.hideModal();
-    this.hoursToEdit = this.hours;
+    this.resetData();
     this.toggleDestination(this.destinationValue);
   }
 
@@ -228,5 +232,10 @@ export class HoursEntryComponent implements OnInit {
         items[index].IsDirty = false;
       }
     }
+  }
+
+  resetData() {
+    this.hoursToEdit = this.hours;
+    this.calculateTotalHours();
   }
 }
