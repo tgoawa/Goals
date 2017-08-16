@@ -42,7 +42,7 @@ export class EditEconomicGoalComponent implements OnInit {
   }
 
   practiceUnitClicked(dest: number) {
-    if (this.displayPracticeUnit == true) {
+    if (this.displayPracticeUnit === true) {
       return;
     } else {
       this.verifyBeforeDestinationChange(dest);
@@ -102,6 +102,7 @@ export class EditEconomicGoalComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log(this.goalToEdit);
     this.egService.updateEconomicGoal(this.goalToEdit)
       .subscribe(data => {
         this.showSuccessUpdate();

@@ -12,7 +12,7 @@
 
 <form novalidate #economicGoalsForm (ngSubmit)="onSubmit()">
   <app-detail *ngIf="displayPersonal" [title]="'Personal Goals'" [currentDetail]="goalToEdit?.CurrentEconomicGoal?.Details[0]"
-    [previousDetail]="goalToEdit?.PreviousEconomicGoal?.Details[0]" (isDirty)="detailDirty()"></app-detail>
+    [previousDetail]="goalToEdit?.PreviousEconomicGoal?.Details[0]" [Weight]="goalToEdit?.CurrentEconomicGoal" (isDirty)="detailDirty()"></app-detail>
   <app-detail *ngIf="displayPracticeUnit" [title]="'Practice Unit'" [currentDetail]="goalToEdit?.CurrentEconomicGoal?.Details[1]"
     [previousDetail]="goalToEdit?.PreviousEconomicGoal?.Details[1]" (isDirty)="detailDirty()"></app-detail>
   <app-detail *ngIf="displayIndustryTeam" [title]="'Industry Team'" [currentDetail]="goalToEdit?.CurrentEconomicGoal?.Details[2]"

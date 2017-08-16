@@ -30,6 +30,7 @@ export interface EconomicGoal {
     DisplayDateModified: string;
     EconomicGoalId: number;
     TeamMemberId: number;
+    Weight: number;
     Year: number;
 }
 
