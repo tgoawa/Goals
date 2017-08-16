@@ -49,6 +49,7 @@
               <option style="display: none" hidden></option>
               <option *ngFor="let weight of weightList;" [value]="weight">{{weight}}</option>
             </select>
+            <div *ngIf="editPersonalGoalForm.get('Weight').hasError('required')" class="alert alert-danger">A goal weight is required</div>
             </div>
           </div>
           <div class="goal-subSection">

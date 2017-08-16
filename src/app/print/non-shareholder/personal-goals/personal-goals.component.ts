@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
 import { Goal } from '../../../goals/goal';
 import { PrintService } from '../services/print.service';
+import { TeamMember, TeamMemberService } from '../../../teamMember/';
 
 @Component({
   selector: 'app-personal-goals',
@@ -13,12 +14,14 @@ export class PersonalGoalsComponent implements OnInit {
 
   competency: string;
   competencyType: string;
+  teamMember: TeamMember;
   private competencyList: any[];
   private competencyTypeList: any[];
 
-  constructor(private prService: PrintService) { }
+  constructor(private prService: PrintService, private tmService: TeamMemberService) { }
 
   ngOnInit() {
+    this.teamMember = this.tmService.teamMember;
     this.getCompetencies();
     this.getCompetencyTypes();
   }

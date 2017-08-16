@@ -19,6 +19,11 @@
     Goal Name: <b>{{personalGoal.Name}}</b>
   </div>
 </div>
+<div class="row" *ngIf="teamMember.IsShareHolder">
+  <div class="col-md-12">
+    Goal Weight: <b>{{personalGoal.Weight}}</b>
+  </div>
+</div>
 <div class="row">
   <div class="col-md-12">
     Date Created: <b>{{personalGoal.DisplayDateCreated}}</b>
