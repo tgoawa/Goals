@@ -21,7 +21,7 @@
       <p>Here you will find the list of your WIG based goals. you can view, edit and create new WIG goals.</p>
     </div>
   </div>
-  <div class="row" *ngIf="teamMember.IndustryTeams !== null">
+  <div class="row" *ngIf="!teamMember.IsShareHolder && teamMember.IndustryTeams !== null">
     <div class="col-md-11">
       <h3><a href="#" [routerLink]="['/goals/industry-team']">Industry Team Goals</a></h3>
       <p>Here you will find a list of your past and current goals the pertain to your primary industry team. You can view, edit,
