@@ -42,12 +42,13 @@
               <my-date-picker name="DisplayDateCompleted" [options]="myDatePickerOptions" formControlName="DisplayDateCompleted"></my-date-picker>
               <div *ngIf="addpersonalGoalForm.get('DisplayDateCompleted').hasError('required')" class="alert alert-danger">A Completion By date is required</div>
             </div>
-            <div *ngIf="teamMember.IsShareHolder" class="form-group col-md-2">
+            <div *ngIf="teamMember.IsShareHolder" class="form-group col-md-3">
               <label for="Weight">Weight %:</label>
               <select class="form-control" name="Weight" formControlName="Weight">
               <option style="display: none" hidden></option>
               <option *ngFor="let weight of weightList;" [value]="weight">{{weight}}</option>
             </select>
+            <div *ngIf="addpersonalGoalForm.get('Weight').hasError('required')" class="alert alert-danger">A goal weight is required</div>
             </div>
           </div>
           <div class="goal-subSection">
