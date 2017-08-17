@@ -1,98 +1,95 @@
 <div class="row">
-  <div class="col-md-12">
-  Competency for current goal:
+  <div class="col-md-2">
+    Competency:
+  </div>
+  <div class="col-md-10" style="font-weight:bold">{{competency}}</div>
+</div>
+<div class="row">
+  <div class="col-md-2">
+    Goal type:
+  </div>
+  <div class="col-md-10" style="font-weight:bold">{{competencyType}}</div>
+</div>
+<div class="row">
+  <div class="col-md-2">
+    Goal Name:
+  </div>
+  <div class="col-md-10">
+    <b>{{personalGoal.Name}}</b>
   </div>
 </div>
 <div class="row">
-  <div class="col-md-10 offset-md-2" style="font-weight:bold">{{competency}}</div>
-</div>
-<div class="row">
-  <div class="col-md-12">
-  Goal type:
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-10 offset-md-2" style="font-weight:bold">{{competencyType}}</div>
-</div>
-<div class="row">
-  <div class="col-md-12">
-    Goal Name: <b>{{personalGoal.Name}}</b>
-  </div>
-</div>
-<div class="row" *ngIf="teamMember.IsShareHolder">
-  <div class="col-md-12">
-    Goal Weight: <b>{{personalGoal.Weight}}</b>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-12">
-    Date Created: <b>{{personalGoal.DisplayDateCreated}}</b>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-12">
-    Last Updated: <b>{{personalGoal.DisplayDateModified}}</b>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-12">
-    Date Complete By: <b>{{personalGoal.DisplayDateCompleted}}</b>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-12">
+  <div class="col-md-2">
     Goal Description:
   </div>
+  <div class="col-md-10" style="font-weight:bold" [innerHTML]="personalGoal.GoalDescription"></div>
 </div>
-<div class="row">
-  <div class="col-md-10 offset-md-2" style="font-weight:bold" [innerHTML]="personalGoal.GoalDescription"></div>
-</div>
-<div *ngIf="personalGoal.Actions">
-  <div class="row">
-    <div class="col-md-12">
+<div class="row" *ngIf="personalGoal.Actions">
+  <div class="col-md-2">
     Actions:
-    </div>
   </div>
-  <div class="row" *ngFor="let action of personalGoal.Actions">
-    <div class="col-md-12 offset-md-2" style="font-weight:bold" [innerHTML]="action.Action">
-    </div>
+  <div class="col-md-10">
+    <p *ngFor="let action of personalGoal.Actions" style="font-weight:bold" [innerHTML]="action.Action"></p>
   </div>
 </div>
-<div *ngIf="personalGoal.Supports">
-  <div class="row">
-    <div class="col-md-12">
+<div class="row" *ngIf="personalGoal.Supports">
+  <div class="col-md-2">
     Supports:
-    </div>
   </div>
-  <div class="row" *ngFor="let support of personalGoal.Supports">
-    <div class="col-md-12 offset-md-2" style="font-weight:bold" [innerHTML]="support.Support">
-    </div>
+  <div class="col-md-10">
+    <p *ngFor="let support of personalGoal.Supports" style="font-weight:bold" [innerHTML]="support.Support">
+    </p>
   </div>
 </div>
-<div *ngIf="personalGoal.Measurements">
-  <div class="row">
-    <div class="col-md-12">
+<div class="row" *ngIf="personalGoal.Measurements">
+  <div class="col-md-2">
     Measurements:
-    </div>
   </div>
-  <div class="row" *ngFor="let measurement of personalGoal.Measurements">
-    <div class="col-md-12 offset-md-2" style="font-weight:bold" [innerHTML]="measurement.Measurement">
-    </div>
+  <div class="col-md-10">
+    <p *ngFor="let measurement of personalGoal.Measurements" style="font-weight:bold" [innerHTML]="measurement.Measurement">
+    </p>
   </div>
 </div>
-<div *ngIf="personalGoal.Notes">
-  <div class="row">
-    <div class="col-md-12">
+<div class="row" *ngIf="personalGoal.Notes.length > 0">
+  <div class="col-md-2">
     Notes:
-    </div>
   </div>
-  <div class="row" *ngFor="let note of personalGoal.Notes">
-    <div class="col-md-12 offset-md-2" style="font-weight:bold" [innerHTML]="note.Note">
-    </div>
+  <div class="col-md-10">
+    <p *ngFor="let note of personalGoal.Notes" style="font-weight:bold" [innerHTML]="note.Note">
+    </p>
   </div>
 </div>
 <div class="row">
-  <div class="col-md-12">
-    Percent Complete: <b>{{personalGoal.GoalCompletionPercentage}}%</b>
+  <div class="col-md-2" *ngIf="teamMember.IsShareHolder">
+    Goal Weight:
+  </div>
+  <div class="col-md-2" *ngIf="teamMember.IsShareHolder">
+    <b>{{personalGoal.Weight}}</b>
+  </div>
+  <div class="col-md-2">
+    % Complete:
+  </div>
+  <div class="col-md-2">
+    <b>{{personalGoal.GoalCompletionPercentage}}%</b>
+  </div>
+</div>
+<div class="row print-end-goal">
+  <div class="col-md-2">
+    Created:
+  </div>
+  <div class="col-md-2">
+    <b>{{personalGoal.DisplayDateCreated}}</b>
+  </div>
+  <div class="col-md-2">
+    Last Updated:
+  </div>
+  <div class="col-md-2">
+    <b>{{personalGoal.DisplayDateModified}}</b>
+  </div>
+  <div class="col-md-2">
+    Complete By:
+  </div>
+  <div class="col-md-2">
+    <b>{{personalGoal.DisplayDateCompleted}}</b>
   </div>
 </div>

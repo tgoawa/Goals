@@ -1,93 +1,92 @@
 <div class="row">
-  <div class="col-md-12">
-    Goal Name: <b>{{wigGoal.Name}}</b>
+  <div class="col-md-2">
+    WIG Title:
+  </div>
+  <div class="col-md-10" style="font-weight:bold">{{wigTitle}}</div>
+</div>
+<div class="row">
+  <div class="col-md-2">
+    Goal Name:
+  </div>
+  <div class="col-md-10">
+    <b>{{wigGoal.Name}}</b>
   </div>
 </div>
 <div class="row">
-  <div class="col-md-12">
-    Date Created: <b>{{wigGoal.DisplayDateCreated}}</b>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-12">
-    Last Updated: <b>{{wigGoal.DisplayDateModified}}</b>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-12">
+  <div class="col-md-2">
     Goal Description:
   </div>
+  <div class="col-md-10" style="font-weight:bold" [innerHTML]="wigGoal.GoalDescription"></div>
 </div>
-<div class="row">
-  <div class="col-md-10 offset-md-2" style="font-weight:bold" [innerHTML]="wigGoal.GoalDescription"></div>
-</div>
-<div class="row">
-  <div class="col-md-12">
-  Weight: {{wigGoal.Weight}}
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-12">
-  WIG Title:
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-10 offset-md-2" style="font-weight:bold">{{wigTitle}}</div>
-</div>
-<div class="row">
+<!-- <div class="row">
   <div class="col-md-12">
   WIG Description:
   </div>
 </div>
 <div class="row">
-  <div class="col-md-10 offset-md-2" style="font-weight:bold"></div>
-</div>
-<div *ngIf="wigGoal.Actions">
-  <div class="row">
-    <div class="col-md-12">
+  <div class="col-md-10 offset-md-2" style="font-weight:bold" [innerHTML]="wigDescription"></div>
+</div> -->
+<div class="row" *ngIf="wigGoal.Actions">
+  <div class="col-md-2">
     Actions:
-    </div>
   </div>
-  <div class="row" *ngFor="let action of wigGoal.Actions">
-    <div class="col-md-12 offset-md-2" style="font-weight:bold" [innerHTML]="action.Action">
-    </div>
+  <div class="col-md-10">
+    <p *ngFor="let action of wigGoal.Actions" style="font-weight:bold" [innerHTML]="action.Action">
+    </p>
   </div>
 </div>
-<div *ngIf="wigGoal.Supports">
-  <div class="row">
-    <div class="col-md-12">
+<div class="row" *ngIf="wigGoal.Supports">
+  <div class="col-md-2">
     Supports:
-    </div>
   </div>
-  <div class="row" *ngFor="let support of wigGoal.Supports">
-    <div class="col-md-12 offset-md-2" style="font-weight:bold" [innerHTML]="support.Support">
-    </div>
+  <div class="col-md-10">
+    <p *ngFor="let support of wigGoal.Supports" style="font-weight:bold" [innerHTML]="support.Support">
+    </p>
   </div>
 </div>
-<div *ngIf="wigGoal.Measurements">
-  <div class="row">
-    <div class="col-md-12">
+<div class="row" *ngIf="wigGoal.Measurements">
+  <div class="col-md-2">
     Measurements:
-    </div>
   </div>
-  <div class="row" *ngFor="let measurement of wigGoal.Measurements">
-    <div class="col-md-12 offset-md-2" style="font-weight:bold" [innerHTML]="measurement.Measurement">
-    </div>
+  <div class="col-md-10">
+    <p *ngFor="let measurement of wigGoal.Measurements" style="font-weight:bold" [innerHTML]="measurement.Measurement">
+    </p>
   </div>
 </div>
-<div *ngIf="wigGoal.Notes">
-  <div class="row">
-    <div class="col-md-12">
+<div class="row" *ngIf="wigGoal.Notes.length > 0">
+  <div class="col-md-2">
     Notes:
-    </div>
   </div>
-  <div class="row" *ngFor="let note of wigGoal.Notes">
-    <div class="col-md-12 offset-md-2" style="font-weight:bold" [innerHTML]="note.Note">
-    </div>
+  <div class="col-md-10">
+    <p *ngFor="let note of wigGoal.Notes" style="font-weight:bold" [innerHTML]="note.Note">
+    </p>
   </div>
 </div>
 <div class="row">
-  <div class="col-md-12">
-    Percent Complete: <b>{{wigGoal.GoalCompletionPercentage}}%</b>
+  <div class="col-md-2">
+    Weight:
+  </div>
+  <div class="col-md-2">
+    <b>{{wigGoal.Weight}}</b>
+  </div>
+  <div class="col-md-2">
+    % Complete:
+  </div>
+  <div class="col-md-2">
+    <b>{{wigGoal.GoalCompletionPercentage}}%</b>
+  </div>
+</div>
+<div class="row print-end-goal">
+  <div class="col-md-2">
+    Date Created:
+  </div>
+  <div class="col-md-2">
+    <b>{{wigGoal.DisplayDateCreated}}</b>
+  </div>
+  <div class="col-md-2">
+    Last Updated:
+  </div>
+  <div class="col-md-2">
+    <b>{{wigGoal.DisplayDateModified}}</b>
   </div>
 </div>
