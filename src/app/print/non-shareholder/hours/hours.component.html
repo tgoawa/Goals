@@ -14,12 +14,12 @@
     <h2>Charge Time</h2>
   </div>
 </div>
-<div class="row">
+<div class="row print-end-goal">
   <div class="col-md-12">
     <app-charge-time *ngIf="hoursCategories" [category]="hoursCategories?.Categories[0]" [data]="hoursData?.IndustryTeams" (totalNewHours)="setIndustryTeamTotal($event)"></app-charge-time>
   </div>
 </div>
-<div class="row">
+<div class="row print-end-goal">
   <div class="col-md-12">
     <app-charge-time *ngIf="hoursCategories" [category]="hoursCategories?.Categories[2]" [data]="hoursData?.ServiceLines" (totalNewHours)="setServiceLineTotal($event)"></app-charge-time>
   </div>
@@ -41,7 +41,7 @@
           <td class="text-right">{{serviceLineTotalHours}}</td>
         </tr>
         <tr>
-          <th scope="row">Total Work Hours:</th>
+          <th scope="row">Total Estimated Work Hours:</th>
           <td class="text-right">{{totalWorkHours}}</td>
         </tr>
       </tbody>
