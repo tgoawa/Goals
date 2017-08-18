@@ -60,7 +60,7 @@ export class AddIndustryGoalComponent implements OnInit, AfterViewInit {
   }
 
   closeModal() {
-    if (this.addIndustryGoalForm.dirty) {
+    if (this.addIndustryGoalForm.touched) {
       if (confirm('You are about to lose changes, are you sure?')) {
         this.hideModal();
       }
@@ -71,6 +71,7 @@ export class AddIndustryGoalComponent implements OnInit, AfterViewInit {
   }
 
   hideModal() {
+    this.addIndustryGoalForm.reset();
     this.addModal.hide();
     this.modalIsClosed();
   }

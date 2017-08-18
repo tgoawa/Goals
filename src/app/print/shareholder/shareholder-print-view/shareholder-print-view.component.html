@@ -24,7 +24,7 @@
 <div *ngIf="printGoal?.CompentencyGoals?.length > 0" class="page-break-before">
   <div class="row">
     <div class="col-md-12 text-center">
-    <h3>Personal Goals (lowest to highest % complete)</h3>
+      <h3>Personal Goals (lowest to highest % complete)</h3>
     </div>
   </div>
   <div style="border-bottom: 1px solid" *ngFor="let personalGoal of printGoal?.CompentencyGoals">
@@ -41,4 +41,13 @@
     <app-wig-goal [wigGoal]="wigGoal"></app-wig-goal>
   </div>
 </div>
-
+<div *ngIf="printGoal?.IndustryGoals?.length > 0" class="page-break-before">
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <h3>Industry Team Goals (lowest to highest % complete)</h3>
+    </div>
+  </div>
+  <div *ngFor="let industryGoal of printGoal?.IndustryGoals" style="border-bottom: 1px solid">
+    <app-industry-goals [industryGoal]="industryGoal"></app-industry-goals>
+  </div>
+</div>
