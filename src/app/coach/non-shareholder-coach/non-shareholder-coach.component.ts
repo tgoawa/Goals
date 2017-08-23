@@ -21,6 +21,9 @@ export class NonShareholderCoachComponent implements OnInit {
   }
 
   getData(id: number) {
+    if (isNaN(id)) {
+      return;
+    }
     this.getTeamMemberPrintView(id);
     this.getHours(id);
   }

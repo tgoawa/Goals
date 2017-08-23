@@ -31,21 +31,24 @@ export class ShareholderCoachComponent implements OnInit {
   }
 
   getData(id: number) {
+    if (isNaN(id)) {
+      return;
+    }
     this.getShareHolderPrintView(id);
     this.getHours(id);
   }
 
   getShareHolderPrintView(teamMemberid: number) {
-    this.isLoading = true;
-    this.shprService.getPrintView(teamMemberid)
-      .subscribe(data => {
-        this.isLoading = false;
-        this.mapToTeamMember(teamMemberid);
-        this.printGoal = data;
-      }, error => {
-        console.log(error);
-        this.isLoading = false;
-      });
+      this.isLoading = true;
+      this.shprService.getPrintView(teamMemberid)
+        .subscribe(data => {
+          this.isLoading = false;
+          this.mapToTeamMember(teamMemberid);
+          this.printGoal = data;
+        }, error => {
+          console.log(error);
+          this.isLoading = false;
+        });
   }
 
   getHours(id: number) {
