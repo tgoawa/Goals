@@ -18,7 +18,7 @@ export class CoachService {
   }
 
   getShareholderCoachEmployees(coachId: number) {
-    return this.http.get(api + 'ShareHolderService/GetShareholderCoaches/' + coachId)
+    return this.http.get(api + 'EmployeeService/GetShareholdersByCoach/' + coachId)
     .map(response => response.json(), error => console.log(error));
   }
 
