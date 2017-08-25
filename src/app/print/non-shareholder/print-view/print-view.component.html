@@ -34,17 +34,17 @@
   <div *ngIf="printGoal?.OpenPersonalGoals?.length > 0" class="page-break-before">
     <div class="row">
       <div class="col-md-12 text-center">
-        <h3>Personal Goals (lowest to highest % complete)</h3>
+        <h3>Personal Goals (Highest to lowest % complete)</h3>
       </div>
     </div>
     <div *ngFor="let personalGoal of printGoal?.OpenPersonalGoals" style="border-bottom: 1px solid">
-      <app-personal-goals [personalGoal]="personalGoal"></app-personal-goals>
+      <app-personal-goals *ngIf="competencyList && competencyTypeList" [personalGoal]="personalGoal" [competencyList]="competencyList" [competencyTypeList]="competencyTypeList"></app-personal-goals>
     </div>
   </div>
   <div *ngIf="printGoal?.OpenIndustryTeamGoals?.length > 0" class="page-break-before">
     <div class="row">
       <div class="col-md-12 text-center">
-        <h3>Industry Team Goals (lowest to highest % complete)</h3>
+        <h3>Industry Team Goals (Highest to lowest % complete)</h3>
       </div>
     </div>
     <div *ngFor="let industryGoal of printGoal?.OpenIndustryTeamGoals" style="border-bottom: 1px solid">

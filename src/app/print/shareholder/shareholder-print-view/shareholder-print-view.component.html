@@ -24,27 +24,27 @@
 <div *ngIf="printGoal?.CompentencyGoals?.length > 0" class="page-break-before">
   <div class="row">
     <div class="col-md-12 text-center">
-      <h3>Personal Goals (lowest to highest % complete)</h3>
+      <h3>Personal Goals (Highest to lowest % complete)</h3>
     </div>
   </div>
   <div style="border-bottom: 1px solid" *ngFor="let personalGoal of printGoal?.CompentencyGoals">
-    <app-personal-goals [personalGoal]="personalGoal"></app-personal-goals>
+    <app-personal-goals *ngIf="competencyList && competencyTypeList" [personalGoal]="personalGoal" [competencyList]="competencyList" [competencyTypeList]="competencyTypeList"></app-personal-goals>
   </div>
 </div>
 <div *ngIf="printGoal?.WigGoals?.length > 0" class="page-break-before">
   <div class="row">
     <div class="col-md-12 text-center">
-      <h3>WIG Goals (lowest to highest % complete)</h3>
+      <h3>WIG Goals (Highest to lowest % complete)</h3>
     </div>
   </div>
   <div style="border-bottom: 1px solid" *ngFor="let wigGoal of printGoal?.WigGoals">
-    <app-wig-goal [wigGoal]="wigGoal"></app-wig-goal>
+    <app-wig-goal *ngIf="wigList" [wigGoal]="wigGoal" [wigList]="wigList"></app-wig-goal>
   </div>
 </div>
 <div *ngIf="printGoal?.IndustryGoals?.length > 0" class="page-break-before">
   <div class="row">
     <div class="col-md-12 text-center">
-      <h3>Industry Team Goals (lowest to highest % complete)</h3>
+      <h3>Industry Team Goals (Highest to lowest % complete)</h3>
     </div>
   </div>
   <div *ngFor="let industryGoal of printGoal?.IndustryGoals" style="border-bottom: 1px solid">
