@@ -38,7 +38,7 @@
       </div>
     </div>
     <div *ngFor="let personalGoal of printGoal?.OpenPersonalGoals" style="border-bottom: 1px solid">
-      <app-personal-goals [personalGoal]="personalGoal"></app-personal-goals>
+      <app-personal-goals *ngIf="competencyList && competencyTypeList" [personalGoal]="personalGoal" [competencyList]="competencyList" [competencyTypeList]="competencyTypeList"></app-personal-goals>
     </div>
   </div>
   <div *ngIf="printGoal?.OpenIndustryTeamGoals?.length > 0" class="page-break-before">

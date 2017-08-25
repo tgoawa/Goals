@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
 
 import { Goal } from '../../../goals/goal';
 import { PrintService } from '../services/print.service';
@@ -11,39 +11,19 @@ import { TeamMember, TeamMemberService } from '../../../teamMember/';
 })
 export class PersonalGoalsComponent implements OnInit {
   @Input('personalGoal') personalGoal: Goal;
+  @Input() competencyList: any[];
+  @Input() competencyTypeList: any[];
 
   competency: string;
   competencyType: string;
   teamMember: TeamMember;
-  private competencyList: any[];
-  private competencyTypeList: any[];
 
   constructor(private prService: PrintService, private tmService: TeamMemberService) { }
 
   ngOnInit() {
     this.teamMember = this.tmService.teamMember;
-    this.getCompetencies();
-    this.getCompetencyTypes();
-  }
-
-  getCompetencies() {
-    this.prService.getCompetencies()
-    .subscribe(data => {
-      this.competencyList = data;
-      this.mapCompetencyText();
-    }, error => {
-      console.log(error);
-    });
-  }
-
-  getCompetencyTypes() {
-    this.prService.getCompetencyTypes()
-    .subscribe(data => {
-      this.competencyTypeList = data;
-      this.mapCompetencyTypeText();
-    }, error => {
-      console.log(error);
-    });
+    this.mapCompetencyText();
+    this.mapCompetencyTypeText();
   }
 
   mapCompetencyText() {
