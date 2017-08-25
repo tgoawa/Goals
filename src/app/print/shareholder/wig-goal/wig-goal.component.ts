@@ -9,24 +9,14 @@ import { ShareholderPrintService } from '../services/shareholder-print.service';
 })
 export class WigGoalComponent implements OnInit {
   @Input('wigGoal') wigGoal: Goal;
+  @Input() wigList: any[];
 
-  wigList: any[];
   wigTitle: string;
   wigDescription: string;
   constructor(private prService: ShareholderPrintService) { }
 
   ngOnInit() {
-    this.getWIGs();
-  }
-
-  getWIGs() {
-    this.prService.getWIGs()
-    .subscribe(data => {
-      this.wigList = data;
-      this.mapWIGs();
-    }, error => {
-      console.log(error);
-    });
+    this.mapWIGs();
   }
 
   mapWIGs() {

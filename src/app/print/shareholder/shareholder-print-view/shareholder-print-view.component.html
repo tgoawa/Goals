@@ -28,7 +28,7 @@
     </div>
   </div>
   <div style="border-bottom: 1px solid" *ngFor="let personalGoal of printGoal?.CompentencyGoals">
-    <app-personal-goals [personalGoal]="personalGoal"></app-personal-goals>
+    <app-personal-goals *ngIf="competencyList && competencyTypeList" [personalGoal]="personalGoal" [competencyList]="competencyList" [competencyTypeList]="competencyTypeList"></app-personal-goals>
   </div>
 </div>
 <div *ngIf="printGoal?.WigGoals?.length > 0" class="page-break-before">
@@ -38,7 +38,7 @@
     </div>
   </div>
   <div style="border-bottom: 1px solid" *ngFor="let wigGoal of printGoal?.WigGoals">
-    <app-wig-goal [wigGoal]="wigGoal"></app-wig-goal>
+    <app-wig-goal *ngIf="wigList" [wigGoal]="wigGoal" [wigList]="wigList"></app-wig-goal>
   </div>
 </div>
 <div *ngIf="printGoal?.IndustryGoals?.length > 0" class="page-break-before">
