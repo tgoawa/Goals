@@ -55,7 +55,7 @@ export class HoursEntryComponent implements OnInit, OnChanges {
   }
 
   calculateTotalHours() {
-    this.totalWorkHours = this.nonChargeTotalHours + this.industryTeamHours + this.serviceLineTotalHours;
+    this.totalWorkHours = this.nonChargeTotalHours + this.serviceLineTotalHours;
   }
 
   displayNonChargeHours() {

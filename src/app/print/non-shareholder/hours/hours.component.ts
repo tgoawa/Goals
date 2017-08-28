@@ -39,7 +39,7 @@ export class HoursComponent implements OnInit {
   }
 
   calculateTotalHours() {
-    this.totalWorkHours = this.nonChargeTotalHours + this.industryTeamHours + this.serviceLineTotalHours;
+    this.totalWorkHours = this.nonChargeTotalHours + this.serviceLineTotalHours;
   }
 
   setNonChargeTotal(hours: number) {
