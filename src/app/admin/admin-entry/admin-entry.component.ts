@@ -29,4 +29,13 @@ export class AdminEntryComponent implements OnInit {
     });
   }
 
+  mapTeamMember() {
+    for (let index = 0; index < this.teamMemberList.length; index++) {
+      if (this.selected === this.teamMemberList[index].LastFirstName) {
+        this.emulatedTeamMember = this.teamMemberList[index];
+        console.log(this.emulatedTeamMember);
+      }
+    }
+  }
+
 }
