@@ -8,12 +8,14 @@ import { TeamMember, TeamMemberService } from '../teamMember';
 })
 export class HeaderComponent implements OnInit {
   isCollapsed = true;
-  teamMember: TeamMember;
+  defaultTeamMember: TeamMember;
+  emulatedTeamMember: TeamMember;
 
   constructor(private tmService: TeamMemberService) { }
 
   ngOnInit() {
-    this.teamMember = this.tmService.emulatedTeamMember;
+    this.emulatedTeamMember = this.tmService.emulatedTeamMember;
+    this.defaultTeamMember = this.defaultTeamMember;
   }
 
 }

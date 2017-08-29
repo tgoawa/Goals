@@ -12,27 +12,27 @@
             <li>
               <a class="dropdown-item" href="#" [routerLink]="['/goals/personal']">Personal Development</a>
             </li>
-            <li *ngIf="teamMember.IndustryTeams !== null">
+            <li *ngIf="emulatedTeamMember.IndustryTeams !== null">
               <a class="dropdown-item" href="#" [routerLink]="['/goals/industry-team']">Industry Team Goals</a>
             </li>
-            <li *ngIf="teamMember.IsShareHolder">
+            <li *ngIf="emulatedTeamMember.IsShareHolder">
               <a class="dropdown-item" href="#" [routerLink]="['/goals/shareholder-wig']">WIG Based Goals</a>
             </li>
-            <li *ngIf="teamMember.IsShareHolder">
+            <li *ngIf="emulatedTeamMember.IsShareHolder">
               <a class="dropdown-item" href="#" [routerLink]="['/goals/shareholder-economic']">Economic Contribution Goal</a>
             </li>
           </ul>
         </li>
-        <li *ngIf="!teamMember.IsShareHolder" class="nav-item">
+        <li *ngIf="!emulatedTeamMember.IsShareHolder" class="nav-item">
           <a class="nav-link" href="#" [routerLink]="['/meetings/meeting-list']" routerLinkActive="active">Meeting List</a>
         </li>
-        <li class="nav-item dropdown" dropdown *ngIf="teamMember.IsCoach || teamMember.IsShareHolderCoach">
+        <li class="nav-item dropdown" dropdown *ngIf="emulatedTeamMember.IsCoach || emulatedTeamMember.IsShareHolderCoach">
           <a class="nav-link dropdown-toggle" href dropdownToggle (click)="false">Coach</a>
           <ul *dropdownMenu class="dropdown-menu">
-            <li *ngIf="teamMember.IsCoach">
+            <li *ngIf="emulatedTeamMember.IsCoach">
               <a class="dropdown-item" href="#" [routerLink]="['/coach/non-shareholder-coach']" routerLinkActive="active">Coach</a>
             </li>
-            <li *ngIf="teamMember.IsShareHolderCoach">
+            <li *ngIf="emulatedTeamMember.IsShareHolderCoach">
               <a class="dropdown-item" href="#" [routerLink]="['/coach/shareholder-coach']" routerLinkActive="active">Shareholder Coach</a>
             </li>
           </ul>
@@ -40,10 +40,10 @@
         <li class="nav-item">
           <a class="nav-link" href="#" [routerLink]="['/hours']" routerLinkActive="active">Hours</a>
         </li>
-        <li *ngIf="!teamMember.IsShareHolder" class="nav-item">
+        <li *ngIf="!emulatedTeamMember.IsShareHolder" class="nav-item">
           <a class="nav-link" href="#" [routerLink]="['/print/non-shareholder']" routerLinkActive="active">Print View</a>
         </li>
-        <li *ngIf="teamMember.IsShareHolder" class="nav-item">
+        <li *ngIf="emulatedTeamMember.IsShareHolder" class="nav-item">
           <a class="nav-link" href="#" [routerLink]="['/print/shareholder']" routerLinkActive="active">Print View</a>
         </li>
         <li class="nav-item">
