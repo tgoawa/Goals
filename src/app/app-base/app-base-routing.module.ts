@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from '../home/home.component';
 import { AuthGuard } from '../auth.guard';
 import { AppBaseComponent } from './app-base.component';
-import { GoalsComponent } from '../goals/goals.component';
 import { TeamMemberResolver } from '../teamMember';
 
 
@@ -22,7 +21,8 @@ const routes: Routes = [
       { path: 'meetings', loadChildren: '../meetings/meetings.module#MeetingsModule'},
       { path: 'coach', loadChildren: '../coach/coach.module#CoachModule'},
       { path: 'print', loadChildren: '../print/print.module#PrintModule'},
-      { path: 'hours', loadChildren: '../hours/hours.module#HoursModule'}
+      { path: 'hours', loadChildren: '../hours/hours.module#HoursModule'},
+      { path: 'admin', loadChildren: '../admin/admin.module#AdminModule'}
     ]
   },
 ];
