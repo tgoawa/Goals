@@ -21,7 +21,7 @@ export class PersonalGoalsComponent implements OnInit {
   constructor(private prService: PrintService, private tmService: TeamMemberService) { }
 
   ngOnInit() {
-    this.teamMember = this.tmService.teamMember;
+    this.teamMember = this.tmService.emulatedTeamMember;
     this.mapCompetencyText();
     this.mapCompetencyTypeText();
   }

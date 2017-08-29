@@ -21,7 +21,7 @@ export class ShareholderComponent implements OnInit {
   constructor(private shprService: ShareholderPrintService, private tmService: TeamMemberService, private prService: PrintService) { }
 
   ngOnInit() {
-    this.teamMember = this.tmService.teamMember;
+    this.teamMember = this.tmService.emulatedTeamMember;
     this.getData(this.teamMember.TeamMemberId);
   }
 

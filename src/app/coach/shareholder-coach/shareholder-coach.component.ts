@@ -26,7 +26,7 @@ export class ShareholderCoachComponent implements OnInit {
     private prService: PrintService) { }
 
   ngOnInit() {
-    this.coach = this.tmService.teamMember;
+    this.coach = this.tmService.emulatedTeamMember;
     this.getShareholderTeamMemberList();
   }
 

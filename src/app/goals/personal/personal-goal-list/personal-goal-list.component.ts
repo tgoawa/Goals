@@ -23,7 +23,7 @@ export class PersonalGoalListComponent implements OnInit {
   constructor(private cgService: PersonalGoalService, private toastrService: ToastrService, private tmService: TeamMemberService) { }
 
   ngOnInit() {
-    this.teamMember = this.tmService.teamMember;
+    this.teamMember = this.tmService.emulatedTeamMember;
     this.getGoals(this.teamMember.TeamMemberId);
   }
 

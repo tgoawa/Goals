@@ -9,7 +9,8 @@ import { TeamMember } from './team-member';
 const api = environment.envApi;
 @Injectable()
 export class TeamMemberService {
-  teamMember: TeamMember;
+  defaultTeamMember: TeamMember;
+  emulatedTeamMember: TeamMember;
   constructor(private http: Http) { }
 
   getTeamMember(userName: string) {

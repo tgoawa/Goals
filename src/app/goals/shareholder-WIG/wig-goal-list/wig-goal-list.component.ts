@@ -23,7 +23,7 @@ export class WigGoalListComponent implements OnInit {
   constructor(private wgService: WigGoalServiceService, private toastrService: ToastrService, private tmService: TeamMemberService) { }
 
   ngOnInit() {
-    this.teamMember = this.tmService.teamMember;
+    this.teamMember = this.tmService.emulatedTeamMember;
     this.getGoals(this.teamMember.TeamMemberId);
   }
 

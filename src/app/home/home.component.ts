@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TeamMember, TeamMemberService } from '../teamMember/'; 
+import { TeamMember, TeamMemberService } from '../teamMember/';
 
 import { environment } from '../../environments/environment';
 
@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
   constructor(private tmService: TeamMemberService) { }
 
   ngOnInit() {
-    this.teamMember = this.tmService.teamMember;
+    this.teamMember = this.tmService.emulatedTeamMember;
     this.isTeamMemberValid();
   }
 
