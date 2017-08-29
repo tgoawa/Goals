@@ -12,6 +12,7 @@ export class AdminEntryComponent implements OnInit {
 
   teamMemberList: TeamMember[];
   emulatedTeamMember: TeamMember;
+  selected: string;
 
   constructor(private adminService: AdminService, private tmService: TeamMemberService) { }
 
