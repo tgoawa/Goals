@@ -38,8 +38,17 @@ export class HoursEntryComponent implements OnInit, OnChanges {
     private toastrService: ToastrService) { }
 
   ngOnInit() {
-    // this.teamMember = this.tmService.emulatedTeamMember;
-    // this.getData();
+  this.getEmulatedTeamMember();
+  }
+
+  getEmulatedTeamMember() {
+    this.tmService.emulatedTeamMember
+      .subscribe(data => {
+        this.teamMember = data;
+        this.getData();
+      }, error => {
+        console.log(error);
+      });
   }
 
   ngOnChanges() {
