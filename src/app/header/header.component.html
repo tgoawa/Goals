@@ -1,6 +1,8 @@
 <div *ngIf="emulatedTeamMember.TeamMemberId !== defaultTeamMember.TeamMemberId" class="container-fluid">
   <div class="alert alert-danger text-center">
-    You are currently logged in as {{emulatedTeamMember.FirstName}} {{emulatedTeamMember.LastName}} <a href="javascript:;" class="alert-link" (click)="resetToDefaultTeamMember()">Stop impersonating</a>
+    You are currently impersonating {{emulatedTeamMember.FirstName}} {{emulatedTeamMember.LastName}}
+    <p><a href="javascript:;" class="alert-link" (click)="resetToDefaultTeamMember()">Stop impersonating</a>
+    </p>
   </div>
 </div>
 

@@ -11,6 +11,7 @@ import { AdminService } from '../services/admin.service';
 export class AdminEntryComponent implements OnInit {
 
   teamMemberList: TeamMember[];
+  defaultTeamMember: TeamMember;
   emulatedTeamMember: TeamMember;
   selected: string;
 
@@ -18,6 +19,17 @@ export class AdminEntryComponent implements OnInit {
 
   ngOnInit() {
     this.getTeamMembers();
+    this.getEmulatedTeamMember();
+    this.defaultTeamMember = this.tmService.defaultTeamMember;
+  }
+
+  getEmulatedTeamMember() {
+    this.tmService.emulatedTeamMember
+      .subscribe(data => {
+        this.emulatedTeamMember = data;
+      }, error => {
+        console.log(error);
+      });
   }
 
   getTeamMembers() {
@@ -33,7 +45,6 @@ export class AdminEntryComponent implements OnInit {
     for (let index = 0; index < this.teamMemberList.length; index++) {
       if (this.selected === this.teamMemberList[index].LastFirstName) {
         this.emulatedTeamMember = this.teamMemberList[index];
-        console.log(this.emulatedTeamMember);
       }
     }
   }
