@@ -19,8 +19,8 @@ export class EconomicGoalComponent implements OnInit {
   constructor(private goalService: EconomicGoalService, private tmService: TeamMemberService) { }
 
   ngOnInit() {
-    this.teamMember = this.tmService.emulatedTeamMember;
-    this.getEconomicGoals();
+    // this.teamMember = this.tmService.emulatedTeamMember;
+    // this.getEconomicGoals();
   }
 
   getEconomicGoals() {

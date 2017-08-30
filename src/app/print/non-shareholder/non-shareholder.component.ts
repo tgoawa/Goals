@@ -20,8 +20,8 @@ export class NonShareholderComponent implements OnInit {
   constructor(private prService: PrintService, private tsService: TeamMemberService) { }
 
   ngOnInit() {
-    this.teamMember = this.tsService.emulatedTeamMember;
-    this.getData(this.teamMember.TeamMemberId);
+    // this.teamMember = this.tsService.emulatedTeamMember;
+    // this.getData(this.teamMember.TeamMemberId);
 
   }
 

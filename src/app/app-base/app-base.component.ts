@@ -14,7 +14,7 @@ export class AppBaseComponent implements OnInit {
   ngOnInit() {
     this.teamMember = this.activatedRoute.snapshot.data['teamMemberData'];
     this.tsService.defaultTeamMember = this.teamMember;
-    this.tsService.emulatedTeamMember = this.teamMember;
+    this.tsService.setEmulatedTeamMember(this.teamMember);
   }
 
 }

@@ -29,9 +29,9 @@ export class MeetingsListComponent implements OnInit {
     private toastrService: ToastrService) { }
 
   ngOnInit() {
-    this.teamMember = this.tmService.emulatedTeamMember;
-    this.getMeetings();
-    this.getQuestions();
+    // this.teamMember = this.tmService.emulatedTeamMember;
+    // this.getMeetings();
+    // this.getQuestions();
   }
 
   getMeetings() {

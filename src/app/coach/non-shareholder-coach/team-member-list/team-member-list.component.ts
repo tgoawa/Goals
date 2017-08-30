@@ -17,8 +17,8 @@ export class TeamMemberListComponent implements OnInit {
   constructor(private coachService: CoachService, private tmService: TeamMemberService) { }
 
   ngOnInit() {
-    this.coach = this.tmService.emulatedTeamMember;
-    this.getTeamMemberList();
+    // this.coach = this.tmService.emulatedTeamMember;
+    // this.getTeamMemberList();
   }
 
   getTeamMemberList() {
