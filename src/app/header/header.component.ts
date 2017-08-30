@@ -25,6 +25,10 @@ export class HeaderComponent implements OnInit {
         this.emulatedTeamMember = data;
       }, error => {
         console.log(error);
-      })
+      });
+  }
+
+  resetToDefaultTeamMember() {
+    this.tmService.setEmulatedTeamMember(this.defaultTeamMember);
   }
 }

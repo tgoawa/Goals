@@ -38,4 +38,8 @@ export class AdminEntryComponent implements OnInit {
     }
   }
 
+  assignEmulatedTeamMember() {
+    this.tmService.setEmulatedTeamMember(this.emulatedTeamMember);
+  }
+
 }
