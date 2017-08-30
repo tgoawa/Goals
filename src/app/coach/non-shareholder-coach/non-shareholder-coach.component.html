@@ -1,11 +1,11 @@
 <app-team-member-list (selectedTeamMember)="getData($event)"></app-team-member-list>
 <div class="row" *ngIf="isLoading">
-  <div class="col-md-2 offset-md-5"><i fa class="fa fa-spinner fa-5x fa-spin" aria-hidden="true"></i>
+  <div class="col-md-2 offset-md-5"><i fa class="fa fa-spinner fa-5x fa-pulse" aria-hidden="true"></i>
   </div>
 </div>
 <div *ngIf="!isLoading">
   <app-print-view *ngIf="printGoal" [printGoal]="printGoal"></app-print-view>
-    <div *ngIf="hoursData" class="page-break-before">
-    <app-hours  [hoursData]="hoursData"></app-hours>
+  <div *ngIf="hoursData" class="page-break-before">
+    <app-hours [hoursData]="hoursData"></app-hours>
   </div>
 </div>

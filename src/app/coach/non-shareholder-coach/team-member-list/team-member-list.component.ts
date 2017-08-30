@@ -17,17 +17,26 @@ export class TeamMemberListComponent implements OnInit {
   constructor(private coachService: CoachService, private tmService: TeamMemberService) { }
 
   ngOnInit() {
-    // this.coach = this.tmService.emulatedTeamMember;
-    // this.getTeamMemberList();
+    this.getEmulatedTeamMember();
   }
 
   getTeamMemberList() {
     this.coachService.getCoachEmployees(this.coach.TeamMemberId)
-    .subscribe(data => {
-      this.teamMemberList = data;
-    }, error => {
-      console.log(error);
-    });
+      .subscribe(data => {
+        this.teamMemberList = data;
+      }, error => {
+        console.log(error);
+      });
+  }
+
+  getEmulatedTeamMember() {
+    this.tmService.emulatedTeamMember
+      .subscribe(data => {
+        this.coach = data;
+        this.getTeamMemberList();
+      }, error => {
+        console.log(error);
+      });
   }
 
   teamMemberSelected() {
