@@ -19,8 +19,6 @@ export class HomeComponent implements OnInit {
   constructor(private tmService: TeamMemberService) { }
 
   ngOnInit() {
-    // this.teamMember = this.tmService.emulatedTeamMember;
-    // this.isTeamMemberValid();
     this.getEmulatedTeamMember();
   }
 
@@ -29,7 +27,6 @@ export class HomeComponent implements OnInit {
       .subscribe(data => {
         this.teamMember = data;
         this.isTeamMemberValid();
-        console.log(this.teamMember);
       }, error => {
         console.log(error);
       });

@@ -23,8 +23,17 @@ export class PersonalGoalListComponent implements OnInit {
   constructor(private cgService: PersonalGoalService, private toastrService: ToastrService, private tmService: TeamMemberService) { }
 
   ngOnInit() {
-    // this.teamMember = this.tmService.emulatedTeamMember;
-    // this.getGoals(this.teamMember.TeamMemberId);
+  this.getEmulatedTeamMember();
+  }
+
+  getEmulatedTeamMember() {
+    this.tmService.emulatedTeamMember
+      .subscribe(data => {
+        this.teamMember = data;
+        this.getGoals(this.teamMember.TeamMemberId);
+      }, error => {
+        console.log(error);
+      });
   }
 
   getGoals(id: number) {
