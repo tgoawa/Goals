@@ -22,8 +22,17 @@ export class HoursComponent implements OnInit {
   constructor(private prService: PrintService, private tsService: TeamMemberService) { }
 
   ngOnInit() {
-    // this.teamMember = this.tsService.emulatedTeamMember;
-    // this.getHoursCategories();
+    this.getEmulatedTeamMember();
+  }
+
+  getEmulatedTeamMember() {
+    this.tsService.emulatedTeamMember
+      .subscribe(data => {
+        this.teamMember = data;
+        this.getHoursCategories();
+      }, error => {
+        console.log(error);
+      });
   }
 
   getHoursCategories() {
