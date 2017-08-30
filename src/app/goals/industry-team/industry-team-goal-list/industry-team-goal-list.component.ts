@@ -23,20 +23,29 @@ export class IndustryTeamGoalListComponent implements OnInit {
   constructor(private igService: IndustryGoalService, private toastrService: ToastrService, private tmService: TeamMemberService) { }
 
   ngOnInit() {
-    // this.teamMember = this.tmService.emulatedTeamMember;
-    // this.getGoals(this.teamMember.TeamMemberId);
+    this.getEmulatedTeamMember();
+  }
+
+  getEmulatedTeamMember() {
+    this.tmService.emulatedTeamMember
+      .subscribe(data => {
+        this.teamMember = data;
+        this.getGoals(this.teamMember.TeamMemberId);
+      }, error => {
+        console.log(error);
+      });
   }
 
   getGoals(id: number) {
     this.isLoading = true;
     this.igService.getIndustryGoals(id)
-    .subscribe(data => {
-      this.isLoading = false;
-      this.industryGoalList = data;
-    }, error => {
-      console.log(error);
-      this.isLoading = false;
-    });
+      .subscribe(data => {
+        this.isLoading = false;
+        this.industryGoalList = data;
+      }, error => {
+        console.log(error);
+        this.isLoading = false;
+      });
   }
 
   onEdit(goal: Goal) {

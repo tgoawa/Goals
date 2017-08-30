@@ -27,7 +27,6 @@ export class AddIndustryGoalComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.addIndustryGoalForm = this.toFormGroup(this.industryGoal);
-    console.log(this.industryGoal);
   }
 
   ngAfterViewInit() {
