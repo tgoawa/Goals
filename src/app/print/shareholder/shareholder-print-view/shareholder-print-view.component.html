@@ -14,6 +14,14 @@
       <h2> Economic Contribution Goals for year: {{printGoal?.EconomicGoals?.CurrentEconomicGoal?.Year}}</h2>
     </div>
   </div>
+  <div class="row">
+    <div class="col-md-2">
+      Weight:
+    </div>
+    <div class="col-md-2">
+      <b>{{printGoal?.EconomicGoals.CurrentEconomicGoal.Weight}}</b>
+    </div>
+  </div>
   <app-shareholder-details [title]="'Personal'" [currentDetail]="printGoal?.EconomicGoals?.CurrentEconomicGoal?.Details[0]"
     [previousDetail]="printGoal?.EconomicGoals?.PreviousEconomicGoal?.Details[0]"></app-shareholder-details>
   <app-shareholder-details [title]="'Practice Unit'" [currentDetail]="printGoal?.EconomicGoals?.CurrentEconomicGoal?.Details[1]"
