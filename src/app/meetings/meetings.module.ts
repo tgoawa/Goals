@@ -25,6 +25,7 @@ import { DetailComponent } from './shareholder/details/detail/detail.component';
 import { NotesListComponent } from './shareholder/notes/notes-list/notes-list.component';
 import { NoteItemComponent } from './shareholder/notes/note-item/note-item.component';
 import { AddShareholderMeetingComponent } from './shareholder/add-shareholder-meeting/add-shareholder-meeting.component';
+import { ReadOnlyMeetingComponent } from './non-shareholder/read-only-meeting/read-only-meeting.component';
 
 @NgModule({
   imports: [
@@ -52,6 +53,7 @@ import { AddShareholderMeetingComponent } from './shareholder/add-shareholder-me
   NotesListComponent,
   NoteItemComponent,
   AddShareholderMeetingComponent,
+  ReadOnlyMeetingComponent
 ],
   providers: [QuestionService, MeetingsService, CoachService, ShareholderMeetingService]
 })
