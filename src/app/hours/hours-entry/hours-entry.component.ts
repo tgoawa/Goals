@@ -208,7 +208,7 @@ export class HoursEntryComponent implements OnInit, OnChanges {
   }
 
   showFailedUpdate() {
-    this.toastrService.error('', 'There was a problem updating your hours data, please try again. If issue persists, please contact the Help Desk');
+    this.toastrService.error('', 'Error updating your hours data, please try again. If issue persists, please contact the Help Desk');
   }
 
   updateHours() {

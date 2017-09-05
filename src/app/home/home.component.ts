@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TeamMember, TeamMemberService } from '../teamMember/'; 
+import { TeamMember, TeamMemberService } from '../teamMember/';
 
 import { environment } from '../../environments/environment';
 

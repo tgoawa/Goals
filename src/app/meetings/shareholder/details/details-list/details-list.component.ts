@@ -11,7 +11,7 @@ export class DetailsListComponent implements OnInit {
   @Input('parentMeetingForm') parentMeetingForm: FormGroup;
   @Input('Details') Details: Detail[];
   @Input('meetingId') meetingId: number;
-  
+
   constructor() { }
 
   ngOnInit() {

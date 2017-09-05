@@ -32,6 +32,6 @@ export class EconomicGoalComponent implements OnInit {
     }, error => {
       this.isLoading = false;
       console.log(error);
-    })
+    });
   }
 }

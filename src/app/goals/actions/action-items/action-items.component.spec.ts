@@ -8,7 +8,6 @@ describe('ActionItemsComponent', () => {
   let component: ActionItemsComponent;
   let fixture: ComponentFixture<ActionItemsComponent>;
   let checkbox: DebugElement;
-  let textarea: DebugElement;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -35,7 +34,4 @@ describe('ActionItemsComponent', () => {
     expect(checkbox).toBeTruthy();
   });
 
-  it('should create action text area', () => {
-    expect(textarea).toBeTruthy();
-  });
 });
