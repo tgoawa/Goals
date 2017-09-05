@@ -15,7 +15,6 @@ import { MeetingListComponent } from './meeting-list/meeting-list.component';
 import { EditMeetingComponent } from './non-shareholder/edit-meeting/edit-meeting.component';
 import { CoachService } from '../meetings/non-shareholder/services/coach.service';
 import { AddMeetingComponent } from './non-shareholder/add-meeting/add-meeting.component';
-import { ReadOnlyMeetingComponent } from './non-shareholder/read-only-meeting/read-only-meeting.component';
 import { ShMeetingsListComponent } from './shareholder/sh-meetings-list/sh-meetings-list.component';
 import { ShareholderMeetingService } from './shareholder/service/shareholder-meeting.service';
 import { EditShareholderMeetingComponent } from './shareholder/edit-shareholder-meeting/edit-shareholder-meeting.component';
@@ -44,7 +43,6 @@ import { AddShareholderMeetingComponent } from './shareholder/add-shareholder-me
   MeetingListComponent,
   EditMeetingComponent,
   AddMeetingComponent,
-  ReadOnlyMeetingComponent,
   ShMeetingsListComponent,
   EditShareholderMeetingComponent,
   SupportListComponent,
