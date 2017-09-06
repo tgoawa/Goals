@@ -4,7 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 
 import { SHMeeting } from '../models/shmeeting';
-import { TeamMember } from '../../../teamMember/'
+import { TeamMember } from '../../../teamMember/';
 import { ShareholderMeetingService } from '../service/shareholder-meeting.service';
 import { CoachService } from '../../non-shareholder/services/coach.service';
 

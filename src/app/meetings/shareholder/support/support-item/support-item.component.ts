@@ -40,7 +40,7 @@ export class SupportItemComponent implements OnInit {
 
     return formGroup;
   }
-  
+
     replaceBreakTags() {
     if (this.supportItem.Support !== null) {
       this.supportItemForm.patchValue({

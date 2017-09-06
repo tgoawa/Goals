@@ -25,13 +25,13 @@ export class EconomicGoalComponent implements OnInit {
   getEconomicGoals() {
     this.isLoading = true;
     this.goalService.getEconomicGoals(this.teamMember.TeamMemberId)
-      .subscribe(data => {
-        this.isLoading = false;
-        this.economicGoals = data;
-      }, error => {
-        this.isLoading = false;
-        console.log(error);
-      })
+    .subscribe(data => {
+      this.isLoading = false;
+      this.economicGoals = data;
+    }, error => {
+      this.isLoading = false;
+      console.log(error);
+    });
   }
 
   getEmulatedTeamMember() {

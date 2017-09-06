@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(formValue: User) {
-    let encUser = this.encryptUser();
+    const encUser = this.encryptUser();
     this.checkUser(encUser);
   }
 

@@ -9,7 +9,7 @@ import { Hours } from './models/hours';
   styleUrls: ['./hours.component.scss']
 })
 export class HoursComponent implements OnInit {
-  
+
   constructor() { }
 
   ngOnInit() {
