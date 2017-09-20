@@ -14,7 +14,7 @@
   </div>
   <div formArrayName="Actions">
     <div class="row" *ngFor="let action of Actions; let i = index">
-      <div class="col-md-8">
+      <div class="col-md-10">
         <app-action-items [actionItems]="parentGoalForm.controls.Actions" [actionItem]="action">
         </app-action-items>
       </div>
