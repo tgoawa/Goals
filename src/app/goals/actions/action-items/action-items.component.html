@@ -6,9 +6,13 @@
       <span class="custom-control-indicator"></span>
     </label>
     </div>
-    <div class="col-md-10">
+    <div class="col-md-7">
       <textarea class="form-control" formControlName="Action" (keyup)="onValueChange()" required placeholder="Enter a single action item."></textarea>
       <div *ngIf="actionItemForm.get('Action').hasError('required')" class="alert alert-danger">An action item is required</div>
+    </div>
+    <label class="col-md-1 col-form-label">By When:</label>
+    <div class="col-md-3">
+      <my-date-picker name="DisplayDateDue" [options]="myDatePickerOptions" formControlName="DisplayDateDue"></my-date-picker>
     </div>
   </div>
 </div>

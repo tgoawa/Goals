@@ -130,6 +130,7 @@ export class AddPersonalGoalComponent implements OnInit, AfterViewInit {
   onSubmit(formValue: Goal) {
     this.replaceLineBreaks(formValue);
     this.formatDateCompleteBy();
+    this.formatActionDueDate();
     this.saveGoal(formValue);
   }
 
@@ -180,6 +181,15 @@ export class AddPersonalGoalComponent implements OnInit, AfterViewInit {
     const personalGoal = this.addpersonalGoalForm.value;
     if (personalGoal.DisplayDateDue !== null) {
       personalGoal.DisplayDateCompleted = personalGoal.DisplayDateCompleted.formatted;
+    }
+  }
+
+  formatActionDueDate() {
+    const editedGoal: Goal = this.addpersonalGoalForm.value;
+    for (let index = 0; index < editedGoal.Supports.length; index++) {
+      if (editedGoal.Actions[index].DisplayDateDue !== null) {
+        editedGoal.Actions[index].DisplayDateDue = editedGoal.Actions[index].DisplayDateDue.formatted;
+      }
     }
   }
 }

@@ -26,6 +26,7 @@ export class ActionsListComponent implements OnInit {
       IsCompleted: false,
       DisplayDateCreated: '',
       DisplayDateModified: '',
+      DisplayDateDue: '',
       IsDirty: false
     };
 

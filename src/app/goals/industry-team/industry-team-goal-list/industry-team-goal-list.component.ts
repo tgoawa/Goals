@@ -69,6 +69,7 @@ export class IndustryTeamGoalListComponent implements OnInit {
         IsCompleted: false,
         DisplayDateCreated: '',
         DisplayDateModified: '',
+        DisplayDateDue: '',
         IsDirty: false
       }],
       Measurements: [{

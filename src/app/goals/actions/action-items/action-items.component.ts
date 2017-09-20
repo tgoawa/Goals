@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Action } from '../../goal';
 
+import { IMyDpOptions, IMyDateModel } from 'mydatepicker';
+
 @Component({
   selector: 'app-action-items',
   templateUrl: './action-items.component.html',
@@ -12,6 +14,10 @@ export class ActionItemsComponent implements OnInit {
   @Input('actionItem') actionItem: Action;
 
   actionItemForm: FormGroup;
+
+  myDatePickerOptions: IMyDpOptions = {
+    dateFormat: 'mm/dd/yyyy'
+  };
 
   constructor(private fb: FormBuilder) { }
 
@@ -27,6 +33,7 @@ export class ActionItemsComponent implements OnInit {
       GoalId: data.GoalId,
       Action: [data.Action, Validators.required],
       IsCompleted: data.IsCompleted,
+      DisplayDateDue: {formatted: data.DisplayDateDue},
       IsDirty: data.IsDirty
     });
 
