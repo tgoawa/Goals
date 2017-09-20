@@ -228,7 +228,7 @@ export class EditPersonalGoalComponent implements OnInit, AfterViewInit {
 
   formatActionDueDate() {
     const editedGoal: Goal = this.editPersonalGoalForm.value;
-    for (let index = 0; index < editedGoal.Supports.length; index++) {
+    for (let index = 0; index < editedGoal.Actions.length; index++) {
       if (editedGoal.Actions[index].DisplayDateDue !== null) {
         editedGoal.Actions[index].DisplayDateDue = editedGoal.Actions[index].DisplayDateDue.formatted;
       }

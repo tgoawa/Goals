@@ -112,6 +112,7 @@ export class AddWigGoalComponent implements OnInit, AfterViewInit {
   onSubmit(formValue: Goal) {
     this.replaceLineBreaks(formValue);
     this.formatDateCompleteBy();
+    this.formatActionDueDate();
     this.saveGoal(formValue);
   }
 
@@ -162,6 +163,15 @@ export class AddWigGoalComponent implements OnInit, AfterViewInit {
     const personalGoal = this.addWigGoalForm.value;
     if (personalGoal.DisplayDateDue !== null) {
       personalGoal.DisplayDateCompleted = personalGoal.DisplayDateCompleted.formatted;
+    }
+  }
+
+  formatActionDueDate() {
+    const editedGoal: Goal = this.addWigGoalForm.value;
+    for (let index = 0; index < editedGoal.Actions.length; index++) {
+      if (editedGoal.Actions[index].DisplayDateDue !== null) {
+        editedGoal.Actions[index].DisplayDateDue = editedGoal.Actions[index].DisplayDateDue.formatted;
+      }
     }
   }
 

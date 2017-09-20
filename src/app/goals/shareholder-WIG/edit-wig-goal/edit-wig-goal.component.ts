@@ -127,6 +127,7 @@ export class EditWigGoalComponent implements OnInit, AfterViewInit {
       }
     }
     this.formatDateCompleteBy();
+    this.formatActionDueDate();
     this.replaceLineBreaks(this.editWigGoalForm.value);
     this.updateGoal();
   }
@@ -187,6 +188,15 @@ export class EditWigGoalComponent implements OnInit, AfterViewInit {
     const personalGoal = this.editWigGoalForm.value;
     if (personalGoal.DisplayDateDue !== null) {
       personalGoal.DisplayDateCompleted = personalGoal.DisplayDateCompleted.formatted;
+    }
+  }
+
+  formatActionDueDate() {
+    const editedGoal: Goal = this.editWigGoalForm.value;
+    for (let index = 0; index < editedGoal.Actions.length; index++) {
+      if (editedGoal.Actions[index].DisplayDateDue !== null) {
+        editedGoal.Actions[index].DisplayDateDue = editedGoal.Actions[index].DisplayDateDue.formatted;
+      }
     }
   }
 }
