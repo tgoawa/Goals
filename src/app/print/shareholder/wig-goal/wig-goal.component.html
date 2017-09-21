@@ -18,23 +18,24 @@
   </div>
   <div class="col-md-10" style="font-weight:bold" [innerHTML]="wigGoal.GoalDescription"></div>
 </div>
-<!-- <div class="row">
-  <div class="col-md-12">
-  WIG Description:
+<div *ngIf="wigGoal.Actions">
+    <div class="row">
+      <div class="col-md-2">
+        Actions:
+      </div>
+    </div>
+    <div class="row" *ngFor="let action of wigGoal.Actions">
+      <div class="col-md-1">
+        Due by:
+      </div>
+      <div class="col-md-1">
+        {{action.DisplayDateDue}}
+      </div>
+      <div class="col-md-8">
+        <p style="font-weight:bold">{{action.Action}}</p>
+      </div>
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="col-md-10 offset-md-2" style="font-weight:bold" [innerHTML]="wigDescription"></div>
-</div> -->
-<div class="row" *ngIf="wigGoal.Actions">
-  <div class="col-md-2">
-    Actions:
-  </div>
-  <div class="col-md-10">
-    <p *ngFor="let action of wigGoal.Actions" style="font-weight:bold" [innerHTML]="action.Action">
-    </p>
-  </div>
-</div>
 <div class="row" *ngIf="wigGoal.Supports">
   <div class="col-md-2">
     Supports:
