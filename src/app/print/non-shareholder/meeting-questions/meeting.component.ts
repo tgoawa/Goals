@@ -8,11 +8,20 @@ import { TeamMember } from '../../../teamMember';
   styleUrls: ['./meeting.component.scss']
 })
 export class MeetingComponent implements OnInit {
-  @Input('questions') questions: Question;
+  @Input('questions') questions: Question[];
   @Input('teamMember') teamMember: TeamMember;
   constructor() { }
 
   ngOnInit() {
+    this.setNullToEmpty();
+  }
+
+  setNullToEmpty() {
+    for (let x = 0; x < this.questions.length; x++) {
+      if (this.questions[x].AnswerText === null) {
+        this.questions[x].AnswerText = '';
+      }
+    }
   }
 
 }
