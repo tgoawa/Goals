@@ -23,6 +23,7 @@ export class ActionItemsComponent implements OnInit {
 
   ngOnInit() {
     this.actionItemForm = this.toFormGroup(this.actionItem);
+    this.setDate();
     this.replaceBreakTags();
     this.actionItems.push(this.actionItemForm);
   }
@@ -33,10 +34,9 @@ export class ActionItemsComponent implements OnInit {
       GoalId: data.GoalId,
       Action: [data.Action, Validators.required],
       IsCompleted: data.IsCompleted,
-      DisplayDateDue: {formatted: data.DisplayDateDue},
+      DisplayDateDue: [data.DisplayDateDue, Validators.required],
       IsDirty: data.IsDirty
     });
-
     return formGroup;
   }
 
@@ -52,6 +52,16 @@ export class ActionItemsComponent implements OnInit {
     this.actionItemForm.patchValue({
       IsDirty: true
     });
+  }
+
+  setDate() {
+    if (this.actionItem.DisplayDateDue === '') {
+      return;
+    } else {
+      this.actionItemForm.patchValue({
+        DisplayDateDue: {formatted: this.actionItem.DisplayDateDue}
+      });
+    }
   }
 
 }

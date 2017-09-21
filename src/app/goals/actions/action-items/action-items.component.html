@@ -12,7 +12,8 @@
     </div>
     <label class="col-md-2 col-form-label">Due By:</label>
     <div class="col-md-3">
-      <my-date-picker name="DisplayDateDue" [options]="myDatePickerOptions" formControlName="DisplayDateDue" (dateChanged)="onValueChange()"></my-date-picker>
+      <my-date-picker name="DisplayDateDue" [options]="myDatePickerOptions" formControlName="DisplayDateDue" (inputFieldChanged)="onValueChange()"></my-date-picker>
+      <div *ngIf="actionItemForm.get('DisplayDateDue').hasError('required')" class="alert alert-danger">A due date is required</div>
     </div>
   </div>
 </div>
