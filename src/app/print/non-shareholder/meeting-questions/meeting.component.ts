@@ -13,6 +13,7 @@ export class MeetingComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.replaceLineBreaks();
     this.setNullToEmpty();
   }
 
@@ -20,6 +21,14 @@ export class MeetingComponent implements OnInit {
     for (let x = 0; x < this.questions.length; x++) {
       if (this.questions[x].AnswerText === null) {
         this.questions[x].AnswerText = '';
+      }
+    }
+  }
+
+  replaceLineBreaks() {
+    for (let x = 0; x < this.questions.length; x++) {
+      if (this.questions[x].AnswerText !== null) {
+        this.questions[x].AnswerText = this.questions[x].AnswerText.replace(/(\r\n|\n|\r)/gm, '<br>');
       }
     }
   }
