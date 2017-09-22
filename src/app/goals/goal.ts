@@ -28,6 +28,7 @@ export class Action {
     IsCompleted: boolean;
     DisplayDateCreated: string;
     DisplayDateModified: string;
+    DisplayDateDue: any;
     IsDirty: boolean;
 };
 

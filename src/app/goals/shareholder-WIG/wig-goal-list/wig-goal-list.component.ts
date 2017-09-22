@@ -68,6 +68,7 @@ export class WigGoalListComponent implements OnInit {
         IsCompleted: false,
         DisplayDateCreated: '',
         DisplayDateModified: '',
+        DisplayDateDue: '',
         IsDirty: false
       }],
       Measurements: [{

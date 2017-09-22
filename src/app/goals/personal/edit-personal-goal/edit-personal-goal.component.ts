@@ -162,6 +162,7 @@ export class EditPersonalGoalComponent implements OnInit, AfterViewInit {
       }
     }
     this.formatDateCompleteBy();
+    this.formatActionDueDate();
     this.replaceLineBreaks(this.editPersonalGoalForm.value);
     this.updateGoal();
   }
@@ -222,6 +223,15 @@ export class EditPersonalGoalComponent implements OnInit, AfterViewInit {
     const personalGoal = this.editPersonalGoalForm.value;
     if (personalGoal.DisplayDateDue !== null) {
       personalGoal.DisplayDateCompleted = personalGoal.DisplayDateCompleted.formatted;
+    }
+  }
+
+  formatActionDueDate() {
+    const editedGoal: Goal = this.editPersonalGoalForm.value;
+    for (let index = 0; index < editedGoal.Actions.length; index++) {
+      if (editedGoal.Actions[index].DisplayDateDue !== null) {
+        editedGoal.Actions[index].DisplayDateDue = editedGoal.Actions[index].DisplayDateDue.formatted;
+      }
     }
   }
 }

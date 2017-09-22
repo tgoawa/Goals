@@ -24,12 +24,22 @@
   </div>
   <div class="col-md-10" style="font-weight:bold" [innerHTML]="personalGoal.GoalDescription"></div>
 </div>
-<div class="row" *ngIf="personalGoal.Actions">
-  <div class="col-md-2">
-    Actions:
+<div *ngIf="personalGoal.Actions">
+  <div class="row">
+    <div class="col-md-2">
+      Actions:
+    </div>
   </div>
-  <div class="col-md-10">
-    <p *ngFor="let action of personalGoal.Actions" style="font-weight:bold" [innerHTML]="action.Action"></p>
+  <div class="row" *ngFor="let action of personalGoal.Actions">
+    <div class="col-md-1">
+      Due by:
+    </div>
+    <div class="col-md-1">
+      {{action.DisplayDateDue}}
+    </div>
+    <div class="col-md-8">
+      <p style="font-weight:bold">{{action.Action}}</p>
+    </div>
   </div>
 </div>
 <div class="row" *ngIf="personalGoal.Supports">

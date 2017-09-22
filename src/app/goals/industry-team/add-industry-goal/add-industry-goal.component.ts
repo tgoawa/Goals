@@ -98,6 +98,7 @@ export class AddIndustryGoalComponent implements OnInit, AfterViewInit {
     this.replaceLineBreaks(formValue);
     this.formatIndustryTeamId(formValue);
     this.formatDateCompleteBy();
+    this.formatActionDueDate();
     this.saveGoal(formValue);
   }
 
@@ -153,6 +154,15 @@ export class AddIndustryGoalComponent implements OnInit, AfterViewInit {
 
   formatIndustryTeamId(formValue: Goal) {
     formValue.IndustryTeamId = +formValue.IndustryTeamId;
+  }
+
+  formatActionDueDate() {
+    const editedGoal: Goal = this.addIndustryGoalForm.value;
+    for (let index = 0; index < editedGoal.Actions.length; index++) {
+      if (editedGoal.Actions[index].DisplayDateDue !== null) {
+        editedGoal.Actions[index].DisplayDateDue = editedGoal.Actions[index].DisplayDateDue.formatted;
+      }
+    }
   }
 
 }

@@ -18,12 +18,22 @@
   </div>
   <div class="col-md-10" style="font-weight:bold" [innerHTML]="industryGoal.GoalDescription"></div>
 </div>
-<div class="row" *ngIf="industryGoal.Actions">
-  <div class="col-md-2">
-    Actions:
+<div *ngIf="industryGoal.Actions">
+  <div class="row">
+    <div class="col-md-2">
+      Actions:
+    </div>
   </div>
-  <div class="col-md-10">
-    <p *ngFor="let action of industryGoal.Actions" style="font-weight:bold" [innerHTML]="action.Action"></p>
+  <div class="row" *ngFor="let action of industryGoal.Actions">
+    <div class="col-md-1">
+      Due by:
+    </div>
+    <div class="col-md-1">
+      {{action.DisplayDateDue}}
+    </div>
+    <div class="col-md-8">
+      <p style="font-weight:bold">{{action.Action}}</p>
+    </div>
   </div>
 </div>
 <div class="row" *ngIf="industryGoal.Supports">
@@ -54,30 +64,30 @@
   </div>
 </div>
 <div class="row">
-    <div class="col-md-2">
-      % Complete:
-    </div>
-    <div class="col-md-2">
-      <b>{{industryGoal.GoalCompletionPercentage}}%</b>
-    </div>
+  <div class="col-md-2">
+    % Complete:
   </div>
-  <div class="row print-end-goal">
-    <div class="col-md-2">
-      Created:
-    </div>
-    <div class="col-md-2">
-      <b>{{industryGoal.DisplayDateCreated}}</b>
-    </div>
-    <div class="col-md-2">
-      Last Updated:
-    </div>
-    <div class="col-md-2">
-      <b>{{industryGoal.DisplayDateModified}}</b>
-    </div>
-    <div class="col-md-2">
-      Complete By:
-    </div>
-    <div class="col-md-2">
-      <b>{{industryGoal.DisplayDateCompleted}}</b>
-    </div>
+  <div class="col-md-2">
+    <b>{{industryGoal.GoalCompletionPercentage}}%</b>
   </div>
+</div>
+<div class="row print-end-goal">
+  <div class="col-md-2">
+    Created:
+  </div>
+  <div class="col-md-2">
+    <b>{{industryGoal.DisplayDateCreated}}</b>
+  </div>
+  <div class="col-md-2">
+    Last Updated:
+  </div>
+  <div class="col-md-2">
+    <b>{{industryGoal.DisplayDateModified}}</b>
+  </div>
+  <div class="col-md-2">
+    Complete By:
+  </div>
+  <div class="col-md-2">
+    <b>{{industryGoal.DisplayDateCompleted}}</b>
+  </div>
+</div>
