@@ -119,7 +119,7 @@ export class EditWigGoalComponent implements OnInit, AfterViewInit {
   }
 
   onSubmit() {
-    if (this.editWigGoalForm.value.IsCompleted === true) {
+    if (this.editWigGoalForm.value.IsCompleted === true && !this.checkActionItems()) {
       this.reOpenGoal();
     } else if (this.checkActionItems()) {
       this.completeGoal();

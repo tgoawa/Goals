@@ -105,7 +105,7 @@ export class EditIndustryGoalComponent implements OnInit, AfterViewInit {
   }
 
   onSubmit() {
-    if (this.editIndustryGoalForm.value.IsCompleted === true) {
+    if (this.editIndustryGoalForm.value.IsCompleted === true && !this.checkActionItems()) {
       this.reOpenGoal();
     } else if (this.checkActionItems()) {
       this.completeGoal();

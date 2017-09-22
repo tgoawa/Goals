@@ -154,7 +154,7 @@ export class EditPersonalGoalComponent implements OnInit, AfterViewInit {
   }
 
   onSubmit() {
-    if (this.editPersonalGoalForm.value.IsCompleted === true) {
+    if (this.editPersonalGoalForm.value.IsCompleted === true && !this.checkActionItems()) {
       this.reOpenGoal();
     } else if (this.checkActionItems()) {
       this.completeGoal();
