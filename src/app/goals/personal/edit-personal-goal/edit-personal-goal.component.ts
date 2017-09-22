@@ -96,7 +96,7 @@ export class EditPersonalGoalComponent implements OnInit, AfterViewInit {
       TeamMemberId: data.TeamMemberId,
       DisplayDateCreated: data.DisplayDateCreated,
       DisplayDateModified: data.DisplayDateModified,
-      DisplayDateCompleted: [{formatted: data.DisplayDateCompleted}, Validators.required],
+      DisplayDateCompleted: [{ formatted: data.DisplayDateCompleted }, Validators.required],
       Name: [data.Name, Validators.required],
       GoalDescription: [data.GoalDescription, Validators.required],
     });
@@ -154,12 +154,10 @@ export class EditPersonalGoalComponent implements OnInit, AfterViewInit {
   }
 
   onSubmit() {
-    if (this.checkActionItems()) {
-      if (confirm('All actions are completed. Complete goal?')) {
-        this.editPersonalGoalForm.value.IsCompleted = true;
-      } else {
-        this.editPersonalGoalForm.value.IsCompleted = false;
-      }
+    if (this.editPersonalGoalForm.value.IsCompleted === true && !this.checkActionItems()) {
+      this.reOpenGoal();
+    } else if (this.checkActionItems()) {
+      this.completeGoal();
     }
     this.formatDateCompleteBy();
     this.formatActionDueDate();
@@ -234,4 +232,21 @@ export class EditPersonalGoalComponent implements OnInit, AfterViewInit {
       }
     }
   }
+
+  private reOpenGoal() {
+    if (confirm('This goal was completed, do you wish to reopen?')) {
+      this.editPersonalGoalForm.value.IsCompleted = false;
+    } else {
+      this.editPersonalGoalForm.value.IsCompleted = true;
+    }
+  }
+
+  private completeGoal() {
+    if (confirm('All actions are completed. Complete goal?')) {
+      this.editPersonalGoalForm.value.IsCompleted = true;
+    } else {
+      this.editPersonalGoalForm.value.IsCompleted = false;
+    }
+  }
+
 }

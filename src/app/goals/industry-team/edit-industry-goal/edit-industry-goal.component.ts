@@ -48,7 +48,7 @@ export class EditIndustryGoalComponent implements OnInit, AfterViewInit {
       Weight: data.Weight,
       DisplayDateCreated: data.DisplayDateCreated,
       DisplayDateModified: data.DisplayDateModified,
-      DisplayDateCompleted: [{formatted: data.DisplayDateCompleted}, Validators.required],
+      DisplayDateCompleted: [{ formatted: data.DisplayDateCompleted }, Validators.required],
       Name: [data.Name, Validators.required],
       GoalDescription: [data.GoalDescription, Validators.required],
     });
@@ -105,12 +105,10 @@ export class EditIndustryGoalComponent implements OnInit, AfterViewInit {
   }
 
   onSubmit() {
-    if (this.checkActionItems()) {
-      if (confirm('All actions are completed. Complete goal?')) {
-        this.editIndustryGoalForm.value.IsCompleted = true;
-      } else {
-        this.editIndustryGoalForm.value.IsCompleted = false;
-      }
+    if (this.editIndustryGoalForm.value.IsCompleted === true && !this.checkActionItems()) {
+      this.reOpenGoal();
+    } else if (this.checkActionItems()) {
+      this.completeGoal();
     }
     this.formatDateCompleteBy();
     this.formatIndustryTeamId(this.editIndustryGoalForm.value);
@@ -188,6 +186,22 @@ export class EditIndustryGoalComponent implements OnInit, AfterViewInit {
       if (editedGoal.Actions[index].DisplayDateDue !== null) {
         editedGoal.Actions[index].DisplayDateDue = editedGoal.Actions[index].DisplayDateDue.formatted;
       }
+    }
+  }
+
+  private reOpenGoal() {
+    if (confirm('This goal was completed, do you wish to reopen?')) {
+      this.editIndustryGoalForm.value.IsCompleted = false;
+    } else {
+      this.editIndustryGoalForm.value.IsCompleted = true;
+    }
+  }
+
+  private completeGoal() {
+    if (confirm('All actions are completed. Complete goal?')) {
+      this.editIndustryGoalForm.value.IsCompleted = true;
+    } else {
+      this.editIndustryGoalForm.value.IsCompleted = false;
     }
   }
 }
