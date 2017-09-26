@@ -25,13 +25,13 @@
       </div>
     </div>
     <div class="row" *ngFor="let action of wigGoal.Actions">
-      <div class="col-md-1">
+      <div class="col-md-2">
         Due by:
       </div>
       <div class="col-md-1">
-        {{action.DisplayDateDue}}
+        <b>{{action.DisplayDateDue}}</b>{{action.DisplayDateDue}}
       </div>
-      <div class="col-md-8">
+      <div class="col-md-7">
         <p style="font-weight:bold">{{action.Action}}</p>
       </div>
     </div>
