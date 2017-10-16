@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { TeamMember, TeamMemberService } from '../teamMember';
 import { Observable } from 'rxjs/Observable';
+
+import { Cookie } from 'ng2-cookies';
 
 @Component({
   selector: 'app-header',
@@ -12,7 +15,7 @@ export class HeaderComponent implements OnInit {
   defaultTeamMember: TeamMember;
   emulatedTeamMember: TeamMember;
 
-  constructor(private tmService: TeamMemberService) { }
+  constructor(private tmService: TeamMemberService, private router: Router) { }
 
   ngOnInit() {
     this.defaultTeamMember = this.tmService.defaultTeamMember;
@@ -26,6 +29,11 @@ export class HeaderComponent implements OnInit {
       }, error => {
         console.log(error);
       });
+  }
+
+  onLogout() {
+    Cookie.delete('user');
+    this.router.navigate(['/login']);
   }
 
   resetToDefaultTeamMember() {
