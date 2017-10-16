@@ -34,17 +34,23 @@ export class AdminEntryComponent implements OnInit {
 
   getTeamMembers() {
     this.adminService.getTeamMembers()
-    .subscribe(data => {
-      this.teamMemberList = data;
-    }, error => {
-      console.log(error);
-    });
+      .subscribe(data => {
+        this.teamMemberList = data;
+      }, error => {
+        console.log(error);
+      });
   }
 
   mapTeamMember() {
     for (let index = 0; index < this.teamMemberList.length; index++) {
       if (this.selected === this.teamMemberList[index].LastFirstName) {
-        this.emulatedTeamMember = this.teamMemberList[index];
+        this.tmService.getTeamMember(this.teamMemberList[index].UserName)
+          .subscribe(data => {
+            this.emulatedTeamMember = data;
+          }, error => {
+            console.log('Error getting team member to impersonate');
+          });
+        break;
       }
     }
   }

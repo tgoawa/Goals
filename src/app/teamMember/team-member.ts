@@ -7,7 +7,7 @@ export class TeamMember {
     LastFirstName: string;
     IsAccountDirector: boolean;
     IsManager: boolean;
-    IndustryTeams: string[];
+    IndustryTeams: any[];
     IsShareHolder: boolean;
     IsChargable: boolean;
     IsCoach: boolean;
