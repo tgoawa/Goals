@@ -19,8 +19,7 @@ export class EconomicGoalComponent implements OnInit {
   constructor(private goalService: EconomicGoalService, private tmService: TeamMemberService) { }
 
   ngOnInit() {
-    this.teamMember = this.tmService.teamMember;
-    this.getEconomicGoals();
+    this.getEmulatedTeamMember();
   }
 
   getEconomicGoals() {
@@ -33,5 +32,15 @@ export class EconomicGoalComponent implements OnInit {
       this.isLoading = false;
       console.log(error);
     });
+  }
+
+  getEmulatedTeamMember() {
+    this.tmService.emulatedTeamMember
+      .subscribe(data => {
+        this.teamMember = data;
+        this.getEconomicGoals();
+      }, error => {
+        console.log(error);
+      });
   }
 }

@@ -26,8 +26,17 @@ export class ShMeetingsListComponent implements OnInit {
     private toastrService: ToastrService) { }
 
   ngOnInit() {
-    this.teamMember = this.tmService.teamMember;
-    this.getMeetings();
+  this.getEmulatedTeamMember();
+  }
+
+  getEmulatedTeamMember() {
+    this.tmService.emulatedTeamMember
+      .subscribe(data => {
+        this.teamMember = data;
+        this.getMeetings();
+      }, error => {
+        console.log(error);
+      });
   }
 
   getMeetings() {

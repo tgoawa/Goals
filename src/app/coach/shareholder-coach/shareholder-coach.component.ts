@@ -26,8 +26,7 @@ export class ShareholderCoachComponent implements OnInit {
     private prService: PrintService) { }
 
   ngOnInit() {
-    this.coach = this.tmService.teamMember;
-    this.getShareholderTeamMemberList();
+    this.getEmulatedTeamMember();
   }
 
   getData(id: number) {
@@ -39,16 +38,16 @@ export class ShareholderCoachComponent implements OnInit {
   }
 
   getShareHolderPrintView(teamMemberid: number) {
-      this.isLoading = true;
-      this.shprService.getPrintView(teamMemberid)
-        .subscribe(data => {
-          this.isLoading = false;
-          this.mapToTeamMember(teamMemberid);
-          this.printGoal = data;
-        }, error => {
-          console.log(error);
-          this.isLoading = false;
-        });
+    this.isLoading = true;
+    this.shprService.getPrintView(teamMemberid)
+      .subscribe(data => {
+        this.isLoading = false;
+        this.mapToTeamMember(teamMemberid);
+        this.printGoal = data;
+      }, error => {
+        console.log(error);
+        this.isLoading = false;
+      });
   }
 
   getHours(id: number) {
@@ -67,6 +66,16 @@ export class ShareholderCoachComponent implements OnInit {
     this.cService.getShareholderCoachEmployees(this.coach.TeamMemberId)
       .subscribe(data => {
         this.teamMemberList = data;
+      }, error => {
+        console.log(error);
+      });
+  }
+
+  getEmulatedTeamMember() {
+    this.tmService.emulatedTeamMember
+      .subscribe(data => {
+        this.coach = data;
+        this.getShareholderTeamMemberList();
       }, error => {
         console.log(error);
       });

@@ -31,7 +31,7 @@ export class EditPersonalGoalComponent implements OnInit, AfterViewInit {
   constructor(private fb: FormBuilder, private cgService: PersonalGoalService, private tmService: TeamMemberService) { }
 
   ngOnInit() {
-    this.teamMember = this.tmService.teamMember;
+    this.getEmulatedTeamMember();
     this.weightList = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100];
     this.getGoalCompetencies();
     this.getCompetencyTypes();
@@ -43,6 +43,15 @@ export class EditPersonalGoalComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.showModal();
+  }
+
+  getEmulatedTeamMember() {
+    this.tmService.emulatedTeamMember
+      .subscribe(data => {
+        this.teamMember = data;
+      }, error => {
+        console.log(error);
+      });
   }
 
   getGoalCompetencies() {

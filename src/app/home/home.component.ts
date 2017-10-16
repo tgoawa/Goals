@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TeamMember, TeamMemberService } from '../teamMember/';
 
 import { environment } from '../../environments/environment';
+import { Observable } from 'rxjs/Observable';
 
 const envName = environment.envName;
 @Component({
@@ -18,8 +19,17 @@ export class HomeComponent implements OnInit {
   constructor(private tmService: TeamMemberService) { }
 
   ngOnInit() {
-    this.teamMember = this.tmService.teamMember;
-    this.isTeamMemberValid();
+    this.getEmulatedTeamMember();
+  }
+
+  getEmulatedTeamMember() {
+    this.tmService.emulatedTeamMember
+      .subscribe(data => {
+        this.teamMember = data;
+        this.isTeamMemberValid();
+      }, error => {
+        console.log(error);
+      });
   }
 
   isTeamMemberValid() {

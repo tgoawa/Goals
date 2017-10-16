@@ -21,13 +21,22 @@ export class PersonalGoalsComponent implements OnInit {
   constructor(private prService: PrintService, private tmService: TeamMemberService) { }
 
   ngOnInit() {
-    this.teamMember = this.tmService.teamMember;
-    this.mapCompetencyText();
-    this.mapCompetencyTypeText();
+    this.getEmulatedTeamMember();
+  }
+
+  getEmulatedTeamMember() {
+    this.tmService.emulatedTeamMember
+      .subscribe(data => {
+        this.teamMember = data;
+        this.mapCompetencyText();
+        this.mapCompetencyTypeText();
+      }, error => {
+        console.log(error);
+      });
   }
 
   mapCompetencyText() {
-    for (let index = 0; index < this.competencyList.length; index ++) {
+    for (let index = 0; index < this.competencyList.length; index++) {
       if (this.personalGoal.GoalCompetencyId === this.competencyList[index].GoalCompetencyId) {
         this.competency = this.competencyList[index].Competency;
       }
@@ -35,7 +44,7 @@ export class PersonalGoalsComponent implements OnInit {
   }
 
   mapCompetencyTypeText() {
-    for (let index = 0; index < this.competencyTypeList.length; index ++) {
+    for (let index = 0; index < this.competencyTypeList.length; index++) {
       if (this.personalGoal.GoalCompetencyTypeId === this.competencyTypeList[index].GoalCompetencyTypeId) {
         this.competencyType = this.competencyTypeList[index].CompetencyType;
       }

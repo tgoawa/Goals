@@ -23,20 +23,29 @@ export class WigGoalListComponent implements OnInit {
   constructor(private wgService: WigGoalServiceService, private toastrService: ToastrService, private tmService: TeamMemberService) { }
 
   ngOnInit() {
-    this.teamMember = this.tmService.teamMember;
-    this.getGoals(this.teamMember.TeamMemberId);
+    this.getEmulatedTeamMember();
+  }
+
+  getEmulatedTeamMember() {
+    this.tmService.emulatedTeamMember
+      .subscribe(data => {
+        this.teamMember = data;
+        this.getGoals(this.teamMember.TeamMemberId);
+      }, error => {
+        console.log(error);
+      });
   }
 
   getGoals(id: number) {
     this.isLoading = true;
     this.wgService.getWigGoals(id)
-    .subscribe(data => {
-      this.isLoading = false;
-      this.wigGoalList = data;
-    }, error => {
-      console.log(error);
-      this.isLoading = false;
-    });
+      .subscribe(data => {
+        this.isLoading = false;
+        this.wigGoalList = data;
+      }, error => {
+        console.log(error);
+        this.isLoading = false;
+      });
   }
 
   onEdit(goal: Goal) {
