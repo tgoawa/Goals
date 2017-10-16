@@ -1,6 +1,7 @@
 export class TeamMember {
     TeamMemberId: number;
     UserName: string;
+    BusinessUnitID: number;
     FirstName: string;
     LastName: string;
     LastFirstName: string;
