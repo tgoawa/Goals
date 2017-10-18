@@ -52,8 +52,6 @@ export class EditWigGoalComponent implements OnInit, AfterViewInit {
       GoalId: data.GoalId,
       GoalTypeId: data.GoalTypeId,
       GoalWIGId: [data.GoalWIGId, Validators.required],
-      GoalCompetencyId: [data.GoalCompetencyId, Validators.required],
-      GoalCompetencyTypeId: [data.GoalCompetencyTypeId, Validators.required],
       GoalCompletionPercentage: data.GoalCompletionPercentage,
       IndustryTeamId: data.IndustryTeamId,
       IsCompleted: data.IsCompleted,

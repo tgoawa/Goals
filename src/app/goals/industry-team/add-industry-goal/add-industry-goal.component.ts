@@ -95,6 +95,7 @@ export class AddIndustryGoalComponent implements OnInit, AfterViewInit {
   }
 
   onSubmit(formValue: Goal) {
+    console.log(formValue);
     this.replaceLineBreaks(formValue);
     this.formatIndustryTeamId(formValue);
     this.formatDateCompleteBy();

@@ -53,52 +53,8 @@ export class PersonalGoalListComponent implements OnInit {
   }
 
   onAdd() {
-    this.newGoal = {
-      GoalId: 0,
-      GoalTypeId: 3,
-      GoalWIGId: 0,
-      GoalCompetencyTypeId: null,
-      GoalCompetencyId: null,
-      GoalCompletionPercentage: 0,
-      GoalDescription: '',
-      IndustryTeamId: 0,
-      IndustryTeams: null,
-      IsCompleted: false,
-      Name: '',
-      TeamMemberId: this.teamMember.TeamMemberId,
-      Weight: 0,
-      DisplayDateCreated: '',
-      DisplayDateModified: '',
-      DisplayDateCompleted: '',
-      Actions: [{
-        ActionId: 0,
-        GoalId: 0,
-        Action: '',
-        IsCompleted: false,
-        DisplayDateCreated: '',
-        DisplayDateModified: '',
-        DisplayDateDue: '',
-        IsDirty: false
-      }],
-      Measurements: [{
-        MeasurementId: 0,
-        GoalId: 0,
-        Measurement: '',
-        DisplayDateCreated: '',
-        DisplayDateModified: '',
-        IsDirty: false
-      }],
-      Supports: [{
-        SupportId: 0,
-        GoalId: 0,
-        Support: '',
-        DisplayDateCreated: '',
-        DisplayDateModified: '',
-        IsDirty: false
-      }],
-      Notes: []
-    };
-
+    this.newGoal = new Goal(3, this.teamMember.TeamMemberId, null);
+    console.log(this.newGoal);
   }
 
   clearGoalToEdit() {

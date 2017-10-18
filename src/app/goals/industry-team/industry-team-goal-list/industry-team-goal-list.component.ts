@@ -54,52 +54,7 @@ export class IndustryTeamGoalListComponent implements OnInit {
   }
 
   onAdd() {
-    this.newGoal = {
-      GoalId: 0,
-      GoalTypeId: 2,
-      GoalWIGId: 0,
-      GoalCompetencyTypeId: 0,
-      GoalCompetencyId: 0,
-      GoalCompletionPercentage: 0,
-      GoalDescription: '',
-      IndustryTeamId: 0,
-      IndustryTeams: this.teamMember.IndustryTeams,
-      IsCompleted: false,
-      Name: '',
-      TeamMemberId: this.teamMember.TeamMemberId,
-      Weight: 0,
-      DisplayDateCreated: '',
-      DisplayDateModified: '',
-      DisplayDateCompleted: '',
-      Actions: [{
-        ActionId: 0,
-        GoalId: 0,
-        Action: '',
-        IsCompleted: false,
-        DisplayDateCreated: '',
-        DisplayDateModified: '',
-        DisplayDateDue: '',
-        IsDirty: false
-      }],
-      Measurements: [{
-        MeasurementId: 0,
-        GoalId: 0,
-        Measurement: '',
-        DisplayDateCreated: '',
-        DisplayDateModified: '',
-        IsDirty: false
-      }],
-      Supports: [{
-        SupportId: 0,
-        GoalId: 0,
-        Support: '',
-        DisplayDateCreated: '',
-        DisplayDateModified: '',
-        IsDirty: false
-      }],
-      Notes: []
-    };
-
+    this.newGoal = new Goal(2, this.teamMember.TeamMemberId, this.teamMember.IndustryTeams);
   }
 
   clearGoalToEdit() {
