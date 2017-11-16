@@ -10,7 +10,7 @@ import { Hours } from '../../hours/models/hours';
   styleUrls: ['./non-shareholder-coach.component.scss']
 })
 export class NonShareholderCoachComponent implements OnInit {
-
+  teamMember: TeamMember;
   printGoal: PrintView;
   hoursData: Hours;
   isLoading = false;
@@ -20,12 +20,13 @@ export class NonShareholderCoachComponent implements OnInit {
   ngOnInit() {
   }
 
-  getData(id: number) {
-    if (isNaN(id)) {
+  getData(teamMember: TeamMember) {
+    if (teamMember === undefined) {
       return;
     }
-    this.getTeamMemberPrintView(id);
-    this.getHours(id);
+    this.teamMember = teamMember;
+    this.getTeamMemberPrintView(teamMember.TeamMemberId);
+    this.getHours(teamMember.TeamMemberId);
   }
 
   getTeamMemberPrintView(id: number) {

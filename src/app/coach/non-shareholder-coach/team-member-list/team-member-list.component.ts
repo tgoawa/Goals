@@ -9,7 +9,7 @@ import { TeamMember, TeamMemberService } from '../../../teamMember/';
   styleUrls: ['./team-member-list.component.scss']
 })
 export class TeamMemberListComponent implements OnInit {
-  @Output() selectedTeamMember: EventEmitter<number> = new EventEmitter<number>();
+  @Output() selectedTeamMember: EventEmitter<TeamMember> = new EventEmitter<TeamMember>();
 
   teamMemberList: TeamMember[];
   coach: TeamMember;
@@ -40,6 +40,10 @@ export class TeamMemberListComponent implements OnInit {
   }
 
   teamMemberSelected() {
-    this.selectedTeamMember.emit(this.teamMemberId);
+    for (let x = 0; x < this.teamMemberList.length; x++) {
+      if (+this.teamMemberId === this.teamMemberList[x].TeamMemberId) {
+        this.selectedTeamMember.emit(this.teamMemberList[x]);
+      }
+    }
   }
 }

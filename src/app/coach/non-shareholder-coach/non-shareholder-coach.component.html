@@ -4,7 +4,7 @@
   </div>
 </div>
 <div *ngIf="!isLoading">
-  <app-print-view *ngIf="printGoal" [printGoal]="printGoal"></app-print-view>
+  <app-print-view *ngIf="printGoal" [printGoal]="printGoal" [coachName]="teamMember.CoachFirstName + ' ' + teamMember.CoachLastName"></app-print-view>
   <div *ngIf="hoursData" class="page-break-before">
     <app-hours [hoursData]="hoursData"></app-hours>
   </div>
