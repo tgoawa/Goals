@@ -10,13 +10,8 @@
       <div class="modal-body">
         <div class="row">
         <div class="col-md-3">
-            <label for="Coach">Select Coach:</label>
+            <label for="Coach">Coach: {{teamMember.CoachFirstName}} {{teamMember.CoachLastName}}</label>
         </div>
-        </div>
-        <div class="row">
-          <div class="col-md-4">
-            <input name="Coach" [typeahead]="coachList" [(ngModel)]="currentMeeting.CoachLastFirstName" typeaheadOptionsLimit="8" typeaheadOptionField="LastFirstName" class="form-control" (typeaheadOnSelect)="mapCoachIdToMeeting()">
-          </div>
         </div>
       </div>
       <form novalidate #editMeeting="ngForm" (ngSubmit)="onSubmit()">
@@ -59,7 +54,7 @@
               </div>
             </div>
               <div class="row">
-              <div class="col-md-12" [collapse]="priorityOneIsCollapsed" [innerHTML]="previousMeeting?.Questions[7].AnswerText"></div> 
+              <div class="col-md-12" [collapse]="priorityOneIsCollapsed" [innerHTML]="previousMeeting?.Questions[7].AnswerText"></div>
             </div>
             <div class="form-group">
               <label for="question7">{{currentMeeting.Questions[7].QuestionText}}</label>
@@ -71,7 +66,7 @@
               </div>
             </div>
               <div class="row">
-              <div class="col-md-12" [collapse]="priorityTwoIsCollapsed" [innerHTML]="previousMeeting?.Questions[8].AnswerText"></div> 
+              <div class="col-md-12" [collapse]="priorityTwoIsCollapsed" [innerHTML]="previousMeeting?.Questions[8].AnswerText"></div>
             </div>
             <div class="form-group">
               <label for="question8">{{currentMeeting.Questions[8].QuestionText}}</label>
@@ -83,7 +78,7 @@
               </div>
             </div>
               <div class="row">
-              <div class="col-md-12" [collapse]="priorityThreeIsCollapsed" [innerHTML]="previousMeeting?.Questions[9].AnswerText"></div> 
+              <div class="col-md-12" [collapse]="priorityThreeIsCollapsed" [innerHTML]="previousMeeting?.Questions[9].AnswerText"></div>
             </div>
             <div class="form-group">
               <label for="question9">{{currentMeeting.Questions[9].QuestionText}}</label>

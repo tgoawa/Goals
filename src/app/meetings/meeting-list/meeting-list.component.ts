@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Meeting } from 'app/meetings/non-shareholder/model/meeting.model';
+import { TeamMember } from 'app/teamMember';
 
 @Component({
   selector: 'app-meeting-list',
@@ -9,6 +10,7 @@ import { Meeting } from 'app/meetings/non-shareholder/model/meeting.model';
 export class MeetingListComponent implements OnInit {
   @Input('meeting') meeting: Meeting;
   @Input('index') index: number;
+  @Input('coachName') coachName: string;
   @Output() meetingToEdit: EventEmitter<Meeting> = new EventEmitter<Meeting>();
   @Output() meetingToView: EventEmitter<Meeting> = new EventEmitter<Meeting>();
   constructor() { }

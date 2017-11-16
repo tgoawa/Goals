@@ -8,6 +8,11 @@
     <h2>Goal Notes for: {{teamMember?.FirstName}} {{teamMember?.LastName}}</h2>
   </div>
 </div>
+<div class="row">
+  <div class="col-md-12">
+    Coach: {{teamMember?.CoachFirstName}} {{teamMember?.CoachLastName}}
+  </div>
+</div>
 <div style="border-bottom: 1px solid" *ngIf="printGoal?.EconomicGoals">
   <div class="row">
     <div class="col-md-12">

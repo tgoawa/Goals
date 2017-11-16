@@ -11,6 +11,7 @@ import { Hours } from '../../../hours/models/hours';
 })
 export class PrintViewComponent implements OnInit {
   @Input('printGoal') printGoal: PrintView;
+  @Input('coachName') coachName: string;
 
   competencyList: any[];
   competencyTypeList: any[];

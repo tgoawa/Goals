@@ -20,5 +20,5 @@
   </div>
 </div>
 <div *ngFor="let meeting of meetingList; let i = index">
-  <app-meeting-list [meeting]="meeting" [index]="i" (meetingToEdit)="onEdit($event)" (meetingToView)="onRead($event)"></app-meeting-list>
+  <app-meeting-list [meeting]="meeting" [index]="i" (meetingToEdit)="onEdit($event)" [coachName]="teamMember.CoachFirstName + ' ' + teamMember.CoachLastName" (meetingToView)="onRead($event)"></app-meeting-list>
 </div>

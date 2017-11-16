@@ -5,6 +5,9 @@ export class TeamMember {
     FirstName: string;
     LastName: string;
     LastFirstName: string;
+    CoachFirstName: string;
+    CoachId: number;
+    CoachLastName: string;
     IsAccountDirector: boolean;
     IsManager: boolean;
     IndustryTeams: any[];

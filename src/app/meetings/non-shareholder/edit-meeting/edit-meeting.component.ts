@@ -4,7 +4,6 @@ import { NgForm } from '@angular/forms/';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 
 import { MeetingsService } from '../services/meetings.service';
-import { CoachService } from '../services/coach.service';
 import { Meeting } from '../model/meeting.model';
 import { Question } from '../model/question.model';
 import { TeamMember } from '../../../teamMember';
@@ -23,15 +22,13 @@ export class EditMeetingComponent implements OnInit, AfterViewInit {
   @Output() modalClosed: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() updateSuccess: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  coachList: TeamMember[];
   priorityOneIsCollapsed = true;
   priorityTwoIsCollapsed = true;
   priorityThreeIsCollapsed = true;
 
-  constructor(private csService: CoachService, private msService: MeetingsService) { }
+  constructor(private msService: MeetingsService) { }
 
   ngOnInit() {
-    this.getCoaches();
     this.replaceLineBreaks();
   }
 
@@ -72,24 +69,6 @@ export class EditMeetingComponent implements OnInit, AfterViewInit {
     for (let index = 0; index < this.currentMeeting.Questions.length; index ++ ) {
       if (this.currentMeeting.Questions[index].AnswerText !== null) {
         this.currentMeeting.Questions[index].AnswerText = this.currentMeeting.Questions[index].AnswerText.split('<br>').join('\n');
-      }
-    }
-  }
-
-  getCoaches() {
-    this.csService.getCoaches()
-    .subscribe(data => {
-      this.coachList = data;
-    }, error => {
-      console.log(error);
-      // TODO: Add error toast
-    });
-  }
-
-  mapCoachIdToMeeting() {
-    for (let index = 0; index < this.coachList.length; index ++) {
-      if (this.currentMeeting.CoachLastFirstName === this.coachList[index].LastFirstName) {
-        this.currentMeeting.CoachId = this.coachList[index].TeamMemberId;
       }
     }
   }

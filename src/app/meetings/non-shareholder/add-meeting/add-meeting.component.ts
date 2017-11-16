@@ -3,7 +3,6 @@ import { Component, OnInit, AfterViewInit, Input, ViewChild, EventEmitter, Outpu
 import { ModalDirective } from 'ngx-bootstrap/modal';
 
 import { MeetingsService } from '../services/meetings.service';
-import { CoachService } from '../services/coach.service';
 import { Meeting } from '../model/meeting.model';
 import { Question } from '../model/question.model';
 import { TeamMember } from '../../../teamMember';
@@ -22,17 +21,13 @@ export class AddMeetingComponent implements OnInit, AfterViewInit {
   @Output() modalClosed: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() addSuccess: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  coachList: TeamMember[];
-  selectedCoach: string;
   priorityOneIsCollapsed = true;
   priorityTwoIsCollapsed = true;
   priorityThreeIsCollapsed = true;
 
-  constructor(private csService: CoachService, private msService: MeetingsService) { }
+  constructor(private msService: MeetingsService) { }
 
   ngOnInit() {
-    this.getCoaches();
-    this.carryOverPreviousCoach();
     this.isChargeable();
   }
 
@@ -41,7 +36,6 @@ export class AddMeetingComponent implements OnInit, AfterViewInit {
   }
 
   onSubmit() {
-    this.mapCoachIdToMeeting();
     this.saveMeeting();
   }
 
@@ -69,24 +63,6 @@ export class AddMeetingComponent implements OnInit, AfterViewInit {
     this.modalClosed.emit(true);
   }
 
-  getCoaches() {
-    this.csService.getCoaches()
-      .subscribe(data => {
-        this.coachList = data;
-      }, error => {
-        console.log(error);
-        // TODO: Add error toast
-      });
-  }
-
-  mapCoachIdToMeeting() {
-    for (let index = 0; index < this.coachList.length; index++) {
-      if (this.selectedCoach === this.coachList[index].LastFirstName) {
-        this.currentMeeting.CoachId = this.coachList[index].TeamMemberId;
-      }
-    }
-  }
-
   saveMeeting() {
     this.msService.saveMeeting(this.currentMeeting)
       .subscribe(data => {
@@ -112,13 +88,6 @@ export class AddMeetingComponent implements OnInit, AfterViewInit {
         this.currentMeeting.Questions[index].AnswerText = this.previousMeeting.Questions[index].AnswerText;
       }
     }
-  }
-
-  carryOverPreviousCoach() {
-    if (this.previousMeeting != null) {
-      this.selectedCoach = this.previousMeeting.CoachLastFirstName;
-    }
-    return false;
   }
 
   setDefaultChargeableValues() {
