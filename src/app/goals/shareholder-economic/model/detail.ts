@@ -24,7 +24,6 @@ export interface Detail {
 }
 
 export interface EconomicGoal {
-    CoachId: number;
     Details: Detail[];
     DisplayDateCreated: string;
     DisplayDateModified: string;
