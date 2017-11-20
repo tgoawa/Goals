@@ -1,3 +1,70 @@
+export class Action {
+  ActionId: number;
+  GoalId: number;
+  Action: string;
+  IsCompleted: boolean;
+  DisplayDateCreated: string;
+  DisplayDateModified: string;
+  DisplayDateDue: any;
+  IsDirty: boolean;
+
+  constructor() {
+    this.ActionId = 0;
+    this.GoalId = 0;
+    this.Action = '';
+    this.IsCompleted = false;
+    this.DisplayDateCreated = '';
+    this.DisplayDateModified = '';
+    this.DisplayDateDue = '';
+    this.IsDirty = false;
+  }
+};
+
+export class Measurement {
+  MeasurementId: number;
+  GoalId: number;
+  Measurement: string;
+  DisplayDateCreated: string;
+  DisplayDateModified: string;
+  IsDirty: boolean;
+
+  constructor() {
+    this.MeasurementId = 0;
+    this.GoalId  = 0;
+    this.Measurement = '';
+    this.DisplayDateCreated = '';
+    this.DisplayDateModified = '';
+    this.IsDirty = false;
+  }
+}
+
+export class Support {
+  SupportId: number;
+  GoalId: number;
+  Support: string;
+  DisplayDateCreated: string;
+  DisplayDateModified: string;
+  IsDirty: boolean;
+
+  constructor() {
+    this.SupportId = 0;
+    this.GoalId = 0;
+    this.Support = '';
+    this.DisplayDateCreated = '';
+    this.DisplayDateModified = '';
+    this.IsDirty = false;
+  }
+}
+
+export class Note {
+  NoteId: number;
+  GoalId: number;
+  Note: string;
+  DisplayDateCreated: string;
+  DisplayDateModified: string;
+  IsDirty: boolean;
+}
+
 export class Goal {
     GoalId: number;
     GoalTypeId: number;
@@ -43,73 +110,6 @@ export class Goal {
       this.Notes = [];
     }
 };
-
-export class Action {
-    ActionId: number;
-    GoalId: number;
-    Action: string;
-    IsCompleted: boolean;
-    DisplayDateCreated: string;
-    DisplayDateModified: string;
-    DisplayDateDue: any;
-    IsDirty: boolean;
-
-    constructor() {
-      this.ActionId = 0;
-      this.GoalId = 0;
-      this.Action = '';
-      this.IsCompleted = false;
-      this.DisplayDateCreated = '';
-      this.DisplayDateModified = '';
-      this.DisplayDateDue = '';
-      this.IsDirty = false;
-    }
-};
-
-export class Measurement {
-    MeasurementId: number;
-    GoalId: number;
-    Measurement: string;
-    DisplayDateCreated: string;
-    DisplayDateModified: string;
-    IsDirty: boolean;
-
-    constructor() {
-      this.MeasurementId = 0;
-      this.GoalId  = 0;
-      this.Measurement = '';
-      this.DisplayDateCreated = '';
-      this.DisplayDateModified = '';
-      this.IsDirty = false;
-    }
-}
-
-export class Support {
-    SupportId: number;
-    GoalId: number;
-    Support: string;
-    DisplayDateCreated: string;
-    DisplayDateModified: string;
-    IsDirty: boolean;
-
-    constructor() {
-      this.SupportId = 0;
-      this.GoalId = 0;
-      this.Support = '';
-      this.DisplayDateCreated = '';
-      this.DisplayDateModified = '';
-      this.IsDirty = false;
-    }
-}
-
-export class Note {
-    NoteId: number;
-    GoalId: number;
-    Note: string;
-    DisplayDateCreated: string;
-    DisplayDateModified: string;
-    IsDirty: boolean;
-}
 
 export class IndustryTeam {
     IndustryTeamId: number;
