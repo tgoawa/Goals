@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IMyDpOptions, IMyDateModel } from 'mydatepicker';
-import { CalendarModule } from 'primeng/primeng';
 
 import { Support } from '../../models/shmeeting';
 
