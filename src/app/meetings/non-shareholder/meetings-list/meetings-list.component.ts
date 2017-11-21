@@ -7,6 +7,8 @@ import { TeamMember, TeamMemberService } from '../../../teamMember';
 import { Question } from '../model/question.model';
 import { Meeting } from '../model/meeting.model';
 
+import * as _ from 'lodash';
+
 @Component({
   selector: 'app-meetings-list',
   templateUrl: './meetings-list.component.html',
@@ -97,7 +99,7 @@ export class MeetingsListComponent implements OnInit {
   onAdd() {
     this.newMeeting = new Meeting();
     this.newMeeting.TeamMemberId = this.teamMember.TeamMemberId;
-    this.newMeeting.Questions = this.questionList;
+    this.newMeeting.Questions = _.cloneDeep(this.questionList);
   }
 
   showSuccessUpdate() {
