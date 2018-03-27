@@ -24,6 +24,10 @@ export class ChargeTimeComponent implements OnInit, OnChanges {
   @Output('totalNewHours') totalNewHours: EventEmitter<number> = new EventEmitter<number>();
 
   categoryName: string;
+  colorScheme = {
+    domain: ['#007EBA', '#5FBB46', '#F7941E', '#7F3F98', '#00AFED', '#CBDB2A', '#FFC60B', '#ED0D6C']
+  };
+  view: any[] = [700, 300];
   estimatedPieData: ChartData[] = [];
   rollingPieData: ChartData[] = [];
   previousTotalHours = 0;

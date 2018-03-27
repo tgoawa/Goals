@@ -3,15 +3,19 @@
     <div class="col-md-6">
       <h2 class="text-center">Rolling Hours</h2>
         <ngx-charts-pie-chart
+        [view]="view"
         [results]="rollingPieData"
+        [scheme]="colorScheme"
         [legend]="true"
         [labels]="true">
         </ngx-charts-pie-chart>
     </div>
-    <div class="col-md-6" *ngIf="estimatedPieData">
+    <div class="col-md-6" *ngIf="newTotalHours > 0">
       <h2 class="text-center">Planned Hours</h2>
       <ngx-charts-pie-chart
+      [view]="view"
       [results]="estimatedPieData"
+      [scheme]="colorScheme"
       [legend]="true"
       [labels]="true">
       </ngx-charts-pie-chart>
