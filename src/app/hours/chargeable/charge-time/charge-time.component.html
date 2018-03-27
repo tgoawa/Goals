@@ -15,20 +15,26 @@
     </div>
   </div>
   <div class="row cyan-background">
-    <div class="col-md-4">
+    <div class="col-md-3">
       Category Code
+    </div>
+    <div class="col-md-2 text-right">
+      12 Month Rolling
+    </div>
+    <div class="col-md-1 text-right">
+      %
     </div>
     <div class="col-md-2 text-right">
       12 Month Ending June 30
     </div>
-    <div class="col-md-2 text-right">
+    <div class="col-md-1 text-right">
       %
     </div>
     <div class="col-md-2 text-right">
       Fiscal Year Plan<br>
       Oct 1 - Sept 30
     </div>
-    <div class="col-md-2 text-right">
+    <div class="col-md-1 text-right">
       %
     </div>
   </div>
@@ -37,19 +43,25 @@
       (hours)="onUpdateHours()"></app-charge-time-item>
   </div>
   <div class="row schenck-blue-font" style="border-top: 1px solid">
-    <div class="col-md-4">
+    <div class="col-md-3">
       Grand Total
     </div>
     <div class="col-md-2 text-right">
       {{previousTotalHours}}
     </div>
+    <div class="col-md-1 text-right">
+      {{previousTotalPercent | percent: '1.1-1'}}
+    </div>
     <div class="col-md-2 text-right">
+      {{previousTotalHours}}
+    </div>
+    <div class="col-md-1 text-right">
       {{previousTotalPercent | percent: '1.1-1'}}
     </div>
     <div class="col-md-2 text-right" style ="padding-right: 2.5rem">
       {{newTotalHours}}
     </div>
-    <div class="col-md-2 text-right">
+    <div class="col-md-1 text-right">
       {{newTotalPercent | percent: '1.1-1'}}
     </div>
   </div>
