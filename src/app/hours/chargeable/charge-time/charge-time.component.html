@@ -1,5 +1,23 @@
 <div class="col-md-12">
   <div class="row">
+    <div class="col-md-6">
+      <h2 class="text-center">Rolling Hours</h2>
+        <ngx-charts-pie-chart
+        [results]="rollingPieData"
+        [legend]="true"
+        [labels]="true">
+        </ngx-charts-pie-chart>
+    </div>
+    <div class="col-md-6" *ngIf="estimatedPieData">
+      <h2 class="text-center">Planned Hours</h2>
+      <ngx-charts-pie-chart
+      [results]="estimatedPieData"
+      [legend]="true"
+      [labels]="true">
+      </ngx-charts-pie-chart>
+      </div>
+  </div>
+  <div class="row">
     <div class="col-md-12 text-center">
       <h3>{{categoryName}}</h3>
     </div>

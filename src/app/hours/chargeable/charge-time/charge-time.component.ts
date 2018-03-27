@@ -1,6 +1,16 @@
 import { Component, OnInit, OnChanges, Input, Output, EventEmitter } from '@angular/core';
 import { Item, Categories } from '../../models/hours';
 
+export class ChartData {
+  name: string;
+  value: number;
+
+  constructor(name: string, value: number) {
+    this.name = name;
+    this.value = value;
+  }
+}
+
 @Component({
   selector: 'app-charge-time',
   templateUrl: './charge-time.component.html',
@@ -14,17 +24,19 @@ export class ChargeTimeComponent implements OnInit, OnChanges {
   @Output('totalNewHours') totalNewHours: EventEmitter<number> = new EventEmitter<number>();
 
   categoryName: string;
+  estimatedPieData: ChartData[] = [];
+  rollingPieData: ChartData[] = [];
   previousTotalHours = 0;
   previousTotalPercent = 0;
   newTotalHours = 0;
   newTotalPercent = 0;
-
   constructor() { }
 
   ngOnInit() {
     this.categoryName = this.category.CategoryName;
     this.calculatePreviousTotals();
     this.calculateNewTotals();
+    this.mapPieChartDataSet();
   }
 
   ngOnChanges() {
@@ -74,6 +86,22 @@ export class ChargeTimeComponent implements OnInit, OnChanges {
       this.newTotalPercent = this.newTotalHours / this.newTotalHours;
     } else {
       this.newTotalPercent = 0;
+    }
+  }
+
+  private mapPieChartDataSet() {
+    for (let x = 0; x < this.data.length; x++) {
+      this.estimatedPieData.push(new ChartData(this.getItemName(this.data[x].ItemId), this.data[x].EstimatedHours));
+      // replace next line with rolling data
+      this.rollingPieData.push(new ChartData(this.getItemName(this.data[x].ItemId), this.data[x].ActualHours));
+    }
+  }
+
+  private getItemName(itemId: number) {
+    for (let x = 0; x < this.category.Items.length; x++) {
+      if (itemId === this.category.Items[x].ItemId) {
+        return this.category.Items[x].ItemName;
+      }
     }
   }
 }

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { ModalModule } from 'ngx-bootstrap';
-
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { HoursRoutingModule } from './hours-routing.module';
 import { HoursComponent } from './hours.component';
 import { ChargeTimeItemComponent } from './chargeable/charge-time-item/charge-time-item.component';
@@ -19,7 +19,8 @@ import { DeactivateGuardService } from '../hours/services/deactivate-guard.servi
     CommonModule,
     HoursRoutingModule,
     FormsModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    NgxChartsModule
   ],
   declarations: [HoursComponent,
     ChargeTimeItemComponent,
