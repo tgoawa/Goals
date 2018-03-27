@@ -24,6 +24,7 @@ export class HoursEntryComponent implements OnInit, OnChanges {
   displayNonCharge = true;
   displayIndustryTeam = false;
   displayServiceLine = false;
+  industryTeams: string[];
   isLoading = false;
   isDirty = false;
   teamMember: TeamMember;

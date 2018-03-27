@@ -29,7 +29,7 @@
   <app-non-charge-time [hidden]="!displayNonCharge" *ngIf="categories" [category]="categories?.Categories[1]" [data]="hoursToEdit?.NonChargeList"
     (isDirty)="makeDirty()" (totalNewHours)="setNonChargeTotal($event)"></app-non-charge-time>
   <app-charge-time [hidden]="!displayIndustryTeam" *ngIf="categories" [category]="categories?.Categories[0]" [data]="hoursToEdit?.IndustryTeams"
-    (isDirty)="makeDirty()" (totalNewHours)="setIndustryTeamTotal($event)"></app-charge-time>
+    (isDirty)="makeDirty()" (totalNewHours)="setIndustryTeamTotal($event)" [industryTeams]="teamMember?.IndustryTeams"></app-charge-time>
   <app-charge-time [hidden]="!displayServiceLine" *ngIf="categories" [category]="categories?.Categories[2]" [data]="hoursToEdit?.ServiceLines"
     (isDirty)="makeDirty()" (totalNewHours)="setServiceLineTotal($event)"></app-charge-time>
   <div class="row">

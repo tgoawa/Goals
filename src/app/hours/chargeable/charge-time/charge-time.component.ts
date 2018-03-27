@@ -9,6 +9,7 @@ import { Item, Categories } from '../../models/hours';
 export class ChargeTimeComponent implements OnInit, OnChanges {
   @Input('data') data: Item[];
   @Input('category') category: Categories;
+  @Input('industryTeams') industryTeams: string[];
   @Output('isDirty') isDirty: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output('totalNewHours') totalNewHours: EventEmitter<number> = new EventEmitter<number>();
 

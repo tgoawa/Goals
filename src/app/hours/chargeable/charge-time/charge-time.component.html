@@ -4,6 +4,16 @@
       <h3>{{categoryName}}</h3>
     </div>
   </div>
+  <div class="row" *ngIf="industryTeams">
+    <div class="col-md-5 text-right">
+      <h2>{{industryTeams[0].TeamName}}</h2>
+    </div>
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-5 text-left">
+      <h2>{{industryTeams[1].TeamName}}</h2>
+    </div>
+  </div>
   <div class="row cyan-background">
     <div class="col-md-4">
       Category Code
