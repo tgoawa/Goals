@@ -76,6 +76,6 @@ import { EconomicGoalService } from './shareholder-economic/service/economic-goa
     PersonalGoalService,
     WigGoalServiceService,
     EconomicGoalService,
-  ],
+  ]
 })
 export class GoalsModule {}
