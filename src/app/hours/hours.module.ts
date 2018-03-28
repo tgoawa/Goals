@@ -20,14 +20,16 @@ import { DeactivateGuardService } from '../hours/services/deactivate-guard.servi
     HoursRoutingModule,
     FormsModule,
     ModalModule.forRoot(),
-    NgxChartsModule
+    NgxChartsModule,
   ],
-  declarations: [HoursComponent,
+  declarations: [
+    HoursComponent,
     ChargeTimeItemComponent,
     ChargeTimeComponent,
     NonChargeTimeItemComponent,
     NonChargeTimeComponent,
-    HoursEntryComponent],
+    HoursEntryComponent,
+  ],
   providers: [HoursService, DeactivateGuardService]
 })
-export class HoursModule { }
+export class HoursModule {}
