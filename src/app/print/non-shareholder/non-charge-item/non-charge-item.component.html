@@ -2,7 +2,13 @@
   <div class="col-md-4">
     {{itemName}}
   </div>
-  <div class="col-md-2 text-right">
+  <div class="col-md-1 text-right">
+    {{data.ActualHours}}
+  </div>
+  <div class="col-md-1 text-right">
+    {{currentPercentage | percent: '1.1-1'}}
+  </div>
+  <div class="col-md-1 text-right">
     {{data?.ActualHours}}
   </div>
   <div class="col-md-1 text-right">
@@ -11,7 +17,7 @@
   <div class="col-md-2 text-right">
     {{data?.SuggestedHours}}
   </div>
-  <div class="col-md-2 text-right">
+  <div class="col-md-1 text-right">
     {{data?.EstimatedHours}}
   </div>
   <div class="col-md-1 text-right">
