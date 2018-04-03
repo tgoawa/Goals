@@ -10,10 +10,12 @@ export class NonChargeTimeItemComponent implements OnInit, OnChanges {
   @Input('data') data: Item;
   @Input('categoryNames') categoryNames: CategoryItems[];
   @Input('currentYearHours') currentYearHours: number;
+  @Input('priorYearHours') priorYearHours: number;
   @Input('nextYearHours') nextYearHours: number;
   @Output() hours: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  currentPercentage = 0;
+  currentYearPercentage = 0;
+  priorYearPercentage = 0;
   nextYearPercentage = 0;
   itemName: string;
 
@@ -21,7 +23,8 @@ export class NonChargeTimeItemComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.setItemName();
-    this.calculateCurrentPercentage();
+    this.calculateCurrentYearPercentage();
+    this.calculatePriorYearPercentage();
   }
 
   ngOnChanges() {
@@ -33,11 +36,19 @@ export class NonChargeTimeItemComponent implements OnInit, OnChanges {
     this.data.IsDirty = true;
   }
 
-  calculateCurrentPercentage() {
-    if (this.data.PriorYearHours > 0) {
-      this.currentPercentage = this.data.PriorYearHours / this.currentYearHours;
+  calculateCurrentYearPercentage() {
+    if (this.data.CurrentYearHours > 0) {
+      this.currentYearPercentage = this.data.CurrentYearHours / this.currentYearHours;
     } else {
-      this.currentPercentage = 0;
+      this.currentYearPercentage = 0;
+    }
+  }
+
+  calculatePriorYearPercentage() {
+    if (this.data.PriorYearHours > 0) {
+      this.priorYearPercentage = this.data.PriorYearHours / this.priorYearHours;
+    } else {
+      this.priorYearPercentage = 0;
     }
   }
 
