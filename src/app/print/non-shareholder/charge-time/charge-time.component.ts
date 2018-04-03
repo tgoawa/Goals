@@ -12,6 +12,8 @@ export class ChargeTimeComponent implements OnInit {
   @Output('totalNewHours') totalNewHours: EventEmitter<number> = new EventEmitter<number>();
 
   categoryName: string;
+  currentTotalHours = 0;
+  currentTotalPercent = 0;
   previousTotalHours = 0;
   previousTotalPercent = 0;
   newTotalHours = 0;
@@ -21,8 +23,28 @@ export class ChargeTimeComponent implements OnInit {
 
   ngOnInit() {
     this.categoryName = this.category.CategoryName;
+    this.calculateRollingTotals();
     this.calculatePreviousTotals();
     this.calculateNewTotals();
+  }
+
+  calculateRollingTotals() {
+    this.calculateRollingTotalHours();
+    this.calculateRollingTotalPercent()
+  }
+
+  calculateRollingTotalHours() {
+    for (let index = 0; index < this.data.length; index++) {
+      this.currentTotalHours = this.currentTotalHours + this.data[index].CurrentYearHours;
+    }
+  }
+
+  calculateRollingTotalPercent() {
+    if (this.currentTotalHours > 0) {
+      this.currentTotalPercent = this.currentTotalHours / this.currentTotalHours;
+    } else {
+      this.currentTotalPercent = 0;
+    }
   }
 
   calculatePreviousTotals() {

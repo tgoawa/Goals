@@ -11,7 +11,9 @@ export class ChargeTimeItemComponent implements OnInit {
   @Input('categoryNames') categoryNames: CategoryItems[];
   @Input('PrevTotalHours') PrevTotalHours: number;
   @Input('CurrentTotalHours') CurrentTotalHours: number;
+  @Input('NewTotalHours') NewTotalHours: number;
 
+  currentPercentage: number;
   previousPercentage: number;
   newPercentage: number;
   itemName: string;
@@ -22,6 +24,7 @@ export class ChargeTimeItemComponent implements OnInit {
     this.setItemName();
     this.calculatePreviousPercentage();
     this.calculateNewPercentage();
+    this.calculateCurrentPercentage();
   }
 
   setItemName() {
@@ -29,6 +32,14 @@ export class ChargeTimeItemComponent implements OnInit {
       if (this.categoryNames[index].ItemId === this.data.ItemId) {
         this.itemName = this.categoryNames[index].ItemName;
       }
+    }
+  }
+
+  calculateCurrentPercentage() {
+    if (this.data.CurrentYearHours > 0) {
+      this.currentPercentage = this.data.CurrentYearHours / this.CurrentTotalHours
+    } else {
+      this.currentPercentage = 0;
     }
   }
 
@@ -42,7 +53,7 @@ export class ChargeTimeItemComponent implements OnInit {
 
   calculateNewPercentage() {
     if (this.data.EstimatedHours > 0) {
-      this.newPercentage = this.data.EstimatedHours / this.CurrentTotalHours;
+      this.newPercentage = this.data.EstimatedHours / this.NewTotalHours;
     } else {
       this.newPercentage = 0;
     }
