@@ -229,6 +229,7 @@ export class HoursEntryComponent implements OnInit, OnChanges {
         this.resetDirtyFlags(this.hours.ServiceLines);
         this.resetDirtyFlags(this.hours.IndustryTeams);
         this.resetDirtyFlags(this.hours.NonChargeList);
+        location.reload();
       }, error => {
         this.showFailedUpdate();
         console.log(error);
