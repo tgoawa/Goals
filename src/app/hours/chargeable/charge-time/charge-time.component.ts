@@ -54,7 +54,7 @@ export class ChargeTimeComponent implements OnInit, OnChanges {
 
   calculatePreviousTotalHours() {
     for (let index = 0; index < this.data.length; index++) {
-      this.previousTotalHours = this.previousTotalHours + this.data[index].ActualHours;
+      this.previousTotalHours = this.previousTotalHours + this.data[index].PriorYearHours;
     }
   }
 
@@ -97,7 +97,7 @@ export class ChargeTimeComponent implements OnInit, OnChanges {
     for (let x = 0; x < this.data.length; x++) {
       this.estimatedPieData.push(new ChartData(this.getItemName(this.data[x].ItemId), this.data[x].EstimatedHours));
       // replace next line with rolling data
-      this.rollingPieData.push(new ChartData(this.getItemName(this.data[x].ItemId), this.data[x].ActualHours));
+      this.rollingPieData.push(new ChartData(this.getItemName(this.data[x].ItemId), this.data[x].PriorYearHours));
     }
   }
 

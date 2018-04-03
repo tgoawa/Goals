@@ -24,8 +24,8 @@ export class NonChargeItemComponent implements OnInit {
   }
 
   calculateCurrentPercentage() {
-    if (this.data.ActualHours > 0) {
-      this.currentPercentage = this.data.ActualHours / this.currentYearHours;
+    if (this.data.PriorYearHours > 0) {
+      this.currentPercentage = this.data.PriorYearHours / this.currentYearHours;
     } else {
       this.currentPercentage = 0;
     }

@@ -35,8 +35,8 @@ export class ChargeTimeItemComponent implements OnInit, OnChanges {
   }
 
   calculatePreviousPercentage() {
-    if (this.data.ActualHours > 0) {
-      this.previousPercentage = this.data.ActualHours / this.PrevTotalHours;
+    if (this.data.PriorYearHours > 0) {
+      this.previousPercentage = this.data.PriorYearHours / this.PrevTotalHours;
     } else {
       this.previousPercentage = 0;
     }

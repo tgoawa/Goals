@@ -10,7 +10,8 @@ export interface Hours {
 export interface Item {
     ItemId: number;
     CategoryId: number;
-    ActualHours: number;
+    CurrentYearHours:number;
+    PriorYearHours: number;
     EstimatedHours: number;
     SuggestedHours: string;
     IsDirty: boolean;

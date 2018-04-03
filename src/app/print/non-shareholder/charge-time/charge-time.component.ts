@@ -32,7 +32,7 @@ export class ChargeTimeComponent implements OnInit {
 
   calculatePreviousTotalHours() {
     for (let index = 0; index < this.data.length; index++) {
-      this.previousTotalHours = this.previousTotalHours + this.data[index].ActualHours;
+      this.previousTotalHours = this.previousTotalHours + this.data[index].PriorYearHours;
     }
   }
 
