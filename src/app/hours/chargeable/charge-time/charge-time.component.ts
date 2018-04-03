@@ -43,11 +43,11 @@ export class ChargeTimeComponent implements OnInit, OnChanges {
     this.calculateRollingTotals();
     this.calculatePreviousTotals();
     this.calculateNewTotals();
+    this.mapPieChartDataSet();
   }
 
   ngOnChanges() {
     this.calculateNewTotals();
-    this.mapPieChartDataSet();
   }
 
   calculateRollingTotals() {
@@ -129,4 +129,5 @@ export class ChargeTimeComponent implements OnInit, OnChanges {
       }
     }
   }
+
 }
