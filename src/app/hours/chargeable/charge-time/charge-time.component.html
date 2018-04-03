@@ -62,7 +62,7 @@
     </div>
   </div>
   <div *ngFor="let item of data" class="striped-row">
-    <app-charge-time-item [data]="item" [PrevTotalHours]="previousTotalHours" [CurrentTotalHours]="newTotalHours" [categoryNames]="category?.Items"
+    <app-charge-time-item [data]="item" [PrevTotalHours]="previousTotalHours" [NewTotalHours]="newTotalHours" [CurrentTotalHours]="currentTotalHours" [categoryNames]="category?.Items"
       (hours)="onUpdateHours()"></app-charge-time-item>
   </div>
   <div class="row schenck-blue-font" style="border-top: 1px solid">

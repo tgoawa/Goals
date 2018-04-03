@@ -11,8 +11,10 @@ export class ChargeTimeItemComponent implements OnInit, OnChanges {
   @Input('categoryNames') categoryNames: CategoryItems[];
   @Input('PrevTotalHours') PrevTotalHours: number;
   @Input('CurrentTotalHours') CurrentTotalHours: number;
+  @Input('NewTotalHours') NewTotalHours: number;
   @Output() hours: EventEmitter<boolean> = new EventEmitter<boolean>();
 
+  currentPercentage: number;
   previousPercentage: number;
   newPercentage: number;
   itemName: string;
@@ -22,7 +24,7 @@ export class ChargeTimeItemComponent implements OnInit, OnChanges {
   ngOnInit() {
     this.setItemName();
     this.calculatePreviousPercentage();
-    this.calculateNewPercentage();
+    this.calculateCurrentPercentage();
   }
 
   ngOnChanges(changes) {
@@ -32,6 +34,14 @@ export class ChargeTimeItemComponent implements OnInit, OnChanges {
   onUpdateHours() {
     this.hours.emit(true);
     this.data.IsDirty = true;
+  }
+
+  calculateCurrentPercentage() {
+    if (this.data.CurrentYearHours > 0) {
+      this.currentPercentage = this.data.CurrentYearHours / this.CurrentTotalHours
+    } else {
+      this.currentPercentage = 0;
+    }
   }
 
   calculatePreviousPercentage() {
