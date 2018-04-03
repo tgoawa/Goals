@@ -30,6 +30,8 @@ export class ChargeTimeComponent implements OnInit, OnChanges {
   view: any[] = [700, 300];
   estimatedPieData: ChartData[] = [];
   rollingPieData: ChartData[] = [];
+  currentTotalHours = 0;
+  currentTotalPercent = 0;
   previousTotalHours = 0;
   previousTotalPercent = 0;
   newTotalHours = 0;
@@ -38,6 +40,7 @@ export class ChargeTimeComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.categoryName = this.category.CategoryName;
+    this.calculateRollingTotals();
     this.calculatePreviousTotals();
     this.calculateNewTotals();
     this.mapPieChartDataSet();
@@ -45,6 +48,25 @@ export class ChargeTimeComponent implements OnInit, OnChanges {
 
   ngOnChanges() {
     this.calculateNewTotals();
+  }
+
+  calculateRollingTotals() {
+    this.calculateRollingTotalHours();
+    this.calculateRollingTotalPercent()
+  }
+
+  calculateRollingTotalHours() {
+    for (let index = 0; index < this.data.length; index++) {
+      this.currentTotalHours = this.currentTotalHours + this.data[index].CurrentYearHours;
+    }
+  }
+
+  calculateRollingTotalPercent() {
+    if (this.currentTotalHours > 0) {
+      this.currentTotalPercent = this.currentTotalHours / this.currentTotalHours;
+    } else {
+      this.currentTotalPercent = 0;
+    }
   }
 
   calculatePreviousTotals() {
