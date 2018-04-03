@@ -15,6 +15,8 @@ export class NonChargeTimeComponent implements OnInit, OnChanges {
   categoryName: string;
   currentYearTotalHours = 0;
   currentYearPercent = 0;
+  priorYearTotalHours = 0;
+  priorYearPercent = 0;
   nextYearTotalHours = 0;
   nextYearPercent = 0;
 
@@ -22,6 +24,7 @@ export class NonChargeTimeComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.categoryName = this.category.CategoryName;
+    this.calculateCurrentTotals();
     this.calculatePreviousTotals();
     this.calculateNextTotals();
   }
@@ -30,9 +33,14 @@ export class NonChargeTimeComponent implements OnInit, OnChanges {
     this.calculateNextTotals();
   }
 
-  calculatePreviousTotals() {
+  calculateCurrentTotals() {
     this.calculateCurrentTotalHours();
     this.calculateCurrentPercent();
+  }
+
+  calculatePreviousTotals() {
+    this.calculatePreviousTotalHours();
+    this.calculatePreviousPercent();
   }
 
   calculateNextTotals() {
@@ -42,7 +50,7 @@ export class NonChargeTimeComponent implements OnInit, OnChanges {
 
   calculateCurrentTotalHours() {
     for (let index = 0; index < this.data.length; index++) {
-      this.currentYearTotalHours = this.currentYearTotalHours + this.data[index].PriorYearHours;
+      this.currentYearTotalHours = this.currentYearTotalHours + this.data[index].CurrentYearHours;
     }
   }
 
@@ -51,6 +59,20 @@ export class NonChargeTimeComponent implements OnInit, OnChanges {
       this.currentYearPercent = this.currentYearTotalHours / this.currentYearTotalHours;
     } else {
       this.currentYearPercent = 0;
+    }
+  }
+
+  calculatePreviousTotalHours() {
+    for (let index = 0; index < this.data.length; index++) {
+      this.priorYearTotalHours = this.priorYearTotalHours + this.data[index].PriorYearHours;
+    }
+  }
+
+  calculatePreviousPercent() {
+    if (this.priorYearTotalHours > 0) {
+      this.priorYearPercent = this.priorYearTotalHours / this.priorYearTotalHours;
+    } else {
+      this.priorYearPercent = 0;
     }
   }
 

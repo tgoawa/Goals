@@ -32,7 +32,7 @@
     </div>
   </div>
   <div *ngFor="let item of data" class="striped-row">
-    <app-non-charge-time-item [data]="item" [currentYearHours]="currentYearTotalHours" [nextYearHours]="nextYearTotalHours" [categoryNames]="category?.Items"
+    <app-non-charge-time-item [data]="item" [currentYearHours]="priorYearTotalHours" [nextYearHours]="nextYearTotalHours" [categoryNames]="category?.Items"
       (hours)="onUpdateHours()"></app-non-charge-time-item>
   </div>
   <div class="row schenck-blue-font" style="border-top: 1px solid">
@@ -40,16 +40,16 @@
       Grand Total
     </div>
     <div class="col-md-1 text-right">
-      rolling
-    </div>
-    <div class="col-md-1 text-right">
-     rolling
-    </div>
-    <div class="col-md-1 text-right">
       {{currentYearTotalHours}}
     </div>
     <div class="col-md-1 text-right">
-      {{currentYearPercent | percent: '1.1-1'}}
+     {{currentYearPercent | percent: '1.1-1'}}
+    </div>
+    <div class="col-md-1 text-right">
+      {{priorYearTotalHours}}
+    </div>
+    <div class="col-md-1 text-right">
+      {{priorYearPercent | percent: '1.1-1'}}
     </div>
     <div class="col-md-1 offset-md-2 text-right" style ="padding-right: 2.5rem">
       {{nextYearTotalHours}}
