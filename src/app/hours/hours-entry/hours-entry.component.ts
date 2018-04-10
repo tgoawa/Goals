@@ -225,6 +225,10 @@ export class HoursEntryComponent implements OnInit, OnChanges {
     this.surveyModal.hide();
   }
 
+  saveSurvey(value: any) {
+    console.log(value);
+  }
+
   showSuccessUpdate() {
     this.toastrService.success('', 'Hours were updated successfully!');
   }

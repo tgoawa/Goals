@@ -112,17 +112,17 @@
   tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
-      <form #surveyForm="ngForm">
+      <form #surveyForm="ngForm" (ngSubmit)="saveSurvey(surveyForm.value)">
         <div class="modal-body">
           <div class="form-group">
             <label class="col-form-label">I am spending sufficient time in my chosen industry(s) to develop expertise:</label>
               <div class="form-check">
-                <input class="form-check-input" name="ChosenIndustry" id="ChosenIndustry" type="radio" name="yes">
+                <input class="form-check-input" name="ChosenIndustry" id="yes" type="radio" value="1" ngModel>
                 <label class="form-check-label" for="yes">Yes</label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" name="ChosenIndustry" id="ChosenIndustry" type="radio" name="no">
-                <label class="form-check-label" for="yes">No</label>
+                <input class="form-check-input" name="ChosenIndustry" id="no" type="radio" value="0" ngModel>
+                <label class="form-check-label" for="no">No</label>
               </div>
             </div>
           <div class="form-group">
@@ -157,7 +157,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-success">Save</button>
+          <button type="submit" class="btn btn-success">Save</button>
         </div>
       </form>
     </div>
