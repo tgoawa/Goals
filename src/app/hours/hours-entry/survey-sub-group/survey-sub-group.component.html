@@ -1,7 +1,7 @@
-<span>
-  <b>{{serviceLine.ServiceLine}}</b>
+<span (click)="isCollapsed = !isCollapsed" class="clickable">
+  <b>{{serviceLine.ServiceLine}} <i class="fa fa-caret-down"></i></b>
 </span>
-<div class="form-check" *ngFor="let subGroup of subgroupsList">
+<div class="form-check" *ngFor="let subGroup of subgroupsList" [collapse]="isCollapsed">
   <label class="form-check-label" *ngIf="subGroup.ServiceLineId === serviceLine.ServiceLineId" [for]="subGroup.SubGroup">
     <input class="form-check-input" [name]="subGroup.SubGroup" [id]="subGroup.SubGroup" type="checkbox" ngModel> {{subGroup.SubGroup}}
   </label>

@@ -11,7 +11,7 @@ import { ServiceLinesInterface, SubGroupsInterface } from '../../models/surveyLo
 export class SurveySubGroupComponent implements OnInit {
 @Input() serviceLine: ServiceLinesInterface;
 @Input() subgroupsList: SubGroupsInterface;
-isCollapsed = false;
+isCollapsed = true;
   constructor() { }
 
   ngOnInit() {

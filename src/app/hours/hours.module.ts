@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { ModalModule } from 'ngx-bootstrap';
+import { CollapseModule, ModalModule } from 'ngx-bootstrap';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { HoursRoutingModule } from './hours-routing.module';
 import { HoursComponent } from './hours.component';
@@ -18,6 +18,7 @@ import { SurveySubGroupComponent } from './hours-entry/survey-sub-group/survey-s
 @NgModule({
   imports: [
     CommonModule,
+    CollapseModule,
     HoursRoutingModule,
     FormsModule,
     ModalModule.forRoot(),
