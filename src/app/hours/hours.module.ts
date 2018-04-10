@@ -13,6 +13,7 @@ import { NonChargeTimeComponent } from './non-chargeable/non-charge-time/non-cha
 import { HoursEntryComponent } from './hours-entry/hours-entry.component';
 import { HoursService } from './services/hours.service';
 import { DeactivateGuardService } from '../hours/services/deactivate-guard.service';
+import { SurveySubGroupComponent } from './hours-entry/survey-sub-group/survey-sub-group.component';
 
 @NgModule({
   imports: [
@@ -29,6 +30,7 @@ import { DeactivateGuardService } from '../hours/services/deactivate-guard.servi
     NonChargeTimeItemComponent,
     NonChargeTimeComponent,
     HoursEntryComponent,
+    SurveySubGroupComponent,
   ],
   providers: [HoursService, DeactivateGuardService]
 })

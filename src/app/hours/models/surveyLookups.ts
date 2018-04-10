@@ -1,27 +1,27 @@
 export interface SurveyLookups {
-  Advisories: [
-    {
-      Advisory: string;
-      AdvisoryId: number;
-    }
-  ],
-  IndustryTeams: [
-    {
-      IndustryTeamId: number;
-      TeamName: string;
-    }
-  ],
-  ServiceLines: [
-    {
-      ServiceLine: string;
-      ServiceLineId: number;
-    }
-  ],
-  SubGroups: [
-    {
-      ServiceLineId: number;
-      ServiceLineGroupId: number;
-      SubGroup: string;
-    }
-  ]
+  Advisories: AdvisoryInterface[],
+  IndustryTeams: IndustryTeamsInterface[],
+  ServiceLines: ServiceLinesInterface[],
+  SubGroups: SubGroupsInterface[]
+}
+
+export interface AdvisoryInterface {
+  Advisory: string;
+  AdvisoryId: number;
+}
+
+export interface IndustryTeamsInterface {
+  IndustryTeamId: number;
+  TeamName: string;
+}
+
+export interface ServiceLinesInterface {
+  ServiceLine: string;
+  ServiceLineId: number;
+}
+
+export interface SubGroupsInterface {
+  ServiceLineId: number;
+  ServiceLineGroupId: number;
+  SubGroup: string;
 }

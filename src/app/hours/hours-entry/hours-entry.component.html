@@ -149,14 +149,7 @@
               line sub groups (up to 2 choices):</label>
             <div class="row">
               <div class="col-md-3" *ngFor="let serviceLine of surveyLookups?.ServiceLines">
-                <span>
-                  <b>{{serviceLine.ServiceLine}}</b>
-                </span>
-                <div class="form-check" *ngFor="let subGroup of surveyLookups?.SubGroups">
-                  <label class="form-check-label" *ngIf="subGroup.ServiceLineId === serviceLine.ServiceLineId" [for]="subGroup.SubGroup">
-                    <input class="form-check-input" [name]="subGroup.SubGroup" [id]="subGroup.SubGroup" type="checkbox" ngModel> {{subGroup.SubGroup}}
-                  </label>
-                </div>
+                <app-survey-sub-group [serviceLine]="serviceLine" [subgroupsList]="surveyLookups?.SubGroups"></app-survey-sub-group>
               </div>
             </div>
           </div>
