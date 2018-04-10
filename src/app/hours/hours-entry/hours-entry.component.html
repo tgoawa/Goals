@@ -108,31 +108,32 @@
   </div>
 </div>
 <!-- modal for survey questions boilerplate -->
-<div [config]="{ backdrop: 'static' }" bsModal #surveyModal="bs-modal" class="modal fade"
-  tabindex="-1" role="dialog" aria-hidden="true">
+<div [config]="{ backdrop: 'static' }" bsModal #surveyModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <form #surveyForm="ngForm" (ngSubmit)="saveSurvey(surveyForm.value)">
         <div class="modal-body">
           <div class="form-group">
             <label class="col-form-label">I am spending sufficient time in my chosen industry(s) to develop expertise:</label>
-              <div class="form-check">
-                <input class="form-check-input" name="ChosenIndustry" id="yes" type="radio" value="1" ngModel required>
-                <label class="form-check-label" for="yes">Yes</label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" name="ChosenIndustry" id="no" type="radio" value="0" ngModel required>
-                <label class="form-check-label" for="no">No</label>
-              </div>
+            <div class="form-check">
+              <label class="form-check-label" for="yes">
+                <input class="form-check-input" name="ChosenIndustry" id="yes" type="radio" value="1" ngModel required> Yes
+              </label>
             </div>
+            <div class="form-check">
+              <label class="form-check-label" for="no">
+                <input class="form-check-input" name="ChosenIndustry" id="no" type="radio" value="0" ngModel required> No
+              </label>
+            </div>
+          </div>
           <div class="form-group">
-            <label class="col-form-label">The industries in which I spend the most time are:</label>
+            <label class="col-form-label">The industries in which I spend the most time are: (ctrl + left click to select more than one)</label>
             <select multiple class="form-control" name="industryTime" ngModel required>
               <option *ngFor="let industryTeam of surveyLookups?.IndustryTeams" [ngValue]="industryTeam">{{industryTeam.TeamName}}</option>
             </select>
           </div>
           <div class="form-group">
-            <label class="col-form-label">I would like to learn more about the following industries:</label>
+            <label class="col-form-label">I would like to learn more about the following industries: (ctrl + left click to select more than one)</label>
             <select multiple class="form-control" name="industryLearn" ngModel required>
               <option *ngFor="let industryTeam of surveyLookups?.IndustryTeams" [ngValue]="industryTeam">{{industryTeam.TeamName}}</option>
             </select>
@@ -144,13 +145,23 @@
             </select>
           </div>
           <div class="form-group">
-            <label class="col-form-label">I would like to continue spending time in, or spend more time developing expertise within the following service line sub groups:</label>
-            <select multiple class="form-control" name="ServiceLineSubGroups" ngModel required>
-              <option *ngFor="let subGroup of surveyLookups?.SubGroups" [ngValue]="subGroup">{{subGroup.SubGroup}}</option>
-            </select>
+            <label class="col-form-label">I would like to continue spending time in, or spend more time developing expertise within the following service
+              line sub groups: (Up to 2 choices)</label>
+            <div class="row">
+              <div class="col-md-3" *ngFor="let serviceLine of surveyLookups?.ServiceLines">
+                <span>
+                  <b>{{serviceLine.ServiceLine}}</b>
+                </span>
+                <div class="form-check" *ngFor="let subGroup of surveyLookups?.SubGroups">
+                  <label class="form-check-label" *ngIf="subGroup.ServiceLineId === serviceLine.ServiceLineId" [for]="subGroup.SubGroup">
+                    <input class="form-check-input" [name]="subGroup.SubGroup" [id]="subGroup.SubGroup" type="checkbox" ngModel> {{subGroup.SubGroup}}
+                  </label>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="form-group">
-            <label class="col-form-label">I am interested in learning about and/or participating in the following advisory engagements:</label>
+            <label class="col-form-label">I am interested in learning about and/or participating in the following advisory engagements: (ctrl + left click to select more than one)</label>
             <select multiple class="form-control" name="AdvisoryEngagements" ngModel required>
               <option *ngFor="let advisory of surveyLookups?.Advisories" [ngValue]="advisory">{{advisory.Advisory}}</option>
             </select>

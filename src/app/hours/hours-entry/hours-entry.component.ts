@@ -274,4 +274,5 @@ export class HoursEntryComponent implements OnInit, OnChanges {
         console.log(error);
       })
   }
+
 }
