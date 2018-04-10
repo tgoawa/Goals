@@ -117,47 +117,47 @@
           <div class="form-group">
             <label class="col-form-label">I am spending sufficient time in my chosen industry(s) to develop expertise:</label>
               <div class="form-check">
-                <input class="form-check-input" name="ChosenIndustry" id="yes" type="radio" value="1" ngModel>
+                <input class="form-check-input" name="ChosenIndustry" id="yes" type="radio" value="1" ngModel required>
                 <label class="form-check-label" for="yes">Yes</label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" name="ChosenIndustry" id="no" type="radio" value="0" ngModel>
+                <input class="form-check-input" name="ChosenIndustry" id="no" type="radio" value="0" ngModel required>
                 <label class="form-check-label" for="no">No</label>
               </div>
             </div>
           <div class="form-group">
             <label class="col-form-label">The industries in which I spend the most time are:</label>
-            <select multiple class="form-control" name="industryTime" ngModel>
+            <select multiple class="form-control" name="industryTime" ngModel required>
               <option *ngFor="let industryTeam of surveyLookups?.IndustryTeams" [ngValue]="industryTeam">{{industryTeam.TeamName}}</option>
             </select>
           </div>
           <div class="form-group">
             <label class="col-form-label">I would like to learn more about the following industries:</label>
-            <select multiple class="form-control" name="industryLearn" ngModel>
+            <select multiple class="form-control" name="industryLearn" ngModel required>
               <option *ngFor="let industryTeam of surveyLookups?.IndustryTeams" [ngValue]="industryTeam">{{industryTeam.TeamName}}</option>
             </select>
           </div>
           <div class="form-group">
             <label class="col-form-label">The service line I most closely align with:</label>
-            <select class="form-control" name="ServiceLineAlign" ngModel>
+            <select class="form-control" name="ServiceLineAlign" ngModel required>
               <option *ngFor="let serviceLine of surveyLookups?.ServiceLines" [ngValue]="serviceLine">{{serviceLine.ServiceLine}}</option>
             </select>
           </div>
           <div class="form-group">
             <label class="col-form-label">I would like to continue spending time in, or spend more time developing expertise within the following service line sub groups:</label>
-            <select multiple class="form-control" name="ServiceLineSubGroups" ngModel>
+            <select multiple class="form-control" name="ServiceLineSubGroups" ngModel required>
               <option *ngFor="let subGroup of surveyLookups?.SubGroups" [ngValue]="subGroup">{{subGroup.SubGroup}}</option>
             </select>
           </div>
           <div class="form-group">
             <label class="col-form-label">I am interested in learning about and/or participating in the following advisory engagements:</label>
-            <select multiple class="form-control" name="AdvisoryEngagements" ngModel>
+            <select multiple class="form-control" name="AdvisoryEngagements" ngModel required>
               <option *ngFor="let advisory of surveyLookups?.Advisories" [ngValue]="advisory">{{advisory.Advisory}}</option>
             </select>
           </div>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-success">Save</button>
+          <button type="submit" class="btn btn-success" [disabled]="surveyForm.invalid">Save</button>
         </div>
       </form>
     </div>
