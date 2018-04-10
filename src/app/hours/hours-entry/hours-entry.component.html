@@ -127,13 +127,13 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="col-form-label">The industries in which I spend the most time are: (ctrl + left click to select more than one)</label>
+            <label class="col-form-label">The industries in which I spend the most time are (ctrl + left click to select more than one):</label>
             <select multiple class="form-control" name="industryTime" ngModel required>
               <option *ngFor="let industryTeam of surveyLookups?.IndustryTeams" [ngValue]="industryTeam">{{industryTeam.TeamName}}</option>
             </select>
           </div>
           <div class="form-group">
-            <label class="col-form-label">I would like to learn more about the following industries: (ctrl + left click to select more than one)</label>
+            <label class="col-form-label">I would like to learn more about the following industries (ctrl + left click to select more than one):</label>
             <select multiple class="form-control" name="industryLearn" ngModel required>
               <option *ngFor="let industryTeam of surveyLookups?.IndustryTeams" [ngValue]="industryTeam">{{industryTeam.TeamName}}</option>
             </select>
@@ -146,7 +146,7 @@
           </div>
           <div class="form-group">
             <label class="col-form-label">I would like to continue spending time in, or spend more time developing expertise within the following service
-              line sub groups: (Up to 2 choices)</label>
+              line sub groups (up to 2 choices):</label>
             <div class="row">
               <div class="col-md-3" *ngFor="let serviceLine of surveyLookups?.ServiceLines">
                 <span>
