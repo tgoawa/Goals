@@ -108,7 +108,7 @@
   </div>
 </div>
 <!-- modal for survey questions boilerplate -->
-<!-- <div *ngIf="isModalShown" [config]="{ show: true }" (onHidden)="onHidden()" bsModal #autoShownModal="bs-modal" class="modal fade"
+<div *ngIf="isSurveyShown" [config]="{ show: true }" (onHidden)="onHideSurvey()" bsModal #surveyModal="bs-modal" class="modal fade"
   tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
@@ -180,4 +180,4 @@
       </form>
     </div>
   </div>
-</div> -->
+</div>

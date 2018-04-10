@@ -16,6 +16,7 @@ import * as _ from 'lodash';
 })
 export class HoursEntryComponent implements OnInit, OnChanges {
   @ViewChild('staticModal') public staticModal: ModalDirective;
+  @ViewChild('surveyModal') surveyModal: ModalDirective;
 
   hours: Hours;
   hoursToEdit: Hours;
@@ -25,6 +26,7 @@ export class HoursEntryComponent implements OnInit, OnChanges {
   displayIndustryTeam = false;
   displayServiceLine = false;
   industryTeams: string[];
+  isSurveyShown = false;
   isLoading = false;
   isDirty = false;
   teamMember: TeamMember;
@@ -211,6 +213,18 @@ export class HoursEntryComponent implements OnInit, OnChanges {
 
   onSave() {
     this.updateHours();
+  }
+
+  showSurveyModal() {
+    this.isSurveyShown = true;
+  }
+
+  hideSurveyModal() {
+    this.surveyModal.hide();
+  }
+
+  onHideSurvey() {
+    this.isSurveyShown = false;
   }
 
   showSuccessUpdate() {
