@@ -22,6 +22,11 @@ export class HoursService {
     .map(response => response.json(), error => console.log(error));
   }
 
+  getSurveyLookups() {
+    return this.http.get(api + 'HoursService/GetSurveyLookups/')
+    .map(response => response.json(), error => console.log(error));
+  }
+
   updateHours(hours: Hours) {
     return this.http.put(api + 'HoursService/updateHours/', hours)
     .map(response => response.json(), error => console.log(error));

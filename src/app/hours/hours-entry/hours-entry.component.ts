@@ -8,6 +8,7 @@ import { TeamMember, TeamMemberService } from '../../teamMember/';
 import { Hours, CategoryWrapper, Item } from '../models/hours';
 
 import * as _ from 'lodash';
+import { SurveyLookups } from '../models/surveyLookups';
 
 @Component({
   selector: 'app-hours-entry',
@@ -29,6 +30,7 @@ export class HoursEntryComponent implements OnInit, OnChanges {
   isSurveyShown = false;
   isLoading = false;
   isDirty = false;
+  surveyLookups: SurveyLookups;
   teamMember: TeamMember;
   totalWorkHours: number;
 
@@ -261,5 +263,14 @@ export class HoursEntryComponent implements OnInit, OnChanges {
   resetData() {
     this.hoursToEdit = _.cloneDeep(this.hours);
     this.calculateTotalHours();
+  }
+
+  private getSurveyLookups() {
+    this.hoursService.getSurveyLookups()
+      .subscribe(data => {
+
+      }, error => {
+        console.log(error);
+      })
   }
 }
