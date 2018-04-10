@@ -23,7 +23,7 @@ export class HoursService {
   }
 
   getSurveyLookups() {
-    return this.http.get(api + 'HoursService/GetSurveyLookups/')
+    return this.http.get(api + 'HoursService/GetSurveyLookups')
     .map(response => response.json(), error => console.log(error));
   }
 

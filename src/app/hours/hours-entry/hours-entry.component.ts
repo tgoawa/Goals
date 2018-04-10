@@ -27,7 +27,6 @@ export class HoursEntryComponent implements OnInit, OnChanges {
   displayIndustryTeam = false;
   displayServiceLine = false;
   industryTeams: string[];
-  isSurveyShown = false;
   isLoading = false;
   isDirty = false;
   surveyLookups: SurveyLookups;
@@ -44,6 +43,7 @@ export class HoursEntryComponent implements OnInit, OnChanges {
 
   ngOnInit() {
   this.getEmulatedTeamMember();
+  this.getSurveyLookups();
   }
 
   getEmulatedTeamMember() {
@@ -218,15 +218,11 @@ export class HoursEntryComponent implements OnInit, OnChanges {
   }
 
   showSurveyModal() {
-    this.isSurveyShown = true;
+    this.surveyModal.show();
   }
 
   hideSurveyModal() {
     this.surveyModal.hide();
-  }
-
-  onHideSurvey() {
-    this.isSurveyShown = false;
   }
 
   showSuccessUpdate() {
@@ -268,7 +264,8 @@ export class HoursEntryComponent implements OnInit, OnChanges {
   private getSurveyLookups() {
     this.hoursService.getSurveyLookups()
       .subscribe(data => {
-
+        this.surveyLookups = data;
+        this.showSurveyModal();
       }, error => {
         console.log(error);
       })

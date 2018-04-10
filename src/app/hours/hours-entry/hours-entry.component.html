@@ -108,69 +108,51 @@
   </div>
 </div>
 <!-- modal for survey questions boilerplate -->
-<div *ngIf="isSurveyShown" [config]="{ show: true }" (onHidden)="onHideSurvey()" bsModal #surveyModal="bs-modal" class="modal fade"
+<div [config]="{ backdrop: 'static' }" bsModal #surveyModal="bs-modal" class="modal fade"
   tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
-      <form>
+      <form #surveyForm="ngForm">
         <div class="modal-body">
-          <fieldset class="form-group">
-            <legend class="col-form-label">I am spending sufficient time in my chosen industry(s) to develop expertise:</legend>
+          <div class="form-group">
+            <label class="col-form-label">I am spending sufficient time in my chosen industry(s) to develop expertise:</label>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="yes">
+                <input class="form-check-input" name="ChosenIndustry" id="ChosenIndustry" type="radio" name="yes">
                 <label class="form-check-label" for="yes">Yes</label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="no">
+                <input class="form-check-input" name="ChosenIndustry" id="ChosenIndustry" type="radio" name="no">
                 <label class="form-check-label" for="yes">No</label>
               </div>
-          </fieldset>
+            </div>
           <div class="form-group">
             <label class="col-form-label">The industries in which I spend the most time are:</label>
-            <select multiple class="form-control">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
+            <select multiple class="form-control" name="industryTime" ngModel>
+              <option *ngFor="let industryTeam of surveyLookups?.IndustryTeams" [ngValue]="industryTeam">{{industryTeam.TeamName}}</option>
             </select>
           </div>
           <div class="form-group">
             <label class="col-form-label">I would like to learn more about the following industries:</label>
-            <select multiple class="form-control">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
+            <select multiple class="form-control" name="industryLearn" ngModel>
+              <option *ngFor="let industryTeam of surveyLookups?.IndustryTeams" [ngValue]="industryTeam">{{industryTeam.TeamName}}</option>
             </select>
           </div>
           <div class="form-group">
             <label class="col-form-label">The service line I most closely align with:</label>
-            <select class="form-control">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
+            <select class="form-control" name="ServiceLineAlign" ngModel>
+              <option *ngFor="let serviceLine of surveyLookups?.ServiceLines" [ngValue]="serviceLine">{{serviceLine.ServiceLine}}</option>
             </select>
           </div>
           <div class="form-group">
             <label class="col-form-label">I would like to continue spending time in, or spend more time developing expertise within the following service line sub groups:</label>
-            <select multiple class="form-control">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
+            <select multiple class="form-control" name="ServiceLineSubGroups" ngModel>
+              <option *ngFor="let subGroup of surveyLookups?.SubGroups" [ngValue]="subGroup">{{subGroup.SubGroup}}</option>
             </select>
           </div>
           <div class="form-group">
             <label class="col-form-label">I am interested in learning about and/or participating in the following advisory engagements:</label>
-            <select multiple class="form-control">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
+            <select multiple class="form-control" name="AdvisoryEngagements" ngModel>
+              <option *ngFor="let advisory of surveyLookups?.Advisories" [ngValue]="advisory">{{advisory.Advisory}}</option>
             </select>
           </div>
         </div>
