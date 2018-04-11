@@ -117,31 +117,31 @@
             <label class="col-form-label">I am spending sufficient time in my chosen industry(s) to develop expertise:</label>
             <div class="form-check">
               <label class="form-check-label" for="yes">
-                <input class="form-check-input" name="ChosenIndustry" id="yes" type="radio" value="1" ngModel required> Yes
+                <input class="form-check-input" name="IsExpertise" id="yes" type="radio" value="true" ngModel required> Yes
               </label>
             </div>
             <div class="form-check">
               <label class="form-check-label" for="no">
-                <input class="form-check-input" name="ChosenIndustry" id="no" type="radio" value="0" ngModel required> No
+                <input class="form-check-input" name="IsExpertise" id="no" type="radio" value="false" ngModel required> No
               </label>
             </div>
           </div>
           <div class="form-group">
             <label class="col-form-label">The industries in which I spend the most time are (ctrl + left click to select more than one):</label>
-            <select multiple class="form-control" name="industryTime" ngModel required>
-              <option *ngFor="let industryTeam of surveyLookups?.IndustryTeams" [ngValue]="industryTeam">{{industryTeam.TeamName}}</option>
+            <select multiple class="form-control" name="IndustryTeamsTime" ngModel required>
+              <option *ngFor="let industryTeam of surveyLookups?.IndustryTeams" [ngValue]="industryTeam.IndustryTeamId">{{industryTeam.TeamName}}</option>
             </select>
           </div>
           <div class="form-group">
             <label class="col-form-label">I would like to learn more about the following industries (ctrl + left click to select more than one):</label>
-            <select multiple class="form-control" name="industryLearn" ngModel required>
-              <option *ngFor="let industryTeam of surveyLookups?.IndustryTeams" [ngValue]="industryTeam">{{industryTeam.TeamName}}</option>
+            <select multiple class="form-control" name="IndustryTeamLearn" ngModel required>
+              <option *ngFor="let industryTeam of surveyLookups?.IndustryTeams" [ngValue]="industryTeam.IndustryTeamId">{{industryTeam.TeamName}}</option>
             </select>
           </div>
           <div class="form-group">
             <label class="col-form-label">The service line I most closely align with:</label>
-            <select class="form-control" name="ServiceLineAlign" ngModel required>
-              <option *ngFor="let serviceLine of surveyLookups?.ServiceLines" [ngValue]="serviceLine">{{serviceLine.ServiceLine}}</option>
+            <select class="form-control" name="ServiceLineAlignedId" ngModel required>
+              <option *ngFor="let serviceLine of surveyLookups?.ServiceLines" [ngValue]="serviceLine.ServiceLineId">{{serviceLine.ServiceLine}}</option>
             </select>
           </div>
           <div class="form-group">
@@ -155,8 +155,8 @@
           </div>
           <div class="form-group">
             <label class="col-form-label">I am interested in learning about and/or participating in the following advisory engagements (ctrl + left click to select more than one):</label>
-            <select multiple class="form-control" name="AdvisoryEngagements" ngModel required>
-              <option *ngFor="let advisory of surveyLookups?.Advisories" [ngValue]="advisory">{{advisory.Advisory}}</option>
+            <select multiple class="form-control" name="Advisories" ngModel required>
+              <option *ngFor="let advisory of surveyLookups?.Advisories" [ngValue]="advisory.AdvisoryId">{{advisory.Advisory}}</option>
             </select>
           </div>
         </div>

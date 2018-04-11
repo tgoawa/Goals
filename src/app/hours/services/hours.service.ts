@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { Hours } from '../models/hours';
 import { environment } from '../../../environments/environment';
+import { Survey } from '../models/survey';
 
 const api = environment.envApi;
 @Injectable()
@@ -25,6 +26,11 @@ export class HoursService {
   getSurveyLookups() {
     return this.http.get(api + 'HoursService/GetSurveyLookups')
     .map(response => response.json(), error => console.log(error));
+  }
+
+  saveSurvey(surveyData: Survey) {
+    return this.http.post(api + 'HoursService/saveSurvey/', surveyData)
+    .map(response => response.json(), error => console.error(error));
   }
 
   updateHours(hours: Hours) {
