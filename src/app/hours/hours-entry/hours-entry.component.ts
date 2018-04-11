@@ -327,16 +327,18 @@ export class HoursEntryComponent implements OnInit, OnChanges {
   }
 
   private getSurveyLookups() {
-    this.hoursService.getSurveyLookups().subscribe(
-      data => {
-        this.surveyLookups = data;
-        this.createSubGroupsData(this.surveyLookups.SubGroups);
-        this.showSurveyModal();
-      },
-      error => {
-        console.log(error);
-      }
-    );
+    if (this.teamMember.IsChargable) {
+      this.hoursService.getSurveyLookups().subscribe(
+        data => {
+          this.surveyLookups = data;
+          this.createSubGroupsData(this.surveyLookups.SubGroups);
+          this.showSurveyModal();
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    }
   }
 
   private countSelectedSubGroups(list: SubGroupsSurveyData[]) {
