@@ -1,8 +1,9 @@
 export class Survey {
   Advisories: number[];
   IndustryTeamLearn: number[];
+  IndustryTeamsTime: number[];
   IsExpertise: boolean;
   ServiceLineAlignedId: number;
-  SubGroupExpterise: number[];
+  SubGroupsExpertise: number[];
   TeamMemberId: number;
 }

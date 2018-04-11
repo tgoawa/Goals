@@ -35,6 +35,7 @@ export class HoursEntryComponent implements OnInit, OnChanges {
   isLoading = false;
   isDirty = false;
   displaySubGroupInvalid = false;
+  displaySurveyError = false;
   selectedSubGroupIds: number[];
   subGroupsSurveyData: SubGroupsSurveyData[];
   surveyLookups: SurveyLookups;
@@ -242,10 +243,12 @@ export class HoursEntryComponent implements OnInit, OnChanges {
   }
 
   onSubmitSurvey(value: any) {
+    let survey = new Survey();
     if (this.countSelectedSubGroups(this.subGroupsSurveyData) <= 2) {
       console.log('Count is ok, form should be ok to save');
       this.displaySubGroupInvalid = false;
-      this.saveSurvey(this.mapSurveyData(value));
+      survey = this.mapSurveyData(value);
+      this.saveSurvey(this.mapSurveyData(survey));
     } else {
       console.error('Too many subgroups selected');
       this.displaySubGroupInvalid = true;
@@ -256,9 +259,12 @@ export class HoursEntryComponent implements OnInit, OnChanges {
     this.hoursService.saveSurvey(surveyData).subscribe(
       data => {
         if (data) {
+          this.displaySurveyError = false;
           console.log('Survey Successfully Saved!');
+          this.hideSurveyModal();
         } else {
           console.error('There was a database issue saving the survey!');
+          this.displaySurveyError = true;
         }
       }, error => {
         console.error(error);
@@ -350,9 +356,10 @@ export class HoursEntryComponent implements OnInit, OnChanges {
     tempSurveyObject.TeamMemberId = this.teamMember.TeamMemberId;
     tempSurveyObject.Advisories = formValue.Advisories;
     tempSurveyObject.IndustryTeamLearn = formValue.IndustryTeamLearn;
+    tempSurveyObject.IndustryTeamsTime = formValue.IndustryTeamsTime;
     tempSurveyObject.IsExpertise = formValue.IsExpertise;
     tempSurveyObject.ServiceLineAlignedId = formValue.ServiceLineAlignedId;
-    tempSurveyObject.SubGroupExpterise = _.cloneDeep(this.selectedSubGroupIds);
+    tempSurveyObject.SubGroupsExpertise = _.cloneDeep(this.selectedSubGroupIds);
 
     return tempSurveyObject;
   }
