@@ -3,6 +3,6 @@
 </span>
 <div class="form-check" *ngFor="let subGroup of subgroupsList" [collapse]="isCollapsed">
   <label class="form-check-label" *ngIf="subGroup.ServiceLineId === serviceLine.ServiceLineId">
-    <input class="form-check-input" name="SubGroupsExpterise" type="checkbox" [value]="subGroup.ServiceLineGroupId" ngModel> {{subGroup.SubGroup}}
+    <input class="form-check-input" name="subgroupsList" type="checkbox" [value]="subGroup.ServiceLineGroupId" [(ngModel)]="subGroup.IsSelected"> {{subGroup.SubGroup}}
   </label>
 </div>

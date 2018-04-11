@@ -8,12 +8,17 @@ import { TeamMember, TeamMemberService } from '../../teamMember/';
 import { Hours, CategoryWrapper, Item } from '../models/hours';
 
 import * as _ from 'lodash';
-import { SurveyLookups } from '../models/surveyLookups';
+import {
+  SurveyLookups,
+  SubGroupsSurveyData,
+  SubGroupsInterface,
+} from '../models/surveyLookups';
+import { Survey } from '../models/survey';
 
 @Component({
   selector: 'app-hours-entry',
   templateUrl: './hours-entry.component.html',
-  styleUrls: ['./hours-entry.component.scss']
+  styleUrls: ['./hours-entry.component.scss'],
 })
 export class HoursEntryComponent implements OnInit, OnChanges {
   @ViewChild('staticModal') public staticModal: ModalDirective;
@@ -29,6 +34,9 @@ export class HoursEntryComponent implements OnInit, OnChanges {
   industryTeams: string[];
   isLoading = false;
   isDirty = false;
+  displaySubGroupInvalid = false;
+  selectedSubGroupIds: number[];
+  subGroupsSurveyData: SubGroupsSurveyData[];
   surveyLookups: SurveyLookups;
   teamMember: TeamMember;
   totalWorkHours: number;
@@ -37,23 +45,27 @@ export class HoursEntryComponent implements OnInit, OnChanges {
   nonChargeTotalHours = 0;
   serviceLineTotalHours = 0;
 
-  constructor(private hoursService: HoursService,
+  constructor(
+    private hoursService: HoursService,
     private tmService: TeamMemberService,
-    private toastrService: ToastrService) { }
+    private toastrService: ToastrService
+  ) {}
 
   ngOnInit() {
-  this.getEmulatedTeamMember();
-  this.getSurveyLookups();
+    this.getEmulatedTeamMember();
+    this.getSurveyLookups();
   }
 
   getEmulatedTeamMember() {
-    this.tmService.emulatedTeamMember
-      .subscribe(data => {
+    this.tmService.emulatedTeamMember.subscribe(
+      data => {
         this.teamMember = data;
         this.getData();
-      }, error => {
+      },
+      error => {
         console.log(error);
-      });
+      }
+    );
   }
 
   ngOnChanges() {
@@ -125,13 +137,13 @@ export class HoursEntryComponent implements OnInit, OnChanges {
 
   toggleDestination(des: number) {
     switch (des) {
-      case (1):
+      case 1:
         this.displayNonChargeHours();
         break;
-      case (2):
+      case 2:
         this.displayIndustryTeamHours();
         break;
-      case (3):
+      case 3:
         this.displayServiceLineHours();
         break;
       default:
@@ -154,27 +166,31 @@ export class HoursEntryComponent implements OnInit, OnChanges {
 
   getHours() {
     this.isLoading = true;
-    this.hoursService.getHours(this.teamMember.TeamMemberId)
-      .subscribe(data => {
+    this.hoursService.getHours(this.teamMember.TeamMemberId).subscribe(
+      data => {
         this.isLoading = false;
         this.hours = data;
         this.hoursToEdit = _.cloneDeep(this.hours);
-      }, error => {
+      },
+      error => {
         this.isLoading = false;
         console.log(error);
-      });
+      }
+    );
   }
 
   getNames() {
     this.isLoading = true;
-    this.hoursService.getCategories()
-      .subscribe(data => {
+    this.hoursService.getCategories().subscribe(
+      data => {
         this.isLoading = false;
         this.categories = data;
-      }, error => {
+      },
+      error => {
         this.isLoading = false;
         console.log(error);
-      });
+      }
+    );
   }
 
   setNonChargeTotal(hours: number) {
@@ -225,8 +241,29 @@ export class HoursEntryComponent implements OnInit, OnChanges {
     this.surveyModal.hide();
   }
 
-  saveSurvey(value: any) {
-    console.log(value);
+  onSubmitSurvey(value: any) {
+    if (this.countSelectedSubGroups(this.subGroupsSurveyData) <= 2) {
+      console.log('Count is ok, form should be ok to save');
+      this.displaySubGroupInvalid = false;
+      this.saveSurvey(this.mapSurveyData(value));
+    } else {
+      console.error('Too many subgroups selected');
+      this.displaySubGroupInvalid = true;
+    }
+  }
+
+  saveSurvey(surveyData: Survey) {
+    this.hoursService.saveSurvey(surveyData).subscribe(
+      data => {
+        if (data) {
+          console.log('Survey Successfully Saved!');
+        } else {
+          console.error('There was a database issue saving the survey!');
+        }
+      }, error => {
+        console.error(error);
+      }
+    )
   }
 
   showSuccessUpdate() {
@@ -234,22 +271,27 @@ export class HoursEntryComponent implements OnInit, OnChanges {
   }
 
   showFailedUpdate() {
-    this.toastrService.error('', 'Error updating your hours data, please try again. If issue persists, please contact the Help Desk');
+    this.toastrService.error(
+      '',
+      'Error updating your hours data, please try again. If issue persists, please contact the Help Desk'
+    );
   }
 
   updateHours() {
-    this.hoursService.updateHours(this.hoursToEdit)
-      .subscribe(data => {
+    this.hoursService.updateHours(this.hoursToEdit).subscribe(
+      data => {
         this.showSuccessUpdate();
         this.isDirty = false;
         this.resetDirtyFlags(this.hours.ServiceLines);
         this.resetDirtyFlags(this.hours.IndustryTeams);
         this.resetDirtyFlags(this.hours.NonChargeList);
         location.reload();
-      }, error => {
+      },
+      error => {
         this.showFailedUpdate();
         console.log(error);
-      });
+      }
+    );
   }
 
   resetDirtyFlags(items: Item[]) {
@@ -265,14 +307,53 @@ export class HoursEntryComponent implements OnInit, OnChanges {
     this.calculateTotalHours();
   }
 
-  private getSurveyLookups() {
-    this.hoursService.getSurveyLookups()
-      .subscribe(data => {
-        this.surveyLookups = data;
-        this.showSurveyModal();
-      }, error => {
-        console.log(error);
-      })
+  private createSubGroupsData(list: SubGroupsInterface[]) {
+    this.subGroupsSurveyData = [];
+    for (let x = 0; x < list.length; x++) {
+      this.subGroupsSurveyData.push(
+        new SubGroupsSurveyData(
+          list[x].ServiceLineId,
+          list[x].ServiceLineSubGroupId,
+          list[x].SubGroup
+        )
+      );
+    }
   }
 
+  private getSurveyLookups() {
+    this.hoursService.getSurveyLookups().subscribe(
+      data => {
+        this.surveyLookups = data;
+        this.createSubGroupsData(this.surveyLookups.SubGroups);
+        this.showSurveyModal();
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  private countSelectedSubGroups(list: SubGroupsSurveyData[]) {
+    let count = 0;
+    this.selectedSubGroupIds = [];
+    for (let x = 0; x < list.length; x++) {
+      if (list[x].IsSelected) {
+        count++;
+        this.selectedSubGroupIds.push(list[x].ServiceLineSubGroupId);
+      }
+    }
+    return count;
+  }
+
+  private mapSurveyData(formValue: any) {
+    const tempSurveyObject = new Survey();
+    tempSurveyObject.TeamMemberId = this.teamMember.TeamMemberId;
+    tempSurveyObject.Advisories = formValue.Advisories;
+    tempSurveyObject.IndustryTeamLearn = formValue.IndustryTeamLearn;
+    tempSurveyObject.IsExpertise = formValue.IsExpertise;
+    tempSurveyObject.ServiceLineAlignedId = formValue.ServiceLineAlignedId;
+    tempSurveyObject.SubGroupExpterise = _.cloneDeep(this.selectedSubGroupIds);
+
+    return tempSurveyObject;
+  }
 }

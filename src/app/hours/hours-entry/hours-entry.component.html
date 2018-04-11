@@ -111,7 +111,7 @@
 <div [config]="{ backdrop: 'static' }" bsModal #surveyModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
-      <form #surveyForm="ngForm" (ngSubmit)="saveSurvey(surveyForm.value)">
+      <form #surveyForm="ngForm" (ngSubmit)="onSubmitSurvey(surveyForm.value)">
         <div class="modal-body">
           <div class="form-group">
             <label class="col-form-label">I am spending sufficient time in my chosen industry(s) to develop expertise:</label>
@@ -147,9 +147,10 @@
           <div class="form-group">
             <label class="col-form-label">I would like to continue spending time in, or spend more time developing expertise within the following service
               line sub groups (up to 2 choices):</label>
+              <div class="row" *ngIf="displaySubGroupInvalid" style="color:red"><div class="col-md-10">Too many subgroups selected, please reduce to a maximum of 2</div></div>
             <div class="row">
               <div class="col-md-3" *ngFor="let serviceLine of surveyLookups?.ServiceLines">
-                <app-survey-sub-group [serviceLine]="serviceLine" [subgroupsList]="surveyLookups?.SubGroups"></app-survey-sub-group>
+                <app-survey-sub-group [serviceLine]="serviceLine" [subgroupsList]="subGroupsSurveyData"></app-survey-sub-group>
               </div>
             </div>
           </div>
@@ -160,6 +161,7 @@
             </select>
           </div>
         </div>
+        <div class="row" *ngIf="displaySubGroupInvalid" style="color:red"><div class="col-md-10">Too many subgroups selected, please reduce to a maximum of 2</div></div>
         <div class="modal-footer">
           <button type="submit" class="btn btn-success" [disabled]="surveyForm.invalid">Save</button>
         </div>

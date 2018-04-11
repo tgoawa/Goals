@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ControlContainer, NgForm } from '@angular/forms';
-import { ServiceLinesInterface, SubGroupsInterface } from '../../models/surveyLookups';
+import { ServiceLinesInterface, SubGroupsSurveyData } from '../../models/surveyLookups';
 
 @Component({
   selector: 'app-survey-sub-group',
@@ -10,7 +10,7 @@ import { ServiceLinesInterface, SubGroupsInterface } from '../../models/surveyLo
 })
 export class SurveySubGroupComponent implements OnInit {
 @Input() serviceLine: ServiceLinesInterface;
-@Input() subgroupsList: SubGroupsInterface;
+@Input() subgroupsList: SubGroupsSurveyData;
 isCollapsed = true;
   constructor() { }
 

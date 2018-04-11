@@ -22,6 +22,20 @@ export interface ServiceLinesInterface {
 
 export interface SubGroupsInterface {
   ServiceLineId: number;
-  ServiceLineGroupId: number;
+  ServiceLineSubGroupId: number;
   SubGroup: string;
+}
+
+export class SubGroupsSurveyData implements SubGroupsInterface {
+  ServiceLineId: number;
+  ServiceLineSubGroupId: number;
+  SubGroup: string;
+  IsSelected: boolean;
+
+  constructor(serviceLineId: number, serviceLineGroupId: number, subGroup: string) {
+    this.ServiceLineId = serviceLineId;
+    this.ServiceLineSubGroupId = serviceLineGroupId;
+    this.SubGroup = subGroup;
+    this.IsSelected = false;
+  }
 }
