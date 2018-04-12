@@ -262,6 +262,7 @@ export class HoursEntryComponent implements OnInit, OnChanges {
           this.displaySurveyError = false;
           console.log('Survey Successfully Saved!');
           this.hideSurveyModal();
+          this.teamMember.IsSurveyTaken = true;
         } else {
           console.error('There was a database issue saving the survey!');
           this.displaySurveyError = true;
