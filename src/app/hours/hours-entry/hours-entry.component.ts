@@ -327,7 +327,7 @@ export class HoursEntryComponent implements OnInit, OnChanges {
   }
 
   private getSurveyLookups() {
-    if (this.teamMember.IsChargable) {
+    if (this.teamMember.IsChargable && !this.teamMember.IsSurveyTaken) {
       this.hoursService.getSurveyLookups().subscribe(
         data => {
           this.surveyLookups = data;

@@ -22,4 +22,5 @@ export class TeamMember {
     IndustryTeam3: number;
     IndustryTeam4: number;
     StaffTypeId: number;
+    IsSurveyTaken: boolean;
 }
