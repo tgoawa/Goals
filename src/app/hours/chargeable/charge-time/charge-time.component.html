@@ -1,25 +1,29 @@
 <div class="col-md-12">
   <div class="row">
-    <div class="col-md-6" *ngIf="currentTotalHours > 0">
-      <h2 class="text-center">Fiscal Year To Date</h2>
-        <ngx-charts-pie-chart
-        [view]="view"
-        [results]="rollingPieData"
-        [scheme]="colorScheme"
-        [legend]="true"
-        [labels]="true">
-        </ngx-charts-pie-chart>
+    <div class="col-md-6">
+      <div *ngIf="currentTotalHours > 0">
+          <h2 class="text-center">Fiscal Year To Date</h2>
+          <ngx-charts-pie-chart
+          [view]="view"
+          [results]="rollingPieData"
+          [scheme]="colorScheme"
+          [legend]="true"
+          [labels]="true">
+          </ngx-charts-pie-chart>
+      </div>
     </div>
-    <div class="col-md-6" *ngIf="newTotalHours > 0">
-      <h2 class="text-center">Planned Hours</h2>
-      <ngx-charts-pie-chart
-      [view]="view"
-      [results]="estimatedPieData"
-      [scheme]="colorScheme"
-      [legend]="true"
-      [labels]="true">
-      </ngx-charts-pie-chart>
-      <span style="font-size: 12px">Chart will not update until new changes are saved*</span>
+    <div class="col-md-6">
+      <div *ngIf="newTotalHours > 0">
+          <h2 class="text-center">Planned Hours</h2>
+          <ngx-charts-pie-chart
+          [view]="view"
+          [results]="estimatedPieData"
+          [scheme]="colorScheme"
+          [legend]="true"
+          [labels]="true">
+          </ngx-charts-pie-chart>
+          <span style="font-size: 12px">Chart will not update until new changes are saved*</span>
+      </div>
       </div>
   </div>
   <div class="row">
