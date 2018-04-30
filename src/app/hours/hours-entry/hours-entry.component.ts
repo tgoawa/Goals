@@ -375,9 +375,6 @@ export class HoursEntryComponent implements OnInit, OnChanges {
     }
     if (this.teamMember.IsSurveyTaken) {
       return false;
-    }
-    if (this.today < this.surveyDate) {
-      return false;
     } else {
       return true;
     }
