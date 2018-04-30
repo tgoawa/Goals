@@ -46,6 +46,8 @@ export class HoursEntryComponent implements OnInit, OnChanges {
   nonChargeTotalHours = 0;
   serviceLineTotalHours = 0;
 
+  private today = new Date();
+  private surveyDate = new Date('2018-05-20 00:00:00');
   constructor(
     private hoursService: HoursService,
     private tmService: TeamMemberService,
@@ -328,7 +330,7 @@ export class HoursEntryComponent implements OnInit, OnChanges {
   }
 
   private getSurveyLookups() {
-    if (this.teamMember.IsChargable && !this.teamMember.IsSurveyTaken) {
+    if (this.isDisplaySurvey()) {
       this.hoursService.getSurveyLookups().subscribe(
         data => {
           this.surveyLookups = data;
@@ -365,5 +367,19 @@ export class HoursEntryComponent implements OnInit, OnChanges {
     tempSurveyObject.SubGroupsExpertise = _.cloneDeep(this.selectedSubGroupIds);
 
     return tempSurveyObject;
+  }
+
+  private isDisplaySurvey() {
+    if (!this.teamMember.IsChargable) {
+      return false;
+    }
+    if (this.teamMember.IsSurveyTaken) {
+      return false;
+    }
+    if (this.today < this.surveyDate) {
+      return false;
+    } else {
+      return true;
+    }
   }
 }
