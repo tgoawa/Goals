@@ -22,4 +22,9 @@ export class CoachService {
     .map(response => response.json(), error => console.log(error));
   }
 
+  getCPETeamMemberList(coachId: number) {
+    return this.http.get(api + 'HoursService/GetCPETeamMemberList/' + coachId)
+    .map(response => response.json(), error => console.error(error));
+  }
+
 }
