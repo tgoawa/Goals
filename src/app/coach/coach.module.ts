@@ -17,6 +17,7 @@ import { PrintService } from '../print/non-shareholder/services/print.service';
 import { ShareholderCoachComponent } from './shareholder-coach/shareholder-coach.component';
 import { ShteamMemberListComponent } from './shareholder-coach/shteam-member-list/shteam-member-list.component';
 import { HoursComponent } from '../print/non-shareholder/hours/hours.component';
+import { CpeReportComponent } from './cpe-report/cpe-report.component';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { HoursComponent } from '../print/non-shareholder/hours/hours.component';
     TeamMemberListComponent,
     ShareholderCoachComponent,
     ShteamMemberListComponent,
+    CpeReportComponent,
     ],
   providers: [ CoachService ]
 })
