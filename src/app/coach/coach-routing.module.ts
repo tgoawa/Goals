@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { CoachComponent } from './coach.component';
 import { NonShareholderCoachComponent } from './non-shareholder-coach/non-shareholder-coach.component';
 import { ShareholderCoachComponent } from './shareholder-coach/shareholder-coach.component';
+import { CpeReportComponent } from './cpe-report/cpe-report.component';
 
 const routes: Routes = [
   {
@@ -10,7 +11,8 @@ const routes: Routes = [
     component: CoachComponent,
     children: [
       {path: 'non-shareholder-coach', component: NonShareholderCoachComponent},
-      {path: 'shareholder-coach', component: ShareholderCoachComponent}
+      {path: 'shareholder-coach', component: ShareholderCoachComponent},
+      {path: 'cpe-list', component: CpeReportComponent}
     ]
   }
 ];

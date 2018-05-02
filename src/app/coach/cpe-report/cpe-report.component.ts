@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TeamMember } from '../../teamMember';
 
 @Component({
   selector: 'app-cpe-report',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cpe-report.component.scss']
 })
 export class CpeReportComponent implements OnInit {
-
+  teamMemberList: TeamMember;
   constructor() { }
 
   ngOnInit() {
