@@ -258,6 +258,7 @@ export class HoursEntryComponent implements OnInit, OnChanges {
   }
 
   saveSurvey(surveyData: Survey) {
+    console.log(surveyData);
     this.hoursService.saveSurvey(surveyData).subscribe(
       data => {
         if (data) {
@@ -359,8 +360,8 @@ export class HoursEntryComponent implements OnInit, OnChanges {
   private mapSurveyData(formValue: any) {
     const tempSurveyObject = new Survey();
     tempSurveyObject.TeamMemberId = this.teamMember.TeamMemberId;
-    tempSurveyObject.LearningAdvisories = formValue.Advisories1;
-    tempSurveyObject.OpportunityAdvisories = formValue.Advisories2;
+    tempSurveyObject.LearningAdvisories = formValue.LearningAdvisories;
+    tempSurveyObject.OpportunityAdvisories = formValue.OpportunityAdvisories;
     tempSurveyObject.IndustryTeamLearn = formValue.IndustryTeamLearn;
     tempSurveyObject.IndustryTeamsTime = formValue.IndustryTeamsTime;
     tempSurveyObject.IsExpertise = formValue.IsExpertise;

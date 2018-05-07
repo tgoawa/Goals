@@ -155,13 +155,13 @@
           </div>
           <div class="form-group">
             <label class="col-form-label">I am interested in learning more about the following specialty services engagement areas (ctrl + left click to select more than one):</label>
-            <select multiple class="form-control" name="Advisories1" ngModel required>
+            <select multiple class="form-control" name="LearningAdvisories" ngModel required>
               <option *ngFor="let advisory of surveyLookups?.Advisories" [ngValue]="advisory.AdvisoryId">{{advisory.Advisory}}</option>
             </select>
           </div>
           <div class="form-group">
             <label class="col-form-label">I am interested in opportunities to participate in the following specialty service engagement areas (ctrl + left click to select more than one):</label>
-            <select multiple class="form-control" name="Advisories2" ngModel required>
+            <select multiple class="form-control" name="OpportunityAdvisories" ngModel required>
               <option *ngFor="let advisory of surveyLookups?.Advisories" [ngValue]="advisory.AdvisoryId">{{advisory.Advisory}}</option>
             </select>
           </div>
