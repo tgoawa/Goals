@@ -1,6 +1,6 @@
 export class Survey {
-  Advisories1: number[];
-  Advisories2: number[];
+  LearningAdvisories: number[];
+  OpportunityAdvisories: number[];
   IndustryTeamLearn: number[];
   IndustryTeamsTime: number[];
   IsExpertise: boolean;

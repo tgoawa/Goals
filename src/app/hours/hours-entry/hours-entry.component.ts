@@ -359,8 +359,8 @@ export class HoursEntryComponent implements OnInit, OnChanges {
   private mapSurveyData(formValue: any) {
     const tempSurveyObject = new Survey();
     tempSurveyObject.TeamMemberId = this.teamMember.TeamMemberId;
-    tempSurveyObject.Advisories1 = formValue.Advisories1;
-    tempSurveyObject.Advisories2 = formValue.Advisories2;
+    tempSurveyObject.LearningAdvisories = formValue.Advisories1;
+    tempSurveyObject.OpportunityAdvisories = formValue.Advisories2;
     tempSurveyObject.IndustryTeamLearn = formValue.IndustryTeamLearn;
     tempSurveyObject.IndustryTeamsTime = formValue.IndustryTeamsTime;
     tempSurveyObject.IsExpertise = formValue.IsExpertise;
