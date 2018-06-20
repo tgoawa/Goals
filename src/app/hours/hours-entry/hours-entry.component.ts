@@ -37,6 +37,7 @@ export class HoursEntryComponent implements OnInit, OnChanges {
   displaySubGroupInvalid = false;
   displaySurveyError = false;
   selectedSubGroupIds: number[];
+  survey: Survey;
   subGroupsSurveyData: SubGroupsSurveyData[];
   surveyLookups: SurveyLookups;
   teamMember: TeamMember;
@@ -46,8 +47,6 @@ export class HoursEntryComponent implements OnInit, OnChanges {
   nonChargeTotalHours = 0;
   serviceLineTotalHours = 0;
 
-  private today = new Date();
-  private surveyDate = new Date('2018-05-20 00:00:00');
   constructor(
     private hoursService: HoursService,
     private tmService: TeamMemberService,
@@ -57,6 +56,7 @@ export class HoursEntryComponent implements OnInit, OnChanges {
   ngOnInit() {
     this.getEmulatedTeamMember();
     this.getSurveyLookups();
+    this.survey = new Survey();
   }
 
   getEmulatedTeamMember() {
@@ -244,13 +244,11 @@ export class HoursEntryComponent implements OnInit, OnChanges {
     this.surveyModal.hide();
   }
 
-  onSubmitSurvey(value: any) {
-    let survey = new Survey();
+  onSubmitSurvey() {
     if (this.countSelectedSubGroups(this.subGroupsSurveyData) <= 2) {
       console.log('Count is ok, form should be ok to save');
       this.displaySubGroupInvalid = false;
-      survey = this.mapSurveyData(value);
-      this.saveSurvey(this.mapSurveyData(survey));
+      this.saveSurvey(this.survey);
     } else {
       console.error('Too many subgroups selected');
       this.displaySubGroupInvalid = true;
@@ -345,30 +343,23 @@ export class HoursEntryComponent implements OnInit, OnChanges {
     }
   }
 
+  private assignSelectedSubGroups(selectedIds: number[]) {
+    if (selectedIds.length > 0) {
+      this.survey.SubGroupsExpertise = _.cloneDeep(selectedIds);
+    }
+  }
+
   private countSelectedSubGroups(list: SubGroupsSurveyData[]) {
     let count = 0;
     this.selectedSubGroupIds = [];
-    for (let x = 0; x < list.length; x++) {
-      if (list[x].IsSelected) {
-        count++;
-        this.selectedSubGroupIds.push(list[x].ServiceLineSubGroupId);
+      for (let x = 0; x < list.length; x++) {
+        if (list[x].IsSelected) {
+          count++;
+          this.selectedSubGroupIds.push(list[x].ServiceLineSubGroupId);
+        }
       }
-    }
-    return count;
-  }
-
-  private mapSurveyData(formValue: any) {
-    const tempSurveyObject = new Survey();
-    tempSurveyObject.TeamMemberId = this.teamMember.TeamMemberId;
-    tempSurveyObject.LearningAdvisories = formValue.LearningAdvisories;
-    tempSurveyObject.OpportunityAdvisories = formValue.OpportunityAdvisories;
-    tempSurveyObject.IndustryTeamLearn = formValue.IndustryTeamLearn;
-    tempSurveyObject.IndustryTeamsTime = formValue.IndustryTeamsTime;
-    tempSurveyObject.IsExpertise = formValue.IsExpertise;
-    tempSurveyObject.ServiceLineAlignedId = formValue.ServiceLineAlignedId;
-    tempSurveyObject.SubGroupsExpertise = _.cloneDeep(this.selectedSubGroupIds);
-
-    return tempSurveyObject;
+      this.assignSelectedSubGroups(this.selectedSubGroupIds);
+      return count;
   }
 
   private isDisplaySurvey() {

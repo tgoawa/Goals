@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ControlContainer, NgForm } from '@angular/forms';
 import { ServiceLinesInterface, SubGroupsSurveyData } from '../../models/surveyLookups';
+import { Survey } from '../../models/survey';
 
 @Component({
   selector: 'app-survey-sub-group',
