@@ -63,7 +63,6 @@ export class HoursEntryComponent implements OnInit, OnChanges {
     this.tmService.emulatedTeamMember.subscribe(
       data => {
         this.teamMember = data;
-        this.survey.TeamMemberId = this.teamMember.TeamMemberId;
         this.getData();
       },
       error => {
@@ -249,6 +248,7 @@ export class HoursEntryComponent implements OnInit, OnChanges {
     if (this.countSelectedSubGroups(this.subGroupsSurveyData) <= 2) {
       console.log('Count is ok, form should be ok to save');
       this.displaySubGroupInvalid = false;
+      this.survey.TeamMemberId = this.teamMember.TeamMemberId;
       this.saveSurvey(this.survey);
     } else {
       console.error('Too many subgroups selected');
