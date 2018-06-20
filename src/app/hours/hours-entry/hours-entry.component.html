@@ -111,7 +111,7 @@
 <div [config]="{ backdrop: 'static' }" bsModal #surveyModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
-      <form #surveyForm="ngForm" (ngSubmit)="onSubmitSurvey(surveyForm.value)">
+      <form #surveyForm="ngForm" (ngSubmit)="onSubmitSurvey()">
         <div class="modal-body">
           <div class="form-group">
             <label class="col-form-label">I am spending sufficient time in my chosen industry(s) to develop expertise: (required)</label>
