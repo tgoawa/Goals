@@ -63,6 +63,7 @@ export class HoursEntryComponent implements OnInit, OnChanges {
     this.tmService.emulatedTeamMember.subscribe(
       data => {
         this.teamMember = data;
+        this.survey.TeamMemberId = this.teamMember.TeamMemberId;
         this.getData();
       },
       error => {
