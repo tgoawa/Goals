@@ -22,12 +22,6 @@
             <li *ngIf="emulatedTeamMember.IndustryTeams !== null">
               <a class="dropdown-item" href="#" [routerLink]="['/goals/industry-team']">Industry Team Goals</a>
             </li>
-            <li *ngIf="emulatedTeamMember.IsShareHolder">
-              <a class="dropdown-item" href="#" [routerLink]="['/goals/shareholder-wig']">WIG Based Goals</a>
-            </li>
-            <li *ngIf="emulatedTeamMember.IsShareHolder">
-              <a class="dropdown-item" href="#" [routerLink]="['/goals/shareholder-economic']">Economic Contribution Goal</a>
-            </li>
           </ul>
         </li>
         <li *ngIf="!emulatedTeamMember.IsShareHolder" class="nav-item">
