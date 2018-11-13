@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 
 import { TeamMember, TeamMemberService } from '../../teamMember/';
 import { AdminService } from '../services/admin.service';
+import { environment } from '../../../environments/environment';
+
+const envUrl = environment.envUrl;
 
 @Component({
   selector: 'app-admin-entry',
@@ -9,7 +12,7 @@ import { AdminService } from '../services/admin.service';
   styleUrls: ['./admin-entry.component.scss']
 })
 export class AdminEntryComponent implements OnInit {
-
+  goalsReportAppUrl = envUrl + ':1036/#/home';
   teamMemberList: TeamMember[];
   defaultTeamMember: TeamMember;
   emulatedTeamMember: TeamMember;
